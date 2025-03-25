@@ -140,9 +140,44 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final Change change) {
-        @NonNull CreateTable createTable = change.getCreateTable();
-        generate(createTable);
-        generate(createTable.getColumns().toArray(new ColumnWrapper[0]));
+        final CreateTable createTable = change.getCreateTable();
+        if (createTable != null) {
+            generate(createTable);
+            generate(createTable.getColumns().toArray(new ColumnWrapper[0]));
+        }
+        final CreateType createType = change.getCreateType();
+        if (createType != null) {
+            generate(createType);
+        }
+    }
+
+    private void generate(@NonNull final CreateType createType) {
+        stringBuilder.append("=== Перечисление \"" + StringUtil.format(createType.getTypeName()) + "\"\n");
+        stringBuilder.append("==== Общие сведения\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("[cols=\"20,80\"]\n");
+        stringBuilder.append("|===\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("|*Физ. название*:\n");
+        stringBuilder.append("|" + StringUtil.format(createType.getTypeName()) + "\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("|*Лог. название*:\n");
+        stringBuilder.append("|" + StringUtil.format(createType.getRemarks()) + "\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("|*Сервис*:\n");
+        stringBuilder.append("|" + StringUtil.format(serviceName) + "\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("|*База данных*:\n");
+        stringBuilder.append("|" + StringUtil.format(createType.getCatalogName()) + "\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("|*Доп. сведения*:\n");
+        stringBuilder.append("|" + StringUtil.format(dataBaseInfo) + "\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("|*Схема*:\n");
+        stringBuilder.append("|" + StringUtil.format(createType.getSchemaName()) + "\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("|===\n");
+        stringBuilder.append("\n");
     }
 
     private void generate(@NonNull final CreateTable createTable) {

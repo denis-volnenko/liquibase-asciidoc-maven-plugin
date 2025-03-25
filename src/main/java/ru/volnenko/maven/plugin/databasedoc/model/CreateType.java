@@ -15,6 +15,8 @@ public final class CreateType {
 
     private String catalogName = "";
 
+    private String schemaName = "";
+
     private String tablespace = "";
 
     private String typeName = "";
