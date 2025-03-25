@@ -23,6 +23,6 @@ public final class CreateType {
 
     private String remarks = "";
 
-    private List<Value> values;
+    private List<ValueWrapper> values;
 
 }

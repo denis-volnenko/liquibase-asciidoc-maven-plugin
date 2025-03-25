@@ -148,6 +148,7 @@ public final class Generator extends AbstractMojo {
         final CreateType createType = change.getCreateType();
         if (createType != null) {
             generate(createType);
+            generate(createType.getValues().toArray(new ValueWrapper[0]));
         }
     }
 
@@ -206,6 +207,21 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("|*Схема*:\n");
         stringBuilder.append("|" + StringUtil.format(createTable.getSchemaName()) + "\n");
         stringBuilder.append("\n");
+        stringBuilder.append("|===\n");
+        stringBuilder.append("\n");
+    }
+
+    private void generate(@NonNull final ValueWrapper[] valueWrappers) {
+        stringBuilder.append("==== Описание полей\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("[cols=\"0,30,70\"]\n");
+        stringBuilder.append("|===\n");
+        stringBuilder.append("\n");
+        stringBuilder.append("^|*№*\n");
+        stringBuilder.append("|*Физ. название*\n");
+        stringBuilder.append("|*Лог. название*\n");
+        stringBuilder.append("\n");
+
         stringBuilder.append("|===\n");
         stringBuilder.append("\n");
     }
