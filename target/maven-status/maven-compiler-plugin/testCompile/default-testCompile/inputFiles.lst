@@ -1,0 +1,2 @@
+/opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/test/java/ru/volnenko/maven/plugin/databasedoc/GeneratorTest.java
+/opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/test/java/ru/volnenko/maven/plugin/databasedoc/builder/RootBuilderTest.java
