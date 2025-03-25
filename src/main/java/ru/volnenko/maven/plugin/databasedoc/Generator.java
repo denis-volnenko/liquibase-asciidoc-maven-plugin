@@ -212,7 +212,7 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final ValueWrapper[] valueWrappers) {
-        stringBuilder.append("==== Описание полей\n");
+        stringBuilder.append("==== Описание значений\n");
         stringBuilder.append("\n");
         stringBuilder.append("[cols=\"0,30,70\"]\n");
         stringBuilder.append("|===\n");
