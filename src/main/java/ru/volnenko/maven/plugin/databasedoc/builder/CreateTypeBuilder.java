@@ -2,10 +2,11 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.api.ICreateTableBuilder;
+import ru.volnenko.maven.plugin.databasedoc.api.ICreateTypeBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.CreateType;
 import ru.volnenko.maven.plugin.databasedoc.model.Root;
 
-public final class CreateTypeBuilder implements ICreateTableBuilder {
+public final class CreateTypeBuilder implements ICreateTypeBuilder {
 
     @NonNull
     private final ChangeBuilder changeBuilder;
@@ -21,7 +22,7 @@ public final class CreateTypeBuilder implements ICreateTableBuilder {
     @NonNull
     public CreateTypeBuilder catalogName(final String catalogName) {
         createType.setCatalogName(catalogName);
-       return this;
+        return this;
     }
 
     @NonNull
@@ -46,6 +47,11 @@ public final class CreateTypeBuilder implements ICreateTableBuilder {
     @Override
     public Root root() {
         return changeBuilder.root();
+    }
+
+    @NonNull
+    public ChangeBuilder change() {
+        return changeBuilder.and();
     }
 
 }

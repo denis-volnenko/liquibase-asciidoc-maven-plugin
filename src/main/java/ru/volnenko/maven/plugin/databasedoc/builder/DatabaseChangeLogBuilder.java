@@ -14,11 +14,13 @@ public final class DatabaseChangeLogBuilder implements IDatabaseChangeLogBuilder
     }
 
     @NonNull
+    @Override
     public Root root() {
         return rootBuilder.root();
     }
 
     @NonNull
+    @Override
     public ChangeSetBuilder changeSet() {
         return new ChangeSetBuilder(this);
     }

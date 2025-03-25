@@ -19,11 +19,13 @@ public final class ForeignKeyBuilder implements IForeignKeyBuilder {
         return constraintsBuilder.root();
     }
 
+    @Override
     @NonNull
     public ColumnItemBuilder add() {
         return constraintsBuilder.add();
     }
 
+    @Override
     @NonNull
     public ChangeBuilder change() {
         return constraintsBuilder.change();
