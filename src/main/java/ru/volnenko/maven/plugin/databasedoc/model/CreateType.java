@@ -5,14 +5,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public final class Change {
+public class CreateType {
 
-    private CreateTable createTable;
+    private String catalogName = "";
 
-    private CreateType createType;
+    private String tablespace = "";
+
+    private String typeName = "";
+
+    private String remarks = "";
+
+    private List<Value> values;
 
 }

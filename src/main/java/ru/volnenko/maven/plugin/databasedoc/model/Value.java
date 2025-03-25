@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public final class Change {
+public final class Value {
 
-    private CreateTable createTable;
+    private String name = "";
 
-    private CreateType createType;
+    private String remarks = "";
 
 }
