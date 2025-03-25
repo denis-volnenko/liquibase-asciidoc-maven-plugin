@@ -1,0 +1,11 @@
+<plugin>
+    <description></description>
+    <groupId>ru.volnenko.maven.plugin</groupId>
+    <artifactId>maven-liquilbase-asciidoc-plugin</artifactId>
+    <version>1.0.0</version>
+    <mojos>
+        <mojo>
+            <goal>generate</goal>
+        </mojo>
+    </mojos>
+</plugin>

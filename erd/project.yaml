@@ -1,0 +1,34 @@
+---
+databaseChangeLog:
+  changeSet:
+    - id: project
+      author: liquibase
+      changes:
+        - createTable:
+            schemaName: public
+            catalogName: tm
+            tableName: app_project
+            remarks: Проект
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  remarks: Уникальный код
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  remarks: Название
+                  defaultValue: Новый проект
+              - column:
+                  name: user_id
+                  type: int
+                  remarks: Код пользователя
+                  constraints:
+                    foreignKey:
+                      referencedColumnNames: id
+                      referencedTableName: users
+                    nullable: false
