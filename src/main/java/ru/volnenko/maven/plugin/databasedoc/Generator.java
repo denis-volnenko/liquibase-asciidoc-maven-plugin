@@ -221,7 +221,11 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("|*Физ. название*\n");
         stringBuilder.append("|*Лог. название*\n");
         stringBuilder.append("\n");
-
+        int index = 1;
+        for (final ValueWrapper valueWrapper: valueWrappers) {
+            generate(valueWrapper.getValue(), index);
+            index++;
+        }
         stringBuilder.append("|===\n");
         stringBuilder.append("\n");
     }
@@ -244,11 +248,18 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("\n");
         int index = 1;
         for (final ColumnWrapper columnWrapper: columnWrappers) {
-            if (columnWrapper == null) continue;
             generate(columnWrapper.getColumn(), index);
             index++;
         }
         stringBuilder.append("|===\n");
+        stringBuilder.append("\n");
+    }
+
+    private void generate(@NonNull final Value value, final int index) {
+        stringBuilder.append("\n");
+        stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
+        stringBuilder.append("|" + StringUtil.format(value.getName()) + "\n");
+        stringBuilder.append("|" + StringUtil.format(value.getRemarks()) + "\n");
         stringBuilder.append("\n");
     }
 

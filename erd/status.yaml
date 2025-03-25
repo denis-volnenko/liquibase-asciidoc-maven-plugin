@@ -15,7 +15,7 @@ databaseChangeLog:
                   remarks: Не начато
               - value:
                   name: IN_PROGRESS
-                  remarks: В процесса
+                  remarks: В процессе
               - value:
                   name: COMPLETE
                   remarks: Завершено
