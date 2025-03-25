@@ -200,7 +200,6 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("\n");
     }
 
-
     private void generate(@NonNull Column column, int index) {
         stringBuilder.append("\n");
         stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
