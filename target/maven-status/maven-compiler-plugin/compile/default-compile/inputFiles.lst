@@ -22,6 +22,7 @@
 /opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/main/java/ru/volnenko/maven/plugin/databasedoc/api/ICreateTypeBuilder.java
 /opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/main/java/ru/volnenko/maven/plugin/databasedoc/api/IValueBuilder.java
 /opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/main/java/ru/volnenko/maven/plugin/databasedoc/builder/RootBuilder.java
+/opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/main/java/ru/volnenko/maven/plugin/databasedoc/model/ValueWrapper.java
 /opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/main/java/ru/volnenko/maven/plugin/databasedoc/model/CreateType.java
 /opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/main/java/ru/volnenko/maven/plugin/databasedoc/model/ForeignKey.java
 /opt/PROJECTS/maven-liquilbase-asciidoc-plugin/src/main/java/ru/volnenko/maven/plugin/databasedoc/api/IForeignKeyBuilder.java

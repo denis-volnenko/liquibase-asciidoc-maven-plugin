@@ -5,6 +5,7 @@ ru/volnenko/maven/plugin/databasedoc/builder/ChangeSetItemBuilder.class
 ru/volnenko/maven/plugin/databasedoc/model/ColumnWrapper.class
 ru/volnenko/maven/plugin/databasedoc/model/Column.class
 ru/volnenko/maven/plugin/databasedoc/api/IValueBuilder.class
+ru/volnenko/maven/plugin/databasedoc/model/ValueWrapper.class
 ru/volnenko/maven/plugin/databasedoc/builder/CreateTableBuilder.class
 ru/volnenko/maven/plugin/databasedoc/model/Root.class
 ru/volnenko/maven/plugin/databasedoc/builder/ChangeSetBuilder.class

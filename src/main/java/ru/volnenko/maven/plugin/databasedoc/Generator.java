@@ -145,7 +145,7 @@ public final class Generator extends AbstractMojo {
         generate(createTable.getColumns().toArray(new ColumnWrapper[0]));
     }
 
-    private void generate(@NonNull CreateTable createTable) {
+    private void generate(@NonNull final CreateTable createTable) {
         stringBuilder.append("=== Сущность \"" + StringUtil.format(createTable.getTableName()) + "\"\n");
         stringBuilder.append("\n");
         stringBuilder.append("==== Общие сведения\n");
@@ -175,7 +175,7 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("\n");
     }
 
-    private void generate(@NonNull ColumnWrapper[] columnWrappers) {
+    private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
         stringBuilder.append("==== Описание полей\n");
         stringBuilder.append("\n");
         stringBuilder.append("[cols=\"0,20,20,20,5,5,5,5,10\"]\n");
@@ -192,7 +192,8 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("|*DEFAULT*\n");
         stringBuilder.append("\n");
         int index = 1;
-        for (ColumnWrapper columnWrapper : columnWrappers) {
+        for (final ColumnWrapper columnWrapper: columnWrappers) {
+            if (columnWrapper == null) continue;
             generate(columnWrapper.getColumn(), index);
             index++;
         }
@@ -200,7 +201,7 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("\n");
     }
 
-    private void generate(@NonNull Column column, int index) {
+    private void generate(@NonNull final Column column, int index) {
         stringBuilder.append("\n");
         stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
         stringBuilder.append("|" + StringUtil.format(column.getName()) + "\n");

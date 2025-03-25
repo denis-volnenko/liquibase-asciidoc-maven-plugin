@@ -77,6 +77,7 @@
                     <files>
                         <file>${project.basedir}/erd/project.yaml</file>
                         <file>${project.basedir}/erd/task.yaml</file>
+                        <file>${project.basedir}/erd/status.yaml</file>
                     </files>
                 </configuration>
             </plugin>

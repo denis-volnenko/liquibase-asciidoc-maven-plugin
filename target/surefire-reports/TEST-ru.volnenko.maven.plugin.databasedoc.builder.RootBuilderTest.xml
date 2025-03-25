@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="ru.volnenko.maven.plugin.databasedoc.builder.RootBuilderTest" time="0.004" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="ru.volnenko.maven.plugin.databasedoc.builder.RootBuilderTest" time="0.002" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2021.3.2"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -62,5 +62,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="intellij.os.virtualization" value="none"/>
   </properties>
-  <testcase classname="ru.volnenko.maven.plugin.databasedoc.builder.RootBuilderTest" name="test" time="0.004"/>
+  <testcase classname="ru.volnenko.maven.plugin.databasedoc.builder.RootBuilderTest" name="test" time="0.002"/>
 </testsuite>
