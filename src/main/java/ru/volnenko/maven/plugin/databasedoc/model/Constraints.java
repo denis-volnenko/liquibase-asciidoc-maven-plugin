@@ -13,7 +13,7 @@ public final class Constraints {
 
     private Boolean primaryKey = false;
 
-    private Boolean nullable = false;
+    private Boolean nullable = true;
 
     private Boolean unique = false;
 

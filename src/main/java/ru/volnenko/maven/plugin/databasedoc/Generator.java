@@ -210,7 +210,7 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getPrimaryKey()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getUnique()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(ForeignKeyUtil.enabled(column)) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(ConstraintUtil.nullable(column)) + "\n");
+        stringBuilder.append("^|" + StringUtil.format(ConstraintUtil.notnull(column)) + "\n");
         stringBuilder.append("|" + StringUtil.format(column.getDefaultValue()) + "\n");
         stringBuilder.append("\n");
     }
