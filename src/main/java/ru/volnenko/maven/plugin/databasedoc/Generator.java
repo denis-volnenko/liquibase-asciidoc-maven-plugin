@@ -233,7 +233,7 @@ public final class Generator extends AbstractMojo {
     private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
         stringBuilder.append("==== Описание полей\n");
         stringBuilder.append("\n");
-        stringBuilder.append("[cols=\"0,20,20,20,5,5,5,5,10\"]\n");
+        stringBuilder.append("[cols=\"0,20,20,20,5,5,5,5,5,10\"]\n");
         stringBuilder.append("|===\n");
         stringBuilder.append("\n");
         stringBuilder.append("^|*№*\n");
@@ -243,6 +243,7 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("^|*PK*\n");
         stringBuilder.append("^|*UK*\n");
         stringBuilder.append("^|*FK*\n");
+        stringBuilder.append("^|*AI*\n");
         stringBuilder.append("^|*NN*\n");
         stringBuilder.append("|*DEFAULT*\n");
         stringBuilder.append("\n");
@@ -272,6 +273,7 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getPrimaryKey()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getUnique()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(ForeignKeyUtil.enabled(column)) + "\n");
+        stringBuilder.append("^|" + StringUtil.format(column.getAutoIncrement()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(ConstraintUtil.notnull(column)) + "\n");
         stringBuilder.append("|" + StringUtil.format(column.getDefaultValue()) + "\n");
         stringBuilder.append("\n");
