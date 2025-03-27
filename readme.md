@@ -10,9 +10,10 @@
 
 ## Developer Info
 
-**Name**: Denis Volnenko
-
-**E-mail**: denis@volnenko.ru
+|                 |                     |
+|:----------------|:--------------------|
+|**Name**         | Denis Volnenko      |
+|**E-mail**       | denis@volnenko.ru   |
 
 ## Plugin configuration
 
