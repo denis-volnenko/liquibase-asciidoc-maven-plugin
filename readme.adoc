@@ -28,6 +28,8 @@
 
 == Plugin configuration
 
+=== Config example
+
 ----
 <build>
     <plugins>
@@ -52,6 +54,34 @@
     </plugins>
 </build>
 ----
+
+=== Plugin settings
+
+[cols="20,80"]
+|===
+
+|*Name*
+|*Description*
+
+|serviceName
+|Service Name
+
+|dataBaseInfo
+|Additional database information.
+
+|headerFirstEnabled
+|Display First Level of document header.
+
+|headerSecondEnabled
+|Display Second Level of document header.
+
+|tableOfContentsEnabled
+|Display table of contents.
+
+|outputPath
+|Output folder of generated documentation.
+
+|===
 
 == Development
 
