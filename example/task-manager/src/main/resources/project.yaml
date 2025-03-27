@@ -12,7 +12,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: varchar(64)
                   autoIncrement: true
                   remarks: Уникальный код
                   constraints:
@@ -22,10 +22,19 @@ databaseChangeLog:
                   name: name
                   type: text
                   remarks: Название
-                  defaultValue: Новый проект
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  remarks: Описание
+                  defaultValue: ""
+                  constraints:
+                    nullable: false
               - column:
                   name: user_id
-                  type: int
+                  type: varchar(64)
                   remarks: Код пользователя
                   constraints:
                     foreignKey:
