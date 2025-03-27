@@ -1,0 +1,18 @@
+---
+databaseChangeLog:
+  changeSet:
+    - id: role_type
+      author: liquibase
+      changes:
+        - createType:
+            schemaName: public
+            catalogName: tm
+            typeName: role_type
+            remarks: Тип роли
+            values:
+              - value:
+                  name: ADMIN
+                  remarks: Администратор
+              - value:
+                  name: USER
+                  remarks: Пользователь

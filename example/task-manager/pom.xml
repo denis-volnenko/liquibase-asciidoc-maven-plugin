@@ -38,6 +38,7 @@
                     <outputPath>${project.basedir}/src/main/asciidoc</outputPath>
                     <outputFile>index.adoc</outputFile>
                     <files>
+                        <file>${project.basedir}/src/main/resources/role_type.yaml</file>
                         <file>${project.basedir}/src/main/resources/status_type.yaml</file>
                         <file>${project.basedir}/src/main/resources/project.yaml</file>
                         <file>${project.basedir}/src/main/resources/task.yaml</file>
