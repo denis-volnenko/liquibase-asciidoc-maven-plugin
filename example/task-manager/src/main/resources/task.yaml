@@ -48,3 +48,15 @@ databaseChangeLog:
                       referencedColumnNames: id
                       referencedTableName: user
                     nullable: false
+              - column:
+                  name: created
+                  type: timestampz
+                  remarks: Дата создания
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated
+                  type: timestampz
+                  remarks: Дата обновления
+                  constraints:
+                    nullable: false
