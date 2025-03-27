@@ -33,7 +33,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: status
+                  name: status_type
                   type: text
                   remarks: Статус
                   defaultValue: "NOT_STARTED"

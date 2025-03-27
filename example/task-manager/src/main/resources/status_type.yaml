@@ -1,13 +1,13 @@
 ---
 databaseChangeLog:
   changeSet:
-    - id: status
+    - id: status_type
       author: liquibase
       changes:
         - createType:
             schemaName: public
             catalogName: tm
-            typeName: status
+            typeName: status_type
             remarks: Статус
             values:
               - value:
