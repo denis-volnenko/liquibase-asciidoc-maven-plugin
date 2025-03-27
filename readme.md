@@ -2,6 +2,10 @@
 
 ## Project Info
 
+**groupId**: ru.volnenko.maven.plugin
+
+**artifactId**: maven-liquilbase-asciidoc-plugin
+
 **version**: 1.0.0
 
 ## Developer Info
