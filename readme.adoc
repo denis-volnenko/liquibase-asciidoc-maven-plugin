@@ -1,0 +1,1 @@
+= maven-liquilbase-asciidoc-plugin
