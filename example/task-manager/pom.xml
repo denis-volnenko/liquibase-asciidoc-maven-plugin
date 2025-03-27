@@ -26,6 +26,25 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>ru.volnenko.maven.plugin</groupId>
+                <artifactId>maven-liquilbase-asciidoc-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <serviceName>Task Manager</serviceName>
+                    <dataBaseInfo>Postgres 15</dataBaseInfo>
+                    <headerFirstEnabled>true</headerFirstEnabled>
+                    <headerSecondEnabled>true</headerSecondEnabled>
+                    <tableOfContentsEnabled>true</tableOfContentsEnabled>
+                    <outputPath>${project.basedir}/src/main/asciidoc</outputPath>
+                    <outputFile>index.adoc</outputFile>
+                    <files>
+                        <file>${project.basedir}/src/main/resources/project.yaml</file>
+                        <file>${project.basedir}/src/main/resources/task.yaml</file>
+                        <file>${project.basedir}/src/main/resources/status.yaml</file>
+                    </files>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>2.2.6</version>
