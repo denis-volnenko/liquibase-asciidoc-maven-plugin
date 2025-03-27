@@ -2,11 +2,15 @@
 
 ## Project Info
 
+### Artifact coordinates
+
 |                 |                                 |
 |:----------------|:--------------------------------|
 | **groupId**     | ru.volnenko.maven.plugin        |
 | **artifactId**  | maven-liquilbase-asciidoc-plugin|
 | **version**     | 1.0.0                           |
+
+### System Requirement
 
 ## Developer Info
 
@@ -46,14 +50,14 @@
 
 ### Plugin settings
 
-|Name                       |Description                                      |
-|:--------------------------|:------------------------------------------------|
-|serviceName                |                                                 |
-|dataBaseInfo               |                                                 |
-|headerFirstEnabled         |                                                 |
-|headerSecondEnabled        |                                                 |
-|tableOfContentsEnabled     |                                                 |
-|outputPath                 |                                                 |
+|Name                       | Description                  |
+|:--------------------------|:-----------------------------|
+|serviceName                | Service name.                |
+|dataBaseInfo               | Data Base extra information. |
+|headerFirstEnabled         | Display first level header.  |
+|headerSecondEnabled        | Display second level header. |
+|tableOfContentsEnabled     | Display table of contents.   |
+|outputPath                 | Output folder distination.   |
 
 ## Run Plugin
 
