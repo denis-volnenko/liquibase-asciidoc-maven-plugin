@@ -43,6 +43,7 @@
                         <file>${project.basedir}/src/main/resources/project.yaml</file>
                         <file>${project.basedir}/src/main/resources/task.yaml</file>
                         <file>${project.basedir}/src/main/resources/user.yaml</file>
+                        <file>${project.basedir}/src/main/resources/role.yaml</file>
                     </files>
                 </configuration>
             </plugin>
