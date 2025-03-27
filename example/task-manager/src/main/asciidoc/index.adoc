@@ -454,7 +454,7 @@
 
 
 ^|04. 
-|passwordHash
+|password_рash
 |text
 |Хеш пароля
 ^|--
@@ -466,7 +466,7 @@
 
 
 ^|05. 
-|firstName
+|first_name
 |text
 |Имя
 ^|--
@@ -478,7 +478,7 @@
 
 
 ^|06. 
-|lastName
+|last_name
 |text
 |Фамилия
 ^|--
@@ -490,7 +490,7 @@
 
 
 ^|07. 
-|middleName
+|middle_name
 |text
 |Отчество
 ^|--

@@ -33,27 +33,27 @@ databaseChangeLog:
                     nullable: false
                     unique: true
               - column:
-                  name: passwordHash
+                  name: password_рash
                   type: text
                   remarks: Хеш пароля
                   constraints:
                     nullable: false
               - column:
-                  name: firstName
+                  name: first_name
                   type: text
                   remarks: Имя
                   defaultValue: ""
                   constraints:
                     nullable: false
               - column:
-                  name: lastName
+                  name: last_name
                   type: text
                   remarks: Фамилия
                   defaultValue: ""
                   constraints:
                     nullable: false
               - column:
-                  name: middleName
+                  name: middle_name
                   type: text
                   remarks: Отчество
                   defaultValue: ""
