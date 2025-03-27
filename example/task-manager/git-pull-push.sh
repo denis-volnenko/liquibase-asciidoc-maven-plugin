@@ -7,4 +7,4 @@ git commit -m "Task Manager updated."
 
 git push
 
-git push git@github.com:denis-volnenko/maven-openapi-asciidoc-plugin.git
+git push git@github.com:denis-volnenko/maven-liquilbase-asciidoc-plugin.git
