@@ -33,6 +33,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: status
+                  type: text
+                  remarks: Статус
+                  defaultValue: "NOT_STARTED"
+                  constraints:
+                    nullable: false
+              - column:
                   name: user_id
                   type: varchar(64)
                   remarks: Код пользователя
