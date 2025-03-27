@@ -19,6 +19,10 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: name
+                  type: text
+                  remarks: Название
+              - column:
                   name: user_id
                   type: int
                   constraints:

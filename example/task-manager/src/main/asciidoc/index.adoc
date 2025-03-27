@@ -1,4 +1,4 @@
-= TaskManager
+= Task Manager
 :toc-title: Оглавление
 :toc:
 
@@ -18,7 +18,7 @@
 |Проект
 
 |*Сервис*:
-|TaskManager
+|Task Manager
 
 |*База данных*:
 |tm
@@ -99,7 +99,7 @@
 |Задачи
 
 |*Сервис*:
-|TaskManager
+|Task Manager
 
 |*База данных*:
 |tm
@@ -142,6 +142,18 @@
 
 
 ^|02. 
+|name
+|text
+|Название
+^|--
+^|--
+^|--
+^|--
+^|--
+|
+
+
+^|03. 
 |user_id
 |int
 |
@@ -167,7 +179,7 @@
 |Статус
 
 |*Сервис*:
-|TaskManager
+|Task Manager
 
 |*База данных*:
 |tm
