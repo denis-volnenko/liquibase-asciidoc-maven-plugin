@@ -2,6 +2,30 @@
 
 == Project Info
 
+[cols="20,80"]
+|===
+
+|*Java*
+|OpenJDK 8
+
+|*Maven*
+|3.6.3
+
+|===
+
+== Developer Info
+
+[cols="20,80"]
+|===
+
+|*Name*
+|Denis Volnenko
+
+|*Maven*
+|denis@volnenko.ru
+
+|===
+
 == Plugin configuration
 
 ----
@@ -29,7 +53,15 @@
 </build>
 ----
 
-== Run Plugin
+== Development
+
+=== Build maven plugin
+
+----
+mvn clean install
+----
+
+=== Generate documentation
 
 ----
 mvn liquilbase-asciidoc:generate
