@@ -17,6 +17,8 @@
 
 ## Plugin configuration
 
+### Maven config example
+
 ```xml
 <build>
     <plugins>
@@ -41,6 +43,17 @@
     </plugins>
 </build>
 ```
+
+### Plugin settings
+
+|Name                       |Description                                      |
+|:--------------------------|:------------------------------------------------|
+|serviceName                |                                                 |
+|dataBaseInfo               |                                                 |
+|headerFirstEnabled         |                                                 |
+|headerSecondEnabled        |                                                 |
+|tableOfContentsEnabled     |                                                 |
+|outputPath                 |                                                 |
 
 ## Run Plugin
 
