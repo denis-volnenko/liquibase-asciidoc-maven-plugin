@@ -40,6 +40,15 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
+                  name: project_id
+                  type: varchar(64)
+                  remarks: Код проекта
+                  constraints:
+                    foreignKey:
+                      referencedColumnNames: id
+                      referencedTableName: project
+                    nullable: false
+              - column:
                   name: user_id
                   type: varchar(64)
                   remarks: Код пользователя
