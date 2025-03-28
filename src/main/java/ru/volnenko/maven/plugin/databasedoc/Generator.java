@@ -162,7 +162,7 @@ public final class Generator extends AbstractMojo {
         }
         if (entityRelationDiagramEnabled) {
             stringBuilder.append("\n");
-            stringBuilder.append("=== ER-диаграмма базы данных");
+            stringBuilder.append("=== ER-диаграмма базы данных \n");
             stringBuilder.append("\n");
             stringBuilder.append("image::erd.svg[] \n");
             stringBuilder.append("\n");
