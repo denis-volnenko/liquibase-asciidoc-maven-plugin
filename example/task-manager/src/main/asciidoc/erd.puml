@@ -1,0 +1,46 @@
+@startuml 
+!pragma graphviz_dot jdot 
+'!pragma layout smetana 
+entity "app_project" {
+    *"id" : "varchar(64)"
+    "name" : "text"
+    "description" : "text"
+    "status_type" : "text"
+    "user_id" : "varchar(64)"
+    "created" : "timestampz"
+    "updated" : "timestampz"
+}
+
+entity "app_task" {
+    *"id" : "varchar(64)"
+    "name" : "text"
+    "description" : "text"
+    "status_type" : "text"
+    "project_id" : "varchar(64)"
+    "user_id" : "varchar(64)"
+    "created" : "timestampz"
+    "updated" : "timestampz"
+}
+
+entity "app_user" {
+    *"id" : "varchar(64)"
+    "username" : "text"
+    "email" : "text"
+    "password_рash" : "text"
+    "first_name" : "text"
+    "last_name" : "text"
+    "middle_name" : "text"
+    "created" : "timestampz"
+    "updated" : "timestampz"
+}
+
+entity "app_role" {
+    *"id" : "varchar(64)"
+    "user_id" : "varchar(64)"
+    "user_type" : "text"
+    "created" : "timestampz"
+    "updated" : "timestampz"
+}
+
+
+@enduml
