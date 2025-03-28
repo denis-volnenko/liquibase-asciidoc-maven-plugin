@@ -93,23 +93,15 @@ public final class Generator extends AbstractMojo {
 
     @SneakyThrows
     private void createERD() {
-        StringBuilder plantUmlSource = new StringBuilder();
-        plantUmlSource.append("@startuml\n");
-        plantUmlSource.append("Alice -> Bob: Authentication Request\n");
-        plantUmlSource.append("Bob --> Alice: Authentication Response\n");
-        plantUmlSource.append("@enduml");
 
-//        SourceStringReader reader = new SourceStringReader(plantUmlSource.toString());
-//
-//        FileOutputStream output = new FileOutputStream(new File("/your/path/to/plantuml/test.svg"));
-//
-//        reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
     }
 
     @SneakyThrows
     public void execute() throws MojoExecutionException, MojoFailureException {
         header();
         erd.append("@startuml \n");
+        erd.append("!pragma graphviz_dot jdot \n");
+        erd.append("'!pragma layout smetana \n");
         for (final String file : files) {
             if (file == null || file.isEmpty()) {
                 continue;
@@ -137,6 +129,11 @@ public final class Generator extends AbstractMojo {
             File file = new File(path.getAbsolutePath() + "/" + "erd.puml");
             FileUtils.fileWrite(file, erd.toString());
         }
+        {
+            final SourceStringReader reader = new SourceStringReader(erd.toString());
+            final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
+            reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
+        }
     }
 
     @SneakyThrows
@@ -157,6 +154,8 @@ public final class Generator extends AbstractMojo {
         }
         if (headerSecondEnabled) {
             stringBuilder.append("== Представление данных\n");
+            stringBuilder.append("\n");
+            stringBuilder.append("image::erd.svg[] \n");
             stringBuilder.append("\n");
         }
     }
