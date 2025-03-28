@@ -65,6 +65,11 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
+    @Parameter(property = "entityRelationDiagramInclude")
+    public boolean entityRelationDiagramInclude = true;
+
+    @Getter
+    @Setter
     @Parameter(property = "outputPath")
     public String outputPath = "./doc";
 
@@ -161,11 +166,13 @@ public final class Generator extends AbstractMojo {
             stringBuilder.append("== Представление данных\n");
         }
         if (entityRelationDiagramEnabled) {
-            stringBuilder.append("\n");
-            stringBuilder.append("=== ER-диаграмма базы данных \n");
-            stringBuilder.append("\n");
-            stringBuilder.append("image::erd.svg[] \n");
-            stringBuilder.append("\n");
+            if (entityRelationDiagramInclude) {
+                stringBuilder.append("\n");
+                stringBuilder.append("=== ER-диаграмма базы данных \n");
+                stringBuilder.append("\n");
+                stringBuilder.append("image::erd.svg[] \n");
+                stringBuilder.append("\n");
+            }
         }
     }
 
