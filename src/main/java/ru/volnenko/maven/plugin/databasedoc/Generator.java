@@ -60,6 +60,11 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
+    @Parameter(property = "tableOfContentsEnabled")
+    public boolean entityRelationDiagramEnabled = true;
+
+    @Getter
+    @Setter
     @Parameter(property = "outputPath")
     public String outputPath = "./doc";
 
@@ -129,7 +134,7 @@ public final class Generator extends AbstractMojo {
             File file = new File(path.getAbsolutePath() + "/" + "erd.puml");
             FileUtils.fileWrite(file, erd.toString());
         }
-        {
+        if (entityRelationDiagramEnabled) {
             final SourceStringReader reader = new SourceStringReader(erd.toString());
             final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
             reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
@@ -154,6 +159,8 @@ public final class Generator extends AbstractMojo {
         }
         if (headerSecondEnabled) {
             stringBuilder.append("== Представление данных\n");
+        }
+        if (entityRelationDiagramEnabled) {
             stringBuilder.append("\n");
             stringBuilder.append("image::erd.svg[] \n");
             stringBuilder.append("\n");
