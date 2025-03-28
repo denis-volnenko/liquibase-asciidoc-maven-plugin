@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.SneakyThrows;
+import net.sourceforge.plantuml.FileFormat;
+import net.sourceforge.plantuml.FileFormatOption;
+import net.sourceforge.plantuml.SourceStringReader;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -21,6 +24,7 @@ import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -76,6 +80,9 @@ public final class Generator extends AbstractMojo {
     private final StringBuilder stringBuilder = new StringBuilder();
 
     @NonNull
+    private final StringBuilder erd = new StringBuilder();
+
+    @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
         @NonNull final String name = file.toLowerCase(Locale.ROOT);
         if (name.endsWith(".json")) return MapperUtil.json();
@@ -85,14 +92,33 @@ public final class Generator extends AbstractMojo {
     }
 
     @SneakyThrows
+    private void createERD() {
+        StringBuilder plantUmlSource = new StringBuilder();
+        plantUmlSource.append("@startuml\n");
+        plantUmlSource.append("Alice -> Bob: Authentication Request\n");
+        plantUmlSource.append("Bob --> Alice: Authentication Response\n");
+        plantUmlSource.append("@enduml");
+
+//        SourceStringReader reader = new SourceStringReader(plantUmlSource.toString());
+//
+//        FileOutputStream output = new FileOutputStream(new File("/your/path/to/plantuml/test.svg"));
+//
+//        reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
+    }
+
+    @SneakyThrows
     public void execute() throws MojoExecutionException, MojoFailureException {
         header();
+        erd.append("@startuml \n");
         for (final String file : files) {
             if (file == null || file.isEmpty()) {
                 continue;
             }
             parse(file);
         }
+        erd.append("\n");
+        erd.append("@enduml");
+        erd.append("\n");
         save();
     }
 
@@ -103,8 +129,14 @@ public final class Generator extends AbstractMojo {
         path.mkdirs();
 
         if (outputFile == null || outputFile.isEmpty()) return;
-        File file = new File(path.getAbsolutePath() + "/" + outputFile);
-        FileUtils.fileWrite(file, stringBuilder.toString());
+        {
+            File file = new File(path.getAbsolutePath() + "/" + outputFile);
+            FileUtils.fileWrite(file, stringBuilder.toString());
+        }
+        {
+            File file = new File(path.getAbsolutePath() + "/" + "erd.puml");
+            FileUtils.fileWrite(file, erd.toString());
+        }
     }
 
     @SneakyThrows
@@ -143,7 +175,16 @@ public final class Generator extends AbstractMojo {
         final CreateTable createTable = change.getCreateTable();
         if (createTable != null) {
             generate(createTable);
+            {
+                erd.append("entity \"" + StringUtil.format(createTable.getTableName()) + "\" {");
+                erd.append("\n");
+            }
             generate(createTable.getColumns().toArray(new ColumnWrapper[0]));
+            {
+                erd.append("}");
+                erd.append("\n");
+                erd.append("\n");
+            }
         }
         final CreateType createType = change.getCreateType();
         if (createType != null) {
@@ -222,7 +263,7 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("|*Лог. название*\n");
         stringBuilder.append("\n");
         int index = 1;
-        for (final ValueWrapper valueWrapper: valueWrappers) {
+        for (final ValueWrapper valueWrapper : valueWrappers) {
             generate(valueWrapper.getValue(), index);
             index++;
         }
@@ -231,6 +272,8 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
+
+
         stringBuilder.append("==== Описание полей\n");
         stringBuilder.append("\n");
         stringBuilder.append("[cols=\"0,20,20,20,5,5,5,5,5,10\"]\n");
@@ -248,7 +291,7 @@ public final class Generator extends AbstractMojo {
         stringBuilder.append("|*DEFAULT*\n");
         stringBuilder.append("\n");
         int index = 1;
-        for (final ColumnWrapper columnWrapper: columnWrappers) {
+        for (final ColumnWrapper columnWrapper : columnWrappers) {
             generate(columnWrapper.getColumn(), index);
             index++;
         }
@@ -265,18 +308,28 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final Column column, int index) {
-        stringBuilder.append("\n");
-        stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
-        stringBuilder.append("|" + StringUtil.format(column.getName()) + "\n");
-        stringBuilder.append("|" + StringUtil.format(column.getType()) + "\n");
-        stringBuilder.append("|" + StringUtil.format(column.getRemarks()) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getPrimaryKey()) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getUnique()) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(ForeignKeyUtil.enabled(column)) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(column.getAutoIncrement()) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(ConstraintUtil.notnull(column)) + "\n");
-        stringBuilder.append("|" + StringUtil.format(column.getDefaultValue()) + "\n");
-        stringBuilder.append("\n");
+        {
+            erd.append("    ");
+            if (column.getConstraints().getPrimaryKey()) erd.append("*");
+            erd.append("\"" + StringUtil.format(column.getName()) + "\"");
+            erd.append(" : ");
+            erd.append("\"" + StringUtil.format(column.getType()) + "\"");
+            erd.append("\n");
+        }
+        {
+            stringBuilder.append("\n");
+            stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
+            stringBuilder.append("|" + StringUtil.format(column.getName()) + "\n");
+            stringBuilder.append("|" + StringUtil.format(column.getType()) + "\n");
+            stringBuilder.append("|" + StringUtil.format(column.getRemarks()) + "\n");
+            stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getPrimaryKey()) + "\n");
+            stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getUnique()) + "\n");
+            stringBuilder.append("^|" + StringUtil.format(ForeignKeyUtil.enabled(column)) + "\n");
+            stringBuilder.append("^|" + StringUtil.format(column.getAutoIncrement()) + "\n");
+            stringBuilder.append("^|" + StringUtil.format(ConstraintUtil.notnull(column)) + "\n");
+            stringBuilder.append("|" + StringUtil.format(column.getDefaultValue()) + "\n");
+            stringBuilder.append("\n");
+        }
     }
 
 }
