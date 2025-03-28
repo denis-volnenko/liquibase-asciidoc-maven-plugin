@@ -272,8 +272,6 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
-
-
         stringBuilder.append("==== Описание полей\n");
         stringBuilder.append("\n");
         stringBuilder.append("[cols=\"0,20,20,20,5,5,5,5,5,10\"]\n");
