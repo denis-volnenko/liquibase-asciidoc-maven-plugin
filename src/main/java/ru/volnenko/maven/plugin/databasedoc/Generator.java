@@ -17,10 +17,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
-import ru.volnenko.maven.plugin.databasedoc.generator.ColumnGenerator;
-import ru.volnenko.maven.plugin.databasedoc.generator.CreateTypeGenerator;
-import ru.volnenko.maven.plugin.databasedoc.generator.ValueGenerator;
-import ru.volnenko.maven.plugin.databasedoc.generator.ValueWrapperGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.*;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
@@ -104,6 +101,9 @@ public final class Generator extends AbstractMojo {
 
     @NonNull
     private final ValueWrapperGenerator valueWrapperGenerator = new ValueWrapperGenerator();
+
+    @NonNull
+    private final CreateTableGenerator createTableGenerator = new CreateTableGenerator();
 
     @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
@@ -230,33 +230,11 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final CreateTable createTable) {
-        stringBuilder.append("=== Сущность \"" + StringUtil.format(createTable.getTableName()) + "\"\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("==== Общие сведения\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("[cols=\"20,80\"]\n");
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Физ. название*:\n");
-        stringBuilder.append("|" + StringUtil.format(createTable.getTableName()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Лог. название*:\n");
-        stringBuilder.append("|" + StringUtil.format(createTable.getRemarks()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Сервис*:\n");
-        stringBuilder.append("|" + StringUtil.format(serviceName) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*База данных*:\n");
-        stringBuilder.append("|" + StringUtil.format(createTable.getCatalogName()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Доп. сведения*:\n");
-        stringBuilder.append("|" + StringUtil.format(dataBaseInfo) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Схема*:\n");
-        stringBuilder.append("|" + StringUtil.format(createTable.getSchemaName()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
+        createTableGenerator
+                .dataBaseInfo(dataBaseInfo)
+                .serviceName(serviceName)
+                .createTable(createTable)
+                .append(stringBuilder);
     }
 
     private void generate(@NonNull final ValueWrapper[] valueWrappers) {
