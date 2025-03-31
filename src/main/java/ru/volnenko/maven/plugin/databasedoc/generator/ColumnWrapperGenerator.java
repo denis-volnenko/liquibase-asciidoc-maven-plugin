@@ -9,9 +9,6 @@ public final class ColumnWrapperGenerator extends AbstractGenerator {
     private ColumnGenerator columnGenerator = new ColumnGenerator();
 
     @NonNull
-    private StringBuilder stringBuilder = new StringBuilder();
-
-    @NonNull
     private Integer index = 1;
 
     @NonNull
@@ -56,7 +53,10 @@ public final class ColumnWrapperGenerator extends AbstractGenerator {
         stringBuilder.append("\n");
         int index = 1;
         for (final ColumnWrapper columnWrapper : columnWrappers) {
-            columnGenerator.index(index).column(columnWrapper.getColumn()).append(stringBuilder);
+            columnGenerator
+                    .index(index)
+                    .column(columnWrapper.getColumn())
+                    .append(stringBuilder);
             index++;
         }
         stringBuilder.append("|===\n");

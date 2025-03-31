@@ -94,12 +94,6 @@ public final class Generator extends AbstractMojo {
     private final CreateTypeGenerator createTypeGenerator = new CreateTypeGenerator();
 
     @NonNull
-    private final ValueGenerator valueGenerator = new ValueGenerator();
-
-    @NonNull
-    private final ColumnGenerator columnGenerator = new ColumnGenerator();
-
-    @NonNull
     private final ValueWrapperGenerator valueWrapperGenerator = new ValueWrapperGenerator();
 
     @NonNull
@@ -112,11 +106,6 @@ public final class Generator extends AbstractMojo {
         if (name.endsWith(".yaml")) return MapperUtil.yaml();
         if (name.endsWith(".yml")) return MapperUtil.yaml();
         throw new UnsupportedFormatException();
-    }
-
-    @SneakyThrows
-    private void createERD() {
-
     }
 
     @SneakyThrows
@@ -243,45 +232,17 @@ public final class Generator extends AbstractMojo {
                 .append(stringBuilder);
     }
 
-    private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
-        stringBuilder.append("==== Описание полей\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("[cols=\"0,20,20,20,5,5,5,5,5,10\"]\n");
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("^|*№*\n");
-        stringBuilder.append("|*Физ. название*\n");
-        stringBuilder.append("|*Тип*\n");
-        stringBuilder.append("|*Лог. название*\n");
-        stringBuilder.append("^|*PK*\n");
-        stringBuilder.append("^|*UK*\n");
-        stringBuilder.append("^|*FK*\n");
-        stringBuilder.append("^|*AI*\n");
-        stringBuilder.append("^|*NN*\n");
-        stringBuilder.append("|*DEFAULT*\n");
-        stringBuilder.append("\n");
-        int index = 1;
-        for (final ColumnWrapper columnWrapper : columnWrappers) {
-            generate(columnWrapper.getColumn(), index);
-            index++;
-        }
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
-    }
+    private ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
 
-    private void generate(@NonNull final Column column, int index) {
-        {
-            erd.append("    ");
-            if (column.getConstraints().getPrimaryKey()) erd.append("*");
-            erd.append("\"" + StringUtil.format(column.getName()) + "\"");
-            erd.append(" : ");
-            erd.append("\"" + StringUtil.format(column.getType()) + "\"");
-            erd.append("\n");
-        }
-        columnGenerator
-                .index(index)
-                .column(column)
+    private EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
+
+    private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
+        columnWrapperGenerator
+                .columnWrappers(columnWrappers)
                 .append(stringBuilder);
+
+        entityRelationDiagramColumnWrapperGenerator.columnWrappers(columnWrappers)
+                .append(erd);
     }
 
 }
