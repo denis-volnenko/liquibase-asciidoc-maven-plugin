@@ -18,6 +18,7 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
 import ru.volnenko.maven.plugin.databasedoc.generator.ColumnGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.CreateTypeGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.ValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.ValueWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
@@ -91,6 +92,9 @@ public final class Generator extends AbstractMojo {
 
     @NonNull
     private final StringBuilder erd = new StringBuilder();
+
+    @NonNull
+    private final CreateTypeGenerator createTypeGenerator = new CreateTypeGenerator();
 
     @NonNull
     private final ValueGenerator valueGenerator = new ValueGenerator();
@@ -218,32 +222,11 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final CreateType createType) {
-        stringBuilder.append("=== Перечисление \"" + StringUtil.format(createType.getTypeName()) + "\"\n");
-        stringBuilder.append("==== Общие сведения\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("[cols=\"20,80\"]\n");
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Физ. название*:\n");
-        stringBuilder.append("|" + StringUtil.format(createType.getTypeName()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Лог. название*:\n");
-        stringBuilder.append("|" + StringUtil.format(createType.getRemarks()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Сервис*:\n");
-        stringBuilder.append("|" + StringUtil.format(serviceName) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*База данных*:\n");
-        stringBuilder.append("|" + StringUtil.format(createType.getCatalogName()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Доп. сведения*:\n");
-        stringBuilder.append("|" + StringUtil.format(dataBaseInfo) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Схема*:\n");
-        stringBuilder.append("|" + StringUtil.format(createType.getSchemaName()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
+        createTypeGenerator
+                .dataBaseInfo(dataBaseInfo)
+                .serviceName(serviceName)
+                .createType(createType)
+                .append(stringBuilder);
     }
 
     private void generate(@NonNull final CreateTable createTable) {
@@ -277,7 +260,9 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final ValueWrapper[] valueWrappers) {
-        valueWrapperGenerator.valueWrappers(valueWrappers).append(stringBuilder);
+        valueWrapperGenerator
+                .valueWrappers(valueWrappers)
+                .append(stringBuilder);
     }
 
     private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
@@ -315,7 +300,10 @@ public final class Generator extends AbstractMojo {
             erd.append("\"" + StringUtil.format(column.getType()) + "\"");
             erd.append("\n");
         }
-        columnGenerator.index(index).column(column).append(stringBuilder);
+        columnGenerator
+                .index(index)
+                .column(column)
+                .append(stringBuilder);
     }
 
 }
