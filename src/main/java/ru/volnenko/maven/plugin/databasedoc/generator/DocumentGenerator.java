@@ -25,37 +25,43 @@ public final class DocumentGenerator extends AbstractGenerator implements IDocum
     private Boolean entityRelationDiagramInclude = true;
 
     @NonNull
-    public DocumentGenerator entityRelationDiagramEnabled(@NonNull final Boolean entityRelationDiagramEnabled) {
+    @Override
+    public IDocumentGenerator entityRelationDiagramEnabled(@NonNull final Boolean entityRelationDiagramEnabled) {
         this.entityRelationDiagramEnabled = entityRelationDiagramEnabled;
         return this;
     }
 
     @NonNull
-    public DocumentGenerator entityRelationDiagramInclude(@NonNull final Boolean entityRelationDiagramInclude) {
+    @Override
+    public IDocumentGenerator entityRelationDiagramInclude(@NonNull final Boolean entityRelationDiagramInclude) {
         this.entityRelationDiagramInclude = entityRelationDiagramInclude;
         return this;
     }
 
     @NonNull
-    public DocumentGenerator headerFirstEnabled(@NonNull final Boolean headerFirstEnabled) {
+    @Override
+    public IDocumentGenerator headerFirstEnabled(@NonNull final Boolean headerFirstEnabled) {
         this.headerFirstEnabled = headerFirstEnabled;
         return this;
     }
 
     @NonNull
-    public DocumentGenerator tableOfContentsEnabled(@NonNull final Boolean tableOfContentsEnabled) {
+    @Override
+    public IDocumentGenerator tableOfContentsEnabled(@NonNull final Boolean tableOfContentsEnabled) {
         this.tableOfContentsEnabled = tableOfContentsEnabled;
         return this;
     }
 
     @NonNull
-    public DocumentGenerator headerSecondEnabled(@NonNull final Boolean headerSecondEnabled) {
+    @Override
+    public IDocumentGenerator headerSecondEnabled(@NonNull final Boolean headerSecondEnabled) {
         this.headerSecondEnabled = headerSecondEnabled;
         return this;
     }
 
     @NonNull
-    public DocumentGenerator serviceName(@NonNull final String serviceName) {
+    @Override
+    public IDocumentGenerator serviceName(@NonNull final String serviceName) {
         this.serviceName = serviceName;
         return this;
     }
