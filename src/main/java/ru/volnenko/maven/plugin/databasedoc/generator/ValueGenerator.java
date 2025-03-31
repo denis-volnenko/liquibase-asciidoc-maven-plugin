@@ -5,10 +5,10 @@ import ru.volnenko.maven.plugin.databasedoc.api.IValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.Value;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class ValueGenerator extends AbstractGenerator<Value> implements IValueGenerator {
+public final class ValueGenerator extends AbstractGeneratorModel<Value> implements IValueGenerator {
 
     @Override
-    public String generate(@NonNull Value model, @NonNull Integer index) {
+    public String generate(@NonNull final Value model, @NonNull final Integer index) {
         @NonNull final StringBuilder builder = new StringBuilder();
         builder.append("\n");
         builder.append("^|" + StringUtil.format(index) + ". \n");

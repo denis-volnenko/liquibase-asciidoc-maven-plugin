@@ -1,9 +1,9 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.IGenerator;
+import ru.volnenko.maven.plugin.databasedoc.api.IGeneratorModel;
 
-public abstract class AbstractGenerator<M> implements IGenerator<M> {
+public abstract class AbstractGeneratorModel<M> implements IGeneratorModel<M> {
 
     @NonNull
     public abstract String generate(@NonNull M model, @NonNull Integer index);
