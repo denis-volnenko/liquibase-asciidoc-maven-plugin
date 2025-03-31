@@ -155,9 +155,6 @@ public final class Generator extends AbstractMojo {
         for (Change change : changeSet.getChanges()) generate(change);
     }
 
-    @NonNull
-    private final CreateTypeGenerator createTypeGenerator = new CreateTypeGenerator();
-
     private void generate(@NonNull final Change change) {
         final CreateTable createTable = change.getCreateTable();
         if (createTable != null) {
