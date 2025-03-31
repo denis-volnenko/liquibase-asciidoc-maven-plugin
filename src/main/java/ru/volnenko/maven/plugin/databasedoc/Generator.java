@@ -109,10 +109,15 @@ public final class Generator extends AbstractMojo {
 
     @SneakyThrows
     public void execute() throws MojoExecutionException, MojoFailureException {
-        @NonNull final List<Root> roots = rootParser
-                .files(files)
-                .parse();
-        header();
+        @NonNull final List<Root> roots = rootParser.files(files).parse();
+        documentGenerator
+                .serviceName(serviceName)
+                .entityRelationDiagramEnabled(entityRelationDiagramEnabled)
+                .entityRelationDiagramInclude(entityRelationDiagramInclude)
+                .headerSecondEnabled(headerSecondEnabled)
+                .headerFirstEnabled(headerFirstEnabled)
+                .tableOfContentsEnabled(tableOfContentsEnabled)
+                .append(stringBuilder);
         erd.append("@startuml \n");
         erd.append("!pragma graphviz_dot jdot \n");
         erd.append("'!pragma layout smetana \n");
@@ -143,17 +148,6 @@ public final class Generator extends AbstractMojo {
             final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
             reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
         }
-    }
-
-    private void header() {
-        documentGenerator
-                .serviceName(serviceName)
-                .entityRelationDiagramEnabled(entityRelationDiagramEnabled)
-                .entityRelationDiagramInclude(entityRelationDiagramInclude)
-                .headerSecondEnabled(headerSecondEnabled)
-                .headerFirstEnabled(headerFirstEnabled)
-                .tableOfContentsEnabled(tableOfContentsEnabled)
-                .append(stringBuilder);
     }
 
     public void generate(@NonNull final Root root) {
@@ -194,6 +188,5 @@ public final class Generator extends AbstractMojo {
                     .append(stringBuilder);
         }
     }
-
 
 }
