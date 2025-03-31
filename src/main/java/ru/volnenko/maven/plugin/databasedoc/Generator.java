@@ -100,6 +100,12 @@ public final class Generator extends AbstractMojo {
     private final CreateTableGenerator createTableGenerator = new CreateTableGenerator();
 
     @NonNull
+    private ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
+
+    @NonNull
+    private EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
+
+    @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
         @NonNull final String name = file.toLowerCase(Locale.ROOT);
         if (name.endsWith(".json")) return MapperUtil.json();
@@ -155,18 +161,15 @@ public final class Generator extends AbstractMojo {
         generate(root);
     }
 
+    @NonNull
+    private final DocumentGenerator documentGenerator = new DocumentGenerator();
+
     private void header() {
-        if (headerFirstEnabled) {
-            stringBuilder.append("= " + StringUtil.format(serviceName) + "\n");
-            if (tableOfContentsEnabled) {
-                stringBuilder.append(":toc-title: Оглавление\n");
-                stringBuilder.append(":toc:\n");
-            }
-            stringBuilder.append("\n");
-        }
-        if (headerSecondEnabled) {
-            stringBuilder.append("== Представление данных\n");
-        }
+        documentGenerator
+                .serviceName(serviceName)
+                .headerSecondEnabled(headerSecondEnabled)
+                .headerFirstEnabled(headerFirstEnabled)
+                .tableOfContentsEnabled(tableOfContentsEnabled);
         if (entityRelationDiagramEnabled) {
             if (entityRelationDiagramInclude) {
                 stringBuilder.append("\n");
@@ -232,16 +235,13 @@ public final class Generator extends AbstractMojo {
                 .append(stringBuilder);
     }
 
-    private ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
-
-    private EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
-
     private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
         columnWrapperGenerator
                 .columnWrappers(columnWrappers)
                 .append(stringBuilder);
 
-        entityRelationDiagramColumnWrapperGenerator.columnWrappers(columnWrappers)
+        entityRelationDiagramColumnWrapperGenerator
+                .columnWrappers(columnWrappers)
                 .append(erd);
     }
 

@@ -6,7 +6,7 @@ import ru.volnenko.maven.plugin.databasedoc.model.Root;
 import java.util.Collections;
 import java.util.List;
 
-public final class EntityRelationDiagramGenerator extends AbstractGenerator {
+public final class EntityRelationDiagramTableGenerator extends AbstractGenerator {
 
     @NonNull
     private List<Root> roots = Collections.emptyList();
@@ -15,7 +15,7 @@ public final class EntityRelationDiagramGenerator extends AbstractGenerator {
     private final EntityRelationDiagramColumnGenerator generator = new EntityRelationDiagramColumnGenerator();
 
     @NonNull
-    public EntityRelationDiagramGenerator createTables(@NonNull List<Root> roots) {
+    public EntityRelationDiagramTableGenerator createTables(@NonNull List<Root> roots) {
         this.roots = roots;
         return this;
     }
