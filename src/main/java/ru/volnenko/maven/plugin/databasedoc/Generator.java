@@ -105,6 +105,9 @@ public final class Generator extends AbstractMojo {
     private final EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
 
     @NonNull
+    private EntityRelationDiagramDocumentGenerator entityRelationDiagramDocumentGenerator = new EntityRelationDiagramDocumentGenerator();
+
+    @NonNull
     private final RootParser rootParser = new RootParser();
 
     @SneakyThrows
@@ -118,13 +121,11 @@ public final class Generator extends AbstractMojo {
                 .headerFirstEnabled(headerFirstEnabled)
                 .tableOfContentsEnabled(tableOfContentsEnabled)
                 .append(stringBuilder);
-        erd.append("@startuml \n");
-        erd.append("!pragma graphviz_dot jdot \n");
-        erd.append("'!pragma layout smetana \n");
+
         for (@NonNull final Root root : roots) generate(root);
-        erd.append("\n");
-        erd.append("@enduml");
-        erd.append("\n");
+
+        entityRelationDiagramDocumentGenerator.roots(roots).append(erd);
+
         save();
     }
 
@@ -174,10 +175,6 @@ public final class Generator extends AbstractMojo {
                 columnWrapperGenerator
                         .columnWrappers(createTable.getColumns())
                         .append(stringBuilder);
-                entityRelationDiagramColumnWrapperGenerator
-                        .createTable(createTable)
-                        .columnWrappers(createTable.getColumns())
-                        .append(erd);
         }
         final CreateType createType = change.getCreateType();
         if (createType != null) {
