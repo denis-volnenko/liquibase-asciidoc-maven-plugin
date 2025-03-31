@@ -67,4 +67,5 @@ public final class ColumnItemBuilder implements IColumnItemBuilder {
     public ChangeBuilder change() {
         return columnBuilder.change();
     }
+
 }
