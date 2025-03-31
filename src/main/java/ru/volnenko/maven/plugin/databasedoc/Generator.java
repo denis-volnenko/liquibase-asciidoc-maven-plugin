@@ -112,7 +112,6 @@ public final class Generator extends AbstractMojo {
 
     @SneakyThrows
     public void execute() throws MojoExecutionException, MojoFailureException {
-        @NonNull final List<Root> roots = rootParser.files(files).parse();
         documentGenerator
                 .serviceName(serviceName)
                 .entityRelationDiagramEnabled(entityRelationDiagramEnabled)
@@ -122,10 +121,9 @@ public final class Generator extends AbstractMojo {
                 .tableOfContentsEnabled(tableOfContentsEnabled)
                 .append(stringBuilder);
 
+        @NonNull final List<Root> roots = rootParser.files(files).parse();
         for (@NonNull final Root root : roots) generate(root);
-
         entityRelationDiagramDocumentGenerator.roots(roots).append(erd);
-
         save();
     }
 
