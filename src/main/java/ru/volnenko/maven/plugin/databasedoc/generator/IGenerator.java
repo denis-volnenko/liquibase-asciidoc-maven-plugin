@@ -10,4 +10,7 @@ public interface IGenerator {
     @NonNull
     StringBuilder append(@NonNull StringBuilder builder);
 
+    @NonNull
+    StringBuilder stringBuilder();
+
 }

@@ -16,6 +16,11 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
     private Column column = new Column();
 
     @NonNull
+    public static IColumnGenerator create() {
+        return new ColumnGenerator();
+    }
+
+    @NonNull
     @Override
     public IColumnGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
         this.stringBuilder = stringBuilder;
