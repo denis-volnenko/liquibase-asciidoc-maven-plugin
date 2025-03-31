@@ -19,6 +19,7 @@ import org.codehaus.plexus.util.FileUtils;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
 import ru.volnenko.maven.plugin.databasedoc.generator.ColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.ValueGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.ValueWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
@@ -96,6 +97,9 @@ public final class Generator extends AbstractMojo {
 
     @NonNull
     private final ColumnGenerator columnGenerator = new ColumnGenerator();
+
+    @NonNull
+    private final ValueWrapperGenerator valueWrapperGenerator = new ValueWrapperGenerator();
 
     @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
@@ -273,22 +277,7 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final ValueWrapper[] valueWrappers) {
-        stringBuilder.append("==== Описание значений\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("[cols=\"0,30,70\"]\n");
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("^|*№*\n");
-        stringBuilder.append("|*Физ. название*\n");
-        stringBuilder.append("|*Лог. название*\n");
-        stringBuilder.append("\n");
-        int index = 1;
-        for (final ValueWrapper valueWrapper : valueWrappers) {
-            generate(valueWrapper.getValue(), index);
-            index++;
-        }
-        stringBuilder.append("|===\n");
-        stringBuilder.append("\n");
+        valueWrapperGenerator.valueWrappers(valueWrappers).append(stringBuilder);
     }
 
     private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
@@ -315,10 +304,6 @@ public final class Generator extends AbstractMojo {
         }
         stringBuilder.append("|===\n");
         stringBuilder.append("\n");
-    }
-
-    private void generate(@NonNull final Value value, final int index) {
-        valueGenerator.value(value).index(index).append(stringBuilder);
     }
 
     private void generate(@NonNull final Column column, int index) {
