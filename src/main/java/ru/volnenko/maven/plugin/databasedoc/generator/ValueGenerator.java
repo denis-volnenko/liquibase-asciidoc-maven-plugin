@@ -19,19 +19,22 @@ public final class ValueGenerator extends AbstractGenerator implements IValueGen
     }
 
     @NonNull
-    public ValueGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
+    @Override
+    public IValueGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
         this.stringBuilder = stringBuilder;
         return this;
     }
 
     @NonNull
-    public ValueGenerator index(@NonNull final Integer index) {
+    @Override
+    public IValueGenerator index(@NonNull final Integer index) {
         this.index = index;
         return this;
     }
 
     @NonNull
-    public ValueGenerator value(@NonNull final Value value) {
+    @Override
+    public IValueGenerator value(@NonNull final Value value) {
         this.value = value;
         return this;
     }

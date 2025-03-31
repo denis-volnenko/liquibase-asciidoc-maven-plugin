@@ -15,12 +15,6 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
     @NonNull
     private List<Root> roots = Collections.emptyList();
 
-    @NonNull
-    public EntityRelationDiagramDocumentGenerator roots(@NonNull final List<Root> roots) {
-        this.roots = roots;
-        return this;
-    }
-
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
         final DatabaseChangeLog databaseChangeLog = root.getDatabaseChangeLog();
         if (databaseChangeLog == null) return;
@@ -42,6 +36,13 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
                 .createTable(createTable)
                 .columnWrappers(createTable.getColumns())
                 .append(stringBuilder);
+    }
+
+    @NonNull
+    @Override
+    public IEntityRelationDiagramDocumentGenerator roots(@NonNull final List<Root> roots) {
+        this.roots = roots;
+        return this;
     }
 
     @NonNull
