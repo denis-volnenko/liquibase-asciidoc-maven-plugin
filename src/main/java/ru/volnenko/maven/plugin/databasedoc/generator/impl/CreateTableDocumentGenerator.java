@@ -1,16 +1,19 @@
-package ru.volnenko.maven.plugin.databasedoc.generator;
+package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.ICreateTypeDocumentGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.ICreateTableDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 
 import java.util.Collections;
 import java.util.List;
 
-public final class CreateTypeDocumentGenerator extends AbstractGenerator implements ICreateTypeDocumentGenerator {
+public final class CreateTableDocumentGenerator extends AbstractGenerator implements ICreateTableDocumentGenerator {
 
     @NonNull
-    private final CreateTypeGenerator createTypeGenerator = new CreateTypeGenerator();
+    private final ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
+
+    @NonNull
+    private final CreateTableGenerator createTableGenerator = new CreateTableGenerator();
 
     @NonNull
     private List<Root> roots = Collections.emptyList();
@@ -36,32 +39,35 @@ public final class CreateTypeDocumentGenerator extends AbstractGenerator impleme
 
     private void generate(@NonNull StringBuilder stringBuilder, final Change change) {
         if (change == null) return;
-        final CreateType createType = change.getCreateType();
-        if (createType == null) return;
-        createTypeGenerator
+        final CreateTable createTable = change.getCreateTable();
+        if (createTable == null) return;
+        createTableGenerator
                 .dataBaseInfo(dataBaseInfo)
                 .serviceName(serviceName)
-                .createType(createType)
+                .createTable(createTable)
+                .append(stringBuilder);
+        columnWrapperGenerator
+                .columnWrappers(createTable.getColumns())
                 .append(stringBuilder);
     }
 
     @NonNull
     @Override
-    public ICreateTypeDocumentGenerator serviceName(@NonNull final String serviceName) {
-        this.serviceName = serviceName;
-        return this;
-    }
-
-    @NonNull
-    @Override
-    public ICreateTypeDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
+    public CreateTableDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
         this.dataBaseInfo = dataBaseInfo;
         return this;
     }
 
     @NonNull
     @Override
-    public ICreateTypeDocumentGenerator roots(@NonNull final List<Root> roots) {
+    public CreateTableDocumentGenerator serviceName(@NonNull final String serviceName) {
+        this.serviceName = serviceName;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public CreateTableDocumentGenerator roots(@NonNull final List<Root> roots) {
         this.roots = roots;
         return this;
     }

@@ -15,7 +15,10 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
-import ru.volnenko.maven.plugin.databasedoc.generator.*;
+import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTableDocumentGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTypeDocumentGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.impl.DocumentGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.impl.EntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 import ru.volnenko.maven.plugin.databasedoc.parser.RootParser;
 

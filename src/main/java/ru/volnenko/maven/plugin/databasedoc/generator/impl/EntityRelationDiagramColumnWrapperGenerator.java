@@ -1,7 +1,7 @@
-package ru.volnenko.maven.plugin.databasedoc.generator;
+package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.IEntityRelationDiagramColumnWrapperGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramColumnWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
 import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;

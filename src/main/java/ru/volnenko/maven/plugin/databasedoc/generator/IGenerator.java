@@ -1,4 +1,4 @@
-package ru.volnenko.maven.plugin.databasedoc.api;
+package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
 

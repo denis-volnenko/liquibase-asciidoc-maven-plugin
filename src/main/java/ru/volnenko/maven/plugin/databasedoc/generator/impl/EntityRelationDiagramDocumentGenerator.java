@@ -1,28 +1,19 @@
-package ru.volnenko.maven.plugin.databasedoc.generator;
+package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.ICreateTableDocumentGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 
 import java.util.Collections;
 import java.util.List;
 
-public final class CreateTableDocumentGenerator extends AbstractGenerator implements ICreateTableDocumentGenerator {
+public final class EntityRelationDiagramDocumentGenerator extends AbstractGenerator implements IEntityRelationDiagramDocumentGenerator {
 
     @NonNull
-    private final ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
-
-    @NonNull
-    private final CreateTableGenerator createTableGenerator = new CreateTableGenerator();
+    private EntityRelationDiagramColumnWrapperGenerator columnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
 
     @NonNull
     private List<Root> roots = Collections.emptyList();
-
-    @NonNull
-    private String serviceName = "";
-
-    @NonNull
-    private String dataBaseInfo = "";
 
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
         final DatabaseChangeLog databaseChangeLog = root.getDatabaseChangeLog();
@@ -41,41 +32,29 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
         if (change == null) return;
         final CreateTable createTable = change.getCreateTable();
         if (createTable == null) return;
-        createTableGenerator
-                .dataBaseInfo(dataBaseInfo)
-                .serviceName(serviceName)
-                .createTable(createTable)
-                .append(stringBuilder);
         columnWrapperGenerator
+                .createTable(createTable)
                 .columnWrappers(createTable.getColumns())
                 .append(stringBuilder);
     }
 
     @NonNull
     @Override
-    public CreateTableDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
-        this.dataBaseInfo = dataBaseInfo;
-        return this;
-    }
-
-    @NonNull
-    @Override
-    public CreateTableDocumentGenerator serviceName(@NonNull final String serviceName) {
-        this.serviceName = serviceName;
-        return this;
-    }
-
-    @NonNull
-    @Override
-    public CreateTableDocumentGenerator roots(@NonNull final List<Root> roots) {
+    public IEntityRelationDiagramDocumentGenerator roots(@NonNull final List<Root> roots) {
         this.roots = roots;
         return this;
     }
 
     @NonNull
     @Override
-    public StringBuilder append(@NonNull final StringBuilder stringBuilder) {
+    public StringBuilder append(@NonNull StringBuilder stringBuilder) {
+        stringBuilder.append("@startuml \n");
+        stringBuilder.append("!pragma graphviz_dot jdot \n");
+        stringBuilder.append("'!pragma layout smetana \n");
         for (@NonNull final Root root : roots) generate(stringBuilder, root);
+        stringBuilder.append("\n");
+        stringBuilder.append("@enduml");
+        stringBuilder.append("\n");
         return stringBuilder;
     }
 

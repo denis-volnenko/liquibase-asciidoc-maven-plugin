@@ -1,7 +1,7 @@
-package ru.volnenko.maven.plugin.databasedoc.generator;
+package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.IDocumentGenerator;
+import ru.volnenko.maven.plugin.databasedoc.generator.IDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 public final class DocumentGenerator extends AbstractGenerator implements IDocumentGenerator {
