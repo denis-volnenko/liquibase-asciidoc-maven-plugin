@@ -167,6 +167,8 @@ public final class Generator extends AbstractMojo {
     private void header() {
         documentGenerator
                 .serviceName(serviceName)
+                .entityRelationDiagramEnabled(entityRelationDiagramEnabled)
+                .entityRelationDiagramInclude(entityRelationDiagramInclude)
                 .headerSecondEnabled(headerSecondEnabled)
                 .headerFirstEnabled(headerFirstEnabled)
                 .tableOfContentsEnabled(tableOfContentsEnabled);
