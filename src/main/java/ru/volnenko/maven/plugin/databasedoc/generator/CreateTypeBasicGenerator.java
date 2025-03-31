@@ -17,19 +17,22 @@ public final class CreateTypeBasicGenerator extends AbstractGenerator implements
     private String dataBaseInfo = "";
 
     @NonNull
-    public CreateTypeBasicGenerator createType(@NonNull final CreateType createType) {
+    @Override
+    public ICreateTypeBasicGenerator createType(@NonNull final CreateType createType) {
         this.createType = createType;
         return this;
     }
 
     @NonNull
-    public CreateTypeBasicGenerator serviceName(@NonNull final String serviceName) {
+    @Override
+    public ICreateTypeBasicGenerator serviceName(@NonNull final String serviceName) {
         this.serviceName = serviceName;
         return this;
     }
 
     @NonNull
-    public CreateTypeBasicGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
+    @Override
+    public ICreateTypeBasicGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
         this.dataBaseInfo = dataBaseInfo;
         return this;
     }
