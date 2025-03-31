@@ -1,10 +1,11 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.IEntityRelationDiagramColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.Column;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class EntityRelationDiagramColumnGenerator extends AbstractGenerator {
+public final class EntityRelationDiagramColumnGenerator extends AbstractGenerator implements IEntityRelationDiagramColumnGenerator {
 
     @NonNull
     private Column column = new Column();

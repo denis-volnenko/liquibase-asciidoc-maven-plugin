@@ -1,10 +1,11 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.ICreateTableGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class CreateTableGenerator extends AbstractGenerator {
+public final class CreateTableGenerator extends AbstractGenerator implements ICreateTableGenerator {
 
     @NonNull
     private CreateTable createTable = new CreateTable();

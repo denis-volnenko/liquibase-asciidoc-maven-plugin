@@ -1,12 +1,13 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.IEntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 
 import java.util.Collections;
 import java.util.List;
 
-public final class EntityRelationDiagramDocumentGenerator extends AbstractGenerator {
+public final class EntityRelationDiagramDocumentGenerator extends AbstractGenerator implements IEntityRelationDiagramDocumentGenerator {
 
     @NonNull
     private EntityRelationDiagramColumnWrapperGenerator columnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();

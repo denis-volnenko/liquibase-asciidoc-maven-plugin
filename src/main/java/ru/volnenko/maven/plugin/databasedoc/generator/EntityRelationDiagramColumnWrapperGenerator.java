@@ -1,6 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.IEntityRelationDiagramColumnWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
 import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
@@ -8,7 +9,7 @@ import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 import java.util.Collections;
 import java.util.List;
 
-public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractGenerator {
+public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractGenerator implements IEntityRelationDiagramColumnWrapperGenerator {
 
     @NonNull
     private CreateTable createTable = new CreateTable();

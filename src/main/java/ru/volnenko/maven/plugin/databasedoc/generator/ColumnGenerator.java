@@ -1,12 +1,13 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.IColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.Column;
 import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class ColumnGenerator extends AbstractGenerator {
+public final class ColumnGenerator extends AbstractGenerator implements IColumnGenerator {
 
     @NonNull
     private Integer index = 1;

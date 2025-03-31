@@ -1,12 +1,13 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.ICreateTypeDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 
 import java.util.Collections;
 import java.util.List;
 
-public final class CreateTypeDocumentGenerator extends AbstractGenerator {
+public final class CreateTypeDocumentGenerator extends AbstractGenerator implements ICreateTypeDocumentGenerator {
 
     @NonNull
     private final CreateTypeGenerator createTypeGenerator = new CreateTypeGenerator();

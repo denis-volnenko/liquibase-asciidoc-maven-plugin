@@ -1,12 +1,13 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.IValueWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.ValueWrapper;
 
 import java.util.Collections;
 import java.util.List;
 
-public final class ValueWrapperGenerator extends AbstractGenerator {
+public final class ValueWrapperGenerator extends AbstractGenerator implements IValueWrapperGenerator {
 
     @NonNull
     private List<ValueWrapper> valueWrappers = Collections.emptyList();

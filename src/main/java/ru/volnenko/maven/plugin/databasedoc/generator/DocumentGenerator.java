@@ -1,9 +1,10 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.IDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class DocumentGenerator extends AbstractGenerator {
+public final class DocumentGenerator extends AbstractGenerator implements IDocumentGenerator {
 
     @NonNull
     private Boolean headerFirstEnabled = true;

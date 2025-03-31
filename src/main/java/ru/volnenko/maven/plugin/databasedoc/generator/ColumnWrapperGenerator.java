@@ -1,12 +1,13 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.IColumnWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
 
 import java.util.Collections;
 import java.util.List;
 
-public final class ColumnWrapperGenerator extends AbstractGenerator {
+public final class ColumnWrapperGenerator extends AbstractGenerator implements IColumnWrapperGenerator {
 
     @NonNull
     private ColumnGenerator columnGenerator = new ColumnGenerator();

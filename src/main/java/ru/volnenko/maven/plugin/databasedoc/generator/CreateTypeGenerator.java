@@ -1,9 +1,10 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.ICreateTypeGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.CreateType;
 
-public final class CreateTypeGenerator extends AbstractGenerator {
+public final class CreateTypeGenerator extends AbstractGenerator implements ICreateTypeGenerator {
 
     @NonNull
     private final CreateTypeBasicGenerator createTypeBasicGenerator = new CreateTypeBasicGenerator();

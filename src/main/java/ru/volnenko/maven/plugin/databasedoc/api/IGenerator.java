@@ -2,7 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.api;
 
 import lombok.NonNull;
 
-public interface IModelGenerator {
+public interface IGenerator {
 
     @NonNull
     String generate();

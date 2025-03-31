@@ -1,12 +1,13 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.api.ICreateTableDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 
 import java.util.Collections;
 import java.util.List;
 
-public final class CreateTableDocumentGenerator extends AbstractGenerator {
+public final class CreateTableDocumentGenerator extends AbstractGenerator implements ICreateTableDocumentGenerator {
 
     @NonNull
     private final ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
