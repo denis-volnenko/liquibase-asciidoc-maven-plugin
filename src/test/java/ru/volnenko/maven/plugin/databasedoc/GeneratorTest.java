@@ -42,7 +42,7 @@ public class GeneratorTest {
 
         System.out.println(MapperUtil.yaml().writeValueAsString(root));
 
-        new Generator().generate(root);
+//        new Generator().generate(root);
     }
 
 }
