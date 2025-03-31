@@ -4,7 +4,7 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.CreateType;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class CreateTypeGenerator extends AbstractGenerator {
+public final class CreateTypeBasicGenerator extends AbstractGenerator {
 
     @NonNull
     private CreateType createType = new CreateType();
@@ -16,19 +16,19 @@ public final class CreateTypeGenerator extends AbstractGenerator {
     private String dataBaseInfo = "";
 
     @NonNull
-    public CreateTypeGenerator createType(@NonNull final CreateType createType) {
+    public CreateTypeBasicGenerator createType(@NonNull final CreateType createType) {
         this.createType = createType;
         return this;
     }
 
     @NonNull
-    public CreateTypeGenerator serviceName(@NonNull final String serviceName) {
+    public CreateTypeBasicGenerator serviceName(@NonNull final String serviceName) {
         this.serviceName = serviceName;
         return this;
     }
 
     @NonNull
-    public CreateTypeGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
+    public CreateTypeBasicGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
         this.dataBaseInfo = dataBaseInfo;
         return this;
     }

@@ -91,7 +91,7 @@ public final class Generator extends AbstractMojo {
     private final StringBuilder erd = new StringBuilder();
 
     @NonNull
-    private final CreateTypeGenerator createTypeGenerator = new CreateTypeGenerator();
+    private final CreateTypeBasicGenerator createTypeBasicGenerator = new CreateTypeBasicGenerator();
 
     @NonNull
     private final ValueWrapperGenerator valueWrapperGenerator = new ValueWrapperGenerator();
@@ -212,7 +212,7 @@ public final class Generator extends AbstractMojo {
         }
         final CreateType createType = change.getCreateType();
         if (createType != null) {
-            createTypeGenerator
+            createTypeBasicGenerator
                     .dataBaseInfo(dataBaseInfo)
                     .serviceName(serviceName)
                     .createType(createType)
