@@ -3,10 +3,13 @@ package ru.volnenko.maven.plugin.databasedoc.generator;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
 
+import java.util.Collections;
+import java.util.List;
+
 public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractGenerator {
 
     @NonNull
-    private ColumnWrapper[] columnWrappers = new ColumnWrapper[] {};
+    private List<ColumnWrapper> columnWrappers = Collections.emptyList();
 
     @NonNull
     private EntityRelationDiagramColumnGenerator entityRelationDiagramColumnGenerator = new EntityRelationDiagramColumnGenerator();
@@ -19,7 +22,7 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
 
 
     @NonNull
-    public EntityRelationDiagramColumnWrapperGenerator columnWrappers(@NonNull final ColumnWrapper[] columnWrappers) {
+    public EntityRelationDiagramColumnWrapperGenerator columnWrappers(@NonNull final List<ColumnWrapper> columnWrappers) {
         this.columnWrappers = columnWrappers;
         return this;
     }

@@ -3,6 +3,9 @@ package ru.volnenko.maven.plugin.databasedoc.generator;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
 
+import java.util.Collections;
+import java.util.List;
+
 public final class ColumnWrapperGenerator extends AbstractGenerator {
 
     @NonNull
@@ -12,7 +15,7 @@ public final class ColumnWrapperGenerator extends AbstractGenerator {
     private Integer index = 1;
 
     @NonNull
-    private ColumnWrapper[] columnWrappers = new ColumnWrapper[] {};
+    private List<ColumnWrapper> columnWrappers = Collections.emptyList();
 
     @NonNull
     public ColumnWrapperGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
@@ -27,7 +30,7 @@ public final class ColumnWrapperGenerator extends AbstractGenerator {
     }
 
     @NonNull
-    public ColumnWrapperGenerator columnWrappers(@NonNull final ColumnWrapper[] columnWrappers) {
+    public ColumnWrapperGenerator columnWrappers(@NonNull final List<ColumnWrapper> columnWrappers) {
         this.columnWrappers = columnWrappers;
         return this;
     }

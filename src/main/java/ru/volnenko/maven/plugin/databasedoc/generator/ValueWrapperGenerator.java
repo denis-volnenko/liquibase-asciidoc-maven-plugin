@@ -3,16 +3,19 @@ package ru.volnenko.maven.plugin.databasedoc.generator;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.ValueWrapper;
 
+import java.util.Collections;
+import java.util.List;
+
 public final class ValueWrapperGenerator extends AbstractGenerator {
 
     @NonNull
-    private ValueWrapper[] valueWrappers = new ValueWrapper[] {};
+    private List<ValueWrapper> valueWrappers = Collections.emptyList();
 
     @NonNull
     private final ValueGenerator valueGenerator = new ValueGenerator();
 
     @NonNull
-    public ValueWrapperGenerator valueWrappers(@NonNull final ValueWrapper[] valueWrappers) {
+    public ValueWrapperGenerator valueWrappers(@NonNull final List<ValueWrapper> valueWrappers) {
         this.valueWrappers = valueWrappers;
         return this;
     }

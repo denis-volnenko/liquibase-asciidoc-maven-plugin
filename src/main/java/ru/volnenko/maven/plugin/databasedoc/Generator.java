@@ -187,12 +187,23 @@ public final class Generator extends AbstractMojo {
     private void generate(@NonNull final Change change) {
         final CreateTable createTable = change.getCreateTable();
         if (createTable != null) {
-            generate(createTable);
+            createTableGenerator
+                    .dataBaseInfo(dataBaseInfo)
+                    .serviceName(serviceName)
+                    .createTable(createTable)
+                    .append(stringBuilder);
             {
                 erd.append("entity \"" + StringUtil.format(createTable.getTableName()) + "\" {");
                 erd.append("\n");
             }
-            generate(createTable.getColumns().toArray(new ColumnWrapper[0]));
+            {
+                columnWrapperGenerator
+                        .columnWrappers(createTable.getColumns())
+                        .append(stringBuilder);
+                entityRelationDiagramColumnWrapperGenerator
+                        .columnWrappers(createTable.getColumns())
+                        .append(erd);
+            }
             {
                 erd.append("}");
                 erd.append("\n");
@@ -201,41 +212,16 @@ public final class Generator extends AbstractMojo {
         }
         final CreateType createType = change.getCreateType();
         if (createType != null) {
-            generate(createType);
-            generate(createType.getValues().toArray(new ValueWrapper[0]));
+            createTypeGenerator
+                    .dataBaseInfo(dataBaseInfo)
+                    .serviceName(serviceName)
+                    .createType(createType)
+                    .append(stringBuilder);
+            valueWrapperGenerator
+                    .valueWrappers(createType.getValues())
+                    .append(stringBuilder);
         }
     }
 
-    private void generate(@NonNull final CreateType createType) {
-        createTypeGenerator
-                .dataBaseInfo(dataBaseInfo)
-                .serviceName(serviceName)
-                .createType(createType)
-                .append(stringBuilder);
-    }
-
-    private void generate(@NonNull final CreateTable createTable) {
-        createTableGenerator
-                .dataBaseInfo(dataBaseInfo)
-                .serviceName(serviceName)
-                .createTable(createTable)
-                .append(stringBuilder);
-    }
-
-    private void generate(@NonNull final ValueWrapper[] valueWrappers) {
-        valueWrapperGenerator
-                .valueWrappers(valueWrappers)
-                .append(stringBuilder);
-    }
-
-    private void generate(@NonNull final ColumnWrapper[] columnWrappers) {
-        columnWrapperGenerator
-                .columnWrappers(columnWrappers)
-                .append(stringBuilder);
-
-        entityRelationDiagramColumnWrapperGenerator
-                .columnWrappers(columnWrappers)
-                .append(erd);
-    }
 
 }
