@@ -25,18 +25,21 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
     private String dataBaseInfo = "";
 
     @NonNull
+    @Override
     public CreateTableDocumentGenerator serviceName(@NonNull final String serviceName) {
         this.serviceName = serviceName;
         return this;
     }
 
     @NonNull
+    @Override
     public CreateTableDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
         this.dataBaseInfo = dataBaseInfo;
         return this;
     }
 
     @NonNull
+    @Override
     public CreateTableDocumentGenerator roots(@NonNull final List<Root> roots) {
         this.roots = roots;
         return this;
