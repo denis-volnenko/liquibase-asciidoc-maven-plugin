@@ -8,7 +8,7 @@ public abstract class AbstractGenerator {
     protected StringBuilder stringBuilder = new StringBuilder();
 
     @NonNull
-    public abstract StringBuilder append(@NonNull StringBuilder builder);
+    public abstract StringBuilder append(@NonNull StringBuilder stringBuilder);
 
     @NonNull
     public StringBuilder stringBuilder() {

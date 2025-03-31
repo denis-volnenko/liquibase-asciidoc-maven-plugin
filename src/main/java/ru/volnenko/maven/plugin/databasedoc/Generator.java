@@ -16,13 +16,10 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
-import ru.volnenko.maven.plugin.databasedoc.api.IValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
 import ru.volnenko.maven.plugin.databasedoc.generator.ColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.ValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
-import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
-import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
@@ -31,7 +28,6 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.COMPILE)
 public final class Generator extends AbstractMojo {

@@ -7,7 +7,6 @@ import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 public final class ValueGenerator extends AbstractGenerator implements IValueGenerator {
 
-
     @NonNull
     private Integer index = 1;
 
