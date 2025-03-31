@@ -16,7 +16,9 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
+import ru.volnenko.maven.plugin.databasedoc.api.IValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
+import ru.volnenko.maven.plugin.databasedoc.generator.ValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
@@ -91,6 +93,9 @@ public final class Generator extends AbstractMojo {
 
     @NonNull
     private final StringBuilder erd = new StringBuilder();
+
+    @NonNull
+    private final IValueGenerator valueGenerator = new ValueGenerator();
 
     @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
@@ -313,11 +318,7 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final Value value, final int index) {
-        stringBuilder.append("\n");
-        stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
-        stringBuilder.append("|" + StringUtil.format(value.getName()) + "\n");
-        stringBuilder.append("|" + StringUtil.format(value.getRemarks()) + "\n");
-        stringBuilder.append("\n");
+        valueGenerator.append(value, index, stringBuilder);
     }
 
     private void generate(@NonNull final Column column, int index) {
