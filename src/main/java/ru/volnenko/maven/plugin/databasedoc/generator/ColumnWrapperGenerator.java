@@ -26,6 +26,11 @@ public final class ColumnWrapperGenerator {
         return this;
     }
 
+    @NonNull
+    public ColumnWrapperGenerator columnWrappers(@NonNull final ColumnWrapper[] columnWrappers) {
+        this.columnWrappers = columnWrappers;
+        return this;
+    }
 
 
 }
