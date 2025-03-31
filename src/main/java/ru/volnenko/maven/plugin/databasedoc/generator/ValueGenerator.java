@@ -7,14 +7,17 @@ import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 public final class ValueGenerator extends AbstractGenerator implements IValueGenerator {
 
-    @NonNull
-    private StringBuilder stringBuilder = new StringBuilder();
 
     @NonNull
     private Integer index = 1;
 
     @NonNull
     private Value value = new Value();
+
+    @NonNull
+    public static ValueGenerator create() {
+        return new ValueGenerator();
+    }
 
     @NonNull
     public ValueGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
@@ -36,13 +39,13 @@ public final class ValueGenerator extends AbstractGenerator implements IValueGen
 
     @NonNull
     @Override
-    public String generate() {
+    public StringBuilder append(@NonNull final StringBuilder stringBuilder) {
         stringBuilder.append("\n");
         stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
         stringBuilder.append("|" + StringUtil.format(value.getName()) + "\n");
         stringBuilder.append("|" + StringUtil.format(value.getRemarks()) + "\n");
         stringBuilder.append("\n");
-        return stringBuilder.toString();
+        return stringBuilder;
     }
 
 }

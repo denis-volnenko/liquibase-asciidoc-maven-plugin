@@ -18,6 +18,7 @@ import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
 import ru.volnenko.maven.plugin.databasedoc.api.IValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
+import ru.volnenko.maven.plugin.databasedoc.generator.ColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.ValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
@@ -96,6 +97,9 @@ public final class Generator extends AbstractMojo {
 
     @NonNull
     private final ValueGenerator valueGenerator = new ValueGenerator();
+
+    @NonNull
+    private final ColumnGenerator columnGenerator = new ColumnGenerator();
 
     @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
@@ -330,20 +334,7 @@ public final class Generator extends AbstractMojo {
             erd.append("\"" + StringUtil.format(column.getType()) + "\"");
             erd.append("\n");
         }
-        {
-            stringBuilder.append("\n");
-            stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
-            stringBuilder.append("|" + StringUtil.format(column.getName()) + "\n");
-            stringBuilder.append("|" + StringUtil.format(column.getType()) + "\n");
-            stringBuilder.append("|" + StringUtil.format(column.getRemarks()) + "\n");
-            stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getPrimaryKey()) + "\n");
-            stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getUnique()) + "\n");
-            stringBuilder.append("^|" + StringUtil.format(ForeignKeyUtil.enabled(column)) + "\n");
-            stringBuilder.append("^|" + StringUtil.format(column.getAutoIncrement()) + "\n");
-            stringBuilder.append("^|" + StringUtil.format(ConstraintUtil.notnull(column)) + "\n");
-            stringBuilder.append("|" + StringUtil.format(column.getDefaultValue()) + "\n");
-            stringBuilder.append("\n");
-        }
+        columnGenerator.index(index).column(column).append(stringBuilder);
     }
 
 }

@@ -5,10 +5,19 @@ import lombok.NonNull;
 public abstract class AbstractGenerator {
 
     @NonNull
-    public abstract String generate();
+    protected StringBuilder stringBuilder = new StringBuilder();
 
-    public final void append(@NonNull StringBuilder builder) {
-        builder.append(generate());
+    @NonNull
+    public abstract StringBuilder append(@NonNull StringBuilder builder);
+
+    @NonNull
+    public StringBuilder stringBuilder() {
+        return stringBuilder;
+    }
+
+    @NonNull
+    public String generate() {
+        return append(stringBuilder()).toString();
     }
 
 }

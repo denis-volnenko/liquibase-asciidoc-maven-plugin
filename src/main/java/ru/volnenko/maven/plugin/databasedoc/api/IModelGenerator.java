@@ -7,6 +7,7 @@ public interface IModelGenerator {
     @NonNull
     String generate();
 
-    void append(@NonNull StringBuilder builder);
+    @NonNull
+    StringBuilder append(@NonNull StringBuilder builder);
 
 }
