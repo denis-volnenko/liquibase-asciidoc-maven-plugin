@@ -38,7 +38,7 @@ public final class ColumnWrapperGenerator extends AbstractGenerator implements I
 
     @NonNull
     @Override
-    public StringBuilder append(@NonNull StringBuilder stringBuilder) {
+    public StringBuilder append(@NonNull final StringBuilder stringBuilder) {
         stringBuilder.append("==== Описание полей\n");
         stringBuilder.append("\n");
         stringBuilder.append("[cols=\"0,20,20,20,5,5,5,5,5,10\"]\n");
