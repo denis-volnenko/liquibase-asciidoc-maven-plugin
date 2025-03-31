@@ -1,7 +1,6 @@
 package ru.volnenko.maven.plugin.databasedoc.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import h._grid;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;

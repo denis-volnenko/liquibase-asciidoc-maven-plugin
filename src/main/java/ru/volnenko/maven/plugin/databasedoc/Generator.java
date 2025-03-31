@@ -19,7 +19,7 @@ import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTableDocumentGe
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTypeDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.DocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.EntityRelationDiagramDocumentGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.*;
+import ru.volnenko.maven.plugin.databasedoc.model.Root;
 import ru.volnenko.maven.plugin.databasedoc.parser.RootParser;
 
 import java.io.File;
