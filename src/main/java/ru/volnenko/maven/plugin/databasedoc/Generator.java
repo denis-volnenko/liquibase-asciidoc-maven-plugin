@@ -1,6 +1,5 @@
 package ru.volnenko.maven.plugin.databasedoc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -16,18 +15,14 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
-import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
 import ru.volnenko.maven.plugin.databasedoc.generator.*;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 import ru.volnenko.maven.plugin.databasedoc.parser.RootParser;
-import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
-import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.COMPILE)
 public final class Generator extends AbstractMojo {
