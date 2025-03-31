@@ -21,24 +21,6 @@ public final class CreateTypeDocumentGenerator extends AbstractGenerator impleme
     @NonNull
     private String dataBaseInfo = "";
 
-    @NonNull
-    public CreateTypeDocumentGenerator serviceName(@NonNull final String serviceName) {
-        this.serviceName = serviceName;
-        return this;
-    }
-
-    @NonNull
-    public CreateTypeDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
-        this.dataBaseInfo = dataBaseInfo;
-        return this;
-    }
-
-    @NonNull
-    public CreateTypeDocumentGenerator roots(@NonNull final List<Root> roots) {
-        this.roots = roots;
-        return this;
-    }
-
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
         final DatabaseChangeLog databaseChangeLog = root.getDatabaseChangeLog();
         if (databaseChangeLog == null) return;
@@ -61,6 +43,27 @@ public final class CreateTypeDocumentGenerator extends AbstractGenerator impleme
                 .serviceName(serviceName)
                 .createType(createType)
                 .append(stringBuilder);
+    }
+
+    @NonNull
+    @Override
+    public ICreateTypeDocumentGenerator serviceName(@NonNull final String serviceName) {
+        this.serviceName = serviceName;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public ICreateTypeDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
+        this.dataBaseInfo = dataBaseInfo;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public ICreateTypeDocumentGenerator roots(@NonNull final List<Root> roots) {
+        this.roots = roots;
+        return this;
     }
 
     @NonNull
