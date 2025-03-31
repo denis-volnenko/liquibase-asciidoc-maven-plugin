@@ -5,17 +5,44 @@ import ru.volnenko.maven.plugin.databasedoc.api.IValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.Value;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class ValueGenerator extends AbstractModelGenerator<Value> implements IValueGenerator {
+public final class ValueGenerator extends AbstractGenerator implements IValueGenerator {
 
+    @NonNull
+    private StringBuilder stringBuilder = new StringBuilder();
+
+    @NonNull
+    private Integer index = 1;
+
+    @NonNull
+    private Value value = new Value();
+
+    @NonNull
+    public ValueGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
+        this.stringBuilder = stringBuilder;
+        return this;
+    }
+
+    @NonNull
+    public ValueGenerator index(@NonNull final Integer index) {
+        this.index = index;
+        return this;
+    }
+
+    @NonNull
+    public ValueGenerator value(@NonNull final Value value) {
+        this.value = value;
+        return this;
+    }
+
+    @NonNull
     @Override
-    public String generate(@NonNull final Value model, @NonNull final Integer index) {
-        @NonNull final StringBuilder builder = new StringBuilder();
-        builder.append("\n");
-        builder.append("^|" + StringUtil.format(index) + ". \n");
-        builder.append("|" + StringUtil.format(model.getName()) + "\n");
-        builder.append("|" + StringUtil.format(model.getRemarks()) + "\n");
-        builder.append("\n");
-        return builder.toString();
+    public String generate() {
+        stringBuilder.append("\n");
+        stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
+        stringBuilder.append("|" + StringUtil.format(value.getName()) + "\n");
+        stringBuilder.append("|" + StringUtil.format(value.getRemarks()) + "\n");
+        stringBuilder.append("\n");
+        return stringBuilder.toString();
     }
 
 }

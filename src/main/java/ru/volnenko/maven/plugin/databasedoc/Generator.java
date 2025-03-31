@@ -95,7 +95,7 @@ public final class Generator extends AbstractMojo {
     private final StringBuilder erd = new StringBuilder();
 
     @NonNull
-    private final IValueGenerator valueGenerator = new ValueGenerator();
+    private final ValueGenerator valueGenerator = new ValueGenerator();
 
     @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
@@ -318,7 +318,7 @@ public final class Generator extends AbstractMojo {
     }
 
     private void generate(@NonNull final Value value, final int index) {
-        valueGenerator.append(value, index, stringBuilder);
+        valueGenerator.value(value).index(index).append(stringBuilder);
     }
 
     private void generate(@NonNull final Column column, int index) {

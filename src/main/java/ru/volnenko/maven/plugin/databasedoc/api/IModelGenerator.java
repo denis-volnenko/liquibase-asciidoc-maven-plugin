@@ -2,11 +2,11 @@ package ru.volnenko.maven.plugin.databasedoc.api;
 
 import lombok.NonNull;
 
-public interface IModelGenerator<M> {
+public interface IModelGenerator {
 
     @NonNull
-    String generate(@NonNull M model, @NonNull Integer index);
+    String generate();
 
-    void append(@NonNull M model, @NonNull Integer index, @NonNull StringBuilder builder);
+    void append(@NonNull StringBuilder builder);
 
 }
