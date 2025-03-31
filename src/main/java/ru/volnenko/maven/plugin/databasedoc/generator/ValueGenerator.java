@@ -5,7 +5,7 @@ import ru.volnenko.maven.plugin.databasedoc.api.IValueGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.Value;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
-public final class ValueGenerator extends AbstractGeneratorModel<Value> implements IValueGenerator {
+public final class ValueGenerator extends AbstractModelGenerator<Value> implements IValueGenerator {
 
     @Override
     public String generate(@NonNull final Value model, @NonNull final Integer index) {
