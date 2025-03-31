@@ -90,22 +90,16 @@ public final class Generator extends AbstractMojo {
     private final DocumentGenerator documentGenerator = new DocumentGenerator();
 
     @NonNull
-    private final CreateTypeBasicGenerator createTypeBasicGenerator = new CreateTypeBasicGenerator();
-
-    @NonNull
-    private final ValueWrapperGenerator valueWrapperGenerator = new ValueWrapperGenerator();
-
-    @NonNull
     private final CreateTableGenerator createTableGenerator = new CreateTableGenerator();
 
     @NonNull
     private final ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
 
     @NonNull
-    private final EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
+    private EntityRelationDiagramDocumentGenerator entityRelationDiagramDocumentGenerator = new EntityRelationDiagramDocumentGenerator();
 
     @NonNull
-    private EntityRelationDiagramDocumentGenerator entityRelationDiagramDocumentGenerator = new EntityRelationDiagramDocumentGenerator();
+    private CreateTypeDocumentGenerator createTypeDocumentGenerator = new CreateTypeDocumentGenerator();
 
     @NonNull
     private final RootParser rootParser = new RootParser();
@@ -124,6 +118,8 @@ public final class Generator extends AbstractMojo {
         @NonNull final List<Root> roots = rootParser.files(files).parse();
         for (@NonNull final Root root : roots) generate(root);
         entityRelationDiagramDocumentGenerator.roots(roots).append(erd);
+        createTypeDocumentGenerator.roots(roots).append(stringBuilder);
+
         save();
     }
 
@@ -173,14 +169,6 @@ public final class Generator extends AbstractMojo {
                 columnWrapperGenerator
                         .columnWrappers(createTable.getColumns())
                         .append(stringBuilder);
-        }
-        final CreateType createType = change.getCreateType();
-        if (createType != null) {
-            createTypeGenerator
-                    .dataBaseInfo(dataBaseInfo)
-                    .serviceName(serviceName)
-                    .createType(createType)
-                    .append(stringBuilder);
         }
     }
 
