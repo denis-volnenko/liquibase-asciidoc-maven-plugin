@@ -100,10 +100,10 @@ public final class Generator extends AbstractMojo {
     private final CreateTableGenerator createTableGenerator = new CreateTableGenerator();
 
     @NonNull
-    private ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
+    private final ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
 
     @NonNull
-    private EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
+    private final EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
 
     @NonNull
     private ObjectMapper objectMapper(@NonNull final String file) {
