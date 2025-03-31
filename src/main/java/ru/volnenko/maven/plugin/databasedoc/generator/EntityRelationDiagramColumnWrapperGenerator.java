@@ -18,22 +18,25 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
     private List<ColumnWrapper> columnWrappers = Collections.emptyList();
 
     @NonNull
-    private EntityRelationDiagramColumnGenerator entityRelationDiagramColumnGenerator = new EntityRelationDiagramColumnGenerator();
+    private final EntityRelationDiagramColumnGenerator entityRelationDiagramColumnGenerator = new EntityRelationDiagramColumnGenerator();
 
     @NonNull
-    public EntityRelationDiagramColumnWrapperGenerator createTable(@NonNull final CreateTable createTable) {
+    @Override
+    public IEntityRelationDiagramColumnWrapperGenerator createTable(@NonNull final CreateTable createTable) {
         this.createTable = createTable;
         return this;
     }
 
     @NonNull
-    public EntityRelationDiagramColumnWrapperGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
+    @Override
+    public IEntityRelationDiagramColumnWrapperGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
         this.stringBuilder = stringBuilder;
         return this;
     }
 
     @NonNull
-    public EntityRelationDiagramColumnWrapperGenerator columnWrappers(@NonNull final List<ColumnWrapper> columnWrappers) {
+    @Override
+    public IEntityRelationDiagramColumnWrapperGenerator columnWrappers(@NonNull final List<ColumnWrapper> columnWrappers) {
         this.columnWrappers = columnWrappers;
         return this;
     }

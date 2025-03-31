@@ -11,13 +11,15 @@ public final class EntityRelationDiagramColumnGenerator extends AbstractGenerato
     private Column column = new Column();
 
     @NonNull
-    public EntityRelationDiagramColumnGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
+    @Override
+    public IEntityRelationDiagramColumnGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
         this.stringBuilder = stringBuilder;
         return this;
     }
 
     @NonNull
-    public EntityRelationDiagramColumnGenerator column(@NonNull final Column column) {
+    @Override
+    public IEntityRelationDiagramColumnGenerator column(@NonNull final Column column) {
         this.column = column;
         return this;
     }

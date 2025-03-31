@@ -18,21 +18,21 @@ public final class CreateTableGenerator extends AbstractGenerator implements ICr
 
     @NonNull
     @Override
-    public CreateTableGenerator createTable(@NonNull final CreateTable createTable) {
+    public ICreateTableGenerator createTable(@NonNull final CreateTable createTable) {
         this.createTable = createTable;
         return this;
     }
 
     @NonNull
     @Override
-    public CreateTableGenerator serviceName(@NonNull final String serviceName) {
+    public ICreateTableGenerator serviceName(@NonNull final String serviceName) {
         this.serviceName = serviceName;
         return this;
     }
 
     @NonNull
     @Override
-    public CreateTableGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
+    public ICreateTableGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
         this.dataBaseInfo = dataBaseInfo;
         return this;
     }
