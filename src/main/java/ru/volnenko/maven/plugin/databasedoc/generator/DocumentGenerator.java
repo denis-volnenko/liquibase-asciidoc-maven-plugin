@@ -18,6 +18,24 @@ public final class DocumentGenerator extends AbstractGenerator {
     private String serviceName = "";
 
     @NonNull
+    private Boolean entityRelationDiagramEnabled = true;
+
+    @NonNull
+    private Boolean entityRelationDiagramInclude = true;
+
+    @NonNull
+    public DocumentGenerator entityRelationDiagramEnabled(@NonNull final Boolean entityRelationDiagramEnabled) {
+        this.entityRelationDiagramEnabled = entityRelationDiagramEnabled;
+        return this;
+    }
+
+    @NonNull
+    public DocumentGenerator entityRelationDiagramInclude(@NonNull final Boolean entityRelationDiagramInclude) {
+        this.entityRelationDiagramInclude = entityRelationDiagramInclude;
+        return this;
+    }
+
+    @NonNull
     public DocumentGenerator headerFirstEnabled(@NonNull final Boolean headerFirstEnabled) {
         this.headerFirstEnabled = headerFirstEnabled;
         return this;
@@ -54,6 +72,15 @@ public final class DocumentGenerator extends AbstractGenerator {
         }
         if (headerSecondEnabled) {
             stringBuilder.append("== Представление данных\n");
+        }
+        if (entityRelationDiagramEnabled) {
+            if (entityRelationDiagramInclude) {
+                stringBuilder.append("\n");
+                stringBuilder.append("=== ER-диаграмма базы данных \n");
+                stringBuilder.append("\n");
+                stringBuilder.append("image::erd.svg[] \n");
+                stringBuilder.append("\n");
+            }
         }
         return stringBuilder;
     }

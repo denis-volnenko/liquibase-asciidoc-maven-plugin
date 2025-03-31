@@ -170,15 +170,6 @@ public final class Generator extends AbstractMojo {
                 .headerSecondEnabled(headerSecondEnabled)
                 .headerFirstEnabled(headerFirstEnabled)
                 .tableOfContentsEnabled(tableOfContentsEnabled);
-        if (entityRelationDiagramEnabled) {
-            if (entityRelationDiagramInclude) {
-                stringBuilder.append("\n");
-                stringBuilder.append("=== ER-диаграмма базы данных \n");
-                stringBuilder.append("\n");
-                stringBuilder.append("image::erd.svg[] \n");
-                stringBuilder.append("\n");
-            }
-        }
     }
 
     public void generate(@NonNull final Root root) {
