@@ -24,27 +24,6 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
     @NonNull
     private String dataBaseInfo = "";
 
-    @NonNull
-    @Override
-    public CreateTableDocumentGenerator serviceName(@NonNull final String serviceName) {
-        this.serviceName = serviceName;
-        return this;
-    }
-
-    @NonNull
-    @Override
-    public CreateTableDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
-        this.dataBaseInfo = dataBaseInfo;
-        return this;
-    }
-
-    @NonNull
-    @Override
-    public CreateTableDocumentGenerator roots(@NonNull final List<Root> roots) {
-        this.roots = roots;
-        return this;
-    }
-
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
         final DatabaseChangeLog databaseChangeLog = root.getDatabaseChangeLog();
         if (databaseChangeLog == null) return;
@@ -70,6 +49,27 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
         columnWrapperGenerator
                 .columnWrappers(createTable.getColumns())
                 .append(stringBuilder);
+    }
+
+    @NonNull
+    @Override
+    public CreateTableDocumentGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
+        this.dataBaseInfo = dataBaseInfo;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public CreateTableDocumentGenerator serviceName(@NonNull final String serviceName) {
+        this.serviceName = serviceName;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public CreateTableDocumentGenerator roots(@NonNull final List<Root> roots) {
+        this.roots = roots;
+        return this;
     }
 
     @NonNull
