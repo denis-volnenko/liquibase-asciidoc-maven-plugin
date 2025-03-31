@@ -105,7 +105,7 @@ public final class Generator extends AbstractMojo {
     private final RootParser rootParser = new RootParser();
 
     @SneakyThrows
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute() {
         documentGenerator
                 .serviceName(serviceName)
                 .entityRelationDiagramEnabled(entityRelationDiagramEnabled)
@@ -126,23 +126,45 @@ public final class Generator extends AbstractMojo {
     @SneakyThrows
     public void save() {
         if (outputPath == null || outputPath.isEmpty()) return;
-        File path = new File(outputPath);
-        path.mkdirs();
-
         if (outputFile == null || outputFile.isEmpty()) return;
-        {
-            File file = new File(path.getAbsolutePath() + "/" + outputFile);
-            FileUtils.fileWrite(file, stringBuilder.toString());
-        }
-        {
-            File file = new File(path.getAbsolutePath() + "/" + "erd.puml");
-            FileUtils.fileWrite(file, erd.toString());
-        }
-        if (entityRelationDiagramEnabled) {
-            final SourceStringReader reader = new SourceStringReader(erd.toString());
-            final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
-            reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
-        }
+        @NonNull final File path = new File(outputPath);
+        initOutputPath(path)
+                .saveEntityRelationDiagramADOC(path)
+                .saveEntityRelationDiagramPUML(path)
+                .saveEntityRelationDiagramSVG(path);
+    }
+
+    @NonNull
+    private Generator initOutputPath(@NonNull final File path) {
+        path.mkdirs();
+        return this;
+    }
+
+    @NonNull
+    @SneakyThrows
+    private Generator saveEntityRelationDiagramADOC(@NonNull final File path) {
+        @NonNull final File file = new File(path.getAbsolutePath() + "/" + outputFile);
+        FileUtils.fileWrite(file, stringBuilder.toString());
+        return this;
+    }
+
+    @NonNull
+    @SneakyThrows
+    private Generator saveEntityRelationDiagramPUML(@NonNull final File path) {
+        if (!entityRelationDiagramEnabled) return this;
+        @NonNull final File file = new File(path.getAbsolutePath() + "/" + "erd.puml");
+        FileUtils.fileWrite(file, erd.toString());
+        return this;
+    }
+
+    @NonNull
+    @SneakyThrows
+    private Generator saveEntityRelationDiagramSVG(@NonNull final File path) {
+        if (!entityRelationDiagramEnabled) return this;
+        @NonNull final SourceStringReader reader = new SourceStringReader(erd.toString());
+        @NonNull final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
+        reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
+        return this;
     }
 
 }
