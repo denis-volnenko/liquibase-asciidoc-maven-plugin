@@ -19,19 +19,22 @@ public final class ColumnWrapperGenerator extends AbstractGenerator implements I
     private List<ColumnWrapper> columnWrappers = Collections.emptyList();
 
     @NonNull
-    public ColumnWrapperGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
+    @Override
+    public IColumnWrapperGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
         this.stringBuilder = stringBuilder;
         return this;
     }
 
     @NonNull
-    public ColumnWrapperGenerator index(@NonNull final Integer index) {
+    @Override
+    public IColumnWrapperGenerator index(@NonNull final Integer index) {
         this.index = index;
         return this;
     }
 
     @NonNull
-    public ColumnWrapperGenerator columnWrappers(@NonNull final List<ColumnWrapper> columnWrappers) {
+    @Override
+    public IColumnWrapperGenerator columnWrappers(@NonNull final List<ColumnWrapper> columnWrappers) {
         this.columnWrappers = columnWrappers;
         return this;
     }
