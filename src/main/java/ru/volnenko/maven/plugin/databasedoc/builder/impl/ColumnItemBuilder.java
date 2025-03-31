@@ -1,7 +1,7 @@
-package ru.volnenko.maven.plugin.databasedoc.builder;
+package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.IColumnItemBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.IColumnItemBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.Root;
 

@@ -2,6 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 
 public class RootBuilderTest {
 

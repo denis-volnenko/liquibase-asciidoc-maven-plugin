@@ -1,7 +1,7 @@
-package ru.volnenko.maven.plugin.databasedoc.builder;
+package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.IChangeBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.IChangeBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.Change;
 import ru.volnenko.maven.plugin.databasedoc.model.Root;
 

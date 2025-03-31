@@ -1,7 +1,7 @@
-package ru.volnenko.maven.plugin.databasedoc.builder;
+package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.IGeneratorBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.IGeneratorBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.Root;
 
 public final class GeneratorBuilder implements IGeneratorBuilder {

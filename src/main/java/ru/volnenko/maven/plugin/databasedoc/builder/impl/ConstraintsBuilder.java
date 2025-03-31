@@ -1,7 +1,7 @@
-package ru.volnenko.maven.plugin.databasedoc.builder;
+package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.api.IConstraintsBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.IConstraintsBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.Constraints;
 import ru.volnenko.maven.plugin.databasedoc.model.Root;
 
