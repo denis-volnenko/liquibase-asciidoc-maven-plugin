@@ -1,4 +1,4 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
-public final class CreateTypeGenerator {
+public final class EntityChangeGenerator {
 }
