@@ -171,7 +171,8 @@ public final class Generator extends AbstractMojo {
                 .entityRelationDiagramInclude(entityRelationDiagramInclude)
                 .headerSecondEnabled(headerSecondEnabled)
                 .headerFirstEnabled(headerFirstEnabled)
-                .tableOfContentsEnabled(tableOfContentsEnabled);
+                .tableOfContentsEnabled(tableOfContentsEnabled)
+                .append(stringBuilder);
     }
 
     public void generate(@NonNull final Root root) {
@@ -192,23 +193,13 @@ public final class Generator extends AbstractMojo {
                     .serviceName(serviceName)
                     .createTable(createTable)
                     .append(stringBuilder);
-            {
-                erd.append("entity \"" + StringUtil.format(createTable.getTableName()) + "\" {");
-                erd.append("\n");
-            }
-            {
                 columnWrapperGenerator
                         .columnWrappers(createTable.getColumns())
                         .append(stringBuilder);
                 entityRelationDiagramColumnWrapperGenerator
+                        .createTable(createTable)
                         .columnWrappers(createTable.getColumns())
                         .append(erd);
-            }
-            {
-                erd.append("}");
-                erd.append("\n");
-                erd.append("\n");
-            }
         }
         final CreateType createType = change.getCreateType();
         if (createType != null) {
