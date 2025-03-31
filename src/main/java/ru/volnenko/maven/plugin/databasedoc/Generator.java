@@ -90,16 +90,13 @@ public final class Generator extends AbstractMojo {
     private final DocumentGenerator documentGenerator = new DocumentGenerator();
 
     @NonNull
-    private final CreateTableGenerator createTableGenerator = new CreateTableGenerator();
-
-    @NonNull
-    private final ColumnWrapperGenerator columnWrapperGenerator = new ColumnWrapperGenerator();
-
-    @NonNull
     private EntityRelationDiagramDocumentGenerator entityRelationDiagramDocumentGenerator = new EntityRelationDiagramDocumentGenerator();
 
     @NonNull
     private CreateTypeDocumentGenerator createTypeDocumentGenerator = new CreateTypeDocumentGenerator();
+
+    @NonNull
+    private CreateTableDocumentGenerator createTableDocumentGenerator = new CreateTableDocumentGenerator();
 
     @NonNull
     private final RootParser rootParser = new RootParser();
@@ -116,8 +113,8 @@ public final class Generator extends AbstractMojo {
                 .append(stringBuilder);
 
         @NonNull final List<Root> roots = rootParser.files(files).parse();
-        for (@NonNull final Root root : roots) generate(root);
         entityRelationDiagramDocumentGenerator.roots(roots).append(erd);
+        createTableDocumentGenerator.roots(roots).append(stringBuilder);
         createTypeDocumentGenerator.roots(roots).append(stringBuilder);
 
         save();
@@ -142,30 +139,6 @@ public final class Generator extends AbstractMojo {
             final SourceStringReader reader = new SourceStringReader(erd.toString());
             final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
             reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
-        }
-    }
-
-    public void generate(@NonNull final Root root) {
-        @NonNull final DatabaseChangeLog databaseChangeLog = root.getDatabaseChangeLog();
-        @NonNull final List<ChangeSet> changeSet = databaseChangeLog.getChangeSet();
-        for (@NonNull final ChangeSet item : changeSet) generate(item);
-    }
-
-    private void generate(@NonNull final ChangeSet changeSet) {
-        for (Change change : changeSet.getChanges()) generate(change);
-    }
-
-    private void generate(@NonNull final Change change) {
-        final CreateTable createTable = change.getCreateTable();
-        if (createTable != null) {
-            createTableGenerator
-                    .dataBaseInfo(dataBaseInfo)
-                    .serviceName(serviceName)
-                    .createTable(createTable)
-                    .append(stringBuilder);
-                columnWrapperGenerator
-                        .columnWrappers(createTable.getColumns())
-                        .append(stringBuilder);
         }
     }
 
