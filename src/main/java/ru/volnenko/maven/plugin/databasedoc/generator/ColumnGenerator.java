@@ -16,18 +16,21 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
     private Column column = new Column();
 
     @NonNull
-    public ColumnGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
+    @Override
+    public IColumnGenerator stringBuilder(@NonNull final StringBuilder stringBuilder) {
         this.stringBuilder = stringBuilder;
         return this;
     }
 
     @NonNull
+    @Override
     public ColumnGenerator index(@NonNull final Integer index) {
         this.index = index;
         return this;
     }
 
     @NonNull
+    @Override
     public ColumnGenerator column(@NonNull final Column column) {
         this.column = column;
         return this;
@@ -35,7 +38,7 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
 
     @NonNull
     @Override
-    public StringBuilder append(@NonNull StringBuilder stringBuilder) {
+    public StringBuilder append(@NonNull final StringBuilder stringBuilder) {
         stringBuilder.append("\n");
         stringBuilder.append("^|" + StringUtil.format(index) + ". \n");
         stringBuilder.append("|" + StringUtil.format(column.getName()) + "\n");
