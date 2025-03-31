@@ -19,6 +19,7 @@ import org.codehaus.plexus.util.FileUtils;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
 import ru.volnenko.maven.plugin.databasedoc.generator.*;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
+import ru.volnenko.maven.plugin.databasedoc.parser.RootParser;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
@@ -91,6 +92,9 @@ public final class Generator extends AbstractMojo {
     private final StringBuilder erd = new StringBuilder();
 
     @NonNull
+    private final DocumentGenerator documentGenerator = new DocumentGenerator();
+
+    @NonNull
     private final CreateTypeBasicGenerator createTypeBasicGenerator = new CreateTypeBasicGenerator();
 
     @NonNull
@@ -106,26 +110,18 @@ public final class Generator extends AbstractMojo {
     private final EntityRelationDiagramColumnWrapperGenerator entityRelationDiagramColumnWrapperGenerator = new EntityRelationDiagramColumnWrapperGenerator();
 
     @NonNull
-    private ObjectMapper objectMapper(@NonNull final String file) {
-        @NonNull final String name = file.toLowerCase(Locale.ROOT);
-        if (name.endsWith(".json")) return MapperUtil.json();
-        if (name.endsWith(".yaml")) return MapperUtil.yaml();
-        if (name.endsWith(".yml")) return MapperUtil.yaml();
-        throw new UnsupportedFormatException();
-    }
+    private final RootParser rootParser = new RootParser();
 
     @SneakyThrows
     public void execute() throws MojoExecutionException, MojoFailureException {
+        @NonNull final List<Root> roots = rootParser
+                .files(files)
+                .parse();
         header();
         erd.append("@startuml \n");
         erd.append("!pragma graphviz_dot jdot \n");
         erd.append("'!pragma layout smetana \n");
-        for (final String file : files) {
-            if (file == null || file.isEmpty()) {
-                continue;
-            }
-            parse(file);
-        }
+        for (@NonNull final Root root : roots) generate(root);
         erd.append("\n");
         erd.append("@enduml");
         erd.append("\n");
@@ -153,16 +149,6 @@ public final class Generator extends AbstractMojo {
             reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
         }
     }
-
-    @SneakyThrows
-    public void parse(@NonNull final String file) {
-        @NonNull final ObjectMapper objectMapper = objectMapper(file);
-        @NonNull final Root root = objectMapper.readValue(new File(file), Root.class);
-        generate(root);
-    }
-
-    @NonNull
-    private final DocumentGenerator documentGenerator = new DocumentGenerator();
 
     private void header() {
         documentGenerator
