@@ -22,19 +22,19 @@ public final class CreateTypeGenerator extends AbstractGenerator implements ICre
     private String dataBaseInfo = "";
 
     @NonNull
-    public CreateTypeGenerator createType(@NonNull final CreateType createType) {
+    public ICreateTypeGenerator createType(@NonNull final CreateType createType) {
         this.createType = createType;
         return this;
     }
 
     @NonNull
-    public CreateTypeGenerator serviceName(@NonNull final String serviceName) {
+    public ICreateTypeGenerator serviceName(@NonNull final String serviceName) {
         this.serviceName = serviceName;
         return this;
     }
 
     @NonNull
-    public CreateTypeGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
+    public ICreateTypeGenerator dataBaseInfo(@NonNull final String dataBaseInfo) {
         this.dataBaseInfo = dataBaseInfo;
         return this;
     }
