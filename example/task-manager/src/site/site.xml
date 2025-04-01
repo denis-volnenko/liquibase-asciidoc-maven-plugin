@@ -4,7 +4,7 @@
          name="Maven">
 
     <bannerLeft>
-        <name>TASK MANAGER DATABASE</name>
+        <name>TM DATABASE</name>
 <!--        <src>https://maven.apache.org/images/apache-maven-project.png</src>-->
         <href>https://maven.volnenko.ru/sites/task-manager-database-asciidoc/</href>
     </bannerLeft>
