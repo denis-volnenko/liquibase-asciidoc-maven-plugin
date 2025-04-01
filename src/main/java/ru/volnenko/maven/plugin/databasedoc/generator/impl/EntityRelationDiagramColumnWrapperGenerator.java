@@ -8,6 +8,9 @@ import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractGenerator implements IEntityRelationDiagramColumnWrapperGenerator {
 
@@ -41,15 +44,46 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
         return this;
     }
 
+    private static final Predicate<ColumnWrapper> PK = new Predicate<ColumnWrapper>() {
+        @Override
+        public boolean test(ColumnWrapper columnWrapper) {
+            if (columnWrapper == null) return false;
+            if (columnWrapper.getColumn() == null) return false;
+            if (columnWrapper.getColumn().getConstraints() == null) return false;
+            if (columnWrapper.getColumn().getConstraints().getPrimaryKey() == null) return false;
+            return columnWrapper.getColumn().getConstraints().getPrimaryKey();
+        }
+    };
+
+    private static final Predicate<ColumnWrapper> NOT_PK = new Predicate<ColumnWrapper>() {
+        @Override
+        public boolean test(ColumnWrapper columnWrapper) {
+            if (columnWrapper == null) return false;
+            if (columnWrapper.getColumn() == null) return false;
+            if (columnWrapper.getColumn().getConstraints() == null) return false;
+            if (columnWrapper.getColumn().getConstraints().getPrimaryKey() == null) return false;
+            return !columnWrapper.getColumn().getConstraints().getPrimaryKey();
+        }
+    };
+
+    private boolean hasPK() {
+        return columnWrappers.stream().anyMatch(PK);
+    }
+
     @NonNull
     @Override
     public StringBuilder append(@NonNull final StringBuilder stringBuilder) {
         stringBuilder.append("entity \"" + StringUtil.format(createTable.getTableName()) + "\" {");
         stringBuilder.append("\n");
-        for (final ColumnWrapper columnWrapper : columnWrappers) {
-            entityRelationDiagramColumnGenerator
-                    .column(columnWrapper.getColumn())
-                    .append(stringBuilder);
+
+        if (hasPK()) {
+            for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(PK).collect(Collectors.toList())) {
+                entityRelationDiagramColumnGenerator.column(columnWrapper.getColumn()).append(stringBuilder);
+            }
+            stringBuilder.append("---\n");
+        }
+        for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(NOT_PK).collect(Collectors.toList())) {
+            entityRelationDiagramColumnGenerator.column(columnWrapper.getColumn()).append(stringBuilder);
         }
         stringBuilder.append("}");
         stringBuilder.append("\n");
