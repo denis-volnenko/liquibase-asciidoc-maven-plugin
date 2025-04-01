@@ -4,13 +4,14 @@
          name="Maven">
 
     <bannerLeft>
-        <name>volnenko</name>
-        <src>https://maven.apache.org/images/apache-maven-project.png</src>
+        <name>TASK MANAGER DATABASE</name>
+<!--        <src>https://maven.apache.org/images/apache-maven-project.png</src>-->
         <href>https://maven.volnenko.ru/sites/task-manager-database-asciidoc/</href>
     </bannerLeft>
 
     <bannerRight>
-        <src>https://maven.apache.org/images/maven-small.gif</src>
+<!--        <src>https://maven.apache.org/images/maven-small.gif</src>-->
+        <src></src>
     </bannerRight>
 
     <body>
@@ -18,7 +19,7 @@
         <!--            <item name="asciidoc" href="asciidoc/index.html" />-->
         <!--        </links>-->
         <menu name="Ссылки">
-            <item name="Пример описания БД" href="asciidoc/index.html" />
+            <item name="Описание базы данных" href="asciidoc/index.html" />
         </menu>
         <menu ref="reports"/>
     </body>
