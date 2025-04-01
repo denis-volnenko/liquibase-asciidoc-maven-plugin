@@ -2,12 +2,14 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramColumnWrapperGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
-import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
+import ru.volnenko.maven.plugin.databasedoc.model.*;
+import ru.volnenko.maven.plugin.databasedoc.util.ColumnUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -43,7 +45,7 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
         return this;
     }
 
-    private static final Predicate<ColumnWrapper> PK = new Predicate<ColumnWrapper>() {
+    private static final Predicate<ColumnWrapper> PK_PREDICATE = new Predicate<ColumnWrapper>() {
         @Override
         public boolean test(ColumnWrapper columnWrapper) {
             if (columnWrapper == null) return false;
@@ -54,7 +56,7 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
         }
     };
 
-    private static final Predicate<ColumnWrapper> NOT_PK = new Predicate<ColumnWrapper>() {
+    private static final Predicate<ColumnWrapper> NOT_PK_PREDICATE = new Predicate<ColumnWrapper>() {
         @Override
         public boolean test(ColumnWrapper columnWrapper) {
             if (columnWrapper == null) return false;
@@ -66,22 +68,33 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
     };
 
     private boolean hasPK() {
-        return columnWrappers.stream().anyMatch(PK);
+        return columnWrappers.stream().anyMatch(PK_PREDICATE);
     }
+
+    @NonNull
+    private Set<PK> pks = new LinkedHashSet<>();
+
+    @NonNull
+    private Set<FK> fks = new LinkedHashSet<>();
 
     @NonNull
     @Override
     public StringBuilder append(@NonNull final StringBuilder stringBuilder) {
-        stringBuilder.append("entity \"" + StringUtil.format(createTable.getTableName()) + "\" {");
+        @NonNull final String tableName = StringUtil.format(createTable.getTableName());
+        stringBuilder.append("entity \"" + tableName + "\" {");
         stringBuilder.append("\n");
 
         if (hasPK()) {
-            for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(PK).collect(Collectors.toList())) {
-                entityRelationDiagramColumnGenerator.column(columnWrapper.getColumn()).append(stringBuilder);
+            for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(PK_PREDICATE).collect(Collectors.toList())) {
+                final Column column = columnWrapper.getColumn();
+                if (column == null) continue;
+                entityRelationDiagramColumnGenerator.column(column).append(stringBuilder);
+                final String name = ColumnUtil.getName(column);
+                if (name != null && !name.isEmpty()) pks.add(new PK(tableName, name));
             }
             stringBuilder.append("---\n");
         }
-        for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(NOT_PK).collect(Collectors.toList())) {
+        for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(NOT_PK_PREDICATE).collect(Collectors.toList())) {
             entityRelationDiagramColumnGenerator.column(columnWrapper.getColumn()).append(stringBuilder);
         }
         stringBuilder.append("}");
