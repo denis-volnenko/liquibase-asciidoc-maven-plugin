@@ -18,13 +18,22 @@ public final class ForeignKeyUtil {
         if (column.getConstraints().getForeignKey().getReferencedColumnNames() == null) return null;
         if (column.getConstraints().getForeignKey().getReferencedColumnNames().isEmpty()) return null;
         if (column.getName() == null || column.getName().isEmpty()) return null;
-        return null;
-    }
 
-    public static PK pk(final Column column) {
-        PK pk = null;
+        @NonNull final PK pk = new PK();
+        pk.setTableName(column.getConstraints().getForeignKey().getReferencedTableName());
+        pk.setFieldName(column.getConstraints().getForeignKey().getReferencedColumnNames());
 
-        return null;
+        @NonNull final FK fk = new FK();
+        fk.setTableName(tableName);
+        fk.setFieldName(column.getName());
+
+        if (column.getConstraints().getUnique() != null) {
+            fk.setUnique(column.getConstraints().getUnique());
+        }
+
+        fk.setPk(pk);
+
+        return fk;
     }
 
     public static boolean enabled(final Column column) {

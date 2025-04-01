@@ -46,7 +46,7 @@ databaseChangeLog:
                   constraints:
                     foreignKey:
                       referencedColumnNames: id
-                      referencedTableName: project
+                      referencedTableName: app_project
                     nullable: false
               - column:
                   name: user_id
@@ -55,7 +55,7 @@ databaseChangeLog:
                   constraints:
                     foreignKey:
                       referencedColumnNames: id
-                      referencedTableName: user
+                      referencedTableName: app_user
                     nullable: false
               - column:
                   name: created

@@ -4,6 +4,7 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramColumnWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.*;
 import ru.volnenko.maven.plugin.databasedoc.util.ColumnUtil;
+import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 import java.util.Collections;
@@ -71,11 +72,7 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
         return columnWrappers.stream().anyMatch(PK_PREDICATE);
     }
 
-    @NonNull
-    private Set<PK> pks = new LinkedHashSet<>();
 
-    @NonNull
-    private Set<FK> fks = new LinkedHashSet<>();
 
     @NonNull
     @Override
@@ -83,18 +80,18 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
         @NonNull final String tableName = StringUtil.format(createTable.getTableName());
         stringBuilder.append("entity \"" + tableName + "\" {");
         stringBuilder.append("\n");
-
         if (hasPK()) {
             for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(PK_PREDICATE).collect(Collectors.toList())) {
                 final Column column = columnWrapper.getColumn();
                 if (column == null) continue;
                 entityRelationDiagramColumnGenerator.column(column).append(stringBuilder);
-                final String name = ColumnUtil.getName(column);
-                if (name != null && !name.isEmpty()) pks.add(new PK(tableName, name));
+
             }
             stringBuilder.append("---\n");
         }
         for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(NOT_PK_PREDICATE).collect(Collectors.toList())) {
+            final Column column = columnWrapper.getColumn();
+            if (column == null) continue;
             entityRelationDiagramColumnGenerator.column(columnWrapper.getColumn()).append(stringBuilder);
         }
         stringBuilder.append("}");

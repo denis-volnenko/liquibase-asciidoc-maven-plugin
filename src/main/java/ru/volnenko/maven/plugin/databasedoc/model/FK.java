@@ -72,12 +72,12 @@ public final class FK {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FK fk = (FK) o;
-        return tableName.equals(fk.tableName) && fieldName.equals(fk.fieldName);
+        return tableName.equals(fk.tableName) && fieldName.equals(fk.fieldName) && pk.equals(fk.pk);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tableName, fieldName);
+        return Objects.hash(tableName, fieldName, pk);
     }
 
 }
