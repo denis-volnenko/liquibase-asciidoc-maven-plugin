@@ -8,7 +8,6 @@ import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
