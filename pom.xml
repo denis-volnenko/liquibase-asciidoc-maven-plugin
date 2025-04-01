@@ -12,6 +12,10 @@
     <name>Maven Liquilbase Asciidoc Plugin</name>
     <url>https://maven.volnenko.ru/sites/maven-liquilbase-asciidoc-plugin/</url>
 
+    <scm>
+        <url>git@github.com:denis-volnenko/maven-liquilbase-asciidoc-plugin.git</url>
+    </scm>
+
     <developers>
         <developer>
             <id>volnenko</id>
