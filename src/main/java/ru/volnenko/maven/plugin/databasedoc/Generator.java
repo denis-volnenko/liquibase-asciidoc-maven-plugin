@@ -115,8 +115,8 @@ public final class Generator extends AbstractMojo {
 
         @NonNull final List<Root> roots = rootParser.files(files).parse();
         entityRelationDiagramDocumentGenerator.roots(roots).append(erd);
-        createTableDocumentGenerator.roots(roots).append(stringBuilder);
-        createTypeDocumentGenerator.roots(roots).append(stringBuilder);
+        createTableDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
+        createTypeDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
 
         save();
     }
