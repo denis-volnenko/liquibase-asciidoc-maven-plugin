@@ -9,6 +9,9 @@
     <version>1.0.0</version>
     <packaging>maven-plugin</packaging>
 
+    <name>Maven Liquilbase Asciidoc Plugin</name>
+    <url>https://maven.volnenko.ru//sites/maven-liquilbase-asciidoc-plugin/</url>
+
     <developers>
         <developer>
             <id>volnenko</id>
