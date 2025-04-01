@@ -87,7 +87,11 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         for (final FK fk: fks) {
             if (fk == null) continue;
             if (!pks.contains(fk.getPk())) continue;
-            stringBuilder.append(fk.getTableName() + " --> " + fk.getPk().getTableName() + "\n");
+            if (fk.getUnique()) {
+                stringBuilder.append(fk.getTableName() + " ||--|| " + fk.getPk().getTableName() + "\n");
+            } else {
+                stringBuilder.append(fk.getTableName() + " }--|| " + fk.getPk().getTableName() + "\n");
+            }
         }
 
         stringBuilder.append("\n");
