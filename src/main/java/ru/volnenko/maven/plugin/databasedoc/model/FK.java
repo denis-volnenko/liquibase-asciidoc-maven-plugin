@@ -17,6 +17,18 @@ public final class FK {
     @NonNull
     private Boolean unique = false;
 
+    @NonNull
+    private PK pk = new PK();
+
+    @NonNull
+    public PK getPk() {
+        return pk;
+    }
+
+    public void setPk(@NonNull PK pk) {
+        this.pk = pk;
+    }
+
     public FK(@NonNull String tableName, @NonNull String fieldName) {
         this.tableName = tableName;
         this.fieldName = fieldName;
