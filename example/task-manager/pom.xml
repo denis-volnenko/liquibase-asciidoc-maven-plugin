@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ru.volnenko.example</groupId>
-    <artifactId>task-manager</artifactId>
+    <groupId>ru.volnenko.example.tm</groupId>
+    <artifactId>task-manager-database-asciidoc</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
