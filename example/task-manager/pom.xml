@@ -51,6 +51,9 @@
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
                 <version>2.2.6</version>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/site/asciidoc</outputDirectory>
+                </configuration>
                 <executions>
                     <execution>
                         <id>asciidoc-to-html</id>
@@ -61,7 +64,53 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.12.1</version>
+                <configuration>
+                    <locales>ru</locales>
+                </configuration>
+            </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>3.5.2</version>
+            </extension>
+        </extensions>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>2.2.6</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>process-asciidoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <distributionManagement>
+        <repository>
+            <id>m2.volnenko.ru</id>
+            <name>m2.volnenko.ru</name>
+            <url>dav:https://m2.volnenko.ru/v1/webdav/repository</url>
+            <uniqueVersion>true</uniqueVersion>
+        </repository>
+        <site>
+            <id>m2.volnenko.ru</id>
+            <name>m2.volnenko.ru</name>
+            <url>dav:https://m2.volnenko.ru/v1/webdav/sites/${artifactId}</url>
+        </site>
+    </distributionManagement>
 
 </project>
