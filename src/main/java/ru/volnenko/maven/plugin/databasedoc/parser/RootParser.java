@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.github.hemantsonu20.json.JsonMerge;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
@@ -51,29 +52,33 @@ public final class RootParser {
 
     @NonNull
     @SneakyThrows
-    public JsonNode all() {
-        Map<String, Object> map = new LinkedHashMap<>();
-        @NonNull final JsonNode jsonNode = MapperUtil.json().createObjectNode();
-//        @NonNull final ArrayNode arrayNode = MapperUtil.json().createArrayNode();
-//        @NonNull final ObjectNode objectNode = MapperUtil.json().createObjectNode();
-//        ObjectReader updater = MapperUtil.json().readerForUpdating(map);
-//
-//        for (final String file : files) {
-//            if (file == null || file.isEmpty()) continue;
-//            updater.readValue(MapperUtil.json().writeValueAsString(map(file)));
-//        }
+    public List<JsonNode> all() {
+        @NonNull final List<JsonNode> result = new ArrayList<>();
+        for (final String file : files) {
+            if (file == null || file.isEmpty()) continue;
+            result.add(map(file));
+        }
+        return result;
+    }
 
-        return jsonNode;
+    @NonNull
+    public JsonNode jsonNode() {
+        @NonNull final List<JsonNode> jsonNodes = all();
+        @NonNull JsonNode mergedNodes = jsonNodes.get(0);
+        for (int i = 1; i < jsonNodes.size(); i++) {
+            mergedNodes = JsonMerge.merge(mergedNodes, jsonNodes.get(i));
+        }
+        return mergedNodes;
     }
 
     @SneakyThrows
     public String json() {
-        return MapperUtil.json().writerWithDefaultPrettyPrinter().writeValueAsString(all());
+        return MapperUtil.json().writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode());
     }
 
     @SneakyThrows
     public String yaml() {
-        return MapperUtil.yaml().writerWithDefaultPrettyPrinter().writeValueAsString(all());
+        return MapperUtil.yaml().writerWithDefaultPrettyPrinter().writeValueAsString(jsonNode());
     }
 
     @NonNull
