@@ -70,17 +70,17 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
-    @Parameter(property = "outputJson")
+    @Parameter(property = "outputJsonFile")
     public String outputJsonFile = "index.json";
 
     @Getter
     @Setter
-    @Parameter(property = "outputJsonEnabled")
-    public Boolean outputJsonEnabled = false;
+    @Parameter(property = "outputJsonFileEnabled")
+    public Boolean outputJsonFileEnabled = false;
 
     @Getter
     @Setter
-    @Parameter(property = "outputYaml")
+    @Parameter(property = "outputYamlFile")
     public String outputYamlFile = "index.yaml";
 
     @Getter
@@ -147,6 +147,8 @@ public final class Generator extends AbstractMojo {
         if (outputFile == null || outputFile.isEmpty()) return;
         @NonNull final File path = new File(outputPath);
         initOutputPath(path)
+                .saveDatabaseYAML(path)
+                .saveDatabaseJSON(path)
                 .saveEntityRelationDiagramADOC(path)
                 .saveEntityRelationDiagramPUML(path)
                 .saveEntityRelationDiagramSVG(path);
@@ -164,8 +166,29 @@ public final class Generator extends AbstractMojo {
     @NonNull
     @SneakyThrows
     private Generator saveEntityRelationDiagramADOC(@NonNull final File path) {
+        if (outputFile.isEmpty()) return this;
         @NonNull final File file = new File(path.getAbsolutePath() + "/" + outputFile);
         FileUtils.fileWrite(file, stringBuilder.toString());
+        return this;
+    }
+
+    @NonNull
+    @SneakyThrows
+    private Generator saveDatabaseYAML(@NonNull final File path) {
+        if (!outputYamlFileEnabled) return this;
+        if (outputYamlFile.isEmpty()) return this;
+        @NonNull final File file = new File(path.getAbsolutePath() + "/" + outputYamlFile);
+        FileUtils.fileWrite(file, rootParser.yaml());
+        return this;
+    }
+
+    @NonNull
+    @SneakyThrows
+    private Generator saveDatabaseJSON(@NonNull final File path) {
+        if (!outputJsonFileEnabled) return this;
+        if (outputJsonFile.isEmpty()) return this;
+        @NonNull final File file = new File(path.getAbsolutePath() + "/" + outputJsonFile);
+        FileUtils.fileWrite(file, rootParser.json());
         return this;
     }
 
