@@ -152,9 +152,6 @@ public final class Generator extends AbstractMojo {
                 .saveEntityRelationDiagramADOC(path)
                 .saveEntityRelationDiagramPUML(path)
                 .saveEntityRelationDiagramSVG(path);
-
-//        System.out.println(rootParser.json());
-//        System.out.println(rootParser.yaml());
     }
 
     @NonNull
