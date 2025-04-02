@@ -10,10 +10,10 @@
     <packaging>maven-plugin</packaging>
 
     <name>Liquilbase Asciidoc Maven Plugin</name>
-    <url>https://maven.volnenko.ru/sites/maven-liquilbase-asciidoc-plugin/</url>
+    <url>https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/</url>
 
     <scm>
-        <url>git@github.com:denis-volnenko/maven-liquilbase-asciidoc-plugin.git</url>
+        <url>git@github.com:denis-volnenko/liquilbase-asciidoc-maven-plugin.git</url>
     </scm>
 
     <developers>
