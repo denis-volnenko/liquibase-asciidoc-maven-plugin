@@ -70,6 +70,26 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
+    @Parameter(property = "outputJson")
+    public String outputJsonFile = "index.json";
+
+    @Getter
+    @Setter
+    @Parameter(property = "outputJsonEnabled")
+    public Boolean outputJsonEnabled = false;
+
+    @Getter
+    @Setter
+    @Parameter(property = "outputYaml")
+    public String outputYamlFile = "index.yaml";
+
+    @Getter
+    @Setter
+    @Parameter(property = "outputYamlFileEnabled")
+    public Boolean outputYamlFileEnabled = false;
+
+    @Getter
+    @Setter
     @Parameter(property = "outputFile")
     public String outputFile = "index.adoc";
 
