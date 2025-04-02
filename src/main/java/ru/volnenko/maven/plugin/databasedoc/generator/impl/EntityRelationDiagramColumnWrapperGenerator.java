@@ -72,8 +72,6 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
         return columnWrappers.stream().anyMatch(PK_PREDICATE);
     }
 
-
-
     @NonNull
     @Override
     public StringBuilder append(@NonNull final StringBuilder stringBuilder) {

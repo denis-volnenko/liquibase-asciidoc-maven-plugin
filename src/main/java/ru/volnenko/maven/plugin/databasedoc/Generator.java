@@ -20,6 +20,7 @@ import ru.volnenko.maven.plugin.databasedoc.generator.impl.EntityRelationDiagram
 import ru.volnenko.maven.plugin.databasedoc.model.Root;
 import ru.volnenko.maven.plugin.databasedoc.parser.RootParser;
 
+import javax.swing.text.html.parser.Parser;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -130,6 +131,9 @@ public final class Generator extends AbstractMojo {
                 .saveEntityRelationDiagramADOC(path)
                 .saveEntityRelationDiagramPUML(path)
                 .saveEntityRelationDiagramSVG(path);
+
+        System.out.println(rootParser.json());
+//        System.out.println(rootParser.yaml());
     }
 
     @NonNull

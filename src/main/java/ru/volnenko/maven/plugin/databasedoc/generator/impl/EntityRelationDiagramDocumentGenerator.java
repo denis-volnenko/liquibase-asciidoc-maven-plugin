@@ -80,10 +80,6 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         stringBuilder.append("'!pragma layout smetana \n");
         for (@NonNull final Root root : roots) generate(stringBuilder, root);
 
-        System.out.println(pks);
-        System.out.println(fks);
-        System.out.println();
-
         for (final FK fk: fks) {
             if (fk == null) continue;
             if (!pks.contains(fk.getPk())) continue;
