@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
          name="Maven">
 
     <bannerLeft>
         <name>LIQUILBASE ASCIIDOC MAVEN PLUGIN</name>
+        <src></src>
 <!--        <src>https://maven.apache.org/images/apache-maven-project.png</src>-->
         <href>https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/</href>
     </bannerLeft>
@@ -18,6 +19,9 @@
         <links>
             <item name="MAVEN" href="https://maven.volnenko.ru" />
         </links>
+        <menu name="Примеры">
+            <item name="Описание базы данных" href="https://maven.volnenko.ru/sites/task-manager-database-asciidoc/asciidoc/index.html" />
+        </menu>
         <!--        <menu name="DOC">-->
         <!--            <item name="archdoc" href="archdoc/archdoc.html" />-->
         <!--        </menu>-->
