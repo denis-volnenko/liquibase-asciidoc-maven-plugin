@@ -5,11 +5,11 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>ru.volnenko.maven.plugin</groupId>
-    <artifactId>maven-liquilbase-asciidoc-plugin</artifactId>
+    <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>
     <version>1.0.0</version>
     <packaging>maven-plugin</packaging>
 
-    <name>Maven Liquilbase Asciidoc Plugin</name>
+    <name>Liquilbase Asciidoc Maven Plugin</name>
     <url>https://maven.volnenko.ru/sites/maven-liquilbase-asciidoc-plugin/</url>
 
     <scm>
@@ -162,7 +162,7 @@
 <!--            </plugin>-->
             <plugin>
                 <groupId>ru.volnenko.maven.plugin</groupId>
-                <artifactId>maven-liquilbase-asciidoc-plugin</artifactId>
+                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
                     <serviceName>Task Manager</serviceName>
