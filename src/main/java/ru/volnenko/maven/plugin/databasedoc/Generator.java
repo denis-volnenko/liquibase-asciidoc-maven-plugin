@@ -71,7 +71,7 @@ public final class Generator extends AbstractMojo {
     @Getter
     @Setter
     @Parameter(property = "outputJsonFile")
-    public String outputJsonFile = "index.json";
+    public String outputJsonFile = "scheme.json";
 
     @Getter
     @Setter
@@ -81,7 +81,7 @@ public final class Generator extends AbstractMojo {
     @Getter
     @Setter
     @Parameter(property = "outputYamlFile")
-    public String outputYamlFile = "index.yaml";
+    public String outputYamlFile = "scheme.yaml";
 
     @Getter
     @Setter
