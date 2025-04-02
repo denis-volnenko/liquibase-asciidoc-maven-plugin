@@ -1,8 +1,9 @@
 @startuml 
-!pragma graphviz_dot jdot 
-'!pragma layout smetana 
+!pragma graphviz_dot jdot
+'!pragma layout smetana
 entity "app_project" {
     *"id" : "varchar(64)"
+---
     "name" : "text"
     "description" : "text"
     "status_type" : "text"
@@ -13,6 +14,7 @@ entity "app_project" {
 
 entity "app_task" {
     *"id" : "varchar(64)"
+---
     "name" : "text"
     "description" : "text"
     "status_type" : "text"
@@ -24,6 +26,7 @@ entity "app_task" {
 
 entity "app_user" {
     *"id" : "varchar(64)"
+---
     "username" : "text"
     "email" : "text"
     "password_рash" : "text"
@@ -36,11 +39,16 @@ entity "app_user" {
 
 entity "app_role" {
     *"id" : "varchar(64)"
+---
     "user_id" : "varchar(64)"
     "user_type" : "text"
     "created" : "timestampz"
     "updated" : "timestampz"
 }
 
+app_project }--|| app_user
+app_task }--|| app_project
+app_task }--|| app_user
+app_role }--|| app_user
 
 @enduml
