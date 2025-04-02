@@ -1,4 +1,4 @@
 package ru.volnenko.maven.plugin.databasedoc.exception;
 
-public class UnsupportedFormatException extends RuntimeException {
+public final class UnsupportedFormatException extends RuntimeException {
 }
