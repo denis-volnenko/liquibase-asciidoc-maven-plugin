@@ -53,11 +53,13 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
             final Column column = columnWrapper.getColumn();
             if (column == null) continue;
             final String name = ColumnUtil.getName(column);
+
             if (name != null && !name.isEmpty())
                 if (column.getConstraints() != null)
                     if (column.getConstraints().getPrimaryKey() != null)
                         if (column.getConstraints().getPrimaryKey())
                             pks.add(new PK(tableName, name));
+
             final FK fk = ForeignKeyUtil.fk(tableName, column);
             if (fk == null) continue;
             fks.add(fk);
