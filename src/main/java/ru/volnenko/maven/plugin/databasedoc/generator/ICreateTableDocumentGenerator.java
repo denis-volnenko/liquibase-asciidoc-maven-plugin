@@ -2,7 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTableDocumentGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 import java.util.List;
 

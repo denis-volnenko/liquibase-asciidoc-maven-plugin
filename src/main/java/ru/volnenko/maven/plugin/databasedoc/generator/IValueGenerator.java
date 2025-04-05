@@ -1,7 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.Value;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Value;
 
 public interface IValueGenerator extends IGenerator {
 

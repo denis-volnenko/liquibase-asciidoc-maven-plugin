@@ -2,15 +2,11 @@ package ru.volnenko.maven.plugin.databasedoc.parser;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.hemantsonu20.json.JsonMerge;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.exception.UnsupportedFormatException;
-import ru.volnenko.maven.plugin.databasedoc.model.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.io.File;

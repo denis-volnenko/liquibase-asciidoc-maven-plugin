@@ -2,8 +2,8 @@ package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.IChangeSetItemBuilder;
-import ru.volnenko.maven.plugin.databasedoc.model.ChangeSet;
-import ru.volnenko.maven.plugin.databasedoc.model.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.ChangeSet;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 public final class ChangeSetItemBuilder implements IChangeSetItemBuilder {
 

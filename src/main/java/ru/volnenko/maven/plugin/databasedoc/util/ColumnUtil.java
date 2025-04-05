@@ -1,6 +1,6 @@
 package ru.volnenko.maven.plugin.databasedoc.util;
 
-import ru.volnenko.maven.plugin.databasedoc.model.Column;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 public final class ColumnUtil {
 

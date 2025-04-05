@@ -1,7 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 
 public interface ICreateTableGenerator extends IGenerator {
 

@@ -1,4 +1,4 @@
-package ru.volnenko.maven.plugin.databasedoc.model;
+package ru.volnenko.maven.plugin.databasedoc.model.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

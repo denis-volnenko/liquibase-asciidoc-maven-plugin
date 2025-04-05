@@ -2,15 +2,13 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramColumnWrapperGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.*;
-import ru.volnenko.maven.plugin.databasedoc.util.ColumnUtil;
-import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.ColumnWrapper;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
 
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 

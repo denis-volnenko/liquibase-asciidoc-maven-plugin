@@ -1,4 +1,4 @@
-package ru.volnenko.maven.plugin.databasedoc.model;
+package ru.volnenko.maven.plugin.databasedoc.model.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public final class Root {
+public final class ColumnWrapper {
 
-    private DatabaseChangeLog databaseChangeLog = new DatabaseChangeLog();
+    private Column column = new Column();
 
-    public Root(final String value) {
-        System.out.println(value);
+    public ColumnWrapper(Column column) {
+        this.column = column;
     }
 
 }

@@ -2,7 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.ICreateTypeDocumentGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.*;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 import java.util.Collections;
 import java.util.List;

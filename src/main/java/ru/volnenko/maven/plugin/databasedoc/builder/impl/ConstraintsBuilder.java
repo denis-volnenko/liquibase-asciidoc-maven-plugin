@@ -2,8 +2,8 @@ package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.IConstraintsBuilder;
-import ru.volnenko.maven.plugin.databasedoc.model.Constraints;
-import ru.volnenko.maven.plugin.databasedoc.model.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Constraints;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 public final class ConstraintsBuilder implements IConstraintsBuilder {
 

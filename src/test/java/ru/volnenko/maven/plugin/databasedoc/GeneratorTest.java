@@ -2,7 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc;
 
 import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
-import ru.volnenko.maven.plugin.databasedoc.model.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 public class GeneratorTest {

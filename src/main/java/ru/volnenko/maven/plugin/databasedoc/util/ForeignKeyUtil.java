@@ -1,10 +1,10 @@
 package ru.volnenko.maven.plugin.databasedoc.util;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.Column;
-import ru.volnenko.maven.plugin.databasedoc.model.Constraints;
-import ru.volnenko.maven.plugin.databasedoc.model.FK;
-import ru.volnenko.maven.plugin.databasedoc.model.PK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Constraints;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.PK;
 
 public final class ForeignKeyUtil {
 

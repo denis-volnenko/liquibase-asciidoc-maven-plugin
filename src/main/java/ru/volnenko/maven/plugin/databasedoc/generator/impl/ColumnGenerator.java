@@ -2,7 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IColumnGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.Column;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;

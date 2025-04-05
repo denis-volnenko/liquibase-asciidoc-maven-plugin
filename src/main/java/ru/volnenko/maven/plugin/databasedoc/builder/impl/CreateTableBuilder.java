@@ -2,8 +2,8 @@ package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.ICreateTableBuilder;
-import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
-import ru.volnenko.maven.plugin.databasedoc.model.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 public final class CreateTableBuilder implements ICreateTableBuilder {
 

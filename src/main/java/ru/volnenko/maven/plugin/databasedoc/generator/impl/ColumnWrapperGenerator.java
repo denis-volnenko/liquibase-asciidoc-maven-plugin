@@ -2,7 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IColumnWrapperGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.ColumnWrapper;
 
 import java.util.Collections;
 import java.util.List;

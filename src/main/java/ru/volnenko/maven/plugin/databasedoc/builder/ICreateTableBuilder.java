@@ -4,7 +4,7 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeBuilder;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ColumnBuilder;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.CreateTableBuilder;
-import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 
 public interface ICreateTableBuilder extends IRootBuilder {
 

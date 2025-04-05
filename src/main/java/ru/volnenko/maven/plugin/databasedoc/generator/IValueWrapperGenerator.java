@@ -2,7 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.ValueWrapperGenerator;
-import ru.volnenko.maven.plugin.databasedoc.model.ValueWrapper;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.ValueWrapper;
 
 import java.util.List;
 

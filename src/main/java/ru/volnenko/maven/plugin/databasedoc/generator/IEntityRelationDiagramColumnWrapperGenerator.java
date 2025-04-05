@@ -1,8 +1,8 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.ColumnWrapper;
-import ru.volnenko.maven.plugin.databasedoc.model.CreateTable;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.ColumnWrapper;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 
 import java.util.List;
 

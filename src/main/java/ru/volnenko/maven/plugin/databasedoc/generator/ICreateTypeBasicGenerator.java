@@ -1,7 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.CreateType;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateType;
 
 public interface ICreateTypeBasicGenerator extends IGenerator {
 

@@ -3,7 +3,7 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeBuilder;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetItemBuilder;
-import ru.volnenko.maven.plugin.databasedoc.model.ChangeSet;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.ChangeSet;
 
 public interface IChangeSetItemBuilder extends IRootBuilder {
 
