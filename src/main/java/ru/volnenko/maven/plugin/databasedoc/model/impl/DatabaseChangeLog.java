@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.volnenko.maven.plugin.databasedoc.model.IDatabaseChangeLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public final class DatabaseChangeLog {
+public final class DatabaseChangeLog implements IDatabaseChangeLog {
 
     private List<ChangeSet> changeSet = new ArrayList<>();
 

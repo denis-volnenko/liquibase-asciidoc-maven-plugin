@@ -2,11 +2,12 @@ package ru.volnenko.maven.plugin.databasedoc.model.impl;
 
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.model.IFK;
 
 import java.util.Objects;
 
 @NoArgsConstructor
-public final class FK {
+public final class FK implements IFK {
 
     @NonNull
     private String tableName = "";
