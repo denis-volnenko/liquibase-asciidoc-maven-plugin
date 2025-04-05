@@ -24,6 +24,4 @@ public final class Constraints implements IConstraints {
 
     private ForeignKey foreignKey;
 
-    //    private String references;
-
 }

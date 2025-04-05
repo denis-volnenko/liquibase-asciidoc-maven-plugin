@@ -21,11 +21,13 @@ public final class FK implements IFK {
     @NonNull
     private PK pk = new PK();
 
+    @Override
     @NonNull
     public PK getPk() {
         return pk;
     }
 
+    @Override
     public void setPk(@NonNull PK pk) {
         this.pk = pk;
     }
@@ -41,29 +43,35 @@ public final class FK implements IFK {
         this.unique = unique;
     }
 
+    @Override
     @NonNull
     public Boolean getUnique() {
         return unique;
     }
 
+    @Override
     public void setUnique(@NonNull Boolean unique) {
         this.unique = unique;
     }
 
+    @Override
     @NonNull
     public String getTableName() {
         return tableName;
     }
 
+    @Override
     public void setTableName(@NonNull String tableName) {
         this.tableName = tableName;
     }
 
+    @Override
     @NonNull
     public String getFieldName() {
         return fieldName;
     }
 
+    @Override
     public void setFieldName(@NonNull String fieldName) {
         this.fieldName = fieldName;
     }

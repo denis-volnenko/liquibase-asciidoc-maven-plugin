@@ -25,4 +25,5 @@ public final class Column implements IColumn {
     private String defaultValueComputed = "";
 
     private Constraints constraints = new Constraints();
+
 }

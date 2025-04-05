@@ -22,6 +22,7 @@ public final class ChangeSet implements IChangeSet {
 
     private List<Change> changes = new ArrayList<>();
 
+    @Override
     public void add(@NonNull final Change change) {
         changes.add(change);
     }

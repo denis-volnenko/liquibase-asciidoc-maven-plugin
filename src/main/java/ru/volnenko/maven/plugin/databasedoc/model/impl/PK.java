@@ -15,20 +15,24 @@ public final class PK implements IPK {
     @NonNull
     private String fieldName = "";
 
+    @Override
     @NonNull
     public String getTableName() {
         return tableName;
     }
 
+    @Override
     public void setTableName(@NonNull String tableName) {
         this.tableName = tableName;
     }
 
+    @Override
     @NonNull
     public String getFieldName() {
         return fieldName;
     }
 
+    @Override
     public void setFieldName(@NonNull String fieldName) {
         this.fieldName = fieldName;
     }
