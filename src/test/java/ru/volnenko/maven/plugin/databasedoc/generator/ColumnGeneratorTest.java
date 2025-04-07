@@ -7,7 +7,7 @@ import ru.volnenko.maven.plugin.databasedoc.generator.impl.ColumnGenerator;
 public class ColumnGeneratorTest {
 
     @Test
-    public void test() {
+    public void testNotNull() {
         Assert.assertNotNull(ColumnGenerator.create());
         Assert.assertNotNull(ColumnGenerator.create().generate());
         Assert.assertNotNull(ColumnGenerator.create().stringBuilder());
