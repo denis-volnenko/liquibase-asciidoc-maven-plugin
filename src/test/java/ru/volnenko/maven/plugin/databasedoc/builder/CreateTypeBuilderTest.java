@@ -7,7 +7,7 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateType;
 
 public class CreateTypeBuilderTest {
 
-    CreateTypeBuilder type = RootBuilder.create()
+    CreateTypeBuilder typeBuilder = RootBuilder.create()
                 .dsl()
                 .changeSet()
                 .add()
@@ -16,31 +16,32 @@ public class CreateTypeBuilderTest {
 
     @Test
     public void testNotNull() {
-        Assert.assertNotNull(type.root());
-        Assert.assertNotNull(type.change());
-        Assert.assertNotNull(type.catalogName(""));
-        Assert.assertNotNull(type.tablespace(""));
-        Assert.assertNotNull(type.typeName(""));
-        Assert.assertNotNull(type.remarks(""));
+        Assert.assertNotNull(typeBuilder.root());
+        Assert.assertNotNull(typeBuilder.change());
+        Assert.assertNotNull(typeBuilder.catalogName(""));
+        Assert.assertNotNull(typeBuilder.tablespace(""));
+        Assert.assertNotNull(typeBuilder.typeName(""));
+        Assert.assertNotNull(typeBuilder.remarks(""));
     }
 
     @Test
     public void testType() {
-        type.typeName("Type name");
-        type.catalogName("Catalog name");
-        type.tablespace("Type remarks");
-        type.remarks("Type remarks");
-        CreateType createType = type.root()
+        typeBuilder.typeName("Type name");
+        typeBuilder.catalogName("Catalog name");
+        typeBuilder.tablespace("Type remarks");
+        typeBuilder.remarks("Type remarks");
+        CreateType type = typeBuilder.root()
                 .getDatabaseChangeLog()
                 .getChangeSet()
                 .get(0)
                 .getChanges()
                 .get(0)
                 .getCreateType();
-        Assert.assertEquals("Type name", createType.getTypeName());
-        Assert.assertEquals("Catalog name", createType.getCatalogName());
-        Assert.assertEquals("Type remarks", createType.getTablespace());
-        Assert.assertEquals("Type remarks", createType.getRemarks());
+        Assert.assertEquals("Type name", type.getTypeName());
+        Assert.assertEquals("Catalog name", type.getCatalogName());
+        Assert.assertEquals("Type remarks", type.getTablespace());
+        Assert.assertEquals("Type remarks", type.getRemarks());
+        System.out.println(type);
     }
 
 }
