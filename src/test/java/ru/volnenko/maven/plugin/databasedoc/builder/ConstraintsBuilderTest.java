@@ -6,17 +6,18 @@ import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
 public class ConstraintsBuilderTest {
 
+    ConstraintsBuilder constraintsBuilder = RootBuilder.create()
+            .dsl()
+            .changeSet()
+            .add()
+            .change()
+            .createTable()
+            .column()
+            .add()
+            .constraints();
+
     @Test
     public void testNotNull() {
-        ConstraintsBuilder constraintsBuilder = RootBuilder.create()
-                .dsl()
-                .changeSet()
-                .add()
-                .change()
-                .createTable()
-                .column()
-                .add()
-                .constraints();
         Assert.assertNotNull(constraintsBuilder.foreignKey());
         Assert.assertNotNull(constraintsBuilder.root());
         Assert.assertNotNull(constraintsBuilder.add());

@@ -6,16 +6,17 @@ import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
 public class ColumnItemBuilderTest {
 
+    ColumnItemBuilder columnItemBuilder = RootBuilder.create()
+            .dsl()
+            .changeSet()
+            .add()
+            .change()
+            .createTable()
+            .column()
+            .add();
+
     @Test
     public void testNotNull() {
-        ColumnItemBuilder columnItemBuilder = RootBuilder.create()
-                .dsl()
-                .changeSet()
-                .add()
-                .change()
-                .createTable()
-                .column()
-                .add();
         Assert.assertNotNull(columnItemBuilder.add());
         Assert.assertNotNull(columnItemBuilder.constraints());
         Assert.assertNotNull(columnItemBuilder.column());

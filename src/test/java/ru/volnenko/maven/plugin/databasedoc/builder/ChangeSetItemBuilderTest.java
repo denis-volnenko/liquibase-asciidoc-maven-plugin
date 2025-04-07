@@ -7,12 +7,13 @@ import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 
 public class ChangeSetItemBuilderTest {
 
+    ChangeSetItemBuilder changeSetItemBuilder = RootBuilder.create()
+            .dsl()
+            .changeSet()
+            .add();
+
     @Test
     public void testNotNull() {
-        ChangeSetItemBuilder changeSetItemBuilder = RootBuilder.create()
-                .dsl()
-                .changeSet()
-                .add();
         Assert.assertNotNull(changeSetItemBuilder.id(""));
         Assert.assertNotNull(changeSetItemBuilder.author(""));
         Assert.assertNotNull(changeSetItemBuilder.change());

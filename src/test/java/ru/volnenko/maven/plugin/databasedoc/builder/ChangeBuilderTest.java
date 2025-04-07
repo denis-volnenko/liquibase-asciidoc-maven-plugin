@@ -6,13 +6,14 @@ import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
 public class ChangeBuilderTest {
 
+    ChangeBuilder changeBuilder = RootBuilder.create()
+            .dsl()
+            .changeSet()
+            .add()
+            .change();
+
     @Test
     public void testNotNull() {
-        ChangeBuilder changeBuilder = RootBuilder.create()
-                .dsl()
-                .changeSet()
-                .add()
-                .change();
         Assert.assertNotNull(changeBuilder.createTable());
         Assert.assertNotNull(changeBuilder.change());
         Assert.assertNotNull(changeBuilder.root());

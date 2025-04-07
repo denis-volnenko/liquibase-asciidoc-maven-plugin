@@ -6,14 +6,15 @@ import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
 public class CreateTableBuilderTest {
 
+    CreateTableBuilder createTableBuilder = RootBuilder.create()
+            .dsl()
+            .changeSet()
+            .add()
+            .change()
+            .createTable();
+
     @Test
     public void testNotNull() {
-        CreateTableBuilder createTableBuilder = RootBuilder.create()
-                .dsl()
-                .changeSet()
-                .add()
-                .change()
-                .createTable();
         Assert.assertNotNull(createTableBuilder.root());
         Assert.assertNotNull(createTableBuilder.change());
         Assert.assertNotNull(createTableBuilder.column());
