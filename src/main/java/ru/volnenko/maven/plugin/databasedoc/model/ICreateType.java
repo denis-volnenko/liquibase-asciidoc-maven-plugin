@@ -1,5 +1,6 @@
 package ru.volnenko.maven.plugin.databasedoc.model;
 
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateType;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ValueWrapper;
 
 import java.util.List;
@@ -28,4 +29,5 @@ public interface ICreateType {
     List<ValueWrapper> getValues();
 
     void setValues(List<ValueWrapper> values);
+
 }

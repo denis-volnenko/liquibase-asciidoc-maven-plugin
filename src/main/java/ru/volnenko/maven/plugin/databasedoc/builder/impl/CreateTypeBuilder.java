@@ -2,6 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.ICreateTypeBuilder;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateType;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
@@ -51,6 +52,11 @@ public final class CreateTypeBuilder implements ICreateTypeBuilder {
     @NonNull
     public ChangeBuilder change() {
         return changeBuilder.and();
+    }
+
+    @NonNull
+    public CreateType createType() {
+        return createType;
     }
 
 }
