@@ -1,7 +1,7 @@
 { "databaseChangeLog": [
   {
     "changeSet": {
-      "id": "1744133232732-1",
+      "id": "1744133602373-1",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -61,6 +61,37 @@
                   "remarks": "Отчество",
                   "type": "VARCHAR(255)"
                 }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "defaultValueNumeric": 0,
+                  "name": "version",
+                  "remarks": "Версия",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "created",
+                  "remarks": "Дата создания",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "updated",
+                  "remarks": "Дата обновления",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
               }]
             ,
             "remarks": "Профиль",
@@ -73,7 +104,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-2",
+      "id": "1744133602373-2",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -130,6 +161,37 @@
                   "remarks": "Статус",
                   "type": "STATUS"
                 }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "defaultValueNumeric": 0,
+                  "name": "version",
+                  "remarks": "Версия",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "created",
+                  "remarks": "Дата создания",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "updated",
+                  "remarks": "Дата обновления",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
               }]
             ,
             "remarks": "Проект",
@@ -142,7 +204,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-3",
+      "id": "1744133602373-3",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -206,6 +268,37 @@
                   "remarks": "Статус",
                   "type": "STATUS"
                 }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "defaultValueNumeric": 0,
+                  "name": "version",
+                  "remarks": "Версия",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "created",
+                  "remarks": "Дата создания",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "updated",
+                  "remarks": "Дата обновления",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
               }]
             ,
             "remarks": "Задача",
@@ -218,7 +311,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-4",
+      "id": "1744133602373-4",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -267,6 +360,37 @@
                   "remarks": "E-mail",
                   "type": "VARCHAR(255)"
                 }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "defaultValueNumeric": 0,
+                  "name": "version",
+                  "remarks": "Версия",
+                  "type": "INTEGER"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "created",
+                  "remarks": "Дата создания",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
+              },
+              {
+                "column": {
+                  "constraints": {
+                    "nullable": false
+                  },
+                  "name": "updated",
+                  "remarks": "Дата обновления",
+                  "type": "TIMESTAMP WITH TIME ZONE"
+                }
               }]
             ,
             "remarks": "Пользователь",
@@ -279,7 +403,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-5",
+      "id": "1744133602373-5",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -295,7 +419,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-6",
+      "id": "1744133602373-6",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -311,7 +435,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-7",
+      "id": "1744133602373-7",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -327,7 +451,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-8",
+      "id": "1744133602373-8",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -343,7 +467,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-9",
+      "id": "1744133602373-9",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -366,7 +490,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-10",
+      "id": "1744133602373-10",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -389,7 +513,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-11",
+      "id": "1744133602373-11",
       "author": "volnenko (generated)",
       "changes": [
         {
@@ -412,7 +536,7 @@
   
   {
     "changeSet": {
-      "id": "1744133232732-12",
+      "id": "1744133602373-12",
       "author": "volnenko (generated)",
       "changes": [
         {

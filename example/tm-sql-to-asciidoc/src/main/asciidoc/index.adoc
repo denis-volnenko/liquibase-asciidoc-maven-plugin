@@ -110,6 +110,42 @@ image::erd_physic.svg[]
 ^|✓
 |
 
+
+^|06. 
+|version
+|INTEGER
+|Версия
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|07. 
+|created
+|TIMESTAMP WITH TIME ZONE
+|Дата создания
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|08. 
+|updated
+|TIMESTAMP WITH TIME ZONE
+|Дата обновления
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
 |===
 
 === Сущность "app_project"
@@ -208,6 +244,42 @@ image::erd_physic.svg[]
 ^|--
 ^|✓
 |NOT_STARTED
+
+
+^|06. 
+|version
+|INTEGER
+|Версия
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|07. 
+|created
+|TIMESTAMP WITH TIME ZONE
+|Дата создания
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|08. 
+|updated
+|TIMESTAMP WITH TIME ZONE
+|Дата обновления
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
 
 |===
 
@@ -320,6 +392,42 @@ image::erd_physic.svg[]
 ^|✓
 |NOT_STARTED
 
+
+^|07. 
+|version
+|INTEGER
+|Версия
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|08. 
+|created
+|TIMESTAMP WITH TIME ZONE
+|Дата создания
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|09. 
+|updated
+|TIMESTAMP WITH TIME ZONE
+|Дата обновления
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
 |===
 
 === Сущность "app_user"
@@ -402,6 +510,42 @@ image::erd_physic.svg[]
 |E-mail
 ^|--
 ^|✓
+^|--
+^|--
+^|✓
+|
+
+
+^|05. 
+|version
+|INTEGER
+|Версия
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|06. 
+|created
+|TIMESTAMP WITH TIME ZONE
+|Дата создания
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|07. 
+|updated
+|TIMESTAMP WITH TIME ZONE
+|Дата обновления
+^|--
+^|--
 ^|--
 ^|--
 ^|✓
