@@ -23,7 +23,7 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
         final List<DatabaseChangeLog> databaseChangeLog = root.getDatabaseChangeLog();
         if (databaseChangeLog == null) return;
-        for (DatabaseChangeLog item: databaseChangeLog) generate(stringBuilder, item);
+        for (DatabaseChangeLog item : databaseChangeLog) generate(stringBuilder, item);
     }
 
     private void generate(@NonNull StringBuilder stringBuilder, final DatabaseChangeLog databaseChangeLog) {
@@ -87,13 +87,13 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         }
         for (@NonNull final Root root : roots) generate(stringBuilder, root);
 
-        for (final FK fk: fks) {
+        for (final FK fk : fks) {
             if (fk == null) continue;
             if (!pks.contains(fk.getPk())) continue;
             if (fk.getUnique()) {
-                stringBuilder.append(fk.getTableName() + " ||--|| " + fk.getPk().getTableName() + "\n");
+                stringBuilder.append("\"" + fk.getTableName() + "\"" + " ||--|| " + "\"" + fk.getPk().getTableName() + "\"" + "\n");
             } else {
-                stringBuilder.append(fk.getTableName() + " }--|| " + fk.getPk().getTableName() + "\n");
+                stringBuilder.append("\"" + fk.getTableName() + "\"" + " }--|| " + "\"" + fk.getPk().getTableName() + "\"" + "\n");
             }
         }
         stringBuilder.append("\n");
