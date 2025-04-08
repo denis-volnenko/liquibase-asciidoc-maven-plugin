@@ -175,13 +175,13 @@
                     <outputJsonFileEnabled>true</outputJsonFileEnabled>
                     <outputYamlFileEnabled>true</outputYamlFileEnabled>
                     <files>
-                        <file>${project.basedir}/example/task-manager/src/main/resources/role_type.yaml</file>
-                        <file>${project.basedir}/example/task-manager/src/main/resources/status_type.yaml</file>
-                        <file>${project.basedir}/example/task-manager/src/main/resources/project.yaml</file>
-                        <file>${project.basedir}/example/task-manager/src/main/resources/task.yaml</file>
-                        <file>${project.basedir}/example/task-manager/src/main/resources/user.yaml</file>
-                        <file>${project.basedir}/example/task-manager/src/main/resources/role.yaml</file>
-<!--                        ${project.basedir}/example/tm-sql-to-asciidoc/src/main/resources/schema/schema.yaml-->
+<!--                        <file>${project.basedir}/example/task-manager/src/main/resources/role_type.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager/src/main/resources/status_type.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager/src/main/resources/project.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager/src/main/resources/task.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager/src/main/resources/user.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager/src/main/resources/role.yaml</file>-->
+                        <file>${project.basedir}/example/tm-sql-to-asciidoc/src/main/resources/schema/schema.yaml</file>
                     </files>
                 </configuration>
             </plugin>

@@ -81,12 +81,12 @@ public final class FK implements IFK {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FK fk = (FK) o;
-        return tableName.equals(fk.tableName) && fieldName.equals(fk.fieldName) && pk.equals(fk.pk);
+        return tableName.equals(fk.tableName) && fieldName.equals(fk.fieldName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tableName, fieldName, pk);
+        return Objects.hash(tableName, fieldName);
     }
 
 }
