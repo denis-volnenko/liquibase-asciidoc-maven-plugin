@@ -18,13 +18,13 @@ public enum ColumnType {
     STRING("Строка", "varchar", "text", "json", "clob", "char");
 
     @NonNull
-    private final String name;
+    private final String displayName;
 
     @NonNull
     private final String[] parts;
 
-    ColumnType(@NonNull String name, @NonNull String... parts) {
-        this.name = name;
+    ColumnType(@NonNull String displayName, @NonNull String... parts) {
+        this.displayName = displayName;
         this.parts = parts;
     }
 
@@ -43,6 +43,11 @@ public enum ColumnType {
             if (check(columnType, type)) return columnType;
         }
         return null;
+    }
+
+    @NonNull
+    public String displayName() {
+        return displayName;
     }
 
 }
