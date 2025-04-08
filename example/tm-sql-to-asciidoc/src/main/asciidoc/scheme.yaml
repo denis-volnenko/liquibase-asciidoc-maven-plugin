@@ -1,0 +1,201 @@
+---
+databaseChangeLog:
+- changeSet:
+    id: "1744113219222-1"
+    author: "volnenko (generated)"
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+              primaryKeyName: "pk_app_project"
+            defaultValue: ""
+            name: "id"
+            remarks: "Идентификатор"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "name"
+            remarks: "Название"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "description"
+            remarks: "Описание"
+            type: "VARCHAR(255)"
+        - column:
+            name: "user_id"
+            remarks: "Идентификатор пользователя"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: "NOT_STARTED"
+            name: "status"
+            remarks: "Статус"
+            type: "STATUS"
+        remarks: "Проект"
+        tableName: "app_project"
+- changeSet:
+    id: "1744113219222-2"
+    author: "volnenko (generated)"
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+              primaryKeyName: "pk_app_task"
+            defaultValue: ""
+            name: "id"
+            remarks: "Идентификатор"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "name"
+            remarks: "Название"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "description"
+            remarks: "Описание"
+            type: "VARCHAR(255)"
+        - column:
+            name: "project_id"
+            remarks: "Идентификатор проекта"
+            type: "VARCHAR(255)"
+        - column:
+            name: "user_id"
+            remarks: "Идентификатор пользователя"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: "NOT_STARTED"
+            name: "status"
+            remarks: "Статус"
+            type: "STATUS"
+        remarks: "Задача"
+        tableName: "app_task"
+- changeSet:
+    id: "1744113219222-3"
+    author: "volnenko (generated)"
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+              primaryKeyName: "pk_app_user"
+            defaultValue: ""
+            name: "id"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "username"
+            remarks: "Имя пользователя"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "password_hash"
+            remarks: "Хеш пароля"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "email"
+            remarks: "E-mail"
+            type: "VARCHAR(255)"
+        remarks: "Пользователь"
+        tableName: "app_user"
+- changeSet:
+    id: "1744113219222-4"
+    author: "volnenko (generated)"
+    changes:
+    - addUniqueConstraint:
+        columnNames: "name, user_id"
+        constraintName: "app_project_name_user_id_key"
+        tableName: "app_project"
+- changeSet:
+    id: "1744113219222-5"
+    author: "volnenko (generated)"
+    changes:
+    - addUniqueConstraint:
+        columnNames: "name, user_id"
+        constraintName: "app_task_name_user_id_key"
+        tableName: "app_task"
+- changeSet:
+    id: "1744113219222-6"
+    author: "volnenko (generated)"
+    changes:
+    - addUniqueConstraint:
+        columnNames: "email"
+        constraintName: "app_user_email_key"
+        tableName: "app_user"
+- changeSet:
+    id: "1744113219222-7"
+    author: "volnenko (generated)"
+    changes:
+    - addUniqueConstraint:
+        columnNames: "username"
+        constraintName: "app_user_username_key"
+        tableName: "app_user"
+- changeSet:
+    id: "1744113219222-8"
+    author: "volnenko (generated)"
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: "user_id"
+        baseTableName: "app_project"
+        constraintName: "app_project_user_id_fkey"
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: "NO ACTION"
+        onUpdate: "NO ACTION"
+        referencedColumnNames: "id"
+        referencedTableName: "app_user"
+        validate: true
+- changeSet:
+    id: "1744113219222-9"
+    author: "volnenko (generated)"
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: "project_id"
+        baseTableName: "app_task"
+        constraintName: "app_task_project_id_fkey"
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: "NO ACTION"
+        onUpdate: "NO ACTION"
+        referencedColumnNames: "id"
+        referencedTableName: "app_project"
+        validate: true
+- changeSet:
+    id: "1744113219222-10"
+    author: "volnenko (generated)"
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: "user_id"
+        baseTableName: "app_task"
+        constraintName: "app_task_user_id_fkey"
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: "NO ACTION"
+        onUpdate: "NO ACTION"
+        referencedColumnNames: "id"
+        referencedTableName: "app_user"
+        validate: true

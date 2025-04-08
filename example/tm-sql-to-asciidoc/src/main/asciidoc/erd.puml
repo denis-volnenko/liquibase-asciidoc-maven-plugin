@@ -1,0 +1,32 @@
+@startuml 
+!pragma graphviz_dot jdot 
+'!pragma layout smetana 
+entity "app_project" {
+    *"id" : "VARCHAR(255)"
+---
+    "name" : "VARCHAR(255)"
+    "description" : "VARCHAR(255)"
+    "user_id" : "VARCHAR(255)"
+    "status" : "STATUS"
+}
+
+entity "app_task" {
+    *"id" : "VARCHAR(255)"
+---
+    "name" : "VARCHAR(255)"
+    "description" : "VARCHAR(255)"
+    "project_id" : "VARCHAR(255)"
+    "user_id" : "VARCHAR(255)"
+    "status" : "STATUS"
+}
+
+entity "app_user" {
+    *"id" : "VARCHAR(255)"
+---
+    "username" : "VARCHAR(255)"
+    "password_hash" : "VARCHAR(255)"
+    "email" : "VARCHAR(255)"
+}
+
+
+@enduml
