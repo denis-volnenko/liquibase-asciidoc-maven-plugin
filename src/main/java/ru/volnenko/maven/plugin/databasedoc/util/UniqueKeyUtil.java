@@ -38,6 +38,13 @@ public final class UniqueKeyUtil {
         return result;
     }
 
+    public static boolean enabled(final Column column) {
+        if (column == null) return false;
+        if (column.getConstraints() == null) return false;
+        if (column.getConstraints().getUnique() == null) return false;
+        return column.getConstraints().getUnique();
+    }
+
     @NonNull
     public static Set<UK> uk(final CreateTable createTable) {
         if (createTable == null) return Collections.emptySet();

@@ -8,6 +8,7 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.UK;
 import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
+import ru.volnenko.maven.plugin.databasedoc.util.UniqueKeyUtil;
 
 import java.util.Collections;
 import java.util.Set;
@@ -41,10 +42,17 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
         return this;
     }
 
-    @Override
     @NonNull
+    @Override
     public IColumnGenerator fks(@NonNull final Set<FK> fks) {
         this.fks = fks;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public IColumnGenerator uks(@NonNull final Set<UK> uks) {
+        this.uks = uks;
         return this;
     }
 
@@ -78,7 +86,14 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
         stringBuilder.append("|" + StringUtil.format(column.getType()) + "\n");
         stringBuilder.append("|" + StringUtil.format(column.getRemarks()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getPrimaryKey()) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getUnique()) + "\n");
+
+        boolean uke = UniqueKeyUtil.enabled(column);
+        if (!uke) {
+            final UK uk = new UK(tableName, column.getName());
+            uke = uks.contains(uk);
+        }
+        stringBuilder.append("^|" + StringUtil.format(uke) + "\n");
+
         boolean fke = ForeignKeyUtil.enabled(column);
         if (!fke) {
             final FK fk = new FK(tableName, column.getName());

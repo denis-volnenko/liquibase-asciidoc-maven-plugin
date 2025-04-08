@@ -19,6 +19,11 @@ public final class UK implements IUK {
     @NonNull
     private String fieldName = "";
 
+    public UK(@NonNull String tableName, @NonNull String fieldName) {
+        this.tableName = tableName;
+        this.fieldName = fieldName;
+    }
+
     @NonNull
     @Override
     public String getTableName() {
