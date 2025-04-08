@@ -114,30 +114,48 @@
                 </dependencies>
             </plugin>
 
-            <!--            <plugin>-->
-            <!--                <groupId>ru.volnenko.maven.plugin</groupId>-->
-            <!--                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>-->
-            <!--                <version>1.0.0</version>-->
-            <!--                <configuration>-->
-            <!--                    <serviceName>Task Manager</serviceName>-->
-            <!--                    <dataBaseInfo>Postgres 15</dataBaseInfo>-->
-            <!--                    <headerFirstEnabled>true</headerFirstEnabled>-->
-            <!--                    <headerSecondEnabled>true</headerSecondEnabled>-->
-            <!--                    <tableOfContentsEnabled>true</tableOfContentsEnabled>-->
-            <!--                    <outputPath>${project.basedir}/src/main/asciidoc</outputPath>-->
-            <!--                    <outputFile>index.adoc</outputFile>-->
-            <!--                    <outputJsonFileEnabled>true</outputJsonFileEnabled>-->
-            <!--                    <outputYamlFileEnabled>true</outputYamlFileEnabled>-->
-            <!--                    <files>-->
-            <!--                        <file>${project.basedir}/src/main/resources/role_type.yaml</file>-->
-            <!--                        <file>${project.basedir}/src/main/resources/status_type.yaml</file>-->
-            <!--                        <file>${project.basedir}/src/main/resources/project.yaml</file>-->
-            <!--                        <file>${project.basedir}/src/main/resources/task.yaml</file>-->
-            <!--                        <file>${project.basedir}/src/main/resources/user.yaml</file>-->
-            <!--                        <file>${project.basedir}/src/main/resources/role.yaml</file>-->
-            <!--                    </files>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
+            <plugin>
+                <groupId>ru.volnenko.maven.plugin</groupId>
+                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>liquilbase-asciidoc</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <serviceName>Task Manager</serviceName>
+                            <dataBaseInfo>Postgres 15</dataBaseInfo>
+                            <headerFirstEnabled>true</headerFirstEnabled>
+                            <headerSecondEnabled>true</headerSecondEnabled>
+                            <tableOfContentsEnabled>true</tableOfContentsEnabled>
+                            <outputPath>${project.basedir}/src/main/asciidoc</outputPath>
+                            <outputFile>index.adoc</outputFile>
+                            <outputJsonFileEnabled>true</outputJsonFileEnabled>
+                            <outputYamlFileEnabled>true</outputYamlFileEnabled>
+                            <files>
+                                <file>${project.basedir}/src/main/resources/schema/schema.yaml</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <serviceName>Task Manager</serviceName>
+                    <dataBaseInfo>Postgres 15</dataBaseInfo>
+                    <headerFirstEnabled>true</headerFirstEnabled>
+                    <headerSecondEnabled>true</headerSecondEnabled>
+                    <tableOfContentsEnabled>true</tableOfContentsEnabled>
+                    <outputPath>${project.basedir}/src/main/asciidoc</outputPath>
+                    <outputFile>index.adoc</outputFile>
+                    <outputJsonFileEnabled>true</outputJsonFileEnabled>
+                    <outputYamlFileEnabled>true</outputYamlFileEnabled>
+                    <files>
+                        <file>${project.basedir}/src/main/resources/schema/schema.yaml</file>
+                    </files>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
