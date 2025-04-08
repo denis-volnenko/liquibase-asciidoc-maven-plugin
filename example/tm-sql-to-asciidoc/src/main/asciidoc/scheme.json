@@ -1,7 +1,7 @@
 {
   "databaseChangeLog" : [ {
     "changeSet" : {
-      "id" : "1744132609877-1",
+      "id" : "1744133232732-1",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -63,7 +63,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-2",
+      "id" : "1744133232732-2",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -122,7 +122,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-3",
+      "id" : "1744133232732-3",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -187,7 +187,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-4",
+      "id" : "1744133232732-4",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -239,7 +239,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-5",
+      "id" : "1744133232732-5",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -251,7 +251,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-6",
+      "id" : "1744133232732-6",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -263,7 +263,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-7",
+      "id" : "1744133232732-7",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -275,7 +275,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-8",
+      "id" : "1744133232732-8",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -287,7 +287,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-9",
+      "id" : "1744133232732-9",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {
@@ -306,7 +306,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-10",
+      "id" : "1744133232732-10",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {
@@ -325,7 +325,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-11",
+      "id" : "1744133232732-11",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {
@@ -344,26 +344,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744132609877-12",
-      "author" : "volnenko (generated)",
-      "changes" : [ {
-        "addForeignKeyConstraint" : {
-          "baseColumnNames" : "user_id",
-          "baseTableName" : "app_task",
-          "constraintName" : "app_task_user_id_fkey",
-          "deferrable" : false,
-          "initiallyDeferred" : false,
-          "onDelete" : "NO ACTION",
-          "onUpdate" : "NO ACTION",
-          "referencedColumnNames" : "id",
-          "referencedTableName" : "app_user",
-          "validate" : true
-        }
-      } ]
-    }
-  }, {
-    "changeSet" : {
-      "id" : "1744122711549-14",
+      "id" : "1744133232732-12",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {
