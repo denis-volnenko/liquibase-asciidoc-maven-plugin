@@ -81,8 +81,6 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
             if (fk == null) continue;
             fks.add(fk);
         }
-
-
     }
 
     @NonNull
@@ -100,8 +98,6 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         stringBuilder.append("!pragma graphviz_dot jdot \n");
         stringBuilder.append("'!pragma layout smetana \n");
         for (@NonNull final Root root : roots) generate(stringBuilder, root);
-
-        System.out.println(MapperUtil.json().writeValueAsString(fks));
 
         for (final FK fk: fks) {
             if (fk == null) continue;

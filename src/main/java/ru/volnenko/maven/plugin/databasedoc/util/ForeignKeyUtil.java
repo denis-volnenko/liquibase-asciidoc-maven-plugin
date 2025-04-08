@@ -3,7 +3,54 @@ package ru.volnenko.maven.plugin.databasedoc.util;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 public final class ForeignKeyUtil {
+
+    @NonNull
+    public static Set<FK> fks(final Root root) {
+        if (root == null) return Collections.emptySet();
+        if (root.getDatabaseChangeLog() == null) return Collections.emptySet();
+        if (root.getDatabaseChangeLog().isEmpty()) return Collections.emptySet();
+        @NonNull final Set<FK> result = new LinkedHashSet<>();
+        for (DatabaseChangeLog changeLog: root.getDatabaseChangeLog()) {
+            if (changeLog == null) continue;
+            final ChangeSet changeSet = changeLog.getChangeSet();
+            if (changeLog == null) continue;
+            final List<Change> changes = changeSet.getChanges();
+            if (changes == null || changes.isEmpty()) continue;
+            for (Change change: changes) {
+                if (change == null) continue;
+                result.addAll(fk(change.getCreateTable()));
+                final FK fk = fk(change.getAddForeignKeyConstraint());
+                if (fk == null) continue;
+                result.add(fk);
+            }
+        }
+        return Collections.emptySet();
+    }
+
+
+
+    @NonNull
+    public static Set<FK> fk(final CreateTable createTable) {
+        if (createTable == null) return Collections.emptySet();
+        if (createTable.getColumns() == null) return Collections.emptySet();
+        if (createTable.getColumns().isEmpty()) return Collections.emptySet();
+        @NonNull final Set<FK> result = new LinkedHashSet<>();
+        for (final ColumnWrapper columnWrapper: createTable.getColumns()) {
+            if (columnWrapper == null) continue;
+            final Column column = columnWrapper.getColumn();
+            if (column == null) continue;
+            final FK fk = fk(createTable.getTableName(), column);
+            if (fk == null) continue;
+            result.add(fk);
+        }
+        return result;
+    }
 
     public static FK fk(final AddForeignKeyConstraint constraint) {
         if (constraint == null) return null;
