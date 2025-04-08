@@ -115,7 +115,6 @@ public final class Generator extends AbstractMojo {
     @NonNull
     private final StringBuilder stringBuilder = new StringBuilder();
 
-
     @NonNull
     private final DocumentGenerator documentGenerator = new DocumentGenerator();
 
@@ -158,12 +157,9 @@ public final class Generator extends AbstractMojo {
         initOutputPath(path)
                 .saveDatabaseYAML(path)
                 .saveDatabaseJSON(path)
-
                 .saveEntityRelationDiagramLogic(roots, path)
                 .saveEntityRelationDiagramPhysic(roots, path)
-
                 .saveEntityRelationDiagramADOC(path);
-
     }
 
     @NonNull
