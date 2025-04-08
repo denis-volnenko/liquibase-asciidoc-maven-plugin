@@ -2,5 +2,11 @@ CREATE TABLE app_user (
     id VARCHAR(255) DEFAULT '' NOT NULL,
     username VARCHAR(255) DEFAULT '' NOT NULL,
     password_hash VARCHAR(255) DEFAULT '' NOT NULL,
+    email VARCHAR(255) DEFAULT '' NOT NULL,
     CONSTRAINT pk_app_user PRIMARY KEY (id)
 );
+
+comment on table app_user is 'Пользователь';
+comment on column app_user.username is 'Имя пользователя';
+comment on column app_user.password_hash is 'Хеш пароля';
+comment on column app_user.email is 'E-mail';

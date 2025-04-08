@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1744103912840-1
+    id: 1744104018843-1
     author: volnenko (generated)
     changes:
     - createTable:
@@ -30,7 +30,7 @@ databaseChangeLog:
         remarks: Проект
         tableName: app_project
 - changeSet:
-    id: 1744103912840-2
+    id: 1744104018843-2
     author: volnenko (generated)
     changes:
     - createTable:
@@ -41,22 +41,26 @@ databaseChangeLog:
               primaryKeyName: pk_app_task
             defaultValue: ''
             name: id
+            remarks: Идентификатор
             type: VARCHAR(255)
         - column:
             constraints:
               nullable: false
             defaultValue: ''
             name: name
+            remarks: Название
             type: VARCHAR(255)
         - column:
             constraints:
               nullable: false
             defaultValue: ''
             name: description
+            remarks: Описание
             type: VARCHAR(255)
+        remarks: Задача
         tableName: app_task
 - changeSet:
-    id: 1744103912840-3
+    id: 1744104018843-3
     author: volnenko (generated)
     changes:
     - createTable:
@@ -73,12 +77,22 @@ databaseChangeLog:
               nullable: false
             defaultValue: ''
             name: username
+            remarks: Имя пользователя
             type: VARCHAR(255)
         - column:
             constraints:
               nullable: false
             defaultValue: ''
             name: password_hash
+            remarks: Хеш пароля
             type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ''
+            name: email
+            remarks: E-mail
+            type: VARCHAR(255)
+        remarks: Пользователь
         tableName: app_user
 
