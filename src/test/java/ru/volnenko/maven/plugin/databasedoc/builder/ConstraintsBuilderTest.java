@@ -5,38 +5,22 @@ import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Constraints;
 
-public class ConstraintsBuilderTest {
+public class ConstraintsBuilderTest extends AbstractBuilderTest {
 
-    ConstraintsBuilder constraintsBuilder = RootBuilder.create()
-            .dsl()
-            .changeSet()
-            .add()
-            .change()
-            .createTable()
-            .column()
-            .add()
-            .constraints();
+    ConstraintsBuilder constraintsBuilder = constraintsBuilder();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(constraintsBuilder.foreignKey());
         Assert.assertNotNull(constraintsBuilder.root());
         Assert.assertNotNull(constraintsBuilder.add());
         Assert.assertNotNull(constraintsBuilder.change());
+
+        Assert.assertNotNull(constraintsBuilder.foreignKeyName(foreignKeyName));
+        Assert.assertNotNull(constraintsBuilder.uniqueConstraintName(uniqueConstraintName));
         Assert.assertNotNull(constraintsBuilder.primaryKey(true));
         Assert.assertNotNull(constraintsBuilder.nullable(true));
         Assert.assertNotNull(constraintsBuilder.unique(true));
-        Assert.assertNotNull(constraintsBuilder.uniqueConstraintName(""));
-        Assert.assertNotNull(constraintsBuilder.foreignKeyName(""));
-    }
-
-    @Test
-    public void testReturn() {
-        constraintsBuilder.foreignKeyName("Constraint name");
-        constraintsBuilder.uniqueConstraintName("Unique constraint name");
-        constraintsBuilder.primaryKey(true);
-        constraintsBuilder.nullable(true);
-        constraintsBuilder.unique(true);
         Constraints constraints = constraintsBuilder.root()
                 .getDatabaseChangeLog()
                 .get(0)

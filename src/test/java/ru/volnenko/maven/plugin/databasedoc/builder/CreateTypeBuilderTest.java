@@ -5,31 +5,19 @@ import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateType;
 
-public class CreateTypeBuilderTest {
+public class CreateTypeBuilderTest extends AbstractBuilderTest {
 
-    CreateTypeBuilder typeBuilder = RootBuilder.create()
-                .dsl()
-                .changeSet()
-                .add()
-                .change()
-                .createType();
+    private final CreateTypeBuilder typeBuilder = createTypeBuilder();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(typeBuilder.root());
         Assert.assertNotNull(typeBuilder.change());
-        Assert.assertNotNull(typeBuilder.catalogName(""));
-        Assert.assertNotNull(typeBuilder.tablespace(""));
-        Assert.assertNotNull(typeBuilder.typeName(""));
-        Assert.assertNotNull(typeBuilder.remarks(""));
-    }
 
-    @Test
-    public void testType() {
-        typeBuilder.typeName("Type name");
-        typeBuilder.catalogName("Catalog name");
-        typeBuilder.tablespace("Type remarks");
-        typeBuilder.remarks("Type remarks");
+        Assert.assertNotNull(typeBuilder.typeName(typeName));
+        Assert.assertNotNull(typeBuilder.catalogName(catalogName));
+        Assert.assertNotNull(typeBuilder.tablespace(tablespace));
+        Assert.assertNotNull(typeBuilder.remarks(remarks));
         CreateType type = typeBuilder.root()
                 .getDatabaseChangeLog()
                 .get(0)

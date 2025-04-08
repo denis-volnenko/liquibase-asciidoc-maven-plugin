@@ -3,15 +3,13 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 
-public class ChangeSetBuilderTest {
+public class ChangeSetBuilderTest extends AbstractBuilderTest {
+
+    private final ChangeSetBuilder changeSetBuilder = changeSetBuilder();
 
     @Test
-    public void testNotNull() {
-        ChangeSetBuilder changeSetBuilder = RootBuilder.create()
-                .dsl()
-                .changeSet();
+    public void test() {
         Assert.assertNotNull(changeSetBuilder.root());
         Assert.assertNotNull(changeSetBuilder.add());
     }

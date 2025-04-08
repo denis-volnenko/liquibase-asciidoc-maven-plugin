@@ -7,10 +7,10 @@ import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 
 public class DatabaseChangeLogBuilderTest {
 
-    DatabaseChangeLogBuilder databaseChangeLogBuilder = RootBuilder.create().dsl();
+    private final DatabaseChangeLogBuilder databaseChangeLogBuilder = RootBuilder.create().dsl();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(databaseChangeLogBuilder.root());
         Assert.assertNotNull(databaseChangeLogBuilder.changeSet());
         Assert.assertNotNull(databaseChangeLogBuilder);

@@ -4,21 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
-public class ForeignKeyBuilderTest {
+public class ForeignKeyBuilderTest extends AbstractBuilderTest {
 
-    ForeignKeyBuilder fkBuilder = RootBuilder.create()
-            .dsl()
-            .changeSet()
-            .add()
-            .change()
-            .createTable()
-            .column()
-            .add()
-            .constraints()
-            .foreignKey();
+    private final ForeignKeyBuilder fkBuilder = foreignKeyBuilder();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(fkBuilder.add());
         Assert.assertNotNull(fkBuilder.root());
         Assert.assertNotNull(fkBuilder.change());

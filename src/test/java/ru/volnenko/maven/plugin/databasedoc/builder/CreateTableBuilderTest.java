@@ -5,33 +5,21 @@ import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 
-public class CreateTableBuilderTest {
+public class CreateTableBuilderTest extends AbstractBuilderTest {
 
-    CreateTableBuilder tableBuilder = RootBuilder.create()
-            .dsl()
-            .changeSet()
-            .add()
-            .change()
-            .createTable();
+    private final CreateTableBuilder tableBuilder = createTableBuilder();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(tableBuilder.root());
         Assert.assertNotNull(tableBuilder.change());
         Assert.assertNotNull(tableBuilder.column());
         Assert.assertNotNull(tableBuilder.createTable());
-        Assert.assertNotNull(tableBuilder.tablespace(""));
-        Assert.assertNotNull(tableBuilder.catalogName(""));
-        Assert.assertNotNull(tableBuilder.tableName(""));
-        Assert.assertNotNull(tableBuilder.remarks(""));
-    }
 
-    @Test
-    public void testTable() {
-        tableBuilder.tableName("Table name");
-        tableBuilder.catalogName("Catalog name");
-        tableBuilder.tablespace("Table space");
-        tableBuilder.remarks("Table remarks");
+        Assert.assertNotNull(tableBuilder.tableName(tableName));
+        Assert.assertNotNull(tableBuilder.catalogName(catalogName));
+        Assert.assertNotNull(tableBuilder.tablespace(tablespace));
+        Assert.assertNotNull(tableBuilder.remarks(remarks));
         CreateTable table = tableBuilder.root()
                 .getDatabaseChangeLog()
                 .get(0)

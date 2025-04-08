@@ -4,18 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
-public class ColumnBuilderTest {
+public class ColumnBuilderTest extends AbstractBuilderTest {
 
-    ColumnBuilder columnBuilder = RootBuilder.create()
-            .dsl()
-            .changeSet()
-            .add()
-            .change()
-            .createTable()
-            .column();
+    ColumnBuilder columnBuilder = columnBuilder();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(columnBuilder.add());
         Assert.assertNotNull(columnBuilder.createTable());
         Assert.assertNotNull(columnBuilder.root());

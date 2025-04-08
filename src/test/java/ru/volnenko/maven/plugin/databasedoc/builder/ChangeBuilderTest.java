@@ -6,18 +6,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
-public class ChangeBuilderTest {
+public class ChangeBuilderTest extends AbstractBuilderTest {
 
-    ChangeBuilder changeBuilder = RootBuilder.create()
-            .dsl()
-            .changeSet()
-            .add()
-            .change();
+    ChangeBuilder changeBuilder = changeBuilder();
 
     @Test
     @DisplayName("Контракт ChangeBuilder")
     @Description("Проверка контракта класса ChangeBuilder на null-значения")
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(changeBuilder.createTable());
         Assert.assertNotNull(changeBuilder.change());
         Assert.assertNotNull(changeBuilder.root());

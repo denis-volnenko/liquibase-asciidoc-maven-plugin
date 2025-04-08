@@ -5,36 +5,22 @@ import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
-public class ColumnItemBuilderTest {
+public class ColumnItemBuilderTest extends AbstractBuilderTest {
 
-    ColumnItemBuilder columnItemBuilder = RootBuilder.create()
-            .dsl()
-            .changeSet()
-            .add()
-            .change()
-            .createTable()
-            .column()
-            .add();
+    ColumnItemBuilder columnItemBuilder = columnItemBuilder();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(columnItemBuilder.add());
         Assert.assertNotNull(columnItemBuilder.constraints());
         Assert.assertNotNull(columnItemBuilder.column());
         Assert.assertNotNull(columnItemBuilder.root());
         Assert.assertNotNull(columnItemBuilder.change());
-        Assert.assertNotNull(columnItemBuilder.name(""));
-        Assert.assertNotNull(columnItemBuilder.type(""));
-        Assert.assertNotNull(columnItemBuilder.remarks(""));
-        Assert.assertNotNull(columnItemBuilder.autoIncrement(true));
-    }
 
-    @Test
-    public void testReturn() {
-        columnItemBuilder.name("Name");
-        columnItemBuilder.type("Type");
-        columnItemBuilder.remarks("Remarks");
-        columnItemBuilder.autoIncrement(true);
+        Assert.assertNotNull(columnItemBuilder.name(name));
+        Assert.assertNotNull(columnItemBuilder.type(type));
+        Assert.assertNotNull(columnItemBuilder.remarks(remarks));
+        Assert.assertNotNull(columnItemBuilder.autoIncrement(true));
         Column column = columnItemBuilder.root()
                 .getDatabaseChangeLog()
                 .get(0)

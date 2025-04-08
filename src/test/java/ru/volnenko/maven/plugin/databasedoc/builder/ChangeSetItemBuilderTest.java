@@ -4,7 +4,6 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetItemBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ChangeSet;
 
 public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
@@ -12,18 +11,12 @@ public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
     @NonNull
     private final ChangeSetItemBuilder changeSetItemBuilder = changeSetBuilder().add();
 
-
     @Test
-    public void testNotNull() {
-        Assert.assertNotNull(changeSetItemBuilder.id(""));
-        Assert.assertNotNull(changeSetItemBuilder.author(""));
+    public void test() {
         Assert.assertNotNull(changeSetItemBuilder.change());
         Assert.assertNotNull(changeSetItemBuilder.changeSet());
         Assert.assertNotNull(changeSetItemBuilder.root());
-    }
 
-    @Test
-    public void testReturn() {
         Assert.assertNotNull(changeSetItemBuilder.id("id"));
         Assert.assertNotNull(changeSetItemBuilder.author("author"));
         final ChangeSet changeSet = changeSetItemBuilder.changeSet();

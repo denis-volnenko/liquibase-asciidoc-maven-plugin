@@ -6,10 +6,10 @@ import ru.volnenko.maven.plugin.databasedoc.builder.impl.GeneratorBuilder;
 
 public class GeneratorBuilderTest {
 
-    GeneratorBuilder builder = new GeneratorBuilder();
+    private final GeneratorBuilder builder = new GeneratorBuilder();
 
     @Test
-    public void testNotNull() {
+    public void test() {
         Assert.assertNotNull(builder.serviceName());
         Assert.assertNotNull(builder.root());
     }
