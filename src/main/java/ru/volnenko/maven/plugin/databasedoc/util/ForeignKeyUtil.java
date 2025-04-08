@@ -11,7 +11,15 @@ public final class ForeignKeyUtil {
     public static Set<FK> fks(final Collection<Root> roots) {
         if (roots == null || roots.isEmpty()) return Collections.emptySet();
         @NonNull final Set<FK> result = new LinkedHashSet<>();
-        for (Root root: roots) result.addAll(fks(root));
+        for (final Root root: roots) result.addAll(fks(root));
+
+        @NonNull final Set<UK> uks = UniqueKeyUtil.uks(roots);
+        for (final FK fk: result) {
+            if (fk == null) continue;
+            if (uks.contains(fk.toUK()))
+                fk.setUnique(true);
+        }
+
         return result;
     }
 

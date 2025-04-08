@@ -89,4 +89,12 @@ public final class FK implements IFK {
         return Objects.hash(tableName, fieldName);
     }
 
+    @NonNull
+    public UK toUK() {
+        @NonNull final UK uk = new UK();
+        uk.setTableName(tableName);
+        uk.setFieldName(fieldName);
+        return uk;
+    }
+
 }
