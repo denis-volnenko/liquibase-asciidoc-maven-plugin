@@ -2,15 +2,13 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
 import lombok.SneakyThrows;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdRender;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
-import ru.volnenko.maven.plugin.databasedoc.util.ColumnUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
-import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.PrimaryKeyUtil;
 
 import java.util.Collections;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -55,6 +53,22 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         return this;
     }
 
+    @NonNull
+    private ErdRender erdRender = ErdRender.INTERNAL;
+
+    @NonNull
+    @Override
+    public IEntityRelationDiagramDocumentGenerator internal() {
+        erdRender = ErdRender.INTERNAL;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public IEntityRelationDiagramDocumentGenerator external() {
+        erdRender = ErdRender.EXTERNAL;
+        return this;
+    }
 
     @NonNull
     @Override
@@ -63,8 +77,14 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         @NonNull final Set<PK> pks = PrimaryKeyUtil.pks(roots);
         @NonNull final Set<FK> fks = ForeignKeyUtil.fks(roots);
         stringBuilder.append("@startuml \n");
-        stringBuilder.append("!pragma graphviz_dot jdot \n");
-        stringBuilder.append("'!pragma layout smetana \n");
+        if (erdRender.isInternal()) {
+            stringBuilder.append("!pragma graphviz_dot jdot \n");
+            stringBuilder.append("'!pragma layout smetana \n");
+        }
+        if (erdRender.isExternal()) {
+            stringBuilder.append("'!pragma graphviz_dot jdot \n");
+            stringBuilder.append("!pragma layout smetana \n");
+        }
         for (@NonNull final Root root : roots) generate(stringBuilder, root);
 
         for (final FK fk: fks) {

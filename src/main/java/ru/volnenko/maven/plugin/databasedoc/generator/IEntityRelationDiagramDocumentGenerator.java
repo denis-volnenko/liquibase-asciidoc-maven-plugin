@@ -10,4 +10,10 @@ public interface IEntityRelationDiagramDocumentGenerator extends IGenerator {
     @NonNull
     IEntityRelationDiagramDocumentGenerator roots(@NonNull List<Root> roots);
 
+    @NonNull
+    IEntityRelationDiagramDocumentGenerator internal();
+
+    @NonNull
+    IEntityRelationDiagramDocumentGenerator external();
+
 }
