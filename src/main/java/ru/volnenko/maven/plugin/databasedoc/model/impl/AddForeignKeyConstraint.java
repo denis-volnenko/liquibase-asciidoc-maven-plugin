@@ -31,4 +31,10 @@ public final class AddForeignKeyConstraint {
 
     private Boolean validate;
 
+    public boolean multiple() {
+        if (baseColumnNames == null) return false;
+        if (baseColumnNames.isEmpty()) return false;
+        return baseColumnNames.contains(",");
+    }
+
 }

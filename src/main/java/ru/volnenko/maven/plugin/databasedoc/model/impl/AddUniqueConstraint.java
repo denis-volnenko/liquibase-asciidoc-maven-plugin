@@ -36,4 +36,10 @@ public final class AddUniqueConstraint implements IAddUniqueConstraint {
 
     private Boolean initiallyDeferred;
 
+    public boolean multiple() {
+        if (columnNames == null) return false;
+        if (columnNames.isEmpty()) return false;
+        return columnNames.contains(",");
+    }
+
 }

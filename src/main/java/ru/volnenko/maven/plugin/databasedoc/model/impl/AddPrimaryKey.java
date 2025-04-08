@@ -22,4 +22,10 @@ public final class AddPrimaryKey implements IAddPrimaryKey {
 
     private String tablespace;
 
+    public boolean multiple() {
+        if (columnNames == null) return false;
+        if (columnNames.isEmpty()) return false;
+        return columnNames.contains(",");
+    }
+
 }
