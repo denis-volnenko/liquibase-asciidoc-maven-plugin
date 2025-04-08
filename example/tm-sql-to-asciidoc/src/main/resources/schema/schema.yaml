@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1744104406170-1
+    id: 1744104559233-1
     author: volnenko (generated)
     changes:
     - createTable:
@@ -29,11 +29,12 @@ databaseChangeLog:
             type: VARCHAR(255)
         - column:
             name: user_id
+            remarks: Идентификатор пользователя
             type: VARCHAR(255)
         remarks: Проект
         tableName: app_project
 - changeSet:
-    id: 1744104406170-2
+    id: 1744104559233-2
     author: volnenko (generated)
     changes:
     - createTable:
@@ -62,14 +63,16 @@ databaseChangeLog:
             type: VARCHAR(255)
         - column:
             name: project_id
+            remarks: Идентификатор проекта
             type: VARCHAR(255)
         - column:
             name: user_id
+            remarks: Идентификатор пользователя
             type: VARCHAR(255)
         remarks: Задача
         tableName: app_task
 - changeSet:
-    id: 1744104406170-3
+    id: 1744104559233-3
     author: volnenko (generated)
     changes:
     - createTable:
@@ -105,7 +108,7 @@ databaseChangeLog:
         remarks: Пользователь
         tableName: app_user
 - changeSet:
-    id: 1744104406170-4
+    id: 1744104559233-4
     author: volnenko (generated)
     changes:
     - addForeignKeyConstraint:
@@ -120,7 +123,7 @@ databaseChangeLog:
         referencedTableName: app_user
         validate: true
 - changeSet:
-    id: 1744104406170-5
+    id: 1744104559233-5
     author: volnenko (generated)
     changes:
     - addForeignKeyConstraint:
@@ -135,7 +138,7 @@ databaseChangeLog:
         referencedTableName: app_project
         validate: true
 - changeSet:
-    id: 1744104406170-6
+    id: 1744104559233-6
     author: volnenko (generated)
     changes:
     - addForeignKeyConstraint:
