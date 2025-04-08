@@ -103,11 +103,20 @@ public final class DocumentGenerator extends AbstractGenerator implements IDocum
         }
         if (entityRelationDiagramEnabled) {
             if (entityRelationDiagramInclude) {
-                stringBuilder.append("\n");
-                stringBuilder.append("=== ER-диаграмма базы данных \n");
-                stringBuilder.append("\n");
-                stringBuilder.append("image::erd.svg[] \n");
-                stringBuilder.append("\n");
+                if (entityRelationDiagramLogicEnabled) {
+                    stringBuilder.append("\n");
+                    stringBuilder.append("=== Логическая ER-диаграмма базы данных \n");
+                    stringBuilder.append("\n");
+                    stringBuilder.append("image::erd_logic.svg[] \n");
+                    stringBuilder.append("\n");
+                }
+                if (entityRelationDiagramPhysicEnabled) {
+                    stringBuilder.append("\n");
+                    stringBuilder.append("=== Физическая ER-диаграмма базы данных \n");
+                    stringBuilder.append("\n");
+                    stringBuilder.append("image::erd_physic.svg[] \n");
+                    stringBuilder.append("\n");
+                }
             }
         }
         return stringBuilder;
