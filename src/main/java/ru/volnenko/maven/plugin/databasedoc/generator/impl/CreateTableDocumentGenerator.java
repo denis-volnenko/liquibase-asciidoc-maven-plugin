@@ -3,9 +3,11 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.ICreateTableDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
+import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public final class CreateTableDocumentGenerator extends AbstractGenerator implements ICreateTableDocumentGenerator {
 
@@ -69,9 +71,13 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
     }
 
     @NonNull
+    private Set<FK> fks = Collections.emptySet();
+
+    @NonNull
     @Override
     public CreateTableDocumentGenerator roots(@NonNull final List<Root> roots) {
         this.roots = roots;
+        fks = ForeignKeyUtil.fks(roots);
         return this;
     }
 
