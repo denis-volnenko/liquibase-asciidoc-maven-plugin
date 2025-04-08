@@ -155,7 +155,19 @@ image::erd_physic.svg[]
 ^|--
 ^|--
 ^|--
-^|✓
+^|--
+|
+
+
+^|10. 
+|deleted
+|TIMESTAMP WITH TIME ZONE
+|Дата удаления
+^|--
+^|--
+^|--
+^|--
+^|--
 |
 
 |===
@@ -302,7 +314,19 @@ image::erd_physic.svg[]
 ^|--
 ^|--
 ^|--
-^|✓
+^|--
+|
+
+
+^|10. 
+|deleted
+|TIMESTAMP WITH TIME ZONE
+|Дата удаления
+^|--
+^|--
+^|--
+^|--
+^|--
 |
 
 |===
@@ -461,7 +485,19 @@ image::erd_physic.svg[]
 ^|--
 ^|--
 ^|--
-^|✓
+^|--
+|
+
+
+^|11. 
+|deleted
+|TIMESTAMP WITH TIME ZONE
+|Дата удаления
+^|--
+^|--
+^|--
+^|--
+^|--
 |
 
 |===
@@ -596,7 +632,19 @@ image::erd_physic.svg[]
 ^|--
 ^|--
 ^|--
-^|✓
+^|--
+|
+
+
+^|09. 
+|deleted
+|TIMESTAMP WITH TIME ZONE
+|Дата удаления
+^|--
+^|--
+^|--
+^|--
+^|--
 |
 
 |===

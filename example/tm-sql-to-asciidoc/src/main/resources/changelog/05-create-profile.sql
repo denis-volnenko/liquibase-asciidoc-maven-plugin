@@ -7,7 +7,8 @@ CREATE TABLE app_profile (
     version INTEGER DEFAULT 0 NOT NULL,
     is_deleted BOOLEAN DEFAULT false NOT NULL,
     created TIMESTAMPTZ NOT NULL,
-    updated TIMESTAMPTZ NOT NULL,
+    updated TIMESTAMPTZ NULL,
+    deleted TIMESTAMPTZ NULL,
     CONSTRAINT pk_app_profile PRIMARY KEY (id)
 );
 
@@ -21,3 +22,4 @@ comment on column app_profile.version is 'Версия';
 comment on column app_profile.is_deleted is 'Флаг удаления';
 comment on column app_profile.created is 'Дата создания';
 comment on column app_profile.updated is 'Дата обновления';
+comment on column app_profile.deleted is 'Дата удаления';

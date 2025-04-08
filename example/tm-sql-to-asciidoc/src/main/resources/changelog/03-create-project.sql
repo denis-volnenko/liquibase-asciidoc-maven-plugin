@@ -7,7 +7,8 @@ CREATE TABLE app_project (
     version INTEGER DEFAULT 0 NOT NULL,
     is_deleted BOOLEAN DEFAULT false NOT NULL,
     created TIMESTAMPTZ NOT NULL,
-    updated TIMESTAMPTZ NOT NULL,
+    updated TIMESTAMPTZ NULL,
+    deleted TIMESTAMPTZ NULL,
     UNIQUE (name, user_id),
     CONSTRAINT pk_app_project PRIMARY KEY (id)
 );
@@ -22,3 +23,4 @@ comment on column app_project.version is 'Версия';
 comment on column app_project.is_deleted is 'Флаг удаления';
 comment on column app_project.created is 'Дата создания';
 comment on column app_project.updated is 'Дата обновления';
+comment on column app_project.deleted is 'Дата удаления';

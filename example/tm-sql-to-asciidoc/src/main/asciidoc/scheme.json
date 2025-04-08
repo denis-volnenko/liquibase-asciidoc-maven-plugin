@@ -1,7 +1,7 @@
 {
   "databaseChangeLog" : [ {
     "changeSet" : {
-      "id" : "1744133784241-1",
+      "id" : "1744133958723-1",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -86,11 +86,14 @@
             }
           }, {
             "column" : {
-              "constraints" : {
-                "nullable" : false
-              },
               "name" : "updated",
               "remarks" : "Дата обновления",
+              "type" : "TIMESTAMP WITH TIME ZONE"
+            }
+          }, {
+            "column" : {
+              "name" : "deleted",
+              "remarks" : "Дата удаления",
               "type" : "TIMESTAMP WITH TIME ZONE"
             }
           } ],
@@ -101,7 +104,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-2",
+      "id" : "1744133958723-2",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -183,11 +186,14 @@
             }
           }, {
             "column" : {
-              "constraints" : {
-                "nullable" : false
-              },
               "name" : "updated",
               "remarks" : "Дата обновления",
+              "type" : "TIMESTAMP WITH TIME ZONE"
+            }
+          }, {
+            "column" : {
+              "name" : "deleted",
+              "remarks" : "Дата удаления",
               "type" : "TIMESTAMP WITH TIME ZONE"
             }
           } ],
@@ -198,7 +204,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-3",
+      "id" : "1744133958723-3",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -286,11 +292,14 @@
             }
           }, {
             "column" : {
-              "constraints" : {
-                "nullable" : false
-              },
               "name" : "updated",
               "remarks" : "Дата обновления",
+              "type" : "TIMESTAMP WITH TIME ZONE"
+            }
+          }, {
+            "column" : {
+              "name" : "deleted",
+              "remarks" : "Дата удаления",
               "type" : "TIMESTAMP WITH TIME ZONE"
             }
           } ],
@@ -301,7 +310,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-4",
+      "id" : "1744133958723-4",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "createTable" : {
@@ -376,11 +385,14 @@
             }
           }, {
             "column" : {
-              "constraints" : {
-                "nullable" : false
-              },
               "name" : "updated",
               "remarks" : "Дата обновления",
+              "type" : "TIMESTAMP WITH TIME ZONE"
+            }
+          }, {
+            "column" : {
+              "name" : "deleted",
+              "remarks" : "Дата удаления",
               "type" : "TIMESTAMP WITH TIME ZONE"
             }
           } ],
@@ -391,7 +403,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-5",
+      "id" : "1744133958723-5",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -403,7 +415,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-6",
+      "id" : "1744133958723-6",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -415,7 +427,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-7",
+      "id" : "1744133958723-7",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -427,7 +439,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-8",
+      "id" : "1744133958723-8",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addUniqueConstraint" : {
@@ -439,7 +451,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-9",
+      "id" : "1744133958723-9",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {
@@ -458,7 +470,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-10",
+      "id" : "1744133958723-10",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {
@@ -477,7 +489,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-11",
+      "id" : "1744133958723-11",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {
@@ -496,7 +508,7 @@
     }
   }, {
     "changeSet" : {
-      "id" : "1744133784241-12",
+      "id" : "1744133958723-12",
       "author" : "volnenko (generated)",
       "changes" : [ {
         "addForeignKeyConstraint" : {

@@ -8,7 +8,8 @@ CREATE TABLE app_task (
     version INTEGER DEFAULT 0 NOT NULL,
     is_deleted BOOLEAN DEFAULT false NOT NULL,
     created TIMESTAMPTZ NOT NULL,
-    updated TIMESTAMPTZ NOT NULL,
+    updated TIMESTAMPTZ NULL,
+    deleted TIMESTAMPTZ NULL,
     CONSTRAINT pk_app_task PRIMARY KEY (id)
 );
 
@@ -23,3 +24,4 @@ comment on column app_task.version is 'Версия';
 comment on column app_task.is_deleted is 'Флаг удаления';
 comment on column app_task.created is 'Дата создания';
 comment on column app_task.updated is 'Дата обновления';
+comment on column app_task.deleted is 'Дата удаления';
