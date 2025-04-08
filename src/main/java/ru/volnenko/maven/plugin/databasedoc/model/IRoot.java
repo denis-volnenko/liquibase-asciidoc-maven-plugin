@@ -2,8 +2,12 @@ package ru.volnenko.maven.plugin.databasedoc.model;
 
 import ru.volnenko.maven.plugin.databasedoc.model.impl.DatabaseChangeLog;
 
-public interface IRoot {
-    DatabaseChangeLog getDatabaseChangeLog();
+import java.util.List;
 
-    void setDatabaseChangeLog(DatabaseChangeLog databaseChangeLog);
+public interface IRoot {
+
+    List<DatabaseChangeLog> getDatabaseChangeLog();
+
+    void setDatabaseChangeLog(List<DatabaseChangeLog> databaseChangeLog);
+
 }

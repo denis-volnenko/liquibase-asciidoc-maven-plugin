@@ -39,6 +39,7 @@ public class ConstraintsBuilderTest {
         constraintsBuilder.unique(true);
         Constraints constraints = constraintsBuilder.root()
                 .getDatabaseChangeLog()
+                .get(0)
                 .getChangeSet()
                 .get(0)
                 .getChanges()

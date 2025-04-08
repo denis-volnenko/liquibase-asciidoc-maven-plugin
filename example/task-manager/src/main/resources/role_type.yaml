@@ -1,6 +1,6 @@
 ---
 databaseChangeLog:
-  changeSet:
+- changeSet:
     - id: role_type
       author: liquibase
       changes:

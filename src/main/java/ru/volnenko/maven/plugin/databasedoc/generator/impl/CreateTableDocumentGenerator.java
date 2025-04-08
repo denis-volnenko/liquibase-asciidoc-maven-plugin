@@ -25,7 +25,12 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
     private String dataBaseInfo = "";
 
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
-        final DatabaseChangeLog databaseChangeLog = root.getDatabaseChangeLog();
+        final List<DatabaseChangeLog> databaseChangeLog = root.getDatabaseChangeLog();
+        if (databaseChangeLog == null) return;
+        for (DatabaseChangeLog item: databaseChangeLog) generate(stringBuilder, item);
+    }
+
+    private void generate(@NonNull StringBuilder stringBuilder, final DatabaseChangeLog databaseChangeLog) {
         if (databaseChangeLog == null) return;
         final List<ChangeSet> changeSet = databaseChangeLog.getChangeSet();
         if (changeSet == null) return;

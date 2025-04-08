@@ -32,6 +32,7 @@ public class CreateTypeBuilderTest {
         typeBuilder.remarks("Type remarks");
         CreateType type = typeBuilder.root()
                 .getDatabaseChangeLog()
+                .get(0)
                 .getChangeSet()
                 .get(0)
                 .getChanges()

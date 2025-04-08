@@ -34,6 +34,7 @@ public class CreateTableBuilderTest {
         tableBuilder.remarks("Table remarks");
         CreateTable table = tableBuilder.root()
                 .getDatabaseChangeLog()
+                .get(0)
                 .getChangeSet()
                 .get(0)
                 .getChanges()

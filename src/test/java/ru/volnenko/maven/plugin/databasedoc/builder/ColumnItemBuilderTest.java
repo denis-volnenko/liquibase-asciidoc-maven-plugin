@@ -37,6 +37,7 @@ public class ColumnItemBuilderTest {
         columnItemBuilder.autoIncrement(true);
         Column column = columnItemBuilder.root()
                 .getDatabaseChangeLog()
+                .get(0)
                 .getChangeSet()
                 .get(0)
                 .getChanges()

@@ -1,6 +1,6 @@
 ---
 databaseChangeLog:
-  changeSet:
+- changeSet:
     - id: task
       author: liquibase
       changes:

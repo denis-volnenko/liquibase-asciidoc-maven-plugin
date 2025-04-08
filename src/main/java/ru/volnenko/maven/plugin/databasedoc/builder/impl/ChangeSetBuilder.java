@@ -2,6 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.builder.impl;
 
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.IChangeSetBuilder;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.DatabaseChangeLog;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 public final class ChangeSetBuilder implements IChangeSetBuilder {
@@ -17,6 +18,11 @@ public final class ChangeSetBuilder implements IChangeSetBuilder {
     @Override
     public Root root() {
         return databaseChangeLogBuilder.root();
+    }
+
+    @NonNull
+    public DatabaseChangeLog databaseChangeLog() {
+        return databaseChangeLogBuilder.databaseChangeLog();
     }
 
     @Override
