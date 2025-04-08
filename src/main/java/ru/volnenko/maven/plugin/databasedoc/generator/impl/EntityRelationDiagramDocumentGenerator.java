@@ -60,16 +60,13 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
     @Override
     @SneakyThrows
     public StringBuilder append(@NonNull StringBuilder stringBuilder) {
-        @NonNull final Set<PK> pks = new LinkedHashSet<>();
-        @NonNull final Set<FK> fks = new LinkedHashSet<>();
+        @NonNull final Set<PK> pks = PrimaryKeyUtil.pks(roots);
+        @NonNull final Set<FK> fks = ForeignKeyUtil.fks(roots);
         stringBuilder.append("@startuml \n");
         stringBuilder.append("!pragma graphviz_dot jdot \n");
         stringBuilder.append("'!pragma layout smetana \n");
-        for (@NonNull final Root root : roots) {
-            pks.addAll(PrimaryKeyUtil.pks(root));
-            fks.addAll(ForeignKeyUtil.fks(root));
-            generate(stringBuilder, root);
-        }
+        for (@NonNull final Root root : roots) generate(stringBuilder, root);
+
         for (final FK fk: fks) {
             if (fk == null) continue;
             if (!pks.contains(fk.getPk())) continue;

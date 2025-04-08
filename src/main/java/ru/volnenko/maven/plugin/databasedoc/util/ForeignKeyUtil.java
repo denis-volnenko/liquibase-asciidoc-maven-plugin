@@ -3,12 +3,17 @@ package ru.volnenko.maven.plugin.databasedoc.util;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public final class ForeignKeyUtil {
+
+    @NonNull
+    public static Set<FK> fks(final Collection<Root> roots) {
+        if (roots == null || roots.isEmpty()) return Collections.emptySet();
+        @NonNull final Set<FK> result = new LinkedHashSet<>();
+        for (Root root: roots) result.addAll(fks(root));
+        return result;
+    }
 
     @NonNull
     public static Set<FK> fks(final Root root) {
