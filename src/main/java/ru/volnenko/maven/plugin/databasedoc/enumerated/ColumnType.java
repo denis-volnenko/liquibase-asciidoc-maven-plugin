@@ -4,8 +4,9 @@ import lombok.NonNull;
 
 public enum ColumnType {
 
-    NUMBER("Число"),
-    DATETIME("Дата"),
+    INTEGER("Целочисленный"),
+    FLOAT("Дробный"),
+    DATETIME("Дата и время"),
     BOOLEAN("Логический"),
     STRING("Строка");
 
