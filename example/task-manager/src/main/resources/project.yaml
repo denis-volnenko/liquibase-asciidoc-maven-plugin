@@ -1,62 +1,62 @@
 ---
 databaseChangeLog:
 - changeSet:
-    - id: project
-      author: liquibase
-      changes:
-        - createTable:
-            schemaName: public
-            catalogName: tm
-            tableName: app_project
-            remarks: Проект
-            columns:
-              - column:
-                  name: id
-                  type: varchar(64)
-                  autoIncrement: true
-                  remarks: Уникальный код
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: name
-                  type: text
-                  remarks: Название
-                  defaultValue: ""
-                  constraints:
-                    nullable: false
-              - column:
-                  name: description
-                  type: text
-                  remarks: Описание
-                  defaultValue: ""
-                  constraints:
-                    nullable: false
-              - column:
-                  name: status_type
-                  type: text
-                  remarks: Статус
-                  defaultValue: "NOT_STARTED"
-                  constraints:
-                    nullable: false
-              - column:
-                  name: user_id
-                  type: varchar(64)
-                  remarks: Код пользователя
-                  constraints:
-                    foreignKey:
-                      referencedColumnNames: id
-                      referencedTableName: app_user
-                    nullable: false
-              - column:
-                  name: created
-                  type: timestampz
-                  remarks: Дата создания
-                  constraints:
-                    nullable: false
-              - column:
-                  name: updated
-                  type: timestampz
-                  remarks: Дата обновления
-                  constraints:
-                    nullable: false
+    id: project
+    author: liquibase
+    changes:
+      - createTable:
+          schemaName: public
+          catalogName: tm
+          tableName: app_project
+          remarks: Проект
+          columns:
+            - column:
+                name: id
+                type: varchar(64)
+                autoIncrement: true
+                remarks: Уникальный код
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: name
+                type: text
+                remarks: Название
+                defaultValue: ""
+                constraints:
+                  nullable: false
+            - column:
+                name: description
+                type: text
+                remarks: Описание
+                defaultValue: ""
+                constraints:
+                  nullable: false
+            - column:
+                name: status_type
+                type: text
+                remarks: Статус
+                defaultValue: "NOT_STARTED"
+                constraints:
+                  nullable: false
+            - column:
+                name: user_id
+                type: varchar(64)
+                remarks: Код пользователя
+                constraints:
+                  foreignKey:
+                    referencedColumnNames: id
+                    referencedTableName: app_user
+                  nullable: false
+            - column:
+                name: created
+                type: timestampz
+                remarks: Дата создания
+                constraints:
+                  nullable: false
+            - column:
+                name: updated
+                type: timestampz
+                remarks: Дата обновления
+                constraints:
+                  nullable: false

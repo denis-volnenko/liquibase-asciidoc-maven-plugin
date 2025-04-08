@@ -1,48 +1,48 @@
 ---
 databaseChangeLog:
 - changeSet:
-    - id: role
-      author: liquibase
-      changes:
-        - createTable:
-            schemaName: public
-            catalogName: tm
-            tableName: app_role
-            remarks: Роль
-            columns:
-              - column:
-                  name: id
-                  type: varchar(64)
-                  autoIncrement: true
-                  remarks: Уникальный код
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: user_id
-                  type: varchar(64)
-                  remarks: Код пользователя
-                  constraints:
-                    foreignKey:
-                      referencedColumnNames: id
-                      referencedTableName: app_user
-                    nullable: false
-              - column:
-                  name: user_type
-                  type: text
-                  remarks: Тип роли
-                  defaultValue: "USER"
-                  constraints:
-                    nullable: false
-              - column:
-                  name: created
-                  type: timestampz
-                  remarks: Дата создания
-                  constraints:
-                    nullable: false
-              - column:
-                  name: updated
-                  type: timestampz
-                  remarks: Дата обновления
-                  constraints:
-                    nullable: false
+    id: role
+    author: liquibase
+    changes:
+      - createTable:
+          schemaName: public
+          catalogName: tm
+          tableName: app_role
+          remarks: Роль
+          columns:
+            - column:
+                name: id
+                type: varchar(64)
+                autoIncrement: true
+                remarks: Уникальный код
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: user_id
+                type: varchar(64)
+                remarks: Код пользователя
+                constraints:
+                  foreignKey:
+                    referencedColumnNames: id
+                    referencedTableName: app_user
+                  nullable: false
+            - column:
+                name: user_type
+                type: text
+                remarks: Тип роли
+                defaultValue: "USER"
+                constraints:
+                  nullable: false
+            - column:
+                name: created
+                type: timestampz
+                remarks: Дата создания
+                constraints:
+                  nullable: false
+            - column:
+                name: updated
+                type: timestampz
+                remarks: Дата обновления
+                constraints:
+                  nullable: false

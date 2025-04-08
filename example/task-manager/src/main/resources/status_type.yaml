@@ -1,21 +1,21 @@
 ---
 databaseChangeLog:
 - changeSet:
-    - id: status_type
-      author: liquibase
-      changes:
-        - createType:
-            schemaName: public
-            catalogName: tm
-            typeName: status_type
-            remarks: Статус
-            values:
-              - value:
-                  name: NOT_STARTED
-                  remarks: Не начато
-              - value:
-                  name: IN_PROGRESS
-                  remarks: В процессе
-              - value:
-                  name: COMPLETE
-                  remarks: Завершено
+    id: status_type
+    author: liquibase
+    changes:
+      - createType:
+          schemaName: public
+          catalogName: tm
+          typeName: status_type
+          remarks: Статус
+          values:
+            - value:
+                name: NOT_STARTED
+                remarks: Не начато
+            - value:
+                name: IN_PROGRESS
+                remarks: В процессе
+            - value:
+                name: COMPLETE
+                remarks: Завершено

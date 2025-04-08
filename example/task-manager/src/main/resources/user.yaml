@@ -1,73 +1,73 @@
 ---
 databaseChangeLog:
 - changeSet:
-    - id: user
-      author: liquibase
-      changes:
-        - createTable:
-            schemaName: public
-            catalogName: tm
-            tableName: app_user
-            remarks: Пользователь
-            columns:
-              - column:
-                  name: id
-                  type: varchar(64)
-                  remarks: Уникальный код
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: username
-                  type: text
-                  remarks: Имя пользователя
-                  constraints:
-                    nullable: false
-                    unique: true
-              - column:
-                  name: email
-                  type: text
-                  remarks: E-mail
-                  constraints:
-                    nullable: false
-                    unique: true
-              - column:
-                  name: password_рash
-                  type: text
-                  remarks: Хеш пароля
-                  constraints:
-                    nullable: false
-              - column:
-                  name: first_name
-                  type: text
-                  remarks: Имя
-                  defaultValue: ""
-                  constraints:
-                    nullable: false
-              - column:
-                  name: last_name
-                  type: text
-                  remarks: Фамилия
-                  defaultValue: ""
-                  constraints:
-                    nullable: false
-              - column:
-                  name: middle_name
-                  type: text
-                  remarks: Отчество
-                  defaultValue: ""
-                  constraints:
-                    nullable: false
-              - column:
-                  name: created
-                  type: timestampz
-                  remarks: Дата создания
-                  constraints:
-                    nullable: false
-              - column:
-                  name: updated
-                  type: timestampz
-                  remarks: Дата обновления
-                  constraints:
-                    nullable: false
+    id: user
+    author: liquibase
+    changes:
+      - createTable:
+          schemaName: public
+          catalogName: tm
+          tableName: app_user
+          remarks: Пользователь
+          columns:
+            - column:
+                name: id
+                type: varchar(64)
+                remarks: Уникальный код
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: username
+                type: text
+                remarks: Имя пользователя
+                constraints:
+                  nullable: false
+                  unique: true
+            - column:
+                name: email
+                type: text
+                remarks: E-mail
+                constraints:
+                  nullable: false
+                  unique: true
+            - column:
+                name: password_рash
+                type: text
+                remarks: Хеш пароля
+                constraints:
+                  nullable: false
+            - column:
+                name: first_name
+                type: text
+                remarks: Имя
+                defaultValue: ""
+                constraints:
+                  nullable: false
+            - column:
+                name: last_name
+                type: text
+                remarks: Фамилия
+                defaultValue: ""
+                constraints:
+                  nullable: false
+            - column:
+                name: middle_name
+                type: text
+                remarks: Отчество
+                defaultValue: ""
+                constraints:
+                  nullable: false
+            - column:
+                name: created
+                type: timestampz
+                remarks: Дата создания
+                constraints:
+                  nullable: false
+            - column:
+                name: updated
+                type: timestampz
+                remarks: Дата обновления
+                constraints:
+                  nullable: false
