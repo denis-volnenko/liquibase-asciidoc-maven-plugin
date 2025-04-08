@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-   <include relativeToChangelogFile="true" file="changelog/01-create-project.sql" />
-   <include relativeToChangelogFile="true" file="changelog/02-create-task.sql" />
-   <include relativeToChangelogFile="true" file="changelog/03-create-user.sql" />
+   <include relativeToChangelogFile="true" file="changelog/01-create-user.sql" />
+   <include relativeToChangelogFile="true" file="changelog/02-create-project.sql" />
+   <include relativeToChangelogFile="true" file="changelog/03-create-task.sql" />
 
 </databaseChangeLog>
