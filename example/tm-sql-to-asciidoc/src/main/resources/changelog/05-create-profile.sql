@@ -12,6 +12,8 @@ CREATE TABLE app_profile (
     CONSTRAINT pk_app_profile PRIMARY KEY (id)
 );
 
+ALTER TABLE app_profile ADD COLUMN about TEXT;
+
 comment on table app_profile is 'Профиль';
 comment on column app_profile.id is 'Идентификатор';
 comment on column app_profile.user_id is 'Идентификатор пользователя';
@@ -19,6 +21,7 @@ comment on column app_profile.first_name is 'Имя';
 comment on column app_profile.last_name is 'Фамилия';
 comment on column app_profile.middle_name is 'Отчество';
 comment on column app_profile.version is 'Версия';
+comment on column app_profile.about is 'О себе';
 comment on column app_profile.is_deleted is 'Флаг удаления';
 comment on column app_profile.created is 'Дата создания';
 comment on column app_profile.updated is 'Дата обновления';

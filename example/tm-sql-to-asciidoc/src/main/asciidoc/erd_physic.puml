@@ -13,6 +13,7 @@ entity "app_profile" {
     "created" : "TIMESTAMP WITH TIME ZONE"
     "updated" : "TIMESTAMP WITH TIME ZONE"
     "deleted" : "TIMESTAMP WITH TIME ZONE"
+    "about" : "TEXT"
 }
 
 entity "app_project" {
