@@ -30,10 +30,8 @@ public final class ForeignKeyUtil {
                 result.add(fk);
             }
         }
-        return Collections.emptySet();
+        return result;
     }
-
-
 
     @NonNull
     public static Set<FK> fk(final CreateTable createTable) {
