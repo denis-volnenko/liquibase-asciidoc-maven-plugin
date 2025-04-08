@@ -3,6 +3,7 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 public class ColumnItemBuilderTest {
 
@@ -26,6 +27,28 @@ public class ColumnItemBuilderTest {
         Assert.assertNotNull(columnItemBuilder.type(""));
         Assert.assertNotNull(columnItemBuilder.remarks(""));
         Assert.assertNotNull(columnItemBuilder.autoIncrement(true));
+    }
+
+    @Test
+    public void testReturn() {
+        columnItemBuilder.name("Name");
+        columnItemBuilder.type("Type");
+        columnItemBuilder.remarks("Remarks");
+        columnItemBuilder.autoIncrement(true);
+        Column column = columnItemBuilder.root()
+                .getDatabaseChangeLog()
+                .getChangeSet()
+                .get(0)
+                .getChanges()
+                .get(0)
+                .getCreateTable()
+                .getColumns()
+                .get(0)
+                .getColumn();
+        Assert.assertEquals("Name", column.getName());
+        Assert.assertEquals("Type", column.getType());
+        Assert.assertEquals("Remarks", column.getRemarks());
+        Assert.assertEquals(true, column.getAutoIncrement());
     }
 
 }

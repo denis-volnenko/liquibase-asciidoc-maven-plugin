@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetItemBuilder;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.ChangeSet;
 
 public class ChangeSetItemBuilderTest {
 
@@ -19,6 +20,15 @@ public class ChangeSetItemBuilderTest {
         Assert.assertNotNull(changeSetItemBuilder.change());
         Assert.assertNotNull(changeSetItemBuilder.changeSet());
         Assert.assertNotNull(changeSetItemBuilder.root());
+    }
+
+    @Test
+    public void testReturn() {
+        changeSetItemBuilder.id("id");
+        changeSetItemBuilder.author("author");
+        ChangeSet changeSet = changeSetItemBuilder.root().getDatabaseChangeLog().getChangeSet().get(0);
+        Assert.assertEquals("id", changeSet.getId());
+        Assert.assertEquals("author", changeSet.getAuthor());
     }
 
 }
