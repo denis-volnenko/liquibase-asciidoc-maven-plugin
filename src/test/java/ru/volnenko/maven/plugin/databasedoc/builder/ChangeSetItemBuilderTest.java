@@ -1,17 +1,17 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
+import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetItemBuilder;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ChangeSet;
 
-public class ChangeSetItemBuilderTest {
+public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
 
-    ChangeSetItemBuilder changeSetItemBuilder = RootBuilder.create()
-            .dsl()
-            .changeSet()
-            .add();
+    @NonNull
+    private final ChangeSetItemBuilder changeSetItemBuilder = changeSetBuilder().add();
+
 
     @Test
     public void testNotNull() {
@@ -24,9 +24,9 @@ public class ChangeSetItemBuilderTest {
 
     @Test
     public void testReturn() {
-        changeSetItemBuilder.id("id");
-        changeSetItemBuilder.author("author");
-        ChangeSet changeSet = changeSetItemBuilder.root().getDatabaseChangeLog().getChangeSet().get(0);
+        Assert.assertNotNull(changeSetItemBuilder.id("id"));
+        Assert.assertNotNull(changeSetItemBuilder.author("author"));
+        final ChangeSet changeSet = changeSetItemBuilder.changeSet();
         Assert.assertEquals("id", changeSet.getId());
         Assert.assertEquals("author", changeSet.getAuthor());
     }
