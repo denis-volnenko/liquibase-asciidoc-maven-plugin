@@ -4,6 +4,7 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.ICreateTableDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
+import ru.volnenko.maven.plugin.databasedoc.util.UniqueKeyUtil;
 
 import java.util.Collections;
 import java.util.List;
@@ -53,6 +54,7 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
                 .append(stringBuilder);
         columnWrapperGenerator
                 .fks(fks)
+                .uks(uks)
                 .tableName(createTable.getTableName())
                 .columnWrappers(createTable.getColumns())
                 .append(stringBuilder);
@@ -76,10 +78,14 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
     private Set<FK> fks = Collections.emptySet();
 
     @NonNull
+    private Set<UK> uks = Collections.emptySet();
+
+    @NonNull
     @Override
     public CreateTableDocumentGenerator roots(@NonNull final List<Root> roots) {
         this.roots = roots;
         fks = ForeignKeyUtil.fks(roots);
+        uks = UniqueKeyUtil.uks(roots);
         return this;
     }
 

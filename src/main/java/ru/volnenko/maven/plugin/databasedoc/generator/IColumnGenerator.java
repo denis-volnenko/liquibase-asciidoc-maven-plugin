@@ -16,7 +16,8 @@ public interface IColumnGenerator extends IGenerator {
     @NonNull
     IColumnGenerator fks(@NonNull Set<FK> fks);
 
-    @NonNull IColumnGenerator uks(@NonNull Set<UK> uks);
+    @NonNull
+    IColumnGenerator uks(@NonNull Set<UK> uks);
 
     @NonNull
     IColumnGenerator stringBuilder(@NonNull StringBuilder stringBuilder);

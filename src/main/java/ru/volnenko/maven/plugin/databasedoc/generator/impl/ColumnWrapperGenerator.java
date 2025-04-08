@@ -96,6 +96,7 @@ public final class ColumnWrapperGenerator extends AbstractGenerator implements I
             columnGenerator
                     .index(index)
                     .fks(fks)
+                    .uks(uks)
                     .tableName(tableName)
                     .column(columnWrapper.getColumn())
                     .append(stringBuilder);
