@@ -1,12 +1,25 @@
 package ru.volnenko.maven.plugin.databasedoc.util;
 
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Constraints;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.PK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 public final class ForeignKeyUtil {
+
+    public static FK fk(final AddForeignKeyConstraint constraint) {
+        if (constraint == null) return null;
+        if (constraint.getBaseColumnNames() == null) return null;
+        if (constraint.getBaseTableName() == null) return null;
+        if (constraint.getReferencedColumnNames() == null) return null;
+        if (constraint.getReferencedTableName() == null) return null;
+
+        @NonNull final FK fk = new FK();
+        fk.setTableName(constraint.getBaseTableName());
+        fk.setFieldName(constraint.getBaseColumnNames());
+        fk.getPk().setTableName(constraint.getReferencedTableName());
+        fk.getPk().setFieldName(constraint.getReferencedColumnNames());
+
+        return fk;
+    }
 
     public static FK fk(final String tableName, final Column column) {
         if (column == null) return null;

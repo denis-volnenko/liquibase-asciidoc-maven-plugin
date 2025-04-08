@@ -52,6 +52,7 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
 
         final String tableName = createTable.getTableName();
         if (tableName == null || tableName.isEmpty()) return;
+
         for (final ColumnWrapper columnWrapper: createTable.getColumns()) {
             final Column column = columnWrapper.getColumn();
             if (column == null) continue;
