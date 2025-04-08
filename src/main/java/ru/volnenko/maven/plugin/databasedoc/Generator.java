@@ -105,7 +105,10 @@ public final class Generator extends AbstractMojo {
     private final StringBuilder stringBuilder = new StringBuilder();
 
     @NonNull
-    private final StringBuilder erd = new StringBuilder();
+    private final StringBuilder erdInternal = new StringBuilder();
+
+    @NonNull
+    private final StringBuilder erdExternal = new StringBuilder();
 
     @NonNull
     private final DocumentGenerator documentGenerator = new DocumentGenerator();
@@ -134,7 +137,8 @@ public final class Generator extends AbstractMojo {
                 .append(stringBuilder);
 
         @NonNull final List<Root> roots = rootParser.files(files).parse();
-        entityRelationDiagramDocumentGenerator.roots(roots).append(erd);
+        entityRelationDiagramDocumentGenerator.internal().roots(roots).append(erdInternal);
+        entityRelationDiagramDocumentGenerator.external().roots(roots).append(erdExternal);
         createTableDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
         createTypeDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
 
@@ -150,8 +154,9 @@ public final class Generator extends AbstractMojo {
                 .saveDatabaseYAML(path)
                 .saveDatabaseJSON(path)
                 .saveEntityRelationDiagramADOC(path)
-                .saveEntityRelationDiagramPUML(path)
-                .saveEntityRelationDiagramSVG(path);
+                .saveEntityRelationDiagramPUML(path, erdInternal)
+                .saveEntityRelationDiagramSVG(path)
+                .saveEntityRelationDiagramPUML(path, erdExternal);
     }
 
     @NonNull
@@ -191,10 +196,10 @@ public final class Generator extends AbstractMojo {
 
     @NonNull
     @SneakyThrows
-    private Generator saveEntityRelationDiagramPUML(@NonNull final File path) {
+    private Generator saveEntityRelationDiagramPUML(@NonNull final File path, @NonNull StringBuilder stringBuilder) {
         if (!entityRelationDiagramEnabled) return this;
         @NonNull final File file = new File(path.getAbsolutePath() + "/" + "erd.puml");
-        FileUtils.fileWrite(file, erd.toString());
+        FileUtils.fileWrite(file, stringBuilder.toString());
         return this;
     }
 
@@ -202,7 +207,7 @@ public final class Generator extends AbstractMojo {
     @SneakyThrows
     private Generator saveEntityRelationDiagramSVG(@NonNull final File path) {
         if (!entityRelationDiagramEnabled) return this;
-        @NonNull final SourceStringReader reader = new SourceStringReader(erd.toString());
+        @NonNull final SourceStringReader reader = new SourceStringReader(erdInternal.toString());
         @NonNull final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
         reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
         return this;
