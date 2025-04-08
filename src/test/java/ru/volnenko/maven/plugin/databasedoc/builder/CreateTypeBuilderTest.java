@@ -18,17 +18,13 @@ public class CreateTypeBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(typeBuilder.catalogName(catalogName));
         Assert.assertNotNull(typeBuilder.tablespace(tablespace));
         Assert.assertNotNull(typeBuilder.remarks(remarks));
-        CreateType type = typeBuilder.root()
-                .getDatabaseChangeLog()
-                .get(0)
-                .getChangeSet()
-                .getChanges()
-                .get(0)
-                .getCreateType();
-        Assert.assertEquals("Type name", type.getTypeName());
-        Assert.assertEquals("Catalog name", type.getCatalogName());
-        Assert.assertEquals("Type remarks", type.getTablespace());
-        Assert.assertEquals("Type remarks", type.getRemarks());
+
+        final CreateType type = getFirstType(typeBuilder);
+
+        Assert.assertEquals(expectedTypeName, type.getTypeName());
+        Assert.assertEquals(expectedCatalogName, type.getCatalogName());
+        Assert.assertEquals(expectedTablespace, type.getTablespace());
+        Assert.assertEquals(expectedRemarks, type.getRemarks());
         System.out.println(type);
     }
 

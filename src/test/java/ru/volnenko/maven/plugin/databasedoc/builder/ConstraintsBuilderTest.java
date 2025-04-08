@@ -21,19 +21,11 @@ public class ConstraintsBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(constraintsBuilder.primaryKey(true));
         Assert.assertNotNull(constraintsBuilder.nullable(true));
         Assert.assertNotNull(constraintsBuilder.unique(true));
-        Constraints constraints = constraintsBuilder.root()
-                .getDatabaseChangeLog()
-                .get(0)
-                .getChangeSet()
-                .getChanges()
-                .get(0)
-                .getCreateTable()
-                .getColumns()
-                .get(0)
-                .getColumn()
-                .getConstraints();
-        Assert.assertEquals("Constraint name", constraints.getForeignKeyName());
-        Assert.assertEquals("Unique constraint name", constraints.getUniqueConstraintName());
+
+        final Constraints constraints = getConstraints(constraintsBuilder);
+
+        Assert.assertEquals(expectedForeignKeyName, constraints.getForeignKeyName());
+        Assert.assertEquals(expectedUniqueConstraintName, constraints.getUniqueConstraintName());
         Assert.assertEquals(true, constraints.getPrimaryKey());
         Assert.assertEquals(true, constraints.getNullable());
         Assert.assertEquals(true, constraints.getUnique());

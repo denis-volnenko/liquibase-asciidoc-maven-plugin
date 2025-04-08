@@ -21,19 +21,12 @@ public class ColumnItemBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(columnItemBuilder.type(type));
         Assert.assertNotNull(columnItemBuilder.remarks(remarks));
         Assert.assertNotNull(columnItemBuilder.autoIncrement(true));
-        Column column = columnItemBuilder.root()
-                .getDatabaseChangeLog()
-                .get(0)
-                .getChangeSet()
-                .getChanges()
-                .get(0)
-                .getCreateTable()
-                .getColumns()
-                .get(0)
-                .getColumn();
-        Assert.assertEquals("Name", column.getName());
-        Assert.assertEquals("Type", column.getType());
-        Assert.assertEquals("Remarks", column.getRemarks());
+
+        final Column column = getColumn(columnItemBuilder);
+
+        Assert.assertEquals(expectedName, column.getName());
+        Assert.assertEquals(expectedType, column.getType());
+        Assert.assertEquals(expectedRemarks, column.getRemarks());
         Assert.assertEquals(true, column.getAutoIncrement());
     }
 

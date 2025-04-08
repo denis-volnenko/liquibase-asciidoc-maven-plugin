@@ -20,17 +20,13 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(tableBuilder.catalogName(catalogName));
         Assert.assertNotNull(tableBuilder.tablespace(tablespace));
         Assert.assertNotNull(tableBuilder.remarks(remarks));
-        CreateTable table = tableBuilder.root()
-                .getDatabaseChangeLog()
-                .get(0)
-                .getChangeSet()
-                .getChanges()
-                .get(0)
-                .getCreateTable();
-        Assert.assertEquals("Table name", table.getTableName());
-        Assert.assertEquals("Catalog name", table.getCatalogName());
-        Assert.assertEquals("Table space", table.getTablespace());
-        Assert.assertEquals("Table remarks", table.getRemarks());
+
+        final CreateTable table = getFirstTable(tableBuilder);
+
+        Assert.assertEquals(expectedTableName, table.getTableName());
+        Assert.assertEquals(expectedCatalogName, table.getCatalogName());
+        Assert.assertEquals(expectedTablespace, table.getTablespace());
+        Assert.assertEquals(expectedRemarks, table.getRemarks());
     }
 
 }

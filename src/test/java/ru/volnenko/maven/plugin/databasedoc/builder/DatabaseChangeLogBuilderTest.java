@@ -3,11 +3,10 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.DatabaseChangeLogBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 
-public class DatabaseChangeLogBuilderTest {
+public class DatabaseChangeLogBuilderTest extends AbstractBuilderTest {
 
-    private final DatabaseChangeLogBuilder databaseChangeLogBuilder = RootBuilder.create().dsl();
+    private final DatabaseChangeLogBuilder databaseChangeLogBuilder = changeLogBuilder();
 
     @Test
     public void test() {
