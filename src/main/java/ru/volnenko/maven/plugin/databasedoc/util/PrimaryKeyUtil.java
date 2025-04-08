@@ -16,7 +16,7 @@ public final class PrimaryKeyUtil {
     }
 
     @NonNull
-    public static Set<PK> pks(Root root) {
+    public static Set<PK> pks(final Root root) {
         if (root == null) return Collections.emptySet();
         if (root.getDatabaseChangeLog() == null) return Collections.emptySet();
         if (root.getDatabaseChangeLog().isEmpty()) return Collections.emptySet();
