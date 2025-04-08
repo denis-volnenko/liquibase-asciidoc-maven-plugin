@@ -33,7 +33,6 @@ public class CreateTypeBuilderTest {
         CreateType type = typeBuilder.root()
                 .getDatabaseChangeLog()
                 .getChangeSet()
-                .get(0)
                 .getChanges()
                 .get(0)
                 .getCreateType();

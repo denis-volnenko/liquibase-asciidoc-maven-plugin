@@ -15,7 +15,7 @@ public final class ChangeSetItemBuilder implements IChangeSetItemBuilder {
 
     public ChangeSetItemBuilder(@NonNull final ChangeSetBuilder changeSetBuilder) {
         this.changeSetBuilder = changeSetBuilder;
-        changeSetBuilder.root().getDatabaseChangeLog().getChangeSet().add(changeSet);
+        changeSetBuilder.root().getDatabaseChangeLog().setChangeSet(changeSet);
     }
 
     @Override
