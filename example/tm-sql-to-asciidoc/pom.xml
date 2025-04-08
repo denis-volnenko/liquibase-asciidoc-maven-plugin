@@ -59,30 +59,58 @@
                     </dependency>
                 </dependencies>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>ru.volnenko.maven.plugin</groupId>-->
-<!--                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>-->
-<!--                <version>1.0.0</version>-->
-<!--                <configuration>-->
-<!--                    <serviceName>Task Manager</serviceName>-->
-<!--                    <dataBaseInfo>Postgres 15</dataBaseInfo>-->
-<!--                    <headerFirstEnabled>true</headerFirstEnabled>-->
-<!--                    <headerSecondEnabled>true</headerSecondEnabled>-->
-<!--                    <tableOfContentsEnabled>true</tableOfContentsEnabled>-->
-<!--                    <outputPath>${project.basedir}/src/main/asciidoc</outputPath>-->
-<!--                    <outputFile>index.adoc</outputFile>-->
-<!--                    <outputJsonFileEnabled>true</outputJsonFileEnabled>-->
-<!--                    <outputYamlFileEnabled>true</outputYamlFileEnabled>-->
-<!--                    <files>-->
-<!--                        <file>${project.basedir}/src/main/resources/role_type.yaml</file>-->
-<!--                        <file>${project.basedir}/src/main/resources/status_type.yaml</file>-->
-<!--                        <file>${project.basedir}/src/main/resources/project.yaml</file>-->
-<!--                        <file>${project.basedir}/src/main/resources/task.yaml</file>-->
-<!--                        <file>${project.basedir}/src/main/resources/user.yaml</file>-->
-<!--                        <file>${project.basedir}/src/main/resources/role.yaml</file>-->
-<!--                    </files>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>update</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                        <configuration>
+                            <changeLogFile>${project.basedir}/src/main/resources/changelog-master.xml</changeLogFile>
+                            <url>${db.url}</url>
+                            <username>test</username>
+                            <password>test</password>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>42.3.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!--            <plugin>-->
+            <!--                <groupId>ru.volnenko.maven.plugin</groupId>-->
+            <!--                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>-->
+            <!--                <version>1.0.0</version>-->
+            <!--                <configuration>-->
+            <!--                    <serviceName>Task Manager</serviceName>-->
+            <!--                    <dataBaseInfo>Postgres 15</dataBaseInfo>-->
+            <!--                    <headerFirstEnabled>true</headerFirstEnabled>-->
+            <!--                    <headerSecondEnabled>true</headerSecondEnabled>-->
+            <!--                    <tableOfContentsEnabled>true</tableOfContentsEnabled>-->
+            <!--                    <outputPath>${project.basedir}/src/main/asciidoc</outputPath>-->
+            <!--                    <outputFile>index.adoc</outputFile>-->
+            <!--                    <outputJsonFileEnabled>true</outputJsonFileEnabled>-->
+            <!--                    <outputYamlFileEnabled>true</outputYamlFileEnabled>-->
+            <!--                    <files>-->
+            <!--                        <file>${project.basedir}/src/main/resources/role_type.yaml</file>-->
+            <!--                        <file>${project.basedir}/src/main/resources/status_type.yaml</file>-->
+            <!--                        <file>${project.basedir}/src/main/resources/project.yaml</file>-->
+            <!--                        <file>${project.basedir}/src/main/resources/task.yaml</file>-->
+            <!--                        <file>${project.basedir}/src/main/resources/user.yaml</file>-->
+            <!--                        <file>${project.basedir}/src/main/resources/role.yaml</file>-->
+            <!--                    </files>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
