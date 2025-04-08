@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IDatabaseChangeLog {
 
-    ChangeSet getChangeSet();
+    List<ChangeSet> getChangeSet();
 
-    void setChangeSet(ChangeSet changeSet);
+    void setChangeSet(List<ChangeSet> changeSet);
 
 }

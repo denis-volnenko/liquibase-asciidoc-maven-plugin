@@ -40,6 +40,7 @@ public class ConstraintsBuilderTest {
         Constraints constraints = constraintsBuilder.root()
                 .getDatabaseChangeLog()
                 .getChangeSet()
+                .get(0)
                 .getChanges()
                 .get(0)
                 .getCreateTable()

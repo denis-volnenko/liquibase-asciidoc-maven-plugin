@@ -16,6 +16,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class DatabaseChangeLog implements IDatabaseChangeLog {
 
-    private ChangeSet changeSet = new ChangeSet();
+    private List<ChangeSet> changeSet = new ArrayList<>();
 
 }

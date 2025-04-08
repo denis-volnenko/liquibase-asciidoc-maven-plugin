@@ -38,6 +38,7 @@ public class ColumnItemBuilderTest {
         Column column = columnItemBuilder.root()
                 .getDatabaseChangeLog()
                 .getChangeSet()
+                .get(0)
                 .getChanges()
                 .get(0)
                 .getCreateTable()

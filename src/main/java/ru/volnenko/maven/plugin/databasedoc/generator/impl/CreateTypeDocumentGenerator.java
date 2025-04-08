@@ -24,9 +24,9 @@ public final class CreateTypeDocumentGenerator extends AbstractGenerator impleme
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
         final DatabaseChangeLog databaseChangeLog = root.getDatabaseChangeLog();
         if (databaseChangeLog == null) return;
-        final ChangeSet changeSet = databaseChangeLog.getChangeSet();
+        final List<ChangeSet> changeSet = databaseChangeLog.getChangeSet();
         if (changeSet == null) return;
-        generate(stringBuilder, changeSet);
+        for (final ChangeSet item : changeSet) generate(stringBuilder, item);
     }
 
     private void generate(@NonNull StringBuilder stringBuilder, final ChangeSet changeSet) {
