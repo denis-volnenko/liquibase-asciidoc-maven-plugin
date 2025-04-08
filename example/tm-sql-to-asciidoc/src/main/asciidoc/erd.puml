@@ -1,5 +1,5 @@
 @startuml 
-!pragma graphviz_dot jdot 
+'!pragma graphviz_dot jdot
 '!pragma layout smetana 
 entity "app_profile" {
     *"id" : "VARCHAR(255)"

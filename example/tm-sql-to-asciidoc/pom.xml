@@ -77,20 +77,20 @@
                             <password>test</password>
                         </configuration>
                     </execution>
-                    <execution>
-                        <id>dbDoc</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>dbDoc</goal>
-                        </goals>
-                        <configuration>
-                            <changeLogFile>${project.basedir}/src/main/resources/changelog-master.xml</changeLogFile>
-                            <outputDirectory>${project.basedir}/dbdoc/</outputDirectory>
-                            <url>${db.url}</url>
-                            <username>test</username>
-                            <password>test</password>
-                        </configuration>
-                    </execution>
+<!--                    <execution>-->
+<!--                        <id>dbDoc</id>-->
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>dbDoc</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <changeLogFile>${project.basedir}/src/main/resources/changelog-master.xml</changeLogFile>-->
+<!--                            <outputDirectory>${project.basedir}/dbdoc/</outputDirectory>-->
+<!--                            <url>${db.url}</url>-->
+<!--                            <username>test</username>-->
+<!--                            <password>test</password>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                     <execution>
                         <id>generateChangeLog</id>
                         <phase>generate-sources</phase>
@@ -141,20 +141,20 @@
                         </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <serviceName>Task Manager</serviceName>
-                    <dataBaseInfo>Postgres 15</dataBaseInfo>
-                    <headerFirstEnabled>true</headerFirstEnabled>
-                    <headerSecondEnabled>true</headerSecondEnabled>
-                    <tableOfContentsEnabled>true</tableOfContentsEnabled>
-                    <outputPath>${project.basedir}/src/main/asciidoc</outputPath>
-                    <outputFile>index.adoc</outputFile>
-                    <outputJsonFileEnabled>true</outputJsonFileEnabled>
-                    <outputYamlFileEnabled>true</outputYamlFileEnabled>
-                    <files>
-                        <file>${project.basedir}/src/main/resources/schema/schema.yaml</file>
-                    </files>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <serviceName>Task Manager</serviceName>-->
+<!--                    <dataBaseInfo>Postgres 15</dataBaseInfo>-->
+<!--                    <headerFirstEnabled>true</headerFirstEnabled>-->
+<!--                    <headerSecondEnabled>true</headerSecondEnabled>-->
+<!--                    <tableOfContentsEnabled>true</tableOfContentsEnabled>-->
+<!--                    <outputPath>${project.basedir}/src/main/asciidoc</outputPath>-->
+<!--                    <outputFile>index.adoc</outputFile>-->
+<!--                    <outputJsonFileEnabled>true</outputJsonFileEnabled>-->
+<!--                    <outputYamlFileEnabled>true</outputYamlFileEnabled>-->
+<!--                    <files>-->
+<!--                        <file>${project.basedir}/src/main/resources/schema/schema.yaml</file>-->
+<!--                    </files>-->
+<!--                </configuration>-->
             </plugin>
             <plugin>
                 <groupId>org.asciidoctor</groupId>
