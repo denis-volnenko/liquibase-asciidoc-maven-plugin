@@ -9,7 +9,8 @@ import java.util.List;
 
 public interface IEntityRelationDiagramDocumentGenerator extends IGenerator {
 
-    @NonNull EntityRelationDiagramDocumentGenerator erdType(@NonNull ErdType erdType);
+    @NonNull
+    EntityRelationDiagramDocumentGenerator erdType(@NonNull ErdType erdType);
 
     @NonNull
     ErdType erdType();
