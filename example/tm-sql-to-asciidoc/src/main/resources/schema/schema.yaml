@@ -1,0 +1,80 @@
+databaseChangeLog:
+- changeSet:
+    id: 1744103712176-1
+    author: volnenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+              primaryKeyName: pk_app_project
+            defaultValue: ''
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ''
+            name: name
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ''
+            name: description
+            type: VARCHAR(255)
+        tableName: app_project
+- changeSet:
+    id: 1744103712176-2
+    author: volnenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+              primaryKeyName: pk_app_task
+            defaultValue: ''
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ''
+            name: name
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ''
+            name: description
+            type: VARCHAR(255)
+        tableName: app_task
+- changeSet:
+    id: 1744103712176-3
+    author: volnenko (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+              primaryKeyName: pk_app_user
+            defaultValue: ''
+            name: id
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ''
+            name: username
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ''
+            name: password_hash
+            type: VARCHAR(255)
+        tableName: app_user
+

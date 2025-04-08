@@ -77,6 +77,19 @@
                             <password>test</password>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>generateChangeLog</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generateChangeLog</goal>
+                        </goals>
+                        <configuration>
+                            <outputChangeLogFile>${project.basedir}/src/main/resources/schema/schema.yaml</outputChangeLogFile>
+                            <url>${db.url}</url>
+                            <username>test</username>
+                            <password>test</password>
+                        </configuration>
+                    </execution>
                 </executions>
                 <dependencies>
                     <dependency>
