@@ -32,9 +32,7 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
 
     private void generate(@NonNull StringBuilder stringBuilder, final DatabaseChangeLog databaseChangeLog) {
         if (databaseChangeLog == null) return;
-        final List<ChangeSet> changeSet = databaseChangeLog.getChangeSet();
-        if (changeSet == null) return;
-        for (final ChangeSet item : changeSet) generate(stringBuilder, item);
+        generate(stringBuilder, databaseChangeLog.getChangeSet());
     }
 
     private void generate(@NonNull StringBuilder stringBuilder, final ChangeSet changeSet) {

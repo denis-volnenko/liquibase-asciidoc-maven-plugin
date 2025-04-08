@@ -36,7 +36,6 @@ public class CreateTableBuilderTest {
                 .getDatabaseChangeLog()
                 .get(0)
                 .getChangeSet()
-                .get(0)
                 .getChanges()
                 .get(0)
                 .getCreateTable();
