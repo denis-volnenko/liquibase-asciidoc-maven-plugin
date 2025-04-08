@@ -1,7 +1,50 @@
 ---
 databaseChangeLog:
 - changeSet:
-    id: "1744122251347-1"
+    id: "1744122711549-1"
+    author: "volnenko (generated)"
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              primaryKey: true
+              primaryKeyName: "pk_app_profile"
+            defaultValue: ""
+            name: "id"
+            remarks: "Идентификатор"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            name: "user_id"
+            remarks: "Идентификатор пользователя"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "first_name"
+            remarks: "Имя"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "last_name"
+            remarks: "Фамилия"
+            type: "VARCHAR(255)"
+        - column:
+            constraints:
+              nullable: false
+            defaultValue: ""
+            name: "middle_name"
+            remarks: "Отчество"
+            type: "VARCHAR(255)"
+        remarks: "Профиль"
+        tableName: "app_profile"
+- changeSet:
+    id: "1744122711549-2"
     author: "volnenko (generated)"
     changes:
     - createTable:
@@ -42,7 +85,7 @@ databaseChangeLog:
         remarks: "Проект"
         tableName: "app_project"
 - changeSet:
-    id: "1744122251347-2"
+    id: "1744122711549-3"
     author: "volnenko (generated)"
     changes:
     - createTable:
@@ -87,7 +130,7 @@ databaseChangeLog:
         remarks: "Задача"
         tableName: "app_task"
 - changeSet:
-    id: "1744122251347-3"
+    id: "1744122711549-4"
     author: "volnenko (generated)"
     changes:
     - createTable:
@@ -123,7 +166,31 @@ databaseChangeLog:
         remarks: "Пользователь"
         tableName: "app_user"
 - changeSet:
-    id: "1744122251347-4"
+    id: "1744122711549-5"
+    author: "volnenko (generated)"
+    changes:
+    - addUniqueConstraint:
+        columnNames: "first_name"
+        constraintName: "app_profile_first_name_key"
+        tableName: "app_profile"
+- changeSet:
+    id: "1744122711549-6"
+    author: "volnenko (generated)"
+    changes:
+    - addUniqueConstraint:
+        columnNames: "middle_name"
+        constraintName: "app_profile_middle_name_key"
+        tableName: "app_profile"
+- changeSet:
+    id: "1744122711549-7"
+    author: "volnenko (generated)"
+    changes:
+    - addUniqueConstraint:
+        columnNames: "user_id"
+        constraintName: "app_profile_user_id_key"
+        tableName: "app_profile"
+- changeSet:
+    id: "1744122711549-8"
     author: "volnenko (generated)"
     changes:
     - addUniqueConstraint:
@@ -131,15 +198,7 @@ databaseChangeLog:
         constraintName: "app_project_name_user_id_key"
         tableName: "app_project"
 - changeSet:
-    id: "1744122251347-5"
-    author: "volnenko (generated)"
-    changes:
-    - addUniqueConstraint:
-        columnNames: "project_id"
-        constraintName: "app_task_project_id_key"
-        tableName: "app_task"
-- changeSet:
-    id: "1744122251347-6"
+    id: "1744122711549-9"
     author: "volnenko (generated)"
     changes:
     - addUniqueConstraint:
@@ -147,7 +206,7 @@ databaseChangeLog:
         constraintName: "app_user_email_key"
         tableName: "app_user"
 - changeSet:
-    id: "1744122251347-7"
+    id: "1744122711549-10"
     author: "volnenko (generated)"
     changes:
     - addUniqueConstraint:
@@ -155,7 +214,22 @@ databaseChangeLog:
         constraintName: "app_user_username_key"
         tableName: "app_user"
 - changeSet:
-    id: "1744122251347-8"
+    id: "1744122711549-11"
+    author: "volnenko (generated)"
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: "user_id"
+        baseTableName: "app_profile"
+        constraintName: "app_profile_user_id_fkey"
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: "NO ACTION"
+        onUpdate: "NO ACTION"
+        referencedColumnNames: "id"
+        referencedTableName: "app_user"
+        validate: true
+- changeSet:
+    id: "1744122711549-12"
     author: "volnenko (generated)"
     changes:
     - addForeignKeyConstraint:
@@ -170,7 +244,7 @@ databaseChangeLog:
         referencedTableName: "app_user"
         validate: true
 - changeSet:
-    id: "1744122251347-9"
+    id: "1744122711549-13"
     author: "volnenko (generated)"
     changes:
     - addForeignKeyConstraint:
@@ -185,7 +259,7 @@ databaseChangeLog:
         referencedTableName: "app_project"
         validate: true
 - changeSet:
-    id: "1744122251347-10"
+    id: "1744122711549-14"
     author: "volnenko (generated)"
     changes:
     - addForeignKeyConstraint:

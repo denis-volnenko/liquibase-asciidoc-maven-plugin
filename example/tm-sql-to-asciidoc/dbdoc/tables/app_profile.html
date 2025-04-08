@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"/><title>Changes affecting table "app_user"</title><LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style"><SCRIPT type="text/javascript">function windowTitle(){    parent.document.title="Changes affecting table 'app_user'";}</SCRIPT></head><body BGCOLOR="white" onload="windowTitle();"><H2>Changes affecting table "app_user"</H2>
+<html><head><meta charset="utf-8"/><title>Changes affecting table "app_profile"</title><LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style"><SCRIPT type="text/javascript">function windowTitle(){    parent.document.title="Changes affecting table 'app_profile'";}</SCRIPT></head><body BGCOLOR="white" onload="windowTitle();"><H2>Changes affecting table "app_profile"</H2>
 <P><TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TD COLSPAN=1><FONT SIZE="+2">
@@ -6,7 +6,7 @@
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD VALIGN="top">
-Пользователь</TD>
+Профиль</TD>
 </TR>
 </TABLE>
 <P><TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
@@ -20,9 +20,9 @@ varchar(255 BYTE)</TD>
 <TD VALIGN="top">
 NOT NULL</TD>
 <TD VALIGN="top">
-<A HREF="../columns/public.app_user.id.html">id</A></TD>
+<A HREF="../columns/public.app_profile.id.html">id</A></TD>
 <TD VALIGN="top">
-</TD>
+Идентификатор</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD VALIGN="top">
@@ -30,9 +30,9 @@ varchar(255 BYTE)</TD>
 <TD VALIGN="top">
 NOT NULL</TD>
 <TD VALIGN="top">
-<A HREF="../columns/public.app_user.username.html">username</A></TD>
+<A HREF="../columns/public.app_profile.user_id.html">user_id</A></TD>
 <TD VALIGN="top">
-Имя пользователя</TD>
+Идентификатор пользователя</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD VALIGN="top">
@@ -40,9 +40,9 @@ varchar(255 BYTE)</TD>
 <TD VALIGN="top">
 NOT NULL</TD>
 <TD VALIGN="top">
-<A HREF="../columns/public.app_user.password_hash.html">password_hash</A></TD>
+<A HREF="../columns/public.app_profile.first_name.html">first_name</A></TD>
 <TD VALIGN="top">
-Хеш пароля</TD>
+Имя</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD VALIGN="top">
@@ -50,9 +50,19 @@ varchar(255 BYTE)</TD>
 <TD VALIGN="top">
 NOT NULL</TD>
 <TD VALIGN="top">
-<A HREF="../columns/public.app_user.email.html">email</A></TD>
+<A HREF="../columns/public.app_profile.last_name.html">last_name</A></TD>
 <TD VALIGN="top">
-E-mail</TD>
+Фамилия</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="top">
+varchar(255 BYTE)</TD>
+<TD VALIGN="top">
+NOT NULL</TD>
+<TD VALIGN="top">
+<A HREF="../columns/public.app_profile.middle_name.html">middle_name</A></TD>
+<TD VALIGN="top">
+Отчество</TD>
 </TR>
 </TABLE>
 <P><TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
@@ -64,23 +74,47 @@ E-mail</TD>
 <TD VALIGN="top">
 Unique </TD>
 <TD VALIGN="top">
-app_user_email_key</TD>
+app_profile_user_id_key</TD>
 <TD VALIGN="top">
-public.email</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD VALIGN="top">
-Unique </TD>
-<TD VALIGN="top">
-app_user_username_key</TD>
-<TD VALIGN="top">
-public.username</TD>
+public.user_id</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD VALIGN="top">
 Primary Key </TD>
 <TD VALIGN="top">
-pk_app_user</TD>
+pk_app_profile</TD>
+<TD VALIGN="top">
+public.id</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="top">
+Unique </TD>
+<TD VALIGN="top">
+app_profile_first_name_key</TD>
+<TD VALIGN="top">
+public.first_name</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="top">
+Unique </TD>
+<TD VALIGN="top">
+app_profile_middle_name_key</TD>
+<TD VALIGN="top">
+public.middle_name</TD>
+</TR>
+</TABLE>
+<P><TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TD COLSPAN=4><FONT SIZE="+2">
+<B>Current Table Foreign Keys</B></FONT></TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD VALIGN="top">
+app_profile_user_id_fkey</TD>
+<TD VALIGN="top">
+public.user_id</TD>
+<TD VALIGN="top">
+app_user</TD>
 <TD VALIGN="top">
 public.id</TD>
 </TR>

@@ -9,5 +9,6 @@
    <include relativeToChangelogFile="true" file="changelog/02-create-user.sql" />
    <include relativeToChangelogFile="true" file="changelog/03-create-project.sql" />
    <include relativeToChangelogFile="true" file="changelog/04-create-task.sql" />
+   <include relativeToChangelogFile="true" file="changelog/05-create-profile.sql" />
 
 </databaseChangeLog>
