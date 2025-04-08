@@ -52,18 +52,39 @@ public final class CreateTableGenerator extends AbstractGenerator implements ICr
         stringBuilder.append("\n");
         stringBuilder.append("|*Лог. название*:\n");
         stringBuilder.append("|" + StringUtil.format(createTable.getRemarks()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Сервис*:\n");
-        stringBuilder.append("|" + StringUtil.format(serviceName) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*База данных*:\n");
-        stringBuilder.append("|" + StringUtil.format(createTable.getCatalogName()) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Доп. сведения*:\n");
-        stringBuilder.append("|" + StringUtil.format(dataBaseInfo) + "\n");
-        stringBuilder.append("\n");
-        stringBuilder.append("|*Схема*:\n");
-        stringBuilder.append("|" + StringUtil.format(createTable.getSchemaName()) + "\n");
+        {
+            @NonNull final String name = StringUtil.format(serviceName);
+            if (!name.isEmpty()) {
+                stringBuilder.append("\n");
+                stringBuilder.append("|*Сервис*:\n");
+                stringBuilder.append("|" + name + "\n");
+            }
+        }
+        {
+            @NonNull final String name = StringUtil.format(createTable.getCatalogName());
+            if (!name.isEmpty()) {
+                stringBuilder.append("\n");
+                stringBuilder.append("|*База данных*:\n");
+                stringBuilder.append("|" + name + "\n");
+            }
+        }
+        {
+            @NonNull final String text = StringUtil.format(dataBaseInfo);
+            if (!text.isEmpty()) {
+                stringBuilder.append("\n");
+                stringBuilder.append("|*Доп. сведения*:\n");
+                stringBuilder.append("|" + text + "\n");
+            }
+        }
+        {
+            @NonNull final String name = StringUtil.format(createTable.getSchemaName());
+            if (!name.isEmpty()) {
+                stringBuilder.append("\n");
+                stringBuilder.append("|*Схема*:\n");
+                stringBuilder.append("|" + name + "\n");
+            }
+        }
+
         stringBuilder.append("\n");
         stringBuilder.append("|===\n");
         stringBuilder.append("\n");
