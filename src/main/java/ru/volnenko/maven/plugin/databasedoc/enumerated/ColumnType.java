@@ -7,11 +7,13 @@ import java.util.Locale;
 public enum ColumnType {
 
     ARRAY("Массив", "[]", "array"),
-    INTEGER("Целочисленный", "int", "serial", "byte", "bit", "uuid", "long", "number"),
+    INTEGER("Целочисленный",
+            "int", "serial", "byte", "bit", "uuid", "long", "number",
+            "year", "month", "day", "hour", "minute", "second"
+    ),
     BINARY("Бинарный", "raw", "binary", "blob"),
-    FLOAT("Дробный", "float", "double", "real", "precision"),
-    DATE("Дата", "date"),
-    TIME("Время", "time"),
+    FLOAT("Дробный", "float", "double", "real", "precision", "numeric"),
+    DATETIME("Дата/Время", "date", "time", "interval"),
     BOOLEAN("Логический", "bool"),
     STRING("Строка", "varchar", "text", "json", "clob", "char");
 
