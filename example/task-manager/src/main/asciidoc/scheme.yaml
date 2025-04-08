@@ -1,7 +1,7 @@
 ---
 databaseChangeLog:
-  changeSet:
-  - id: "role_type"
+- changeSet:
+    id: "role_type"
     author: "liquibase"
     changes:
     - createType:
@@ -16,7 +16,8 @@ databaseChangeLog:
         - value:
             name: "USER"
             remarks: "Пользователь"
-  - id: "status_type"
+- changeSet:
+    id: "status_type"
     author: "liquibase"
     changes:
     - createType:
@@ -34,7 +35,8 @@ databaseChangeLog:
         - value:
             name: "COMPLETE"
             remarks: "Завершено"
-  - id: "project"
+- changeSet:
+    id: "project"
     author: "liquibase"
     changes:
     - createTable:
@@ -93,7 +95,8 @@ databaseChangeLog:
             remarks: "Дата обновления"
             constraints:
               nullable: false
-  - id: "task"
+- changeSet:
+    id: "task"
     author: "liquibase"
     changes:
     - createTable:
@@ -161,7 +164,8 @@ databaseChangeLog:
             remarks: "Дата обновления"
             constraints:
               nullable: false
-  - id: "user"
+- changeSet:
+    id: "user"
     author: "liquibase"
     changes:
     - createTable:
@@ -231,7 +235,8 @@ databaseChangeLog:
             remarks: "Дата обновления"
             constraints:
               nullable: false
-  - id: "role"
+- changeSet:
+    id: "role"
     author: "liquibase"
     changes:
     - createTable:

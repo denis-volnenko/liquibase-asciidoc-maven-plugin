@@ -1,6 +1,6 @@
 {
-  "databaseChangeLog" : {
-    "changeSet" : [ {
+  "databaseChangeLog" : [ {
+    "changeSet" : {
       "id" : "role_type",
       "author" : "liquibase",
       "changes" : [ {
@@ -22,7 +22,9 @@
           } ]
         }
       } ]
-    }, {
+    }
+  }, {
+    "changeSet" : {
       "id" : "status_type",
       "author" : "liquibase",
       "changes" : [ {
@@ -49,7 +51,9 @@
           } ]
         }
       } ]
-    }, {
+    }
+  }, {
+    "changeSet" : {
       "id" : "project",
       "author" : "liquibase",
       "changes" : [ {
@@ -133,7 +137,9 @@
           } ]
         }
       } ]
-    }, {
+    }
+  }, {
+    "changeSet" : {
       "id" : "task",
       "author" : "liquibase",
       "changes" : [ {
@@ -230,7 +236,9 @@
           } ]
         }
       } ]
-    }, {
+    }
+  }, {
+    "changeSet" : {
       "id" : "user",
       "author" : "liquibase",
       "changes" : [ {
@@ -330,7 +338,9 @@
           } ]
         }
       } ]
-    }, {
+    }
+  }, {
+    "changeSet" : {
       "id" : "role",
       "author" : "liquibase",
       "changes" : [ {
@@ -394,6 +404,6 @@
           } ]
         }
       } ]
-    } ]
-  }
+    }
+  } ]
 }
