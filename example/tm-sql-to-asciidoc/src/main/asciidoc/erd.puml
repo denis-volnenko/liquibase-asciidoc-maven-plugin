@@ -1,5 +1,5 @@
 @startuml 
-'!pragma graphviz_dot jdot
+!pragma graphviz_dot jdot 
 '!pragma layout smetana 
 entity "app_project" {
     *"id" : "VARCHAR(255)"
@@ -29,7 +29,7 @@ entity "app_user" {
 }
 
 app_project }--|| app_user
-app_task }--|| app_project
+app_task ||--|| app_project
 app_task }--|| app_user
 
 @enduml
