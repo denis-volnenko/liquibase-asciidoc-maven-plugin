@@ -25,6 +25,40 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>2.1.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <source>
+                                db = new org.testcontainers.containers.PostgreSQLContainer(
+                                        "postgres:15-alpine3.17")
+                                        .withUsername("test")
+                                        .withDatabaseName("tm")
+                                        .withPassword("test");
+                                db.start();
+                                // After you've started the container, collect its generated
+                                // JDBC URL (which contains a random port)
+                                project.properties.setProperty('db.url', db.getJdbcUrl());
+                                System.out.println(db.getJdbcUrl());
+                            </source>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.testcontainers</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>1.20.6</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
 <!--            <plugin>-->
 <!--                <groupId>ru.volnenko.maven.plugin</groupId>-->
 <!--                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>-->
