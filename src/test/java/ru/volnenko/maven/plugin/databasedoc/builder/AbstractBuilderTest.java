@@ -4,6 +4,8 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
+import java.util.List;
+
 public abstract class AbstractBuilderTest {
 
     protected final String foreignKeyName = "ForeignKey name";
@@ -91,51 +93,37 @@ public abstract class AbstractBuilderTest {
     }
 
     @NonNull
-    public CreateType getFirstType(@NonNull final CreateTypeBuilder typeBuilder) {
-        return typeBuilder.root()
+    public List<Change> getChanges(@NonNull final IRootBuilder builder) {
+        return builder.root()
                 .getDatabaseChangeLog()
                 .get(0)
                 .getChangeSet()
-                .getChanges()
+                .getChanges();
+    }
+
+    @NonNull
+    public CreateType getFirstType(@NonNull final IRootBuilder builder) {
+        return getChanges(builder)
                 .get(0)
                 .getCreateType();
     }
 
     @NonNull
-    public CreateTable getFirstTable(@NonNull final CreateTableBuilder tableBuilder) {
-        return tableBuilder.root()
-                .getDatabaseChangeLog()
-                .get(0)
-                .getChangeSet()
-                .getChanges()
+    public CreateTable getFirstTable(@NonNull final IRootBuilder builder) {
+        return getChanges(builder)
                 .get(0)
                 .getCreateTable();
     }
 
     @NonNull
-    public Constraints getConstraints(@NonNull final ConstraintsBuilder constraintsBuilder) {
-        return constraintsBuilder.root()
-                .getDatabaseChangeLog()
-                .get(0)
-                .getChangeSet()
-                .getChanges()
-                .get(0)
-                .getCreateTable()
-                .getColumns()
-                .get(0)
-                .getColumn()
+    public Constraints getConstraints(@NonNull final IRootBuilder builder) {
+        return getColumn(builder)
                 .getConstraints();
     }
 
     @NonNull
-    public Column getColumn(@NonNull final ColumnItemBuilder columnItemBuilder) {
-        return columnItemBuilder.root()
-                .getDatabaseChangeLog()
-                .get(0)
-                .getChangeSet()
-                .getChanges()
-                .get(0)
-                .getCreateTable()
+    public Column getColumn(@NonNull final IRootBuilder builder) {
+        return getFirstTable(builder)
                 .getColumns()
                 .get(0)
                 .getColumn();
