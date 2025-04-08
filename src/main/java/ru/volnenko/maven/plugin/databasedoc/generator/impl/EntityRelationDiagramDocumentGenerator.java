@@ -1,10 +1,12 @@
 package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
+import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.util.ColumnUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
+import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -41,7 +43,18 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
     @NonNull
     private Set<FK> fks = new LinkedHashSet<>();
 
+    @NonNull
+    private EntityRelationDiagramDocumentGenerator processFK(final Change change) {
+        if (change == null) return this;
+        if (change.getAddForeignKeyConstraint() == null) return this;
+        final FK fk = ForeignKeyUtil.fk(change.getAddForeignKeyConstraint());
+        if (fk != null) fks.add(fk);
+        return this;
+    }
+
     private void generate(@NonNull StringBuilder stringBuilder, final Change change) {
+        processFK(change);
+
         if (change == null) return;
         final CreateTable createTable = change.getCreateTable();
         if (createTable == null) return;
@@ -69,6 +82,7 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
             fks.add(fk);
         }
 
+
     }
 
     @NonNull
@@ -80,11 +94,14 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
 
     @NonNull
     @Override
+    @SneakyThrows
     public StringBuilder append(@NonNull StringBuilder stringBuilder) {
         stringBuilder.append("@startuml \n");
         stringBuilder.append("!pragma graphviz_dot jdot \n");
         stringBuilder.append("'!pragma layout smetana \n");
         for (@NonNull final Root root : roots) generate(stringBuilder, root);
+
+        System.out.println(MapperUtil.json().writeValueAsString(fks));
 
         for (final FK fk: fks) {
             if (fk == null) continue;
