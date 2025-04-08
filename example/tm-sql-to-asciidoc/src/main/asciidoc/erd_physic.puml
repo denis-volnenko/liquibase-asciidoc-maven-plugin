@@ -9,6 +9,7 @@ entity "app_profile" {
     "last_name" : "VARCHAR(255)"
     "middle_name" : "VARCHAR(255)"
     "version" : "INTEGER"
+    "is_deleted" : "BOOLEAN"
     "created" : "TIMESTAMP WITH TIME ZONE"
     "updated" : "TIMESTAMP WITH TIME ZONE"
 }
@@ -21,6 +22,7 @@ entity "app_project" {
     "user_id" : "VARCHAR(255)"
     "status" : "STATUS"
     "version" : "INTEGER"
+    "is_deleted" : "BOOLEAN"
     "created" : "TIMESTAMP WITH TIME ZONE"
     "updated" : "TIMESTAMP WITH TIME ZONE"
 }
@@ -34,6 +36,7 @@ entity "app_task" {
     "user_id" : "VARCHAR(255)"
     "status" : "STATUS"
     "version" : "INTEGER"
+    "is_deleted" : "BOOLEAN"
     "created" : "TIMESTAMP WITH TIME ZONE"
     "updated" : "TIMESTAMP WITH TIME ZONE"
 }
@@ -45,6 +48,7 @@ entity "app_user" {
     "password_hash" : "VARCHAR(255)"
     "email" : "VARCHAR(255)"
     "version" : "INTEGER"
+    "is_deleted" : "BOOLEAN"
     "created" : "TIMESTAMP WITH TIME ZONE"
     "updated" : "TIMESTAMP WITH TIME ZONE"
 }

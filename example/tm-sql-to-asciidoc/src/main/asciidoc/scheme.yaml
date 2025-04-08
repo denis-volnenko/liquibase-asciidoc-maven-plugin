@@ -1,7 +1,7 @@
 ---
 databaseChangeLog:
 - changeSet:
-    id: "1744133602373-1"
+    id: "1744133784241-1"
     author: "volnenko (generated)"
     changes:
     - createTable:
@@ -51,6 +51,13 @@ databaseChangeLog:
         - column:
             constraints:
               nullable: false
+            defaultValueBoolean: false
+            name: "is_deleted"
+            remarks: "Флаг удаления"
+            type: "BOOLEAN"
+        - column:
+            constraints:
+              nullable: false
             name: "created"
             remarks: "Дата создания"
             type: "TIMESTAMP WITH TIME ZONE"
@@ -63,7 +70,7 @@ databaseChangeLog:
         remarks: "Профиль"
         tableName: "app_profile"
 - changeSet:
-    id: "1744133602373-2"
+    id: "1744133784241-2"
     author: "volnenko (generated)"
     changes:
     - createTable:
@@ -111,6 +118,13 @@ databaseChangeLog:
         - column:
             constraints:
               nullable: false
+            defaultValueBoolean: false
+            name: "is_deleted"
+            remarks: "Флаг удаления"
+            type: "BOOLEAN"
+        - column:
+            constraints:
+              nullable: false
             name: "created"
             remarks: "Дата создания"
             type: "TIMESTAMP WITH TIME ZONE"
@@ -123,7 +137,7 @@ databaseChangeLog:
         remarks: "Проект"
         tableName: "app_project"
 - changeSet:
-    id: "1744133602373-3"
+    id: "1744133784241-3"
     author: "volnenko (generated)"
     changes:
     - createTable:
@@ -175,6 +189,13 @@ databaseChangeLog:
         - column:
             constraints:
               nullable: false
+            defaultValueBoolean: false
+            name: "is_deleted"
+            remarks: "Флаг удаления"
+            type: "BOOLEAN"
+        - column:
+            constraints:
+              nullable: false
             name: "created"
             remarks: "Дата создания"
             type: "TIMESTAMP WITH TIME ZONE"
@@ -187,7 +208,7 @@ databaseChangeLog:
         remarks: "Задача"
         tableName: "app_task"
 - changeSet:
-    id: "1744133602373-4"
+    id: "1744133784241-4"
     author: "volnenko (generated)"
     changes:
     - createTable:
@@ -230,6 +251,13 @@ databaseChangeLog:
         - column:
             constraints:
               nullable: false
+            defaultValueBoolean: false
+            name: "is_deleted"
+            remarks: "Флаг удаления"
+            type: "BOOLEAN"
+        - column:
+            constraints:
+              nullable: false
             name: "created"
             remarks: "Дата создания"
             type: "TIMESTAMP WITH TIME ZONE"
@@ -242,7 +270,7 @@ databaseChangeLog:
         remarks: "Пользователь"
         tableName: "app_user"
 - changeSet:
-    id: "1744133602373-5"
+    id: "1744133784241-5"
     author: "volnenko (generated)"
     changes:
     - addUniqueConstraint:
@@ -250,7 +278,7 @@ databaseChangeLog:
         constraintName: "app_profile_user_id_key"
         tableName: "app_profile"
 - changeSet:
-    id: "1744133602373-6"
+    id: "1744133784241-6"
     author: "volnenko (generated)"
     changes:
     - addUniqueConstraint:
@@ -258,7 +286,7 @@ databaseChangeLog:
         constraintName: "app_project_name_user_id_key"
         tableName: "app_project"
 - changeSet:
-    id: "1744133602373-7"
+    id: "1744133784241-7"
     author: "volnenko (generated)"
     changes:
     - addUniqueConstraint:
@@ -266,7 +294,7 @@ databaseChangeLog:
         constraintName: "app_user_email_key"
         tableName: "app_user"
 - changeSet:
-    id: "1744133602373-8"
+    id: "1744133784241-8"
     author: "volnenko (generated)"
     changes:
     - addUniqueConstraint:
@@ -274,7 +302,7 @@ databaseChangeLog:
         constraintName: "app_user_username_key"
         tableName: "app_user"
 - changeSet:
-    id: "1744133602373-9"
+    id: "1744133784241-9"
     author: "volnenko (generated)"
     changes:
     - addForeignKeyConstraint:
@@ -289,7 +317,7 @@ databaseChangeLog:
         referencedTableName: "app_user"
         validate: true
 - changeSet:
-    id: "1744133602373-10"
+    id: "1744133784241-10"
     author: "volnenko (generated)"
     changes:
     - addForeignKeyConstraint:
@@ -304,7 +332,7 @@ databaseChangeLog:
         referencedTableName: "app_user"
         validate: true
 - changeSet:
-    id: "1744133602373-11"
+    id: "1744133784241-11"
     author: "volnenko (generated)"
     changes:
     - addForeignKeyConstraint:
@@ -319,7 +347,7 @@ databaseChangeLog:
         referencedTableName: "app_project"
         validate: true
 - changeSet:
-    id: "1744133602373-12"
+    id: "1744133784241-12"
     author: "volnenko (generated)"
     changes:
     - addForeignKeyConstraint:

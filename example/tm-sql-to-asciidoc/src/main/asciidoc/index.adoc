@@ -124,6 +124,18 @@ image::erd_physic.svg[]
 
 
 ^|07. 
+|is_deleted
+|BOOLEAN
+|Флаг удаления
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|08. 
 |created
 |TIMESTAMP WITH TIME ZONE
 |Дата создания
@@ -135,7 +147,7 @@ image::erd_physic.svg[]
 |
 
 
-^|08. 
+^|09. 
 |updated
 |TIMESTAMP WITH TIME ZONE
 |Дата обновления
@@ -259,6 +271,18 @@ image::erd_physic.svg[]
 
 
 ^|07. 
+|is_deleted
+|BOOLEAN
+|Флаг удаления
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|08. 
 |created
 |TIMESTAMP WITH TIME ZONE
 |Дата создания
@@ -270,7 +294,7 @@ image::erd_physic.svg[]
 |
 
 
-^|08. 
+^|09. 
 |updated
 |TIMESTAMP WITH TIME ZONE
 |Дата обновления
@@ -406,6 +430,18 @@ image::erd_physic.svg[]
 
 
 ^|08. 
+|is_deleted
+|BOOLEAN
+|Флаг удаления
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|09. 
 |created
 |TIMESTAMP WITH TIME ZONE
 |Дата создания
@@ -417,7 +453,7 @@ image::erd_physic.svg[]
 |
 
 
-^|09. 
+^|10. 
 |updated
 |TIMESTAMP WITH TIME ZONE
 |Дата обновления
@@ -529,6 +565,18 @@ image::erd_physic.svg[]
 
 
 ^|06. 
+|is_deleted
+|BOOLEAN
+|Флаг удаления
+^|--
+^|--
+^|--
+^|--
+^|✓
+|
+
+
+^|07. 
 |created
 |TIMESTAMP WITH TIME ZONE
 |Дата создания
@@ -540,7 +588,7 @@ image::erd_physic.svg[]
 |
 
 
-^|07. 
+^|08. 
 |updated
 |TIMESTAMP WITH TIME ZONE
 |Дата обновления
