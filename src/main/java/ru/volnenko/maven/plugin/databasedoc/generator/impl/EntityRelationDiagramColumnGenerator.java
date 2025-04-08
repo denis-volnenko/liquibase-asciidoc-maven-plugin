@@ -1,6 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdType;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
@@ -9,6 +10,20 @@ public final class EntityRelationDiagramColumnGenerator extends AbstractGenerato
 
     @NonNull
     private Column column = new Column();
+
+    @NonNull
+    private ErdType erdType = ErdType.PHYSIC;
+
+    @NonNull
+    public ErdType erdType() {
+        return erdType;
+    }
+
+    @NonNull
+    public EntityRelationDiagramColumnGenerator erdType(@NonNull final ErdType erdType) {
+        this.erdType = erdType;
+        return this;
+    }
 
     @NonNull
     @Override

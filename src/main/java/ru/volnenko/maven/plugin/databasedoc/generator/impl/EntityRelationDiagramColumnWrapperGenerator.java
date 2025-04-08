@@ -1,6 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdType;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramColumnWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ColumnWrapper;
@@ -15,13 +16,29 @@ import java.util.stream.Collectors;
 public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractGenerator implements IEntityRelationDiagramColumnWrapperGenerator {
 
     @NonNull
+    private final EntityRelationDiagramColumnGenerator entityRelationDiagramColumnGenerator = new EntityRelationDiagramColumnGenerator();
+
+    @NonNull
     private CreateTable createTable = new CreateTable();
 
     @NonNull
     private List<ColumnWrapper> columnWrappers = Collections.emptyList();
 
     @NonNull
-    private final EntityRelationDiagramColumnGenerator entityRelationDiagramColumnGenerator = new EntityRelationDiagramColumnGenerator();
+    private ErdType erdType = ErdType.PHYSIC;
+
+    @Override
+    @NonNull
+    public ErdType erdType() {
+        return erdType;
+    }
+
+    @Override
+    @NonNull
+    public EntityRelationDiagramColumnWrapperGenerator erdType(@NonNull final ErdType erdType) {
+        this.erdType = erdType;
+        return this;
+    }
 
     @NonNull
     @Override
@@ -80,7 +97,7 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
             for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(PK_PREDICATE).collect(Collectors.toList())) {
                 final Column column = columnWrapper.getColumn();
                 if (column == null) continue;
-                entityRelationDiagramColumnGenerator.column(column).append(stringBuilder);
+                entityRelationDiagramColumnGenerator.erdType(erdType).column(column).append(stringBuilder);
 
             }
             stringBuilder.append("---\n");
@@ -88,7 +105,7 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
         for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(NOT_PK_PREDICATE).collect(Collectors.toList())) {
             final Column column = columnWrapper.getColumn();
             if (column == null) continue;
-            entityRelationDiagramColumnGenerator.column(columnWrapper.getColumn()).append(stringBuilder);
+            entityRelationDiagramColumnGenerator.erdType(erdType).column(columnWrapper.getColumn()).append(stringBuilder);
         }
         stringBuilder.append("}");
         stringBuilder.append("\n");

@@ -3,6 +3,7 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdRender;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdType;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
@@ -19,6 +20,29 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
 
     @NonNull
     private List<Root> roots = Collections.emptyList();
+
+    @NonNull
+    private ErdType erdType = ErdType.PHYSIC;
+
+    @Override
+    @NonNull
+    public ErdType erdType() {
+        return erdType;
+    }
+
+    @Override
+    @NonNull
+    public EntityRelationDiagramDocumentGenerator physic() {
+        this.erdType = ErdType.PHYSIC;
+        return this;
+    }
+
+    @Override
+    @NonNull
+    public EntityRelationDiagramDocumentGenerator logic() {
+        this.erdType = ErdType.LOGIC;
+        return this;
+    }
 
     private void generate(@NonNull StringBuilder stringBuilder, @NonNull final Root root) {
         final List<DatabaseChangeLog> databaseChangeLog = root.getDatabaseChangeLog();
@@ -41,6 +65,7 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         final CreateTable createTable = change.getCreateTable();
         if (createTable == null) return;
         columnWrapperGenerator
+                .erdType(erdType)
                 .createTable(createTable)
                 .columnWrappers(createTable.getColumns())
                 .append(stringBuilder);

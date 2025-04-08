@@ -5,4 +5,12 @@ public enum ErdType {
     LOGIC,
     PHYSIC;
 
+    public boolean isLogic() {
+        return this == LOGIC;
+    }
+
+    public boolean isPhysic() {
+        return this == PHYSIC;
+    }
+
 }
