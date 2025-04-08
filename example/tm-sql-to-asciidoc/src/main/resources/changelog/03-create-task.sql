@@ -4,6 +4,7 @@ CREATE TABLE app_task (
     description VARCHAR(255) DEFAULT '' NOT NULL,
     project_id VARCHAR(255) NULL REFERENCES app_project(id),
     user_id VARCHAR(255) NULL REFERENCES app_user(id),
+    UNIQUE (name, user_id),
     CONSTRAINT pk_app_task PRIMARY KEY (id)
 );
 

@@ -1,8 +1,9 @@
 CREATE TABLE app_project (
     id VARCHAR(255) DEFAULT '' NOT NULL,
-    name VARCHAR(255) DEFAULT '' NOT NULL UNIQUE,
+    name VARCHAR(255) DEFAULT '' NOT NULL,
     description VARCHAR(255) DEFAULT '' NOT NULL,
     user_id VARCHAR(255) NULL REFERENCES app_user(id),
+    UNIQUE (name, user_id),
     CONSTRAINT pk_app_project PRIMARY KEY (id)
 );
 

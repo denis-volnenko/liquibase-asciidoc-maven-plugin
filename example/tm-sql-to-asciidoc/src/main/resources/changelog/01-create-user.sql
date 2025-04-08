@@ -1,8 +1,8 @@
 CREATE TABLE app_user (
     id VARCHAR(255) DEFAULT '' NOT NULL,
-    username VARCHAR(255) DEFAULT '' NOT NULL,
+    username VARCHAR(255) DEFAULT '' NOT NULL UNIQUE,
     password_hash VARCHAR(255) DEFAULT '' NOT NULL,
-    email VARCHAR(255) DEFAULT '' NOT NULL,
+    email VARCHAR(255) DEFAULT '' NOT NULL UNIQUE,
     CONSTRAINT pk_app_user PRIMARY KEY (id)
 );
 
