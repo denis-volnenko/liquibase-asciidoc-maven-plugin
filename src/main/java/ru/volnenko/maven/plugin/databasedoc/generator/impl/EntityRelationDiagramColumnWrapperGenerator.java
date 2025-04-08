@@ -88,10 +88,21 @@ public final class EntityRelationDiagramColumnWrapperGenerator extends AbstractG
     }
 
     @NonNull
+    private String tableName() {
+        @NonNull final String tableName = StringUtil.format(createTable.getTableName());
+        if (erdType.isPhysic()) return "\"" + tableName + "\"";
+        if (erdType.isLogic()) {
+            final String name = createTable.getRemarks();
+            if (name == null || name.isEmpty()) return "\"" + tableName + "\"";
+            return "\"" + name + "\" as " + tableName;
+        }
+        return "\"" + tableName + "\"";
+    }
+
+    @NonNull
     @Override
     public StringBuilder append(@NonNull final StringBuilder stringBuilder) {
-        @NonNull final String tableName = StringUtil.format(createTable.getTableName());
-        stringBuilder.append("entity \"" + tableName + "\" {");
+        stringBuilder.append("entity " + tableName() + " {");
         stringBuilder.append("\n");
         if (hasPK()) {
             for (final ColumnWrapper columnWrapper: columnWrappers.stream().filter(PK_PREDICATE).collect(Collectors.toList())) {
