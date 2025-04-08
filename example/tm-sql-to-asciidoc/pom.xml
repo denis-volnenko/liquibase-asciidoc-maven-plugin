@@ -78,6 +78,20 @@
                         </configuration>
                     </execution>
                     <execution>
+                        <id>dbDoc</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>dbDoc</goal>
+                        </goals>
+                        <configuration>
+                            <changeLogFile>${project.basedir}/src/main/resources/changelog-master.xml</changeLogFile>
+                            <outputDirectory>${project.basedir}/dbdoc/</outputDirectory>
+                            <url>${db.url}</url>
+                            <username>test</username>
+                            <password>test</password>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>generateChangeLog</id>
                         <phase>generate-sources</phase>
                         <goals>
