@@ -16,4 +16,8 @@ public final class Change implements IChange {
 
     private CreateType createType;
 
+    private AddUniqueConstraint addUniqueConstraint;
+
+    private AddForeignKeyConstraint addForeignKeyConstraint;
+
 }
