@@ -13,5 +13,6 @@ comment on table app_task is 'Задача';
 comment on column app_task.id is 'Идентификатор';
 comment on column app_task.name is 'Название';
 comment on column app_task.description is 'Описание';
+comment on column app_task.status is 'Статус';
 comment on column app_task.project_id is 'Идентификатор проекта';
 comment on column app_task.user_id is 'Идентификатор пользователя';
