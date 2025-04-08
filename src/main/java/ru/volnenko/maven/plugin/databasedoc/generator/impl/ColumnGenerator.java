@@ -3,9 +3,13 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
 import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
+
+import java.util.Collections;
+import java.util.Set;
 
 public final class ColumnGenerator extends AbstractGenerator implements IColumnGenerator {
 
@@ -16,8 +20,28 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
     private Column column = new Column();
 
     @NonNull
+    private String tableName = "";
+
+    @NonNull
+    private Set<FK> fks = Collections.emptySet();
+
+    @NonNull
     public static IColumnGenerator create() {
         return new ColumnGenerator();
+    }
+
+    @Override
+    @NonNull
+    public IColumnGenerator tableName(@NonNull final String tableName) {
+        this.tableName = tableName;
+        return this;
+    }
+
+    @Override
+    @NonNull
+    public IColumnGenerator fks(@NonNull Set<FK> fks) {
+        this.fks = fks;
+        return this;
     }
 
     @NonNull
@@ -51,11 +75,17 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
         stringBuilder.append("|" + StringUtil.format(column.getRemarks()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getPrimaryKey()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(column.getConstraints().getUnique()) + "\n");
-        stringBuilder.append("^|" + StringUtil.format(ForeignKeyUtil.enabled(column)) + "\n");
+        boolean fke = ForeignKeyUtil.enabled(column);
+        if (!fke) {
+            final FK fk = new FK(tableName, column.getName());
+            fke = fks.contains(fk);
+        }
+        stringBuilder.append("^|" + StringUtil.format(fke) + "\n");
         stringBuilder.append("^|" + StringUtil.format(column.getAutoIncrement()) + "\n");
         stringBuilder.append("^|" + StringUtil.format(ConstraintUtil.notnull(column)) + "\n");
         stringBuilder.append("|" + StringUtil.format(column.getDefaultValue()) + "\n");
         stringBuilder.append("\n");
+
         return stringBuilder;
     }
 

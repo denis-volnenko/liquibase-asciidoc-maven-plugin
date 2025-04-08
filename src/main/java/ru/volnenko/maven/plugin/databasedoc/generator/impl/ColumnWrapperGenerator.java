@@ -3,9 +3,11 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IColumnWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ColumnWrapper;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public final class ColumnWrapperGenerator extends AbstractGenerator implements IColumnWrapperGenerator {
 
@@ -16,7 +18,28 @@ public final class ColumnWrapperGenerator extends AbstractGenerator implements I
     private Integer index = 1;
 
     @NonNull
+    private String tableName = "";
+
+    @NonNull
+    private Set<FK> fks = Collections.emptySet();
+
+    @NonNull
     private List<ColumnWrapper> columnWrappers = Collections.emptyList();
+
+    @Override
+    @NonNull
+    public IColumnWrapperGenerator tableName(@NonNull final String tableName) {
+        this.tableName = tableName;
+        return this;
+    }
+
+    @Override
+    @NonNull
+    public IColumnWrapperGenerator fks(Set<FK> fks) {
+        if (fks == null) return this;
+        this.fks = fks;
+        return this;
+    }
 
     @NonNull
     @Override
@@ -62,6 +85,8 @@ public final class ColumnWrapperGenerator extends AbstractGenerator implements I
         for (final ColumnWrapper columnWrapper : columnWrappers) {
             columnGenerator
                     .index(index)
+                    .fks(fks)
+                    .tableName(tableName)
                     .column(columnWrapper.getColumn())
                     .append(stringBuilder);
             index++;

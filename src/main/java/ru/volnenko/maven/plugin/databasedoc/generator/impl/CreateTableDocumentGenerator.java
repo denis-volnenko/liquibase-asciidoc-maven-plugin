@@ -52,6 +52,7 @@ public final class CreateTableDocumentGenerator extends AbstractGenerator implem
                 .createTable(createTable)
                 .append(stringBuilder);
         columnWrapperGenerator
+                .fks(fks)
                 .columnWrappers(createTable.getColumns())
                 .append(stringBuilder);
     }
