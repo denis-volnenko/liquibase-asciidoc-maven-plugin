@@ -1,6 +1,6 @@
 databaseChangeLog:
 - changeSet:
-    id: 1744103712176-1
+    id: 1744103912840-1
     author: volnenko (generated)
     changes:
     - createTable:
@@ -11,22 +11,26 @@ databaseChangeLog:
               primaryKeyName: pk_app_project
             defaultValue: ''
             name: id
+            remarks: Идентификатор
             type: VARCHAR(255)
         - column:
             constraints:
               nullable: false
             defaultValue: ''
             name: name
+            remarks: Название
             type: VARCHAR(255)
         - column:
             constraints:
               nullable: false
             defaultValue: ''
             name: description
+            remarks: Описание
             type: VARCHAR(255)
+        remarks: Проект
         tableName: app_project
 - changeSet:
-    id: 1744103712176-2
+    id: 1744103912840-2
     author: volnenko (generated)
     changes:
     - createTable:
@@ -52,7 +56,7 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: app_task
 - changeSet:
-    id: 1744103712176-3
+    id: 1744103912840-3
     author: volnenko (generated)
     changes:
     - createTable:
