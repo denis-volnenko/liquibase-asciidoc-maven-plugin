@@ -4,6 +4,7 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IColumnWrapperGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ColumnWrapper;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.UK;
 
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,9 @@ public final class ColumnWrapperGenerator extends AbstractGenerator implements I
     private Set<FK> fks = Collections.emptySet();
 
     @NonNull
+    private Set<UK> uks = Collections.emptySet();
+
+    @NonNull
     private List<ColumnWrapper> columnWrappers = Collections.emptyList();
 
     @Override
@@ -33,11 +37,17 @@ public final class ColumnWrapperGenerator extends AbstractGenerator implements I
         return this;
     }
 
-    @Override
     @NonNull
-    public IColumnWrapperGenerator fks(Set<FK> fks) {
-        if (fks == null) return this;
+    @Override
+    public IColumnWrapperGenerator fks(@NonNull final Set<FK> fks) {
         this.fks = fks;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public IColumnWrapperGenerator uks(@NonNull final Set<UK> uks) {
+        this.uks = uks;
         return this;
     }
 

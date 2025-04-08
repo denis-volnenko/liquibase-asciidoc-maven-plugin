@@ -4,6 +4,7 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.generator.IColumnGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.UK;
 import ru.volnenko.maven.plugin.databasedoc.util.ConstraintUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 import ru.volnenko.maven.plugin.databasedoc.util.StringUtil;
@@ -26,6 +27,9 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
     private Set<FK> fks = Collections.emptySet();
 
     @NonNull
+    private Set<UK> uks = Collections.emptySet();
+
+    @NonNull
     public static IColumnGenerator create() {
         return new ColumnGenerator();
     }
@@ -39,7 +43,7 @@ public final class ColumnGenerator extends AbstractGenerator implements IColumnG
 
     @Override
     @NonNull
-    public IColumnGenerator fks(@NonNull Set<FK> fks) {
+    public IColumnGenerator fks(@NonNull final Set<FK> fks) {
         this.fks = fks;
         return this;
     }
