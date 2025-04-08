@@ -26,6 +26,13 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
 
     @Override
     @NonNull
+    public EntityRelationDiagramDocumentGenerator erdType(@NonNull final ErdType erdType) {
+        this.erdType = erdType;
+        return this;
+    }
+
+    @Override
+    @NonNull
     public ErdType erdType() {
         return erdType;
     }

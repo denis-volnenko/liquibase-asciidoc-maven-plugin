@@ -13,6 +13,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdType;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTableDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTypeDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.DocumentGenerator;
@@ -60,6 +61,16 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
+    @Parameter(property = "entityRelationDiagramPhysicEnabled")
+    public boolean entityRelationDiagramPhysicEnabled = true;
+
+    @Getter
+    @Setter
+    @Parameter(property = "entityRelationDiagramLogicEnabled")
+    public boolean entityRelationDiagramLogicEnabled = true;
+
+    @Getter
+    @Setter
     @Parameter(property = "entityRelationDiagramInclude")
     public boolean entityRelationDiagramInclude = true;
 
@@ -104,11 +115,6 @@ public final class Generator extends AbstractMojo {
     @NonNull
     private final StringBuilder stringBuilder = new StringBuilder();
 
-    @NonNull
-    private final StringBuilder erdInternal = new StringBuilder();
-
-    @NonNull
-    private final StringBuilder erdExternal = new StringBuilder();
 
     @NonNull
     private final DocumentGenerator documentGenerator = new DocumentGenerator();
@@ -137,26 +143,56 @@ public final class Generator extends AbstractMojo {
                 .append(stringBuilder);
 
         @NonNull final List<Root> roots = rootParser.files(files).parse();
-        entityRelationDiagramDocumentGenerator.internal().roots(roots).append(erdInternal);
-        entityRelationDiagramDocumentGenerator.external().roots(roots).append(erdExternal);
+
         createTableDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
         createTypeDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
 
-        save();
+        save(roots);
     }
 
     @SneakyThrows
-    public void save() {
+    public void save(@NonNull final List<Root> roots) {
         if (outputPath == null || outputPath.isEmpty()) return;
         if (outputFile == null || outputFile.isEmpty()) return;
         @NonNull final File path = new File(outputPath);
         initOutputPath(path)
                 .saveDatabaseYAML(path)
                 .saveDatabaseJSON(path)
-                .saveEntityRelationDiagramADOC(path)
-                .saveEntityRelationDiagramPUML(path, erdInternal)
-                .saveEntityRelationDiagramSVG(path)
-                .saveEntityRelationDiagramPUML(path, erdExternal);
+
+                .saveEntityRelationDiagramLogic(roots, path)
+                .saveEntityRelationDiagramPhysic(roots, path)
+
+                .saveEntityRelationDiagramADOC(path);
+
+    }
+
+    @NonNull
+    private Generator saveEntityRelationDiagramPhysic(@NonNull final List<Root> roots, @NonNull final File path) {
+        if (!entityRelationDiagramEnabled) return this;
+        if (!entityRelationDiagramPhysicEnabled) return this;
+        return saveEntityRelationDiagram(roots, path, ErdType.PHYSIC, "erd_physic");
+    }
+
+    @NonNull
+    private Generator saveEntityRelationDiagramLogic(@NonNull final List<Root> roots, @NonNull final File path) {
+        if (!entityRelationDiagramEnabled) return this;
+        if (!entityRelationDiagramLogicEnabled) return this;
+        return saveEntityRelationDiagram(roots, path, ErdType.LOGIC, "erd_logic");
+    }
+
+    @NonNull
+    private Generator saveEntityRelationDiagram(
+            @NonNull final List<Root> roots,
+            @NonNull final File path,
+            @NonNull final ErdType erdType,
+            @NonNull final String filename
+    ) {
+        @NonNull final StringBuilder erdInternal = entityRelationDiagramDocumentGenerator.erdType(erdType).internal().roots(roots).append(new StringBuilder());
+        @NonNull final StringBuilder erdExternal = entityRelationDiagramDocumentGenerator.erdType(erdType).external().roots(roots).append(new StringBuilder());
+        return this
+                .saveEntityRelationDiagramPUML(path, erdInternal, filename)
+                .saveEntityRelationDiagramSVG(path, erdInternal, filename)
+                .saveEntityRelationDiagramPUML(path, erdExternal, filename);
     }
 
     @NonNull
@@ -196,19 +232,27 @@ public final class Generator extends AbstractMojo {
 
     @NonNull
     @SneakyThrows
-    private Generator saveEntityRelationDiagramPUML(@NonNull final File path, @NonNull StringBuilder stringBuilder) {
+    private Generator saveEntityRelationDiagramPUML(
+            @NonNull final File path,
+            @NonNull final StringBuilder stringBuilder,
+            @NonNull final String filename
+    ) {
         if (!entityRelationDiagramEnabled) return this;
-        @NonNull final File file = new File(path.getAbsolutePath() + "/" + "erd.puml");
+        @NonNull final File file = new File(path.getAbsolutePath() + "/" + filename + ".puml");
         FileUtils.fileWrite(file, stringBuilder.toString());
         return this;
     }
 
     @NonNull
     @SneakyThrows
-    private Generator saveEntityRelationDiagramSVG(@NonNull final File path) {
+    private Generator saveEntityRelationDiagramSVG(
+            @NonNull final File path,
+            @NonNull final StringBuilder stringBuilder,
+            @NonNull final String filename
+    ) {
         if (!entityRelationDiagramEnabled) return this;
-        @NonNull final SourceStringReader reader = new SourceStringReader(erdInternal.toString());
-        @NonNull final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + "erd.svg"));
+        @NonNull final SourceStringReader reader = new SourceStringReader(stringBuilder.toString());
+        @NonNull final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + filename + ".svg"));
         reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
         return this;
     }

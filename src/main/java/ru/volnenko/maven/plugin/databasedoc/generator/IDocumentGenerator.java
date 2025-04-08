@@ -5,6 +5,12 @@ import lombok.NonNull;
 public interface IDocumentGenerator extends IGenerator {
 
     @NonNull
+    IDocumentGenerator entityRelationDiagramPhysicEnabled(@NonNull Boolean entityRelationDiagramPhysicEnabled);
+
+    @NonNull
+    IDocumentGenerator entityRelationDiagramLogicEnabled(@NonNull Boolean entityRelationDiagramLogicEnabled);
+
+    @NonNull
     IDocumentGenerator entityRelationDiagramEnabled(@NonNull Boolean entityRelationDiagramEnabled);
 
     @NonNull

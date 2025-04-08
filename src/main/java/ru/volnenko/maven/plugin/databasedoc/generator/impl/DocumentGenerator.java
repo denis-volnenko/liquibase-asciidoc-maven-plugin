@@ -25,6 +25,27 @@ public final class DocumentGenerator extends AbstractGenerator implements IDocum
     private Boolean entityRelationDiagramInclude = true;
 
     @NonNull
+    public boolean entityRelationDiagramPhysicEnabled = true;
+
+    @NonNull
+    public boolean entityRelationDiagramLogicEnabled = true;
+
+    @NonNull
+    @Override
+    public IDocumentGenerator entityRelationDiagramPhysicEnabled(@NonNull final Boolean entityRelationDiagramPhysicEnabled) {
+        this.entityRelationDiagramPhysicEnabled = entityRelationDiagramPhysicEnabled;
+        return this;
+    }
+
+    @NonNull
+
+    @Override
+    public IDocumentGenerator entityRelationDiagramLogicEnabled(@NonNull final Boolean entityRelationDiagramLogicEnabled) {
+        this.entityRelationDiagramLogicEnabled = entityRelationDiagramLogicEnabled;
+        return this;
+    }
+
+    @NonNull
     @Override
     public IDocumentGenerator entityRelationDiagramEnabled(@NonNull final Boolean entityRelationDiagramEnabled) {
         this.entityRelationDiagramEnabled = entityRelationDiagramEnabled;
