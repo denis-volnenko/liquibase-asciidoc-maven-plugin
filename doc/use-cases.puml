@@ -5,7 +5,7 @@ actor "Maven Plugin" as plugin
 usecase "Generate Database Asciidoc" as uc1
 usecase "Generate Logical Scheme" as uc2
 usecase "Generate Physical Scheme" as uc3
-usecase "Contact Yaml / Json files" as uc4
+usecase "Concat Yaml / Json files" as uc4
 
 plugin --> uc1
 plugin --> uc2
