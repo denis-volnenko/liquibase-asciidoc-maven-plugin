@@ -57,7 +57,7 @@ image::doc/use-cases.svg[]
 
 |===
 
-== Asciidoc Maven Plugins
+== Volnenko Maven Plugins
 
 [cols="20,80"]
 |===
