@@ -32,33 +32,61 @@
 
 == Plugin configuration
 
+=== Repository config
+
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project ...>
+
+    <repositories>
+        <repository>
+            <id>maven.volnenko.ru</id>
+            <name>maven.volnenko.ru</name>
+            <url>https://maven.volnenko.ru/repository</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+</project>
+----
+
 === Config example
 
 ----
-<build>
-    <plugins>
-        <plugin>
-            <groupId>ru.volnenko.maven.plugin</groupId>
-            <artifactId>maven-liquilbase-asciidoc-plugin</artifactId>
-            <version>1.0.0</version>
-            <configuration>
-                <serviceName>TaskManager</serviceName>
-                <dataBaseInfo>Postgres 15</dataBaseInfo>
-                <headerFirstEnabled>true</headerFirstEnabled>
-                <headerSecondEnabled>true</headerSecondEnabled>
-                <tableOfContentsEnabled>true</tableOfContentsEnabled>
-                <outputPath>${project.basedir}/doc/</outputPath>
-                <outputJsonFileEnabled>true</outputJsonFileEnabled>
-                <outputYamlFileEnabled>true</outputYamlFileEnabled>
-                <files>
-                    <file>${project.basedir}/erd/project.yaml</file>
-                    <file>${project.basedir}/erd/task.yaml</file>
-                    <file>${project.basedir}/erd/status.yaml</file>
-                </files>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+<?xml version="1.0" encoding="UTF-8"?>
+<project ...>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>ru.volnenko.maven.plugin</groupId>
+                <artifactId>maven-liquilbase-asciidoc-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <serviceName>TaskManager</serviceName>
+                    <dataBaseInfo>Postgres 15</dataBaseInfo>
+                    <headerFirstEnabled>true</headerFirstEnabled>
+                    <headerSecondEnabled>true</headerSecondEnabled>
+                    <tableOfContentsEnabled>true</tableOfContentsEnabled>
+                    <outputPath>${project.basedir}/doc/</outputPath>
+                    <outputJsonFileEnabled>true</outputJsonFileEnabled>
+                    <outputYamlFileEnabled>true</outputYamlFileEnabled>
+                    <files>
+                        <file>${project.basedir}/erd/project.yaml</file>
+                        <file>${project.basedir}/erd/task.yaml</file>
+                        <file>${project.basedir}/erd/status.yaml</file>
+                    </files>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
 ----
 
 == Development
