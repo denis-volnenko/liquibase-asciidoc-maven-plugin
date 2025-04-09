@@ -1,10 +1,12 @@
 package ru.volnenko.maven.plugin.databasedoc;
 
+import io.qameta.allure.Feature;
 import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
+@Feature("Generator")
 public class GeneratorTest {
 
     @SneakyThrows

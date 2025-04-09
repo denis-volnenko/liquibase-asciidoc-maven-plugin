@@ -1,8 +1,10 @@
 package ru.volnenko.maven.plugin.databasedoc.enumerated;
 
+import io.qameta.allure.Feature;
 import org.junit.Assert;
 import org.junit.Test;
 
+@Feature("ColumnType")
 public class ColumnTypeTest {
 
     @Test
