@@ -5,7 +5,7 @@ import io.qameta.allure.junit4.DisplayName;
 import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.ColumnBuilder;
 
 public class ColumnBuilderTest extends AbstractBuilderTest {
 

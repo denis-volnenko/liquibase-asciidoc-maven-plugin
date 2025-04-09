@@ -6,7 +6,6 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.DatabaseChangeLogBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.ForeignKeyBuilder;
 
 public class DatabaseChangeLogBuilderTest extends AbstractBuilderTest {
 

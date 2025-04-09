@@ -1,12 +1,10 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueBuilder;
 
 public class RootBuilderTest {
 

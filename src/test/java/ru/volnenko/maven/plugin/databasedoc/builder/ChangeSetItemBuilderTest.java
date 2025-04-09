@@ -6,7 +6,6 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetItemBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.ColumnBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ChangeSet;
 
 public class ChangeSetItemBuilderTest extends AbstractBuilderTest {

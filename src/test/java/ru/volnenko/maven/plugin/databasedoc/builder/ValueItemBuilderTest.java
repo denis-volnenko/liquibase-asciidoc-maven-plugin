@@ -4,9 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import lombok.NonNull;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.CreateTypeBuilder;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueItemBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Value;
 

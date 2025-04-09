@@ -4,10 +4,8 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import lombok.NonNull;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueItemBuilder;
 
 public class ValueBuilderTest extends AbstractBuilderTest {
 

@@ -6,7 +6,6 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.GeneratorBuilder;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 public class GeneratorBuilderTest {
