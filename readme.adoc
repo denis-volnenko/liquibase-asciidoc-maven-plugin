@@ -28,9 +28,6 @@
 |*E-mail*
 |denis@volnenko.ru
 
-|*Web-site*
-|
-
 |===
 
 == Context View
