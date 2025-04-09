@@ -1,5 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,6 +14,9 @@ public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
     private final ChangeSetItemBuilder changeSetItemBuilder = changeSetBuilder().add();
 
     @Test
+    @DisplayName("Контракт ChangeSetItemBuilder")
+    @Description("Проверка контракта класса ChangeSetItemBuilder на null-значения и" +
+            "корректности установки значений")
     public void test() {
         Assert.assertNotNull(changeSetItemBuilder.change());
         Assert.assertNotNull(changeSetItemBuilder.changeSet());

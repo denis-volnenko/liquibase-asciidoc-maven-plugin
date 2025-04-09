@@ -1,5 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -10,9 +12,12 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Value;
 public class ValueItemBuilderTest extends AbstractBuilderTest {
 
     @NonNull
-    final ValueItemBuilder valueItemBuilder = valueItemBuilder();
+    private final ValueItemBuilder valueItemBuilder = valueItemBuilder();
 
     @Test
+    @DisplayName("Контракт ValueItemBuilder")
+    @Description("Проверка контракта класса ValueItemBuilder на null-значения и" +
+                 "корректности установки значений")
     @Ignore
     public void test() {
         Assert.assertNotNull(valueItemBuilder.add());

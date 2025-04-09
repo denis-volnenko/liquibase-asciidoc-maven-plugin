@@ -1,5 +1,8 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
+import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
@@ -7,9 +10,13 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 
 public class CreateTableBuilderTest extends AbstractBuilderTest {
 
+    @NonNull
     private final CreateTableBuilder tableBuilder = createTableBuilder();
 
     @Test
+    @DisplayName("Контракт CreateTableBuilder")
+    @Description("Проверка контракта класса CreateTableBuilder на null-значения и" +
+            "корректности установки значений")
     public void test() {
         Assert.assertNotNull(tableBuilder.root());
         Assert.assertNotNull(tableBuilder.change());
