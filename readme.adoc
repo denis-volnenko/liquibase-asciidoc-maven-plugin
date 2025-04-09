@@ -26,7 +26,7 @@
 |denis@volnenko.ru
 
 |*Web-site*
-|https://maven.volnenko.ru//sites/maven-liquilbase-asciidoc-plugin/
+|https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/
 
 |===
 
