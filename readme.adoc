@@ -1,4 +1,4 @@
-= maven-liquilbase-asciidoc-plugin
+= liquilbase-asciidoc-maven-plugin
 :toc:
 
 == Project Info
@@ -29,12 +29,27 @@
 |denis@volnenko.ru
 
 |*Web-site*
-|https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/
-
-|*Repository*
-|https://maven.volnenko.ru/repository/
+|
 
 |===
+
+== Asciidoc Maven Plugins
+
+[cols="20,80"]
+|===
+
+|*Liquilbase*
+a|
+https://github.com/denis-volnenko/liquilbase-asciidoc-maven-plugin/
+https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/
+
+|*OpenApi*
+a|
+https://github.com/denis-volnenko/openapi-asciidoc-maven-plugin/
+https://maven.volnenko.ru/sites/openapi-asciidoc-maven-plugin/
+
+|===
+
 
 == Plugin configuration
 
