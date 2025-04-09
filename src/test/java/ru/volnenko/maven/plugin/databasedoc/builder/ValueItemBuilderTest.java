@@ -18,7 +18,6 @@ public class ValueItemBuilderTest extends AbstractBuilderTest {
     @DisplayName("Контракт ValueItemBuilder")
     @Description("Проверка контракта класса ValueItemBuilder на null-значения и" +
                  "корректности установки значений")
-    @Ignore
     public void test() {
         Assert.assertNotNull(valueItemBuilder.add());
         Assert.assertNotNull(valueItemBuilder.value());

@@ -14,11 +14,10 @@ public class ValueBuilderTest extends AbstractBuilderTest {
     private final ValueBuilder valueBuilder = valueBuilder();
 
     @Test
-    @Ignore
     @DisplayName("Контракт ValueBuilder")
     @Description("Проверка контракта класса ValueBuilder на null-значения")
     public void test() {
-//        Assert.assertNotNull(valueBuilder.add());
+        Assert.assertNotNull(valueBuilder.add());
         Assert.assertNotNull(valueBuilder.createType());
         Assert.assertNotNull(valueBuilder.root());
         Assert.assertNotNull(valueBuilder.change());

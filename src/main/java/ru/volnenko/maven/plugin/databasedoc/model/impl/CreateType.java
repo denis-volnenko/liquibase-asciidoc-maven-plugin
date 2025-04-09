@@ -7,6 +7,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import ru.volnenko.maven.plugin.databasedoc.model.ICreateType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -25,7 +26,7 @@ public final class CreateType implements ICreateType {
 
     private String remarks = "";
 
-    private List<ValueWrapper> values;
+    private List<ValueWrapper> values = new ArrayList<>();
 
     public void add(@NonNull final Value value) {
         values.add(new ValueWrapper(value));
