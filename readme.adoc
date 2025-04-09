@@ -25,11 +25,14 @@
 |*Name*
 |Denis Volnenko
 
-|*Maven*
+|*E-mail*
 |denis@volnenko.ru
 
 |*Web-site*
 |https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/
+
+|*Repository*
+|https://maven.volnenko.ru/repository/
 
 |===
 
