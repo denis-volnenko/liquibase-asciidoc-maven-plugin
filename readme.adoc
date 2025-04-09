@@ -34,10 +34,15 @@
 
 image::doc/context-view.svg[]
 
-
 == Use-Cases
 
 image::doc/use-cases.svg[]
+
+== Technical Limitations
+
+=== Unsupported composite keys (PK, FK, UK)
+
+=== Liquibase Maven Plugin has problem with long YAML scheme
 
 == Examples
 
