@@ -18,22 +18,22 @@ public final class ChangeSetItemBuilder implements IChangeSetItemBuilder {
         changeSetBuilder.databaseChangeLog().setChangeSet(changeSet);
     }
 
-    @Override
     @NonNull
+    @Override
     public ChangeSetItemBuilder id(final String id) {
         changeSet.setId(id);
         return this;
     }
 
-    @Override
     @NonNull
+    @Override
     public ChangeSetItemBuilder author(final String author) {
         changeSet.setAuthor(author);
         return this;
     }
 
-    @Override
     @NonNull
+    @Override
     public ChangeBuilder change() {
         return new ChangeBuilder(this);
     }

@@ -19,40 +19,47 @@ public final class ColumnItemBuilder implements IColumnItemBuilder {
     }
 
     @NonNull
+    @Override
     public ColumnItemBuilder add() {
         return columnBuilder.add();
     }
 
     @NonNull
+    @Override
     public ConstraintsBuilder constraints() {
         return new ConstraintsBuilder(this);
     }
 
     @NonNull
+    @Override
     public ColumnItemBuilder name(final String name) {
         column.setName(name);
         return this;
     }
 
     @NonNull
+    @Override
     public ColumnItemBuilder type(final String type) {
         column.setType(type);
         return this;
     }
 
     @NonNull
+    @Override
     public ColumnItemBuilder remarks(final String remarks) {
         column.setRemarks(remarks);
         return this;
     }
 
     @NonNull
+    @Override
     public ColumnItemBuilder autoIncrement(final Boolean autoIncrement) {
         column.setAutoIncrement(autoIncrement);
         return this;
     }
 
     @NonNull
+    @Override
     public Column column() {
         return column;
     }
@@ -64,6 +71,7 @@ public final class ColumnItemBuilder implements IColumnItemBuilder {
     }
 
     @NonNull
+    @Override
     public ChangeBuilder change() {
         return columnBuilder.change();
     }

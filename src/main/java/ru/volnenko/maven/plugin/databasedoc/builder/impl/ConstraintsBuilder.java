@@ -19,6 +19,7 @@ public final class ConstraintsBuilder implements IConstraintsBuilder {
     }
 
     @NonNull
+    @Override
     public ForeignKeyBuilder foreignKey() {
         return new ForeignKeyBuilder(this);
     }
@@ -30,41 +31,48 @@ public final class ConstraintsBuilder implements IConstraintsBuilder {
     }
 
     @NonNull
+    @Override
     public ConstraintsBuilder primaryKey(final Boolean primaryKey) {
         constraints.setPrimaryKey(primaryKey);
         return this;
     }
 
     @NonNull
+    @Override
     public ConstraintsBuilder nullable(final Boolean nullable) {
         constraints.setNullable(nullable);
         return this;
     }
 
     @NonNull
+    @Override
     public ConstraintsBuilder unique(final Boolean unique) {
         constraints.setUnique(unique);
         return this;
     }
 
     @NonNull
+    @Override
     public ConstraintsBuilder uniqueConstraintName(final String uniqueConstraintName) {
         constraints.setUniqueConstraintName(uniqueConstraintName);
         return this;
     }
 
     @NonNull
+    @Override
     public ConstraintsBuilder foreignKeyName(final String foreignKeyName) {
         constraints.setForeignKeyName(foreignKeyName);
         return this;
     }
 
     @NonNull
+    @Override
     public ColumnItemBuilder add() {
         return columnItemBuilder.add();
     }
 
     @NonNull
+    @Override
     public ChangeBuilder change() {
         return columnItemBuilder.change();
     }

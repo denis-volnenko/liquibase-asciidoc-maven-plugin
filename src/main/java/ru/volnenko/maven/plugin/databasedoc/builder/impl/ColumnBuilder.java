@@ -15,12 +15,13 @@ public final class ColumnBuilder implements IColumnBuilder {
     }
 
     @NonNull
+    @Override
     public ColumnItemBuilder add() {
         return new ColumnItemBuilder(this);
     }
 
-    @Override
     @NonNull
+    @Override
     public CreateTable createTable() {
         return createTableBuilder.createTable();
     }
@@ -31,8 +32,8 @@ public final class ColumnBuilder implements IColumnBuilder {
         return createTableBuilder.root();
     }
 
-    @Override
     @NonNull
+    @Override
     public ChangeBuilder change() {
         return createTableBuilder.change();
     }

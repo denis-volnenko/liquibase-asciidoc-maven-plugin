@@ -20,13 +20,14 @@ public final class ChangeSetBuilder implements IChangeSetBuilder {
         return databaseChangeLogBuilder.root();
     }
 
+    @Override
     @NonNull
     public DatabaseChangeLog databaseChangeLog() {
         return databaseChangeLogBuilder.databaseChangeLog();
     }
 
-    @Override
     @NonNull
+    @Override
     public ChangeSetItemBuilder add() {
         return new ChangeSetItemBuilder(this);
     }

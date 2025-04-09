@@ -17,14 +17,14 @@ public final class GeneratorBuilder implements IGeneratorBuilder {
         root = new Root();
     }
 
-    @Override
     @NonNull
+    @Override
     public RootBuilder root() {
         return RootBuilder.create(root);
     }
 
-    @Override
     @NonNull
+    @Override
     public GeneratorBuilder serviceName() {
         return this;
     }

@@ -19,6 +19,7 @@ public final class DatabaseChangeLogBuilder implements IDatabaseChangeLogBuilder
     }
 
     @NonNull
+    @Override
     public DatabaseChangeLog databaseChangeLog() {
         return databaseChangeLog;
     }
