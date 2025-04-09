@@ -1,10 +1,6 @@
 = liquilbase-asciidoc-maven-plugin
 :toc:
 
-== Context View
-
-image::doc/context-view.svg[]
-
 == Project Info
 
 [cols="20,80"]
@@ -36,6 +32,15 @@ image::doc/context-view.svg[]
 |
 
 |===
+
+== Context View
+
+image::doc/context-view.svg[]
+
+
+== Use-Cases
+
+image::doc/use-cases.svg[]
 
 == Asciidoc Maven Plugins
 
