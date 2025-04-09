@@ -39,6 +39,19 @@ image::doc/context-view.svg[]
 
 image::doc/use-cases.svg[]
 
+== Examples
+
+[cols="20,80"]
+|===
+
+|task-manager-database-asciidoc
+|https://github.com/denis-volnenko/liquilbase-asciidoc-maven-plugin/blob/master/example/task-manager-database-asciidoc/src/main/asciidoc/index.adoc
+
+|task-manager-sql-to-asciidoc
+|https://github.com/denis-volnenko/liquilbase-asciidoc-maven-plugin/blob/master/example/task-manager-sql-to-asciidoc/src/main/asciidoc/index.adoc
+
+|===
+
 == Asciidoc Maven Plugins
 
 [cols="20,80"]
