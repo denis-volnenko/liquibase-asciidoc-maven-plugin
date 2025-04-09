@@ -105,7 +105,7 @@ https://maven.volnenko.ru/sites/openapi-asciidoc-maven-plugin/
         <plugins>
             <plugin>
                 <groupId>ru.volnenko.maven.plugin</groupId>
-                <artifactId>maven-liquilbase-asciidoc-plugin</artifactId>
+                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
                     <serviceName>TaskManager</serviceName>
