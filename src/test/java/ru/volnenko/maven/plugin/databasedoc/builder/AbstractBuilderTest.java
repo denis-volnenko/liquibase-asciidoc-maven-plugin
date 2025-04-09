@@ -83,8 +83,17 @@ public abstract class AbstractBuilderTest {
         return createTableBuilder().column();
     }
 
+    @NonNull
+    public ValueBuilder valueBuilder() {
+        return createTypeBuilder().value();
+    }
+
     @NonNull ColumnItemBuilder columnItemBuilder() {
         return columnBuilder().add();
+    }
+
+    @NonNull ValueItemBuilder valueItemBuilder() {
+        return valueBuilder().add();
     }
 
     @NonNull
@@ -127,6 +136,14 @@ public abstract class AbstractBuilderTest {
                 .getColumns()
                 .get(0)
                 .getColumn();
+    }
+
+    @NonNull
+    public Value getValue(@NonNull final IRootBuilder builder) {
+        return getFirstType(builder)
+                .getValues()
+                .get(0)
+                .getValue();
     }
 
 }

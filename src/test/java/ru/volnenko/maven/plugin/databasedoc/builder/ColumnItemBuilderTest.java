@@ -1,5 +1,6 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
+import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
@@ -7,7 +8,8 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 public class ColumnItemBuilderTest extends AbstractBuilderTest {
 
-    ColumnItemBuilder columnItemBuilder = columnItemBuilder();
+    @NonNull
+    final ColumnItemBuilder columnItemBuilder = columnItemBuilder();
 
     @Test
     public void test() {
