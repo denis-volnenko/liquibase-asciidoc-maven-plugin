@@ -1,6 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.enumerated;
 
 import io.qameta.allure.Feature;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,6 +9,7 @@ import org.junit.Test;
 public class ColumnTypeTest {
 
     @Test
+    @DisplayName("Целочисленные типы")
     public void testInteger() {
         Assert.assertEquals(ColumnType.INTEGER, ColumnType.typeOf("bit"));
         Assert.assertEquals(ColumnType.INTEGER, ColumnType.typeOf("byte"));
@@ -17,12 +19,14 @@ public class ColumnTypeTest {
     }
 
     @Test
+    @DisplayName("Массивы")
     public void testArray() {
         Assert.assertEquals(ColumnType.ARRAY, ColumnType.typeOf("int[]"));
         Assert.assertEquals(ColumnType.ARRAY, ColumnType.typeOf("integer[]"));
     }
 
     @Test
+    @DisplayName("Строки")
     public void testString() {
         Assert.assertEquals(ColumnType.STRING, ColumnType.typeOf("varchar"));
         Assert.assertEquals(ColumnType.STRING, ColumnType.typeOf("varchar(256)"));
