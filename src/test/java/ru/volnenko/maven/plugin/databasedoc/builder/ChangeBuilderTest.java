@@ -22,4 +22,9 @@ public class ChangeBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(changeBuilder.and());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ChangeBuilder(null);
+    }
+
 }

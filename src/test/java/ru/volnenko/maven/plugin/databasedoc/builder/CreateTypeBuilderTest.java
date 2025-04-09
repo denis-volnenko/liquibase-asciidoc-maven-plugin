@@ -37,7 +37,7 @@ public class CreateTypeBuilderTest extends AbstractBuilderTest {
 
     @Test(expected = NullPointerException.class)
     public void testConstructorNPE() {
-        final CreateTypeBuilder typeBuilder = new CreateTypeBuilder(null);
+        new CreateTypeBuilder(null);
     }
 
 }

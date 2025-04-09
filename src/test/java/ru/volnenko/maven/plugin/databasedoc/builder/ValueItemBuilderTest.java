@@ -6,6 +6,7 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.CreateTypeBuilder;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueItemBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Value;
 
@@ -31,6 +32,11 @@ public class ValueItemBuilderTest extends AbstractBuilderTest {
 
         Assert.assertEquals(EXPECTED_NAME, value.getName());
         Assert.assertEquals(EXPECTED_REMARKS, value.getRemarks());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ValueItemBuilder(null);
     }
 
 }

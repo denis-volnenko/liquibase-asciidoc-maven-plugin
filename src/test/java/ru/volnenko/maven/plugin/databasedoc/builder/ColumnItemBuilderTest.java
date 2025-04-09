@@ -37,4 +37,9 @@ public class ColumnItemBuilderTest extends AbstractBuilderTest {
         Assert.assertEquals(true, column.getAutoIncrement());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ColumnItemBuilder(null);
+    }
+
 }

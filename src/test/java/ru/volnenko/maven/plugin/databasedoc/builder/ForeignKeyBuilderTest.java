@@ -21,4 +21,9 @@ public class ForeignKeyBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(fkBuilder.change());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ForeignKeyBuilder(null);
+    }
+
 }

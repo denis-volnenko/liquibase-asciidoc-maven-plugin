@@ -6,6 +6,7 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.GeneratorBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 
 public class GeneratorBuilderTest {
 
@@ -18,6 +19,11 @@ public class GeneratorBuilderTest {
     public void test() {
         Assert.assertNotNull(builder.serviceName());
         Assert.assertNotNull(builder.root());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new GeneratorBuilder(null);
     }
 
 }

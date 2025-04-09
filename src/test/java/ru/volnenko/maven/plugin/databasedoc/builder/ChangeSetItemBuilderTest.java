@@ -6,6 +6,7 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetItemBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.ColumnBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.ChangeSet;
 
 public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
@@ -29,6 +30,11 @@ public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
 
         Assert.assertEquals(EXPECTED_ID, changeSet.getId());
         Assert.assertEquals(EXPECTED_AUTHOR, changeSet.getAuthor());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ChangeSetItemBuilder(null);
     }
 
 }

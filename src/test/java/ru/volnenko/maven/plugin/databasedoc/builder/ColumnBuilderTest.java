@@ -22,4 +22,9 @@ public class ColumnBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(columnBuilder.change());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ColumnBuilder(null);
+    }
+
 }

@@ -38,4 +38,9 @@ public class ConstraintsBuilderTest extends AbstractBuilderTest {
         Assert.assertEquals(true, constraints.getUnique());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ConstraintsBuilder(null);
+    }
+
 }

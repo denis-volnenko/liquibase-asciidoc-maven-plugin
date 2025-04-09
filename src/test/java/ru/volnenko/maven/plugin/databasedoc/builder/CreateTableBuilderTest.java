@@ -55,7 +55,7 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
 
     @Test(expected = NullPointerException.class)
     public void testConstructorNPE() {
-        final CreateTableBuilder tableBuilder = new CreateTableBuilder(null);
+        new CreateTableBuilder(null);
     }
 
 }

@@ -6,6 +6,7 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.ChangeSetItemBuilder;
 
 public class ChangeSetBuilderTest extends AbstractBuilderTest {
 
@@ -18,6 +19,11 @@ public class ChangeSetBuilderTest extends AbstractBuilderTest {
     public void test() {
         Assert.assertNotNull(changeSetBuilder.root());
         Assert.assertNotNull(changeSetBuilder.add());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ChangeSetBuilder(null);
     }
 
 }

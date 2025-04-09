@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueItemBuilder;
 
 public class ValueBuilderTest extends AbstractBuilderTest {
 
@@ -21,6 +22,11 @@ public class ValueBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(valueBuilder.createType());
         Assert.assertNotNull(valueBuilder.root());
         Assert.assertNotNull(valueBuilder.change());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new ValueBuilder(null);
     }
 
 }

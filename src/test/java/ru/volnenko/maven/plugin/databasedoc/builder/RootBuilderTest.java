@@ -5,6 +5,7 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueBuilder;
 
 public class RootBuilderTest {
 
@@ -15,6 +16,11 @@ public class RootBuilderTest {
         Assert.assertNotNull(RootBuilder.create());
         Assert.assertNotNull(RootBuilder.create().root());
         Assert.assertNotNull(RootBuilder.create().dsl());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        new RootBuilder(null);
     }
 
 }
