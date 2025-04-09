@@ -16,16 +16,16 @@ public class ConstraintsBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(constraintsBuilder.add());
         Assert.assertNotNull(constraintsBuilder.change());
 
-        Assert.assertNotNull(constraintsBuilder.foreignKeyName(foreignKeyName));
-        Assert.assertNotNull(constraintsBuilder.uniqueConstraintName(uniqueConstraintName));
+        Assert.assertNotNull(constraintsBuilder.foreignKeyName(FOREIGN_KEY_NAME));
+        Assert.assertNotNull(constraintsBuilder.uniqueConstraintName(UNIQUE_CONSTRAINT_NAME));
         Assert.assertNotNull(constraintsBuilder.primaryKey(true));
         Assert.assertNotNull(constraintsBuilder.nullable(true));
         Assert.assertNotNull(constraintsBuilder.unique(true));
 
         final Constraints constraints = getConstraints(constraintsBuilder);
 
-        Assert.assertEquals(expectedForeignKeyName, constraints.getForeignKeyName());
-        Assert.assertEquals(expectedUniqueConstraintName, constraints.getUniqueConstraintName());
+        Assert.assertEquals(EXPECTED_FOREIGN_KEY_NAME, constraints.getForeignKeyName());
+        Assert.assertEquals(EXPECTED_UNIQUE_CONSTRAINT_NAME, constraints.getUniqueConstraintName());
         Assert.assertEquals(true, constraints.getPrimaryKey());
         Assert.assertEquals(true, constraints.getNullable());
         Assert.assertEquals(true, constraints.getUnique());

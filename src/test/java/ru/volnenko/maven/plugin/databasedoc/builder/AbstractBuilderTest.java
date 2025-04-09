@@ -8,38 +8,38 @@ import java.util.List;
 
 public abstract class AbstractBuilderTest {
 
-    protected final String foreignKeyName = "ForeignKey name";
-    protected final String expectedForeignKeyName = "ForeignKey name";
+    protected static final String FOREIGN_KEY_NAME          = "ForeignKey name";
+    protected static final String EXPECTED_FOREIGN_KEY_NAME = "ForeignKey name";
 
-    protected final String uniqueConstraintName = "Unique constraint name";
-    protected final String expectedUniqueConstraintName = "Unique constraint name";
+    protected static final String UNIQUE_CONSTRAINT_NAME          = "Unique constraint name";
+    protected static final String EXPECTED_UNIQUE_CONSTRAINT_NAME = "Unique constraint name";
 
-    protected final String name = "Name";
-    protected final String expectedName = "Name";
+    protected static final String NAME          = "Name";
+    protected static final String EXPECTED_NAME = "Name";
 
-    protected final String type = "Type";
-    protected final String expectedType = "Type";
+    protected static final String TYPE          = "Type";
+    protected static final String EXPECTED_TYPE = "Type";
 
-    protected final String remarks = "Remarks";
-    protected final String expectedRemarks = "Remarks";
+    protected static final String REMARKS          = "Remarks";
+    protected static final String EXPECTED_REMARKS = "Remarks";
 
-    protected final String tableName = "Table name";
-    protected final String expectedTableName = "Table name";
+    protected static final String TABLE_NAME          = "Table name";
+    protected static final String EXPECTED_TABLE_NAME = "Table name";
 
-    protected final String catalogName = "Catalog name";
-    protected final String expectedCatalogName = "Catalog name";
+    protected static final String CATALOG_NAME          = "Catalog name";
+    protected static final String EXPECTED_CATALOG_NAME = "Catalog name";
 
-    protected final String tablespace = "Table space";
-    protected final String expectedTablespace = "Table space";
+    protected static final String TABLESPACE          = "Table space";
+    protected static final String EXPECTED_TABLESPACE = "Table space";
 
-    protected final String typeName = "Type name";
-    protected final String expectedTypeName = "Type name";
+    protected static final String TYPE_NAME          = "Type name";
+    protected static final String EXPECTED_TYPE_NAME = "Type name";
 
-    protected final String id = "id";
-    protected final String expectedId = "id";
+    protected static final String ID          = "id";
+    protected static final String EXPECTED_ID = "id";
 
-    protected final String author = "author";
-    protected final String expectedAuthor = "author";
+    protected static final String AUTHOR          = "author";
+    protected static final String EXPECTED_AUTHOR = "author";
 
     @NonNull
     private final RootBuilder rootBuilder = RootBuilder.create();

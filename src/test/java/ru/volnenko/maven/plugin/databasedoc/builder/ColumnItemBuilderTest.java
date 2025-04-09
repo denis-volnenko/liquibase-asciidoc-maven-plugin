@@ -17,16 +17,16 @@ public class ColumnItemBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(columnItemBuilder.root());
         Assert.assertNotNull(columnItemBuilder.change());
 
-        Assert.assertNotNull(columnItemBuilder.name(name));
-        Assert.assertNotNull(columnItemBuilder.type(type));
-        Assert.assertNotNull(columnItemBuilder.remarks(remarks));
+        Assert.assertNotNull(columnItemBuilder.name(NAME));
+        Assert.assertNotNull(columnItemBuilder.type(TYPE));
+        Assert.assertNotNull(columnItemBuilder.remarks(REMARKS));
         Assert.assertNotNull(columnItemBuilder.autoIncrement(true));
 
         final Column column = getColumn(columnItemBuilder);
 
-        Assert.assertEquals(expectedName, column.getName());
-        Assert.assertEquals(expectedType, column.getType());
-        Assert.assertEquals(expectedRemarks, column.getRemarks());
+        Assert.assertEquals(EXPECTED_NAME, column.getName());
+        Assert.assertEquals(EXPECTED_TYPE, column.getType());
+        Assert.assertEquals(EXPECTED_REMARKS, column.getRemarks());
         Assert.assertEquals(true, column.getAutoIncrement());
     }
 

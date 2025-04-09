@@ -17,13 +17,13 @@ public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(changeSetItemBuilder.changeSet());
         Assert.assertNotNull(changeSetItemBuilder.root());
 
-        Assert.assertNotNull(changeSetItemBuilder.id(id));
-        Assert.assertNotNull(changeSetItemBuilder.author(author));
+        Assert.assertNotNull(changeSetItemBuilder.id(ID));
+        Assert.assertNotNull(changeSetItemBuilder.author(AUTHOR));
 
         final ChangeSet changeSet = changeSetItemBuilder.changeSet();
 
-        Assert.assertEquals(expectedId, changeSet.getId());
-        Assert.assertEquals(expectedAuthor, changeSet.getAuthor());
+        Assert.assertEquals(EXPECTED_ID, changeSet.getId());
+        Assert.assertEquals(EXPECTED_AUTHOR, changeSet.getAuthor());
     }
 
 }
