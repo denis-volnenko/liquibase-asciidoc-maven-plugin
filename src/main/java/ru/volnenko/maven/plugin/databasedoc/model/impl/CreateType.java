@@ -3,6 +3,7 @@ package ru.volnenko.maven.plugin.databasedoc.model.impl;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import ru.volnenko.maven.plugin.databasedoc.model.ICreateType;
 
@@ -25,5 +26,9 @@ public final class CreateType implements ICreateType {
     private String remarks = "";
 
     private List<ValueWrapper> values;
+
+    public void add(@NonNull final Value value) {
+        values.add(new ValueWrapper(value));
+    }
 
 }

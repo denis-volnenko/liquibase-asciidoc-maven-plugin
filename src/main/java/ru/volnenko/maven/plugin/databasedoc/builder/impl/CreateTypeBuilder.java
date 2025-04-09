@@ -64,4 +64,9 @@ public final class CreateTypeBuilder implements ICreateTypeBuilder {
         return createType;
     }
 
+    @NonNull
+    public ValueBuilder value() {
+        return new ValueBuilder(this);
+    }
+
 }

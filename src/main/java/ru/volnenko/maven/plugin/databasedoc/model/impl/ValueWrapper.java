@@ -14,4 +14,8 @@ public final class ValueWrapper implements IValueWrapper {
 
     private Value value;
 
+    public ValueWrapper(Value value) {
+        this.value = value;
+    }
+
 }
