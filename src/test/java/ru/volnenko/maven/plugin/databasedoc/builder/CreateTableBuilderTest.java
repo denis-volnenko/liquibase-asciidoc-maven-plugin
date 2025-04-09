@@ -36,4 +36,26 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
         Assert.assertEquals(EXPECTED_REMARKS, table.getRemarks());
     }
 
+    @Test(expected = NullPointerException.class)
+    public void testTableNameNPE() {
+        tableBuilder.tableName(null);
+    }
+    @Test(expected = NullPointerException.class)
+    public void testCatalogNameNPE() {
+        tableBuilder.catalogName(null);
+    }
+    @Test(expected = NullPointerException.class)
+    public void testTablespaceNPE() {
+        tableBuilder.tablespace(null);
+    }
+    @Test(expected = NullPointerException.class)
+    public void testRemarksNPE() {
+        tableBuilder.remarks(null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorNPE() {
+        final CreateTableBuilder tableBuilder = new CreateTableBuilder(null);
+    }
+
 }
