@@ -1,5 +1,8 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
+import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
@@ -7,9 +10,13 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Constraints;
 
 public class ConstraintsBuilderTest extends AbstractBuilderTest {
 
-    ConstraintsBuilder constraintsBuilder = constraintsBuilder();
+    @NonNull
+    private final ConstraintsBuilder constraintsBuilder = constraintsBuilder();
 
     @Test
+    @DisplayName("Контракт ConstraintsBuilder")
+    @Description("Проверка контракта класса ConstraintsBuilder на null-значения и" +
+            "корректности установки значений")
     public void test() {
         Assert.assertNotNull(constraintsBuilder.foreignKey());
         Assert.assertNotNull(constraintsBuilder.root());

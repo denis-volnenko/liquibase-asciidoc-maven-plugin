@@ -2,13 +2,15 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
 
 public class ChangeBuilderTest extends AbstractBuilderTest {
 
-    ChangeBuilder changeBuilder = changeBuilder();
+    @NonNull
+    private final ChangeBuilder changeBuilder = changeBuilder();
 
     @Test
     @DisplayName("Контракт ChangeBuilder")

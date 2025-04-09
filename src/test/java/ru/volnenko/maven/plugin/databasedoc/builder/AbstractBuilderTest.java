@@ -35,11 +35,11 @@ public abstract class AbstractBuilderTest {
     protected static final String TYPE_NAME          = "Type name";
     protected static final String EXPECTED_TYPE_NAME = "Type name";
 
-    protected static final String ID          = "id";
-    protected static final String EXPECTED_ID = "id";
+    protected static final String ID          = "Id";
+    protected static final String EXPECTED_ID = "Id";
 
-    protected static final String AUTHOR          = "author";
-    protected static final String EXPECTED_AUTHOR = "author";
+    protected static final String AUTHOR          = "Author";
+    protected static final String EXPECTED_AUTHOR = "Author";
 
     @NonNull
     private final RootBuilder rootBuilder = RootBuilder.create();
