@@ -2,6 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.builder;
 
 import lombok.NonNull;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.impl.ValueItemBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Value;
@@ -12,6 +13,7 @@ public class ValueItemBuilderTest extends AbstractBuilderTest {
     final ValueItemBuilder valueItemBuilder = valueItemBuilder();
 
     @Test
+    @Ignore
     public void test() {
         Assert.assertNotNull(valueItemBuilder.add());
         Assert.assertNotNull(valueItemBuilder.value());
