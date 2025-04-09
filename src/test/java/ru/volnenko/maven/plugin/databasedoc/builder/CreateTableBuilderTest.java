@@ -40,14 +40,17 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
     public void testTableNameNPE() {
         tableBuilder.tableName(null);
     }
+
     @Test(expected = NullPointerException.class)
     public void testCatalogNameNPE() {
         tableBuilder.catalogName(null);
     }
+
     @Test(expected = NullPointerException.class)
     public void testTablespaceNPE() {
         tableBuilder.tablespace(null);
     }
+
     @Test(expected = NullPointerException.class)
     public void testRemarksNPE() {
         tableBuilder.remarks(null);
