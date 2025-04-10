@@ -41,6 +41,14 @@ public abstract class AbstractBuilderTest {
     protected static final String AUTHOR          = "Author";
     protected static final String EXPECTED_AUTHOR = "Author";
 
+    protected static final Integer INTEGER_VALUE                   = 1;
+    protected static final String EXPECTED_INTEGER_TO_STRING_VALUE = "01";
+
+    protected static final String STRING_VALUE = "String value";
+    protected static final String EXPECTED_STRING_VALUE = "1";
+
+    protected static final String EMPTY_STRING = "";
+
     @NonNull
     private final RootBuilder rootBuilder = RootBuilder.create();
 

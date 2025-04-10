@@ -20,6 +20,7 @@ public class ColumnUtilTest extends AbstractBuilderTest {
         Assert.assertNull(ColumnUtil.getName(column));
         final Column column = null;
         Assert.assertNull(ColumnUtil.getName(column));
+        Assert.assertNotNull(new ColumnUtil());
     }
 
     @Test

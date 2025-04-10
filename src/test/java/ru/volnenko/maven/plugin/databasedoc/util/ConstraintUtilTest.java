@@ -35,4 +35,9 @@ public class ConstraintUtilTest extends AbstractBuilderTest {
         Assert.assertEquals(false, ConstraintUtil.notnull(column));
     }
 
+    @Test
+    public void testNotNull() {
+        Assert.assertNotNull(new ConstraintUtil());
+    }
+
 }
