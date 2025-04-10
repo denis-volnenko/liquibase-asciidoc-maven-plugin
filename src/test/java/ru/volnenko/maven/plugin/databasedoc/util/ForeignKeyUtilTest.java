@@ -2,6 +2,7 @@ package ru.volnenko.maven.plugin.databasedoc.util;
 
 import lombok.NonNull;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.AbstractBuilderTest;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
@@ -154,14 +155,49 @@ public class ForeignKeyUtilTest extends AbstractBuilderTest {
     public void testFkConstraint() {
         Assert.assertNull(ForeignKeyUtil.fk((AddForeignKeyConstraint) null));
         Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setBaseColumnNames("");
+        constraint.setBaseColumnNames(EMPTY_STRING);
         Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setBaseTableName("");
+        constraint.setBaseTableName(EMPTY_STRING);
         Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setReferencedColumnNames("");
+        constraint.setReferencedColumnNames(EMPTY_STRING);
         Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setReferencedTableName("");
+        constraint.setReferencedTableName(EMPTY_STRING);
         Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
+    }
+
+    @Test
+    public void testEnabled() {
+        constraints.setForeignKeyName(NAME);
+        column.setConstraints(constraints);
+        Assert.assertFalse(ForeignKeyUtil.enabled(column));
+
+        foreignKey.setReferencedColumnNames(COLUMN_NAME);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertTrue(ForeignKeyUtil.enabled(column));
+
+        constraints.setForeignKeyName(null);
+        foreignKey.setReferencedColumnNames(COLUMN_NAME);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertTrue(ForeignKeyUtil.enabled(column));
+
+        foreignKey.setReferencedTableName(TABLE_NAME);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertTrue(ForeignKeyUtil.enabled(column));
+
+        foreignKey.setReferencedColumnNames(null);
+        foreignKey.setReferencedTableName(null);
+        constraints.setForeignKeyName(null);
+        column.setConstraints(constraints);
+        Assert.assertFalse(ForeignKeyUtil.enabled(column));
+
+        column.setConstraints(null);
+        Assert.assertFalse(ForeignKeyUtil.enabled(column));
+
+        final Column column = null;
+        Assert.assertFalse(ForeignKeyUtil.enabled(column));
     }
 
 }

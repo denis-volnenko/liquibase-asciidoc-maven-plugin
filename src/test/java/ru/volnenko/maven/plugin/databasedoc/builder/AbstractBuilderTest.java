@@ -48,7 +48,8 @@ public abstract class AbstractBuilderTest {
 
     protected static final String EMPTY_STRING = "";
 
-    protected static final String COLUMN_NAME = "Column name";
+    protected static final String COLUMN_NAME          = "Column name";
+    protected static final String EXPECTED_COLUMN_NAME = "Column name";
 
     @NonNull
     private final RootBuilder rootBuilder = RootBuilder.create();

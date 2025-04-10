@@ -26,7 +26,7 @@ public class ColumnUtilTest extends AbstractBuilderTest {
     @Test
     public void testGetName() {
         column.setName(COLUMN_NAME);
-        Assert.assertEquals(EXPECTED_NAME, ColumnUtil.getName(column));
+        Assert.assertEquals(EXPECTED_COLUMN_NAME, ColumnUtil.getName(column));
     }
 
 }
