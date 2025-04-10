@@ -17,4 +17,5 @@ public final class ConstraintUtil {
         if (column.getConstraints().getNullable() == null) return false;
         return !column.getConstraints().getNullable();
     }
+
 }
