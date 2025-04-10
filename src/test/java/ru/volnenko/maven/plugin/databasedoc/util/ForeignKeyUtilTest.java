@@ -63,16 +63,20 @@ public class ForeignKeyUtilTest extends AbstractBuilderTest {
         foreignKey.setReferencedTableName(TABLE_NAME);
         constraints.setForeignKey(foreignKey);
         Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fk((CreateTable) null));
+
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
+
         createTable.setColumns(null);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
+
         createTable.setColumns(wrappedColumns);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
+
         createTable.setColumns(emptyWrappedColumns);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
+
         createTable.setColumns(wrappedEmptyColumns);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
-        System.out.println(ForeignKeyUtil.fk(createTable.getTableName(), column));
 
         createTable.setTableName(TABLE_NAME);
         column.setConstraints(constraints);

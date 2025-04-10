@@ -13,26 +13,26 @@ public class ConstraintUtilTest extends AbstractBuilderTest {
 
     @Test
     public void testNullable() {
-        Assert.assertEquals(true, ConstraintUtil.nullable(column));
+        Assert.assertTrue(ConstraintUtil.nullable(column));
         column.getConstraints().setNullable(null);
-        Assert.assertEquals(true, ConstraintUtil.nullable(column));
+        Assert.assertTrue(ConstraintUtil.nullable(column));
         column.setConstraints(null);
-        Assert.assertEquals(true, ConstraintUtil.nullable(column));
+        Assert.assertTrue(ConstraintUtil.nullable(column));
         final Column column = null;
-        Assert.assertEquals(true, ConstraintUtil.nullable(column));
+        Assert.assertTrue(ConstraintUtil.nullable(column));
     }
 
     @Test
     public void testNotnull() {
-        Assert.assertEquals(false, ConstraintUtil.notnull(column));
+        Assert.assertFalse(ConstraintUtil.notnull(column));
         column.getConstraints().setNullable(null);
-        Assert.assertEquals(false, ConstraintUtil.notnull(column));
+        Assert.assertFalse(ConstraintUtil.notnull(column));
         column.getConstraints().setNullable(false);
-        Assert.assertEquals(true, ConstraintUtil.notnull(column));
+        Assert.assertTrue(ConstraintUtil.notnull(column));
         column.setConstraints(null);
-        Assert.assertEquals(false, ConstraintUtil.notnull(column));
+        Assert.assertFalse(ConstraintUtil.notnull(column));
         final Column column = null;
-        Assert.assertEquals(false, ConstraintUtil.notnull(column));
+        Assert.assertFalse(ConstraintUtil.notnull(column));
     }
 
     @Test

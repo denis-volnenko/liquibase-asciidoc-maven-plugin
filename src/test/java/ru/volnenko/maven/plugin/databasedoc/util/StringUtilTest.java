@@ -19,9 +19,9 @@ public class StringUtilTest extends AbstractBuilderTest {
 
     @Test
     public void testMethodReturn() {
-        Assert.assertEquals(true, StringUtil.exists(STRING_VALUE));
-        Assert.assertEquals(false, StringUtil.exists(null));
-        Assert.assertEquals(false, StringUtil.exists(EMPTY_STRING));
+        Assert.assertTrue(StringUtil.exists(STRING_VALUE));
+        Assert.assertFalse(StringUtil.exists(null));
+        Assert.assertFalse(StringUtil.exists(EMPTY_STRING));
         Assert.assertEquals(EXPECTED_INTEGER_TO_STRING_VALUE, StringUtil.format(INTEGER_VALUE));
         Assert.assertEquals(EMPTY_STRING, StringUtil.format((Integer) null));
         Assert.assertEquals(StringUtil.EMPTY, StringUtil.format(false));
