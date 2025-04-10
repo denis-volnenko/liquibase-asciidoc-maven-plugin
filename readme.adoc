@@ -34,10 +34,15 @@
 
 image::doc/context-view.svg[]
 
-
 == Use-Cases
 
 image::doc/use-cases.svg[]
+
+== Technical Limitations
+
+=== Unsupported composite keys (PK, FK, UK)
+
+=== Liquibase Maven Plugin has problem with long YAML scheme
 
 == Examples
 
@@ -52,7 +57,7 @@ image::doc/use-cases.svg[]
 
 |===
 
-== Asciidoc Maven Plugins
+== Volnenko Maven Plugins
 
 [cols="20,80"]
 |===
@@ -67,8 +72,12 @@ a|
 https://github.com/denis-volnenko/openapi-asciidoc-maven-plugin/
 https://maven.volnenko.ru/sites/openapi-asciidoc-maven-plugin/
 
-|===
+|*Minio Wagon*
+a|
+https://github.com/denis-volnenko/minio-wagon-maven-plugin/
+https://maven.volnenko.ru/sites/minio-wagon-maven-plugin/
 
+|===
 
 == Plugin configuration
 

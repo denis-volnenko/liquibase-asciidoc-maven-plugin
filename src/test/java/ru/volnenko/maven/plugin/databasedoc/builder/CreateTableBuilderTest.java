@@ -1,13 +1,15 @@
 package ru.volnenko.maven.plugin.databasedoc.builder;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.junit4.DisplayName;
 import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.*;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.CreateTableBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.CreateTable;
 
+@Feature("Builder")
 public class CreateTableBuilderTest extends AbstractBuilderTest {
 
     @NonNull
@@ -40,14 +42,17 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
     public void testTableNameNPE() {
         tableBuilder.tableName(null);
     }
+
     @Test(expected = NullPointerException.class)
     public void testCatalogNameNPE() {
         tableBuilder.catalogName(null);
     }
+
     @Test(expected = NullPointerException.class)
     public void testTablespaceNPE() {
         tableBuilder.tablespace(null);
     }
+
     @Test(expected = NullPointerException.class)
     public void testRemarksNPE() {
         tableBuilder.remarks(null);
