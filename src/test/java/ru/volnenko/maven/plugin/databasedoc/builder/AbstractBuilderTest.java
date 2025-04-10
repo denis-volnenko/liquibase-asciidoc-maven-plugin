@@ -45,9 +45,10 @@ public abstract class AbstractBuilderTest {
     protected static final String EXPECTED_INTEGER_TO_STRING_VALUE = "01";
 
     protected static final String STRING_VALUE = "String value";
-    protected static final String EXPECTED_STRING_VALUE = "1";
 
     protected static final String EMPTY_STRING = "";
+
+    protected static final String COLUMN_NAME = "Column name";
 
     @NonNull
     private final RootBuilder rootBuilder = RootBuilder.create();

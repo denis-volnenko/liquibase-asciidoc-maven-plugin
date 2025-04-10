@@ -11,10 +11,13 @@ import java.util.*;
 public class ForeignKeyUtilTest extends AbstractBuilderTest {
 
     @NonNull
-    private final Root root = new Root();
+    private final Column column = new Column();
 
     @NonNull
-    private final Column column = new Column();
+    private final Constraints constraints = new Constraints();
+
+    @NonNull
+    private final ForeignKey foreignKey = new ForeignKey();
 
     @NonNull
     private final List<ColumnWrapper> wrappedColumns = Arrays.asList(
@@ -56,17 +59,91 @@ public class ForeignKeyUtilTest extends AbstractBuilderTest {
 
     @Test
     public void testFkCreateTable() {
+        foreignKey.setReferencedColumnNames(COLUMN_NAME);
+        foreignKey.setReferencedTableName(TABLE_NAME);
+        constraints.setForeignKey(foreignKey);
         Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fk((CreateTable) null));
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
         createTable.setColumns(null);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
         createTable.setColumns(wrappedColumns);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
-
         createTable.setColumns(emptyWrappedColumns);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
         createTable.setColumns(wrappedEmptyColumns);
         Assert.assertNotNull(ForeignKeyUtil.fk(createTable));
+        System.out.println(ForeignKeyUtil.fk(createTable.getTableName(), column));
+
+        createTable.setTableName(TABLE_NAME);
+        column.setConstraints(constraints);
+        column.setName(COLUMN_NAME);
+        final List<ColumnWrapper> columnWrapper = Arrays.asList(
+                new ColumnWrapper(column),
+                new ColumnWrapper(column)
+        );
+        createTable.setColumns(columnWrapper);
+        final FK fk = ForeignKeyUtil.fk(createTable.getTableName(), column);
+        final Set<FK> result = new LinkedHashSet<>();
+        result.add(fk);
+        Assert.assertNotNull(fk);
+        Assert.assertEquals(result, ForeignKeyUtil.fk(createTable));
+    }
+
+    @Test
+    public void testFkTableNameColumn() {
+        Assert.assertNull(ForeignKeyUtil.fk(null, null));
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, null));
+        Assert.assertNull(ForeignKeyUtil.fk(null, column));
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        column.setConstraints(null);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        foreignKey.setReferencedTableName(EMPTY_STRING);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        foreignKey.setReferencedTableName(TABLE_NAME);
+        foreignKey.setReferencedColumnNames(EMPTY_STRING);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        foreignKey.setReferencedTableName(TABLE_NAME);
+        foreignKey.setReferencedColumnNames(null);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        foreignKey.setReferencedColumnNames(COLUMN_NAME);
+        foreignKey.setReferencedTableName(TABLE_NAME);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        column.setName(null);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        column.setName(EMPTY_STRING);
+        Assert.assertNull(ForeignKeyUtil.fk(TABLE_NAME, column));
+
+        foreignKey.setReferencedColumnNames(COLUMN_NAME);
+        foreignKey.setReferencedTableName(TABLE_NAME);
+        constraints.setForeignKey(foreignKey);
+        column.setConstraints(constraints);
+        column.setName(STRING_VALUE);
+        column.getConstraints().setUnique(null);
+        final FK result = ForeignKeyUtil.fk(TABLE_NAME, column);
+        Assert.assertEquals(false, result.getUnique());
     }
 
     @Test
