@@ -5,7 +5,7 @@ import lombok.NonNull;
 public final class StringUtil {
 
     @NonNull
-        public static final String EMPTY = "--";
+    public static final String EMPTY = "--";
 
     public static boolean exists(final String value) {
         if (value == null) return false;
