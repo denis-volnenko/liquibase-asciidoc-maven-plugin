@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Column name 1",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "Table name 1",
+        "referencedColumnNames": "refColumn names 1"
+      },
+      "unique": true
+    }
+  },
+  {
+    "name": "Column name 2",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "Table name 2",
+        "referencedColumnNames": "refColumn names 2"
+      }
+    }
+  }
+]

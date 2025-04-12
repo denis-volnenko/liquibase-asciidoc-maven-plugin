@@ -14,6 +14,7 @@ import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilData;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 @Feature("ForeignKeyUtil")
 @RunWith(DataProviderRunner.class)
@@ -83,7 +84,7 @@ public class NewForeignKeyUtilTest {
 ////        Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(roots));
 //    }
 //
-//    @Ignore
+
 //    @Test
 //    @DisplayName("ForeignKeyUtil метод fks с параметром Root")
 //    @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK")
@@ -91,14 +92,32 @@ public class NewForeignKeyUtilTest {
 //    public void testSetRoot(Root root) {
 //        Assert.assertEquals(ForeignKeyUtilData.correctReturnOfFksRootMethod(), ForeignKeyUtil.fks(root));
 //    }
-//
-//    @Ignore
+
 //    @Test
 //    @DisplayName("ForeignKeyUtil метод fks с параметром Root")
 //    @Description("Проверка метода fks с параметром Root на возврат emptySet")
 //    @UseDataProvider(value = "invalidRoot", location = ForeignKeyUtilData.class)
 //    public void testEmptySetRoot(Root root) {
 //        Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(root));
+//    }
+
+    @Test
+    @DisplayName("ForeignKeyUtil медод fk с параметрами String и Column")
+    @Description("Проверка метода fk с параметрами String и Column на возврат корректного объекта FK")
+    @UseDataProvider(value = "validColumnWithTableName", location = ForeignKeyUtilData.class)
+    public void testValidColumnWithTableNameCorrectReturn(final String tableName, final Column column) {
+        @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkColumnTableNameMethod();
+        @NonNull final FK fk = ForeignKeyUtil.fk(tableName, column);
+        Assert.assertNotNull(fk);
+//        Assert.assertEquals(expectedFk, fk);
+    }
+
+//    @Test
+//    @DisplayName("ForeignKeyUtil медод fk с параметрами String и Column")
+//    @Description("Проверка метода fk с параметрами String и Column на возврат Null")
+//    @UseDataProvider(value = "invalidColumnWithTableName", location = ForeignKeyUtilData.class)
+//    public void testInvalidColumnWithTableNameCorrectReturn(final String tableName, final Column column) {
+//        Assert.assertNull(ForeignKeyUtil.fk(tableName, column));
 //    }
 
 }

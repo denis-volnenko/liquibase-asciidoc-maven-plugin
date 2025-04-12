@@ -1,0 +1,77 @@
+[
+  null,
+  {
+    "name": null,
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "ValidTable",
+        "referencedColumnNames": "ValidColumn"
+      }
+    }
+  },
+  {
+    "name": "",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "ValidTable",
+        "referencedColumnNames": "ValidColumn"
+      }
+    }
+  },
+  {
+    "name": "valid_name",
+    "constraints": null
+  },
+  {
+    "name": "valid_name",
+    "constraints": {
+      "foreignKey": null
+    }
+  },
+  {
+    "name": "valid_name",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": null,
+        "referencedColumnNames": "ValidColumn"
+      }
+    }
+  },
+  {
+    "name": "valid_name",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "",
+        "referencedColumnNames": "ValidColumn"
+      }
+    }
+  },
+  {
+    "name": "valid_name",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "ValidTable",
+        "referencedColumnNames": null
+      }
+    }
+  },
+  {
+    "name": "valid_name",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "ValidTable",
+        "referencedColumnNames": ""
+      }
+    }
+  },
+  {
+    "name": "valid_name",
+    "tableName": "",
+    "constraints": {
+      "foreignKey": {
+        "referencedTableName": "ValidTable",
+        "referencedColumnNames": "ValidColumn"
+      }
+    }
+  }
+]
