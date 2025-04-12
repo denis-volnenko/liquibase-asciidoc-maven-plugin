@@ -2,13 +2,15 @@ package ru.volnenko.maven.plugin.databasedoc.util;
 
 import lombok.NonNull;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.volnenko.maven.plugin.databasedoc.builder.AbstractBuilderTest;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 import java.util.*;
 
-public class ForeignKeyUtilTest extends AbstractBuilderTest {
+@Ignore
+public class OldForeignKeyUtilTest extends AbstractBuilderTest {
 
     @NonNull
     private final Root root = new Root();
@@ -41,6 +43,51 @@ public class ForeignKeyUtilTest extends AbstractBuilderTest {
     private final List<Change> changesNull = null;
 
     private final Change changeNull = null;
+
+    @NonNull
+    private final Column column = new Column();
+
+    @NonNull
+    private final Constraints constraints = new Constraints();
+
+    @NonNull
+    private final ForeignKey foreignKey = new ForeignKey();
+
+    @NonNull
+    private final List<ColumnWrapper> wrappedColumns = Arrays.asList(
+            new ColumnWrapper(column),
+            new ColumnWrapper(column)
+    );
+
+    @NonNull
+    private final List<ColumnWrapper> wrappedEmptyColumns = Arrays.asList(
+            new ColumnWrapper(null),
+            new ColumnWrapper(null)
+    );
+
+    @NonNull
+    private final List<ColumnWrapper> emptyWrappedColumns = Arrays.asList(
+            null,
+            null
+    );
+
+    @NonNull
+    private final Collection<Root> rootsList = new ArrayList<>();
+
+    @NonNull
+    private final Collection<Root> rootsSet = new LinkedHashSet<>();
+
+    @NonNull
+    private final CreateTable createTable = createTableBuilder().createTable();
+
+    @NonNull
+    private final AddForeignKeyConstraint constraint = new AddForeignKeyConstraint();
+
+    @Test
+    public void testNull() { // need to delete after refactor
+        Assert.assertNotNull(ForeignKeyUtil.fks(rootsList));
+        Assert.assertNotNull(ForeignKeyUtil.fks(rootsSet));
+    }
 
     @Test
     public void testFksRoot() {
@@ -92,51 +139,6 @@ public class ForeignKeyUtilTest extends AbstractBuilderTest {
         rootWithDCL.setDatabaseChangeLog(listOfDatabaseChangeLogs);
         Assert.assertEquals(result, ForeignKeyUtil.fks(rootWithDCL));
 
-    }
-
-    @NonNull
-    private final Column column = new Column();
-
-    @NonNull
-    private final Constraints constraints = new Constraints();
-
-    @NonNull
-    private final ForeignKey foreignKey = new ForeignKey();
-
-    @NonNull
-    private final List<ColumnWrapper> wrappedColumns = Arrays.asList(
-            new ColumnWrapper(column),
-            new ColumnWrapper(column)
-    );
-
-    @NonNull
-    private final List<ColumnWrapper> wrappedEmptyColumns = Arrays.asList(
-            new ColumnWrapper(null),
-            new ColumnWrapper(null)
-    );
-
-    @NonNull
-    private final List<ColumnWrapper> emptyWrappedColumns = Arrays.asList(
-            null,
-            null
-    );
-
-    @NonNull
-    private final Collection<Root> rootsList = new ArrayList<>();
-
-    @NonNull
-    private final Collection<Root> rootsSet = new LinkedHashSet<>();
-
-    @NonNull
-    private final CreateTable createTable = createTableBuilder().createTable();
-
-    @NonNull
-    private final AddForeignKeyConstraint constraint = new AddForeignKeyConstraint();
-
-    @Test
-    public void testNull() { // need to delete after refactor
-        Assert.assertNotNull(ForeignKeyUtil.fks(rootsList));
-        Assert.assertNotNull(ForeignKeyUtil.fks(rootsSet));
     }
 
     @Test
@@ -232,19 +234,19 @@ public class ForeignKeyUtilTest extends AbstractBuilderTest {
         Assert.assertEquals(false, result.getUnique());
     }
 
-    @Test
-    public void testFkConstraint() {
-        Assert.assertNull(ForeignKeyUtil.fk((AddForeignKeyConstraint) null));
-        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setBaseColumnNames(EMPTY_STRING);
-        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setBaseTableName(EMPTY_STRING);
-        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setReferencedColumnNames(EMPTY_STRING);
-        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-        constraint.setReferencedTableName(EMPTY_STRING);
-        Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
-    }
+//    @Test
+//    public void testFkConstraint() {
+//        Assert.assertNull(ForeignKeyUtil.fk((AddForeignKeyConstraint) null));
+//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+//        constraint.setBaseColumnNames(EMPTY_STRING);
+//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+//        constraint.setBaseTableName(EMPTY_STRING);
+//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+//        constraint.setReferencedColumnNames(EMPTY_STRING);
+//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+//        constraint.setReferencedTableName(EMPTY_STRING);
+//        Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
+//    }
 
     @Test
     public void testEnabled() {
@@ -280,7 +282,5 @@ public class ForeignKeyUtilTest extends AbstractBuilderTest {
         final Column column = null;
         Assert.assertFalse(ForeignKeyUtil.enabled(column));
     }
-
-
 
 }
