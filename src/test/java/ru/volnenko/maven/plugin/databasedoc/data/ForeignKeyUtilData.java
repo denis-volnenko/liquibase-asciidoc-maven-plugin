@@ -1,12 +1,21 @@
 package ru.volnenko.maven.plugin.databasedoc.data;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Constraints;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.ForeignKey;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 public class ForeignKeyUtilData {
+
+    @NonNull
+    public static FK correctReturnOfFkConstraintMethod() {
+        final FK fk = new FK();
+        final PK pk = new PK();
+        fk.setTableName("baseTable");
+        fk.setFieldName("baseColumn");
+        pk.setTableName("refTable");
+        pk.setFieldName("refColumn");
+        fk.setPk(pk);
+        return fk;
+    }
 
     @DataProvider
     public static Object[] validForeignKeyConstraints() {
@@ -47,6 +56,23 @@ public class ForeignKeyUtilData {
         foreignKeyConstraint.setReferencedTableName(refTable);
         foreignKeyConstraint.setReferencedColumnNames(refColumn);
         return foreignKeyConstraint;
+    }
+
+    @NonNull
+    private FK createFk(
+            String tableNameFK,
+            String fieldNameFK,
+            String tableNamePK,
+            String fieldNamePK
+    ) {
+        final FK fk = new FK();
+        final PK pk = new PK();
+        fk.setTableName(tableNameFK);
+        fk.setFieldName(fieldNameFK);
+        pk.setTableName(tableNamePK);
+        pk.setFieldName(fieldNamePK);
+        fk.setPk(pk);
+        return fk;
     }
 
     @NonNull

@@ -14,12 +14,10 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 @RunWith(DataProviderRunner.class)
 public class NewForeignKeyUtilTest {
 
-    @Ignore
     @Test
     @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
     public void testValidConstraintsCorrectReturn(AddForeignKeyConstraint constraint) {
-
-        //Assert.assertEquals(correctReturn, ForeignKeyUtil.fk(constraint));
+        Assert.assertEquals(ForeignKeyUtilData.correctReturnOfFkConstraintMethod(), ForeignKeyUtil.fk(constraint));
     }
 
     @Test
