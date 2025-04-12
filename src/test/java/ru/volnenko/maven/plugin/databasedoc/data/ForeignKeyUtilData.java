@@ -58,21 +58,26 @@ public class ForeignKeyUtilData {
     }
 
     @DataProvider
-    public static Object[] validColumns() {
-        return new Object[]{
-                createColumn(createConstraints("ForeignKeyName", createForeignKey("ReferencedTableName", "ReferencedColumnNames")))
+    public static Object[] trueColumns() {
+        return new Object[][]{
+                {createColumn(createConstraints("ForeignKeyName", createForeignKey("ReferencedTableName", "ReferencedColumnNames")))},
+                {createColumn(createConstraints("ForeignKeyName", createForeignKey(null, "ReferencedColumnNames")))},
+                {createColumn(createConstraints(null, createForeignKey(null, "ReferencedColumnNames")))},
+                {createColumn(createConstraints(null, createForeignKey("ReferencedTableName", null)))},
+                {createColumn(createConstraints(null, createForeignKey("ReferencedTableName", "ReferencedColumnNames")))}
         };
     }
 
     @DataProvider
-    public static Object[] invalidColumns() {
+    public static Object[] falseColumns() {
         return new Object[][]{
                 {null},
                 {createColumn(null)},
-                {createColumn(createConstraints(null, null))}
+                {createColumn(createConstraints(null, null))},
+                {createColumn(createConstraints("ForeignKeyName", null))},
+                {createColumn(createConstraints(null, createForeignKey(null, null)))}
         };
     }
-
 
     @NonNull
     private static Constraints createConstraints(
