@@ -8,12 +8,10 @@ public class ForeignKeyUtilData {
     @NonNull
     public static FK correctReturnOfFkConstraintMethod() {
         final FK fk = new FK();
-        final PK pk = new PK();
         fk.setTableName("baseTable");
         fk.setFieldName("baseColumn");
-        pk.setTableName("refTable");
-        pk.setFieldName("refColumn");
-        fk.setPk(pk);
+        fk.getPk().setTableName("refTable");
+        fk.getPk().setFieldName("refColumn");
         return fk;
     }
 
