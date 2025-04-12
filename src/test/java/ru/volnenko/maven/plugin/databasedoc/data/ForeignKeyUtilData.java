@@ -1,7 +1,15 @@
 package ru.volnenko.maven.plugin.databasedoc.data;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
+import net.sourceforge.plantuml.ugraphic.UChangeColor;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
+import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
+
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ForeignKeyUtilData {
 
@@ -13,6 +21,107 @@ public class ForeignKeyUtilData {
         fk.getPk().setTableName("refTable");
         fk.getPk().setFieldName("refColumn");
         return fk;
+    }
+
+    @NonNull
+    public static Set<FK> correctReturnOfFksSetRootsMethod() {
+        final Root root = new Root();
+        final Set<FK> fks = new LinkedHashSet<>();
+        return fks;
+    }
+
+    @NonNull
+    public static Set<FK> correctReturnOfFksRootMethod() {
+        final Root root = new Root();
+        final DatabaseChangeLog databaseChangeLog = new DatabaseChangeLog();
+        final ChangeSet changeSet = new ChangeSet();
+        final Change change = new Change();
+        final CreateTable createTable = new CreateTable();
+        final AddForeignKeyConstraint foreignKeyConstraint = new AddForeignKeyConstraint();
+        final Column column = new Column();
+        final Constraints constraints = new Constraints();
+        final AddForeignKeyConstraint constraint = new AddForeignKeyConstraint();
+        final List<Change> changes = Arrays.asList(new Change(), new Change());
+        constraint.setBaseColumnNames("");
+        constraint.setBaseTableName("");
+        constraint.setReferencedColumnNames("");
+        constraint.setReferencedTableName("");
+        column.setConstraints(constraints);
+        column.setName("Column name");
+        final List<ColumnWrapper> columnWrappers = Arrays.asList(
+                new ColumnWrapper(column),
+                new ColumnWrapper(column)
+        );
+        createTable.setColumns(columnWrappers);
+        createTable.setTableName("Table name");
+        change.setCreateTable(change.getCreateTable());
+        change.setAddForeignKeyConstraint(foreignKeyConstraint);
+        changes.get(0).setCreateTable(createTable);
+        changes.get(0).setAddForeignKeyConstraint(constraint);
+        final Set<FK> fks = new LinkedHashSet<>();
+        fks.addAll(ForeignKeyUtil.fk(createTable));
+        fks.add(ForeignKeyUtil.fk(change.getAddForeignKeyConstraint()));
+        return fks;
+    }
+
+    @NonNull
+    private static Root createRoot(
+            List<DatabaseChangeLog> listOfDatabaseChangeLog
+    ) {
+        final Root root = new Root();
+        root.setDatabaseChangeLog(listOfDatabaseChangeLog);
+        return root;
+    }
+
+    private static DatabaseChangeLog createDatabaseChangeLog(
+            ChangeSet changeSet
+    ) {
+        final DatabaseChangeLog databaseChangeLog = new DatabaseChangeLog();
+        databaseChangeLog.setChangeSet(changeSet);
+        return databaseChangeLog;
+    }
+
+    private static ChangeSet createChangeSet(
+            List<Change> changes
+    ) {
+        final ChangeSet changeSet = new ChangeSet();
+        changeSet.setChanges(changes);
+        return changeSet;
+    }
+
+    private static Change createChange(
+            CreateTable createTable,
+            AddForeignKeyConstraint addForeignKeyConstraint
+    ) {
+        final Change change = new Change();
+        change.setCreateTable(createTable);
+        change.setAddForeignKeyConstraint(addForeignKeyConstraint);
+        return change;
+    }
+
+    private static CreateTable createTable(
+            String tableName,
+            List<ColumnWrapper> columns
+    ) {
+        final CreateTable table = new CreateTable();
+        table.setTableName(tableName);
+        table.setColumns(columns);
+        return table;
+    }
+
+    private static ColumnWrapper createColumnWrapper(
+            Column column
+    ) {
+        final ColumnWrapper columnWrapper = new ColumnWrapper();
+        columnWrapper.setColumn(column);
+        return columnWrapper;
+    }
+
+    @DataProvider
+    public static Object[] validRoot() {
+        return new Object[]{
+                createRoot(Arrays.asList(createDatabaseChangeLog(null))) // поправить
+        };
     }
 
     @DataProvider
@@ -57,24 +166,9 @@ public class ForeignKeyUtilData {
     }
 
     @NonNull
-    private FK createFk(
-            String tableNameFK,
-            String fieldNameFK,
-            String tableNamePK,
-            String fieldNamePK
-    ) {
-        final FK fk = new FK();
-        final PK pk = new PK();
-        fk.setTableName(tableNameFK);
-        fk.setFieldName(fieldNameFK);
-        pk.setTableName(tableNamePK);
-        pk.setFieldName(fieldNamePK);
-        fk.setPk(pk);
-        return fk;
-    }
-
-    @NonNull
-    private static ForeignKey createForeignKey(String baseTable, String baseColumn) {
+    private static ForeignKey createForeignKey(
+            String baseTable,
+            String baseColumn) {
         ForeignKey foreignKey = new ForeignKey();
         foreignKey.setReferencedColumnNames(baseTable);
         foreignKey.setReferencedTableName(baseColumn);
@@ -84,11 +178,11 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[] trueColumns() {
         return new Object[][]{
-                {createColumn(createConstraints("ForeignKeyName", createForeignKey("ReferencedTableName", "ReferencedColumnNames")))},
-                {createColumn(createConstraints("ForeignKeyName", createForeignKey(null, "ReferencedColumnNames")))},
-                {createColumn(createConstraints(null, createForeignKey(null, "ReferencedColumnNames")))},
-                {createColumn(createConstraints(null, createForeignKey("ReferencedTableName", null)))},
-                {createColumn(createConstraints(null, createForeignKey("ReferencedTableName", "ReferencedColumnNames")))}
+                {createColumn("", createConstraints(false,"ForeignKeyName", createForeignKey("ReferencedTableName", "ReferencedColumnNames")))},
+                {createColumn("", createConstraints(false,"ForeignKeyName", createForeignKey(null, "ReferencedColumnNames")))},
+                {createColumn("", createConstraints(false,null, createForeignKey(null, "ReferencedColumnNames")))},
+                {createColumn("", createConstraints(false,null, createForeignKey("ReferencedTableName", null)))},
+                {createColumn("", createConstraints(false,null, createForeignKey("ReferencedTableName", "ReferencedColumnNames")))}
         };
     }
 
@@ -96,19 +190,21 @@ public class ForeignKeyUtilData {
     public static Object[] falseColumns() {
         return new Object[][]{
                 {null},
-                {createColumn(null)},
-                {createColumn(createConstraints(null, null))},
-                {createColumn(createConstraints("ForeignKeyName", null))},
-                {createColumn(createConstraints(null, createForeignKey(null, null)))}
+                {createColumn("", null)},
+                {createColumn("", createConstraints(false,null, null))},
+                {createColumn("", createConstraints(false,"ForeignKeyName", null))},
+                {createColumn("", createConstraints(false,null, createForeignKey(null, null)))}
         };
     }
 
     @NonNull
     private static Constraints createConstraints(
+            Boolean unique,
             String foreignKeyName,
             ForeignKey foreignKey
     ) {
         final Constraints constraints = new Constraints();
+        constraints.setUnique(unique);
         constraints.setForeignKeyName(foreignKeyName);
         constraints.setForeignKey(foreignKey);
         return constraints;
@@ -116,9 +212,11 @@ public class ForeignKeyUtilData {
 
     @NonNull
     private static Column createColumn(
+            String name,
             Constraints constraints
     ) {
         final Column column = new Column();
+        column.setName(name);
         column.setConstraints(constraints);
         return column;
     }
