@@ -65,8 +65,6 @@ public class NewForeignKeyUtilTest {
         Assert.assertFalse(ForeignKeyUtil.enabled(column));
     }
 
-    ///////////////////////
-
 //    @Ignore
 //    @Test
 //    @DisplayName("ForeignKeyUtil метод fks с параметром Roots")
