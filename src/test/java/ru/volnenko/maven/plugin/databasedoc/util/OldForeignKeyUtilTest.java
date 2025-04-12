@@ -234,19 +234,19 @@ public class OldForeignKeyUtilTest extends AbstractBuilderTest {
         Assert.assertEquals(false, result.getUnique());
     }
 
-//    @Test
-//    public void testFkConstraint() {
-//        Assert.assertNull(ForeignKeyUtil.fk((AddForeignKeyConstraint) null));
-//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-//        constraint.setBaseColumnNames(EMPTY_STRING);
-//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-//        constraint.setBaseTableName(EMPTY_STRING);
-//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-//        constraint.setReferencedColumnNames(EMPTY_STRING);
-//        Assert.assertNull(ForeignKeyUtil.fk(constraint));
-//        constraint.setReferencedTableName(EMPTY_STRING);
-//        Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
-//    }
+    @Test
+    public void testFkConstraint() {
+        Assert.assertNull(ForeignKeyUtil.fk((AddForeignKeyConstraint) null));
+        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+        constraint.setBaseColumnNames(EMPTY_STRING);
+        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+        constraint.setBaseTableName(EMPTY_STRING);
+        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+        constraint.setReferencedColumnNames(EMPTY_STRING);
+        Assert.assertNull(ForeignKeyUtil.fk(constraint));
+        constraint.setReferencedTableName(EMPTY_STRING);
+        Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
+    }
 
     @Test
     public void testEnabled() {

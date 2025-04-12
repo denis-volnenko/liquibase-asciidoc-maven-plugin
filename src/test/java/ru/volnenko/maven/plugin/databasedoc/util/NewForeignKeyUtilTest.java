@@ -15,20 +15,20 @@ public class NewForeignKeyUtilTest {
 
     @Ignore
     @Test
-    @UseDataProvider(value = "validConstraints", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
     public void testValidConstraintsCorrectReturn(AddForeignKeyConstraint constraint) {
 
         //Assert.assertEquals(correctReturn, ForeignKeyUtil.fk(constraint));
     }
 
     @Test
-    @UseDataProvider(value = "validConstraints", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
     public void testValidConstraints(AddForeignKeyConstraint constraint) {
         Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
     }
 
     @Test
-    @UseDataProvider(value = "invalidConstraints", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "invalidForeignKeyConstraints", location = ForeignKeyUtilData.class)
     public void testInvalidConstraints(AddForeignKeyConstraint constraint) {
         Assert.assertNull(ForeignKeyUtil.fk(constraint));
     }
