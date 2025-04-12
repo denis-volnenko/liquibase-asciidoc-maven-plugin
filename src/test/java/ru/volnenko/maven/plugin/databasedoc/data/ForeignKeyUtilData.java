@@ -1,8 +1,6 @@
 package ru.volnenko.maven.plugin.databasedoc.data;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
-import net.sourceforge.plantuml.ugraphic.UChangeColor;
-import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.util.ForeignKeyUtil;
 
@@ -56,7 +54,7 @@ public class ForeignKeyUtilData {
     private static AddForeignKeyConstraint createForeignKeyConstraint(
             String baseTable, String baseColumn, String refTable, String refColumn
     ) {
-        AddForeignKeyConstraint foreignKeyConstraint = new AddForeignKeyConstraint();
+        final AddForeignKeyConstraint foreignKeyConstraint = new AddForeignKeyConstraint();
         foreignKeyConstraint.setBaseTableName(baseTable);
         foreignKeyConstraint.setBaseColumnNames(baseColumn);
         foreignKeyConstraint.setReferencedTableName(refTable);

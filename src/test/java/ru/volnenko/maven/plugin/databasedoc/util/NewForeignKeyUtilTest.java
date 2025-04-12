@@ -4,19 +4,18 @@ package ru.volnenko.maven.plugin.databasedoc.util;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.junit4.DisplayName;
+import lombok.NonNull;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilData;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
 
-import java.util.Collection;
-import java.util.Collections;
-
+@Feature("ForeignKeyUtil")
 @RunWith(DataProviderRunner.class)
 public class NewForeignKeyUtilTest {
 
@@ -25,7 +24,13 @@ public class NewForeignKeyUtilTest {
     @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат корректного объекта FK")
     @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
     public void testValidConstraintsCorrectReturn(AddForeignKeyConstraint constraint) {
-        Assert.assertEquals(ForeignKeyUtilData.correctReturnOfFkConstraintMethod(), ForeignKeyUtil.fk(constraint));
+        @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkConstraintMethod();
+        @NonNull final FK fk = ForeignKeyUtil.fk(constraint);
+        Assert.assertEquals(expectedFk, fk);
+        Assert.assertEquals(expectedFk.getTableName(), fk.getTableName());
+        Assert.assertEquals(expectedFk.getFieldName(), fk.getFieldName());
+        Assert.assertEquals(expectedFk.getPk().getTableName(), fk.getPk().getTableName());
+        Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
     }
 
     @Test
