@@ -53,7 +53,7 @@ public class NewForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод enabled с параметром Column")
     @Description("Проверка метода fk с параметром Column на возврат true")
     @UseDataProvider(value = "trueColumns", location = ForeignKeyUtilData.class)
-    public void testValidColumns(Column column) {
+    public void testTrueColumns(Column column) {
         Assert.assertTrue(ForeignKeyUtil.enabled(column));
     }
 
@@ -61,9 +61,11 @@ public class NewForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод enabled с параметром Column")
     @Description("Проверка метода fk с параметром Column на возврат false")
     @UseDataProvider(value = "falseColumns", location = ForeignKeyUtilData.class)
-    public void testInvalidColumns(Column column) {
+    public void testFalseColumns(Column column) {
         Assert.assertFalse(ForeignKeyUtil.enabled(column));
     }
+
+    ///////////////////////
 
 //    @Ignore
 //    @Test

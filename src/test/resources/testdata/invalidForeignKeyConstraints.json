@@ -1,0 +1,33 @@
+[
+  null,
+  {
+    "baseTableName": null,
+    "baseColumnNames": null,
+    "referencedTableName": null,
+    "referencedColumnNames": null
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": null,
+    "referencedTableName": null,
+    "referencedColumnNames": "refColumn"
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": null,
+    "referencedTableName": "refTable",
+    "referencedColumnNames": null
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": "baseColumn",
+    "referencedTableName": null,
+    "referencedColumnNames": null
+  },
+  {
+    "baseTableName": "baseTable",
+    "baseColumnNames": null,
+    "referencedTableName": null,
+    "referencedColumnNames": null
+  }
+]

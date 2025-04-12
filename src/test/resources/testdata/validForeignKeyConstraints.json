@@ -1,0 +1,6 @@
+{
+  "baseTableName": "baseTable",
+  "baseColumnNames": "baseColumn",
+  "referencedTableName": "refTable",
+  "referencedColumnNames": "refColumn"
+}

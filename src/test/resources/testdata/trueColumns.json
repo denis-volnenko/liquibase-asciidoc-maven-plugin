@@ -1,0 +1,52 @@
+[
+  {
+    "constraints": {
+      "nullable": false,
+      "foreignKeyName": "ForeignKeyName",
+      "foreignKey": {
+        "referencedTableName": "ReferencedTableName",
+        "referencedColumnNames": "ReferencedColumnNames"
+      }
+    }
+  },
+  {
+    "constraints": {
+      "nullable": false,
+      "foreignKeyName": "ForeignKeyName",
+      "foreignKey": {
+        "referencedTableName": null,
+        "referencedColumnNames": "ReferencedColumnNames"
+      }
+    }
+  },
+  {
+    "constraints": {
+      "nullable": false,
+      "foreignKeyName": null,
+      "foreignKey": {
+        "referencedTableName": null,
+        "referencedColumnNames": "ReferencedColumnNames"
+      }
+    }
+  },
+  {
+    "constraints": {
+      "nullable": false,
+      "foreignKeyName": null,
+      "foreignKey": {
+        "referencedTableName": "ReferencedTableName",
+        "referencedColumnNames": null
+      }
+    }
+  },
+  {
+    "constraints": {
+      "nullable": false,
+      "foreignKeyName": null,
+      "foreignKey": {
+        "referencedTableName": "ReferencedTableName",
+        "referencedColumnNames": "ReferencedColumnNames"
+      }
+    }
+  }
+]
