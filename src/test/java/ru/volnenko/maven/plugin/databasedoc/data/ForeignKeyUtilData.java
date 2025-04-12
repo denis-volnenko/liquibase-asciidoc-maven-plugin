@@ -23,6 +23,103 @@ public class ForeignKeyUtilData {
         return fk;
     }
 
+    @DataProvider
+    public static Object[] validForeignKeyConstraints() {
+        return new Object[]{
+                createForeignKeyConstraint("baseTable", "baseColumn", "refTable", "refColumn")
+        };
+    }
+
+    @DataProvider
+    public static Object[] invalidForeignKeyConstraints() {
+        return new Object[][]{
+                {null},
+                {createForeignKeyConstraint(null, null, null, null)},
+                {createForeignKeyConstraint(null, null, null, "refColumn")},
+                {createForeignKeyConstraint(null, null, "refTable", null)},
+                {createForeignKeyConstraint(null, "baseColumn", null, null)},
+                {createForeignKeyConstraint("baseTable", null, null, null)},
+                {createForeignKeyConstraint(null, null, "refTable", "refColumn")},
+                {createForeignKeyConstraint(null, "baseColumn", null, "refColumn")},
+                {createForeignKeyConstraint(null, "baseColumn", "refTable", null)},
+                {createForeignKeyConstraint("baseTable", null, null, "refColumn")},
+                {createForeignKeyConstraint("baseTable", null, "refTable", null)},
+                {createForeignKeyConstraint("baseTable", "baseColumn", null, null)},
+                {createForeignKeyConstraint(null, "baseColumn", "refTable", "refColumn")},
+                {createForeignKeyConstraint("baseTable", null, "refTable", "refColumn")},
+                {createForeignKeyConstraint("baseTable", "baseColumn", null, "refColumn")},
+                {createForeignKeyConstraint("baseTable", "baseColumn", "refTable", null)}
+        };
+    }
+
+    @NonNull
+    private static AddForeignKeyConstraint createForeignKeyConstraint(
+            String baseTable, String baseColumn, String refTable, String refColumn
+    ) {
+        AddForeignKeyConstraint foreignKeyConstraint = new AddForeignKeyConstraint();
+        foreignKeyConstraint.setBaseTableName(baseTable);
+        foreignKeyConstraint.setBaseColumnNames(baseColumn);
+        foreignKeyConstraint.setReferencedTableName(refTable);
+        foreignKeyConstraint.setReferencedColumnNames(refColumn);
+        return foreignKeyConstraint;
+    }
+
+    @NonNull
+    private static ForeignKey createForeignKey(
+            String baseTable,
+            String baseColumn) {
+        ForeignKey foreignKey = new ForeignKey();
+        foreignKey.setReferencedColumnNames(baseTable);
+        foreignKey.setReferencedTableName(baseColumn);
+        return foreignKey;
+    }
+
+    @DataProvider
+    public static Object[] trueColumns() {
+        return new Object[][]{
+                {createColumn("", createConstraints(false,"ForeignKeyName", createForeignKey("ReferencedTableName", "ReferencedColumnNames")))},
+                {createColumn("", createConstraints(false,"ForeignKeyName", createForeignKey(null, "ReferencedColumnNames")))},
+                {createColumn("", createConstraints(false,null, createForeignKey(null, "ReferencedColumnNames")))},
+                {createColumn("", createConstraints(false,null, createForeignKey("ReferencedTableName", null)))},
+                {createColumn("", createConstraints(false,null, createForeignKey("ReferencedTableName", "ReferencedColumnNames")))}
+        };
+    }
+
+    @DataProvider
+    public static Object[] falseColumns() {
+        return new Object[][]{
+                {null},
+                {createColumn("", null)},
+                {createColumn("", createConstraints(false,null, null))},
+                {createColumn("", createConstraints(false,"ForeignKeyName", null))},
+                {createColumn("", createConstraints(false,null, createForeignKey(null, null)))}
+        };
+    }
+
+    @NonNull
+    private static Constraints createConstraints(
+            Boolean unique,
+            String foreignKeyName,
+            ForeignKey foreignKey
+    ) {
+        final Constraints constraints = new Constraints();
+        constraints.setUnique(unique);
+        constraints.setForeignKeyName(foreignKeyName);
+        constraints.setForeignKey(foreignKey);
+        return constraints;
+    }
+
+    @NonNull
+    private static Column createColumn(
+            String name,
+            Constraints constraints
+    ) {
+        final Column column = new Column();
+        column.setName(name);
+        column.setConstraints(constraints);
+        return column;
+    }
+
     @NonNull
     public static Set<FK> correctReturnOfFksSetRootsMethod() {
         final Root root = new Root();
@@ -122,103 +219,6 @@ public class ForeignKeyUtilData {
         return new Object[]{
                 createRoot(Arrays.asList(createDatabaseChangeLog(null))) // поправить
         };
-    }
-
-    @DataProvider
-    public static Object[] validForeignKeyConstraints() {
-        return new Object[]{
-                createForeignKeyConstraint("baseTable", "baseColumn", "refTable", "refColumn")
-        };
-    }
-
-    @DataProvider
-    public static Object[] invalidForeignKeyConstraints() {
-        return new Object[][]{
-                {null},
-                {createForeignKeyConstraint(null, null, null, null)},
-                {createForeignKeyConstraint(null, null, null, "refColumn")},
-                {createForeignKeyConstraint(null, null, "refTable", null)},
-                {createForeignKeyConstraint(null, "baseColumn", null, null)},
-                {createForeignKeyConstraint("baseTable", null, null, null)},
-                {createForeignKeyConstraint(null, null, "refTable", "refColumn")},
-                {createForeignKeyConstraint(null, "baseColumn", null, "refColumn")},
-                {createForeignKeyConstraint(null, "baseColumn", "refTable", null)},
-                {createForeignKeyConstraint("baseTable", null, null, "refColumn")},
-                {createForeignKeyConstraint("baseTable", null, "refTable", null)},
-                {createForeignKeyConstraint("baseTable", "baseColumn", null, null)},
-                {createForeignKeyConstraint(null, "baseColumn", "refTable", "refColumn")},
-                {createForeignKeyConstraint("baseTable", null, "refTable", "refColumn")},
-                {createForeignKeyConstraint("baseTable", "baseColumn", null, "refColumn")},
-                {createForeignKeyConstraint("baseTable", "baseColumn", "refTable", null)}
-        };
-    }
-
-    @NonNull
-    private static AddForeignKeyConstraint createForeignKeyConstraint(
-            String baseTable, String baseColumn, String refTable, String refColumn
-    ) {
-        AddForeignKeyConstraint foreignKeyConstraint = new AddForeignKeyConstraint();
-        foreignKeyConstraint.setBaseTableName(baseTable);
-        foreignKeyConstraint.setBaseColumnNames(baseColumn);
-        foreignKeyConstraint.setReferencedTableName(refTable);
-        foreignKeyConstraint.setReferencedColumnNames(refColumn);
-        return foreignKeyConstraint;
-    }
-
-    @NonNull
-    private static ForeignKey createForeignKey(
-            String baseTable,
-            String baseColumn) {
-        ForeignKey foreignKey = new ForeignKey();
-        foreignKey.setReferencedColumnNames(baseTable);
-        foreignKey.setReferencedTableName(baseColumn);
-        return foreignKey;
-    }
-
-    @DataProvider
-    public static Object[] trueColumns() {
-        return new Object[][]{
-                {createColumn("", createConstraints(false,"ForeignKeyName", createForeignKey("ReferencedTableName", "ReferencedColumnNames")))},
-                {createColumn("", createConstraints(false,"ForeignKeyName", createForeignKey(null, "ReferencedColumnNames")))},
-                {createColumn("", createConstraints(false,null, createForeignKey(null, "ReferencedColumnNames")))},
-                {createColumn("", createConstraints(false,null, createForeignKey("ReferencedTableName", null)))},
-                {createColumn("", createConstraints(false,null, createForeignKey("ReferencedTableName", "ReferencedColumnNames")))}
-        };
-    }
-
-    @DataProvider
-    public static Object[] falseColumns() {
-        return new Object[][]{
-                {null},
-                {createColumn("", null)},
-                {createColumn("", createConstraints(false,null, null))},
-                {createColumn("", createConstraints(false,"ForeignKeyName", null))},
-                {createColumn("", createConstraints(false,null, createForeignKey(null, null)))}
-        };
-    }
-
-    @NonNull
-    private static Constraints createConstraints(
-            Boolean unique,
-            String foreignKeyName,
-            ForeignKey foreignKey
-    ) {
-        final Constraints constraints = new Constraints();
-        constraints.setUnique(unique);
-        constraints.setForeignKeyName(foreignKeyName);
-        constraints.setForeignKey(foreignKey);
-        return constraints;
-    }
-
-    @NonNull
-    private static Column createColumn(
-            String name,
-            Constraints constraints
-    ) {
-        final Column column = new Column();
-        column.setName(name);
-        column.setConstraints(constraints);
-        return column;
     }
 
 }
