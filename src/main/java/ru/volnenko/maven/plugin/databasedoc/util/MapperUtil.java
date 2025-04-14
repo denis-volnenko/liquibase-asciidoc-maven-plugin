@@ -30,8 +30,9 @@ public final class MapperUtil {
         return YAML;
     }
 
+    @NonNull
     @SneakyThrows
-    public static <T> T parseJsonFromResource(String fileName, Class<T> clazz) {
+    public static <T> T parseJsonFromResource(@NonNull final String fileName, @NonNull final Class<T> clazz) {
         return json().readValue(ClassLoader.getSystemResourceAsStream(fileName), clazz);
     }
 
