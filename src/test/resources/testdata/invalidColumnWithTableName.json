@@ -1,77 +1,118 @@
-[
-  null,
-  {
-    "name": null,
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "ValidTable",
-        "referencedColumnNames": "ValidColumn"
+{
+  "testCases": [
+    {
+      "description": "Полный null-объект column",
+      "tableName": "test_table",
+      "column": null
+    },
+    {
+      "description": "Имя колонки = null",
+      "tableName": "test_table",
+      "column": {
+        "name": null,
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      }
+    },
+    {
+      "description": "Пустое имя колонки",
+      "tableName": "test_table",
+      "column": {
+        "name": "",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      }
+    },
+    {
+      "description": "Отсутствие constraints",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": null
+      }
+    },
+    {
+      "description": "Отсутствие foreignKey",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": null
+        }
+      }
+    },
+    {
+      "description": "Пустое referencedTableName",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      }
+    },
+    {
+      "description": "Null referencedTableName",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": null,
+            "referencedColumnNames": "user_id"
+          }
+        }
+      }
+    },
+    {
+      "description": "Null referencedColumnNames",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": null
+          }
+        }
+      }
+    },
+    {
+      "description": "Пустой referencedColumnNames",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": ""
+          }
+        }
+      }
+    },
+    {
+      "description": "Пустое tableName",
+      "tableName": "",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
       }
     }
-  },
-  {
-    "name": "",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "ValidTable",
-        "referencedColumnNames": "ValidColumn"
-      }
-    }
-  },
-  {
-    "name": "valid_name",
-    "constraints": null
-  },
-  {
-    "name": "valid_name",
-    "constraints": {
-      "foreignKey": null
-    }
-  },
-  {
-    "name": "valid_name",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": null,
-        "referencedColumnNames": "ValidColumn"
-      }
-    }
-  },
-  {
-    "name": "valid_name",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "",
-        "referencedColumnNames": "ValidColumn"
-      }
-    }
-  },
-  {
-    "name": "valid_name",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "ValidTable",
-        "referencedColumnNames": null
-      }
-    }
-  },
-  {
-    "name": "valid_name",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "ValidTable",
-        "referencedColumnNames": ""
-      }
-    }
-  },
-  {
-    "name": "valid_name",
-    "tableName": "",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "ValidTable",
-        "referencedColumnNames": "ValidColumn"
-      }
-    }
-  }
-]
+  ]
+}

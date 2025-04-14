@@ -1,5 +1,6 @@
 package ru.volnenko.maven.plugin.databasedoc.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
@@ -10,10 +11,8 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class ForeignKeyUtilData {
 
@@ -47,30 +46,41 @@ public class ForeignKeyUtilData {
         }
     }
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class TestCase {
+        public String tableName;
+        public Column column;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class TestData {
+        public List<TestCase> testCases;
+    }
+
+
     @DataProvider
     public static Object[][] validColumnWithTableName() throws IOException {
         final String path = "testdata/validColumnWithTableName.json";
         final InputStream inputStream = ForeignKeyUtilData.inputStreamFromJsonFile(path);
         final ObjectMapper objectMapper = new ObjectMapper();
-        final Column[] columns = objectMapper.readValue(inputStream, Column[].class);
-        return Arrays.stream(columns)
-                .map(column -> new Object[]{
-                        column.getConstraints()
-                                .getForeignKey()
-                                .getReferencedTableName(), // Имя таблицы из FK
-                        column
-                })
+
+        final TestData testData = objectMapper.readValue(inputStream, TestData.class);
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.tableName, testCase.column})
                 .toArray(Object[][]::new);
     }
 
-//    @DataProvider
-//    public static Object[][] invalidColumnWithTableName() throws IOException {
-//        final String path = "testdata/invalidColumnWithTableName.json";
-//        final InputStream inputStream = ForeignKeyUtilData.inputStreamFromJsonFile(path);
-//        final ObjectMapper objectMapper = new ObjectMapper();
-//        final Column[] columns = objectMapper.readValue(inputStream, Column[].class);
-//        return
-//    }
+    @DataProvider
+    public static Object[][] invalidColumnWithTableName() throws IOException {
+        final String path = "testdata/invalidColumnWithTableName.json";
+        final InputStream inputStream = ForeignKeyUtilData.inputStreamFromJsonFile(path);
+        final ObjectMapper objectMapper = new ObjectMapper();
+
+        final TestData testData = objectMapper.readValue(inputStream, TestData.class);
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.tableName, testCase.column})
+                .toArray(Object[][]::new);
+    }
 
     @DataProvider
     public static Object[] validForeignKeyConstraints() throws IOException {

@@ -1,21 +1,31 @@
-[
-  {
-    "name": "Column name 1",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "Table name 1",
-        "referencedColumnNames": "refColumn names 1"
-      },
-      "unique": true
-    }
-  },
-  {
-    "name": "Column name 2",
-    "constraints": {
-      "foreignKey": {
-        "referencedTableName": "Table name 2",
-        "referencedColumnNames": "refColumn names 2"
+{
+  "testCases": [
+    {
+      "description": "Корректные данные с уникальным ключом",
+      "tableName": "orders",
+      "column": {
+        "name": "customer_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "customers",
+            "referencedColumnNames": "id"
+          },
+          "unique": true
+        }
+      }
+    },
+    {
+      "description": "Корректные данные без уникального ключа",
+      "tableName": "posts",
+      "column": {
+        "name": "author_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
       }
     }
-  }
-]
+  ]
+}

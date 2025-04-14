@@ -112,12 +112,12 @@ public class NewForeignKeyUtilTest {
 //        Assert.assertEquals(expectedFk, fk);
     }
 
-//    @Test
-//    @DisplayName("ForeignKeyUtil медод fk с параметрами String и Column")
-//    @Description("Проверка метода fk с параметрами String и Column на возврат Null")
-//    @UseDataProvider(value = "invalidColumnWithTableName", location = ForeignKeyUtilData.class)
-//    public void testInvalidColumnWithTableNameCorrectReturn(final String tableName, final Column column) {
-//        Assert.assertNull(ForeignKeyUtil.fk(tableName, column));
-//    }
+    @Test
+    @DisplayName("ForeignKeyUtil медод fk с параметрами String и Column")
+    @Description("Проверка метода fk с параметрами String и Column на возврат Null")
+    @UseDataProvider(value = "invalidColumnWithTableName", location = ForeignKeyUtilData.class)
+    public void testInvalidColumnWithTableNameCorrectReturn(final String tableName, final Column column) {
+        Assert.assertNull(ForeignKeyUtil.fk(tableName, column));
+    }
 
 }
