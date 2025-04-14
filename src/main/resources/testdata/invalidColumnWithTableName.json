@@ -113,6 +113,19 @@
           }
         }
       }
+    },
+    {
+      "description": "tableName Null",
+      "tableName": null,
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      }
     }
   ]
 }

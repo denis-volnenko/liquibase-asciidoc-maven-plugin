@@ -1,0 +1,18 @@
+{
+  "testCases": [
+    {
+      "description": "Корректные данные",
+      "tableName": "posts",
+      "column": {
+        "name": "author_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          },
+          "unique": false
+        }
+      }
+    }
+  ]
+}

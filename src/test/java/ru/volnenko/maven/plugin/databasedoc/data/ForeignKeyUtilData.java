@@ -1,7 +1,6 @@
 package ru.volnenko.maven.plugin.databasedoc.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
@@ -9,8 +8,6 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,7 +36,7 @@ public class ForeignKeyUtilData {
     }
 
     @NonNull
-    public static FK correctReturnOfFkColumnTableNameMethod() {
+    public static FK correctReturnOfFkColumnTableNameWithUniqueTrueMethod() {
         @NonNull final FK fk = new FK();
         fk.setTableName("posts");
         fk.setFieldName("author_id");
@@ -49,10 +46,31 @@ public class ForeignKeyUtilData {
         return fk;
     }
 
+    @NonNull
+    public static FK correctReturnOfFkColumnTableNameWithUniqueFalseMethod() {
+        @NonNull final FK fk = new FK();
+        fk.setTableName("posts");
+        fk.setFieldName("author_id");
+        fk.getPk().setTableName("users");
+        fk.getPk().setFieldName("user_id");
+        fk.setUnique(false);
+        return fk;
+    }
+
     @DataProvider
-    public static Object[][] validColumnWithTableName() {
+    public static Object[][] validColumnWithTableNameWithUniqueTrue() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/validColumnWithTableName.json", TestData.class
+                "testdata/validColumnWithTableNameWithUniqueTrue.json", TestData.class
+        );
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.tableName, testCase.column})
+                .toArray(Object[][]::new);
+    }
+
+    @DataProvider
+    public static Object[][] validColumnWithTableNameWithUniqueFalse() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/validColumnWithTableNameWithUniqueFalse.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.tableName, testCase.column})
