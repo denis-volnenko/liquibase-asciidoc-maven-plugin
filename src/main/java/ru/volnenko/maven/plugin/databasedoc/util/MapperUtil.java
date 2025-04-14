@@ -3,6 +3,7 @@ package ru.volnenko.maven.plugin.databasedoc.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import lombok.NonNull;
+import lombok.SneakyThrows;
 
 public final class MapperUtil {
 
@@ -27,6 +28,11 @@ public final class MapperUtil {
     @NonNull
     public static ObjectMapper yaml() {
         return YAML;
+    }
+
+    @SneakyThrows
+    public static <T> T parseJsonFromResource(String fileName, Class<T> clazz) {
+        return json().readValue(ClassLoader.getSystemResourceAsStream(fileName), clazz);
     }
 
 }
