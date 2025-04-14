@@ -117,6 +117,8 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
             stringBuilder.append("'!pragma graphviz_dot jdot \n");
             stringBuilder.append("!pragma layout smetana \n");
         }
+        stringBuilder.append("left to right direction \n");
+
         for (@NonNull final Root root : roots) generate(stringBuilder, root);
 
         for (final FK fk : fks) {
