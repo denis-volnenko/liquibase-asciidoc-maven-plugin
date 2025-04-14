@@ -4,17 +4,28 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
-import org.hamcrest.core.Is;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.ConstraintsBuilder;
+import ru.volnenko.maven.plugin.databasedoc.builder.impl.RootBuilder;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.List;
 
 public class ForeignKeyUtilData {
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class TestCase {
+        public String tableName;
+        public Column column;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class TestData {
+        public List<TestCase> testCases;
+    }
+
 
     @NonNull
     public static FK correctReturnOfFkConstraintMethod() {
@@ -29,7 +40,12 @@ public class ForeignKeyUtilData {
     @NonNull
     public static FK correctReturnOfFkColumnTableNameMethod() {
         final FK fk = new FK();
-        return fk; // заглушка
+        fk.setTableName("posts");
+        fk.setFieldName("author_id");
+        fk.getPk().setTableName("users");
+        fk.getPk().setFieldName("user_id");
+        fk.setUnique(true);
+        return fk;
     }
 
     private static InputStream inputStreamFromJsonFile(String path) {
@@ -45,18 +61,6 @@ public class ForeignKeyUtilData {
             throw new RuntimeException("Failed to load test data from " + path, e);
         }
     }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class TestCase {
-        public String tableName;
-        public Column column;
-    }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class TestData {
-        public List<TestCase> testCases;
-    }
-
 
     @DataProvider
     public static Object[][] validColumnWithTableName() throws IOException {

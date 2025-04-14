@@ -14,7 +14,6 @@ import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilData;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 @Feature("ForeignKeyUtil")
 @RunWith(DataProviderRunner.class)
@@ -108,8 +107,15 @@ public class NewForeignKeyUtilTest {
     public void testValidColumnWithTableNameCorrectReturn(final String tableName, final Column column) {
         @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkColumnTableNameMethod();
         @NonNull final FK fk = ForeignKeyUtil.fk(tableName, column);
+        System.out.println(expectedFk.getUnique());
+        System.out.println(fk.getUnique());
         Assert.assertNotNull(fk);
-//        Assert.assertEquals(expectedFk, fk);
+        Assert.assertEquals(expectedFk, fk);
+        Assert.assertEquals(expectedFk.getUnique(), fk.getUnique());
+        Assert.assertEquals(expectedFk.getTableName(), fk.getTableName());
+        Assert.assertEquals(expectedFk.getFieldName(), fk.getFieldName());
+        Assert.assertEquals(expectedFk.getPk().getTableName(), fk.getPk().getTableName());
+        Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
     }
 
     @Test

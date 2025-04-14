@@ -1,21 +1,7 @@
 {
   "testCases": [
     {
-      "description": "Корректные данные с уникальным ключом",
-      "tableName": "orders",
-      "column": {
-        "name": "customer_id",
-        "constraints": {
-          "foreignKey": {
-            "referencedTableName": "customers",
-            "referencedColumnNames": "id"
-          },
-          "unique": true
-        }
-      }
-    },
-    {
-      "description": "Корректные данные без уникального ключа",
+      "description": "Корректные данные",
       "tableName": "posts",
       "column": {
         "name": "author_id",
@@ -23,7 +9,8 @@
           "foreignKey": {
             "referencedTableName": "users",
             "referencedColumnNames": "user_id"
-          }
+          },
+          "unique": true
         }
       }
     }
