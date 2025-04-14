@@ -14,8 +14,8 @@ public enum ColumnType {
     BINARY("Бинарный", "raw", "binary", "blob"),
     FLOAT("Дробный", "float", "double", "real", "precision", "numeric"),
     DATETIME("Дата/Время", "date", "time", "interval"),
-    BOOLEAN("Логический", "bool"),
-    STRING("Строка", "varchar", "text", "json", "clob", "char");
+    BOOLEAN("Логический", "bool", "boolean"),
+    STRING("Строка", "varchar", "text", "json", "clob", "char", "string", "jsonb");
 
     @NonNull
     private final String displayName;
