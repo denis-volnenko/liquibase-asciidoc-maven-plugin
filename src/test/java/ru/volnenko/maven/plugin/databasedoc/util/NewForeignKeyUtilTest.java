@@ -14,6 +14,10 @@ import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilData;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
+
+import java.util.Collections;
+import java.util.Set;
 
 @Feature("ForeignKeyUtil")
 @RunWith(DataProviderRunner.class)
@@ -84,58 +88,36 @@ public class NewForeignKeyUtilTest {
 //    }
 //
 
-//    @Test
-//    @DisplayName("ForeignKeyUtil метод fks с параметром Root")
-//    @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK")
-//    @UseDataProvider(value = "validRoot", location = ForeignKeyUtilData.class)
-//    public void testSetRoot(Root root) {
-//        Assert.assertEquals(ForeignKeyUtilData.correctReturnOfFksRootMethod(), ForeignKeyUtil.fks(root));
-//    }
-
-//    @Test
-//    @DisplayName("ForeignKeyUtil метод fks с параметром Root")
-//    @Description("Проверка метода fks с параметром Root на возврат emptySet")
-//    @UseDataProvider(value = "invalidRoot", location = ForeignKeyUtilData.class)
-//    public void testEmptySetRoot(Root root) {
-//        Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(root));
-//    }
+    @Test
+    @DisplayName("ForeignKeyUtil метод fks с параметром Root")
+    @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK")
+    @UseDataProvider(value = "validRootWithFK", location = ForeignKeyUtilData.class)
+    public void testSetRoot(Root root, Set<FK> expectedFks) {
+        Set<FK> fks = ForeignKeyUtil.fks(root);
+        Assert.assertEquals(expectedFks, fks);
+    }
 
     @Test
-    @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
-    @Description("Проверка метода fk с параметрами tableName и Column на возврат корректного объекта FK")
-    @UseDataProvider(value = "validColumnWithTableNameWithUniqueTrue", location = ForeignKeyUtilData.class)
-    public void testValidColumnWithTableNameCorrectReturnWithUniqueTrue(final String tableName, final Column column) {
-        @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkColumnTableNameWithUniqueTrueMethod();
-        @NonNull final FK fk = ForeignKeyUtil.fk(tableName, column);
-        Assert.assertEquals(expectedFk, fk);
-        Assert.assertEquals(expectedFk.getUnique(), fk.getUnique());
-        Assert.assertEquals(expectedFk.getTableName(), fk.getTableName());
-        Assert.assertEquals(expectedFk.getFieldName(), fk.getFieldName());
-        Assert.assertEquals(expectedFk.getPk().getTableName(), fk.getPk().getTableName());
-        Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
+    @DisplayName("ForeignKeyUtil метод fks с параметром Root")
+    @Description("Проверка метода fks с параметром Root на возврат emptySet")
+    @UseDataProvider(value = "validRootReturnEmptySet", location = ForeignKeyUtilData.class)
+    public void testEmptySetRoot(Root root) {
+        Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(root));
     }
 
     @Test
     @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
     @Description("Проверка метода fk с параметрами tableName и Column на возврат корректного объекта FK")
-    @UseDataProvider(value = "validColumnWithTableNameWithUniqueFalse", location = ForeignKeyUtilData.class)
-    public void testValidColumnWithTableNameCorrectReturnWithUniqueNull(final String tableName, final Column column) {
-        @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkColumnTableNameWithUniqueFalseMethod();
+    @UseDataProvider(value = "validColumnWithTableName", location = ForeignKeyUtilData.class)
+    public void testValidColumnWithTableName(final String tableName, final Column column, final FK expectedFk) {
         @NonNull final FK fk = ForeignKeyUtil.fk(tableName, column);
-        Assert.assertEquals(expectedFk, fk);
-        Assert.assertEquals(expectedFk.getUnique(), fk.getUnique());
-        Assert.assertEquals(expectedFk.getTableName(), fk.getTableName());
-        Assert.assertEquals(expectedFk.getFieldName(), fk.getFieldName());
-        Assert.assertEquals(expectedFk.getPk().getTableName(), fk.getPk().getTableName());
-        Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
-    }
-
-    @Test
-    @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
-    @Description("Проверка метода fk с параметрами tableName и Column на возврат NotNull")
-    @UseDataProvider(value = "validColumnWithTableNameWithUniqueTrue", location = ForeignKeyUtilData.class)
-    public void testValidColumnWithTableNameNotNull(final String tableName, final Column column) {
         Assert.assertNotNull(ForeignKeyUtil.fk(tableName, column));
+        Assert.assertEquals(expectedFk, fk);
+        Assert.assertEquals(expectedFk.getUnique(), fk.getUnique());
+        Assert.assertEquals(expectedFk.getTableName(), fk.getTableName());
+        Assert.assertEquals(expectedFk.getFieldName(), fk.getFieldName());
+        Assert.assertEquals(expectedFk.getPk().getTableName(), fk.getPk().getTableName());
+        Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
     }
 
     @Test

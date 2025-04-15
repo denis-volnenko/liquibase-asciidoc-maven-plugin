@@ -1,0 +1,136 @@
+{
+  "testCases": [
+    {
+      "description": "Один FK с минимальными данными",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addForeignKeyConstraint": {
+                    "baseTableName": "orders",
+                    "baseColumnNames": "customer_id",
+                    "referencedTableName": "customers",
+                    "referencedColumnNames": "id"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedFks": [
+        {
+          "tableName": "orders",
+          "fieldName": "customer_id",
+          "pk": {
+            "tableName": "customers",
+            "fieldName": "id"
+          }
+        }
+      ]
+    },
+    {
+      "description": "Несколько FK в одном changes",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addForeignKeyConstraint": {
+                    "baseTableName": "orders",
+                    "baseColumnNames": "product_id",
+                    "referencedTableName": "products",
+                    "referencedColumnNames": "id"
+                  }
+                },
+                {
+                  "addForeignKeyConstraint": {
+                    "baseTableName": "orders",
+                    "baseColumnNames": "customer_id",
+                    "referencedTableName": "customers",
+                    "referencedColumnNames": "id"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedFks": [
+        {
+          "tableName": "orders",
+          "fieldName": "product_id",
+          "pk": {
+            "tableName": "products",
+            "fieldName": "id"
+          }
+        },
+        {
+          "tableName": "orders",
+          "fieldName": "customer_id",
+          "pk": {
+            "tableName": "customers",
+            "fieldName": "id"
+          }
+        }
+      ]
+    },
+    {
+      "description": "FK в разных changeLog блоках",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addForeignKeyConstraint": {
+                    "baseTableName": "employees",
+                    "baseColumnNames": "department_id",
+                    "referencedTableName": "departments",
+                    "referencedColumnNames": "id"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addForeignKeyConstraint": {
+                    "baseTableName": "projects",
+                    "baseColumnNames": "manager_id",
+                    "referencedTableName": "employees",
+                    "referencedColumnNames": "id"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedFks": [
+        {
+          "tableName": "employees",
+          "fieldName": "department_id",
+          "pk": {
+            "tableName": "departments",
+            "fieldName": "id"
+          }
+        },
+        {
+          "tableName": "projects",
+          "fieldName": "manager_id",
+          "pk": {
+            "tableName": "employees",
+            "fieldName": "id"
+          }
+        }
+      ]
+    }
+  ]
+}
+

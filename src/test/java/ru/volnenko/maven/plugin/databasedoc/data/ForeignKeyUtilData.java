@@ -6,18 +6,23 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class ForeignKeyUtilData {
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static final class TestCase {
-        public String tableName;
-        public Column column;
-    }
+        @JsonIgnoreProperties(ignoreUnknown = true)
+        public static final class TestCase {
+            public String tableName;
+            public Column column;
+            public Root root;
+            public Set<FK> expectedFks;
+            public FK expectedFk;
+        }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class TestData {
@@ -35,45 +40,33 @@ public class ForeignKeyUtilData {
         return fk;
     }
 
-    @NonNull
-    public static FK correctReturnOfFkColumnTableNameWithUniqueTrueMethod() {
-        @NonNull final FK fk = new FK();
-        fk.setTableName("posts");
-        fk.setFieldName("author_id");
-        fk.getPk().setTableName("users");
-        fk.getPk().setFieldName("user_id");
-        fk.setUnique(true);
-        return fk;
-    }
-
-    @NonNull
-    public static FK correctReturnOfFkColumnTableNameWithUniqueFalseMethod() {
-        @NonNull final FK fk = new FK();
-        fk.setTableName("posts");
-        fk.setFieldName("author_id");
-        fk.getPk().setTableName("users");
-        fk.getPk().setFieldName("user_id");
-        fk.setUnique(false);
-        return fk;
-    }
-
     @DataProvider
-    public static Object[][] validColumnWithTableNameWithUniqueTrue() {
+    public static Object[][] validRootWithFK() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/validColumnWithTableNameWithUniqueTrue.json", TestData.class
+                "testdata/validRootWithFK.json", TestData.class
         );
         return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.tableName, testCase.column})
+                .map(testCase -> new Object[]{testCase.root, testCase.expectedFks})
                 .toArray(Object[][]::new);
     }
 
     @DataProvider
-    public static Object[][] validColumnWithTableNameWithUniqueFalse() {
+    public static Object[][] validRootReturnEmptySet() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/validColumnWithTableNameWithUniqueFalse.json", TestData.class
+                "testdata/validRootReturnEmptySet.json", TestData.class
         );
         return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.tableName, testCase.column})
+                .map(testCase -> new Object[]{testCase.root})
+                .toArray(Object[][]::new);
+    }
+
+    @DataProvider
+    public static Object[][] validColumnWithTableName() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/validColumnWithTableName.json", TestData.class
+        );
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.tableName, testCase.column, testCase.expectedFk})
                 .toArray(Object[][]::new);
     }
 
