@@ -130,7 +130,77 @@
           }
         }
       ]
+    },
+    {
+      "description": "changeLog == null внутри списка",
+      "root": {
+        "databaseChangeLog": [
+          null
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "changeSet == null внутри changeLog",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": null
+          }
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "changes == null в changeSet",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": null
+            }
+          }
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "смешанные changes: null, пустой, с FK",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                null,
+                {
+                  "createTable": null,
+                  "addForeignKeyConstraint": null
+                },
+                {
+                  "addForeignKeyConstraint": {
+                    "baseTableName": "invoices",
+                    "baseColumnNames": "client_id",
+                    "referencedTableName": "clients",
+                    "referencedColumnNames": "id"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedFks": [
+        {
+          "tableName": "invoices",
+          "fieldName": "client_id",
+          "pk": {
+            "tableName": "clients",
+            "fieldName": "id"
+          }
+        }
+      ]
     }
   ]
 }
+
 

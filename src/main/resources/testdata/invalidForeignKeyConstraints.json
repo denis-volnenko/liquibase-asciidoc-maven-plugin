@@ -7,10 +7,16 @@
     "referencedColumnNames": null
   },
   {
-    "baseTableName": null,
+    "baseTableName": "table",
     "baseColumnNames": null,
     "referencedTableName": null,
-    "referencedColumnNames": "refColumn"
+    "referencedColumnNames": null
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": "column",
+    "referencedTableName": null,
+    "referencedColumnNames": null
   },
   {
     "baseTableName": null,
@@ -20,14 +26,68 @@
   },
   {
     "baseTableName": null,
-    "baseColumnNames": "baseColumn",
+    "baseColumnNames": null,
+    "referencedTableName": null,
+    "referencedColumnNames": "refColumn"
+  },
+  {
+    "baseTableName": "table",
+    "baseColumnNames": "column",
     "referencedTableName": null,
     "referencedColumnNames": null
   },
   {
-    "baseTableName": "baseTable",
+    "baseTableName": "table",
+    "baseColumnNames": null,
+    "referencedTableName": "refTable",
+    "referencedColumnNames": null
+  },
+  {
+    "baseTableName": "table",
     "baseColumnNames": null,
     "referencedTableName": null,
+    "referencedColumnNames": "refColumn"
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": "column",
+    "referencedTableName": "refTable",
     "referencedColumnNames": null
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": "column",
+    "referencedTableName": null,
+    "referencedColumnNames": "refColumn"
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": null,
+    "referencedTableName": "refTable",
+    "referencedColumnNames": "refColumn"
+  },
+  {
+    "baseTableName": "table",
+    "baseColumnNames": "column",
+    "referencedTableName": "refTable",
+    "referencedColumnNames": null
+  },
+  {
+    "baseTableName": "table",
+    "baseColumnNames": "column",
+    "referencedTableName": null,
+    "referencedColumnNames": "refColumn"
+  },
+  {
+    "baseTableName": "table",
+    "baseColumnNames": null,
+    "referencedTableName": "refTable",
+    "referencedColumnNames": "refColumn"
+  },
+  {
+    "baseTableName": null,
+    "baseColumnNames": "column",
+    "referencedTableName": "refTable",
+    "referencedColumnNames": "refColumn"
   }
 ]

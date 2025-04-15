@@ -25,24 +25,17 @@ public class ForeignKeyUtilTest {
 
     @Test
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
-    @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат корректного объекта FK")
+    @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат корректного объекта FK и not null")
     @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
     public void testValidConstraintsCorrectReturn(AddForeignKeyConstraint constraint) {
         @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkConstraintMethod();
         @NonNull final FK fk = ForeignKeyUtil.fk(constraint);
+        Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
         Assert.assertEquals(expectedFk, fk);
         Assert.assertEquals(expectedFk.getTableName(), fk.getTableName());
         Assert.assertEquals(expectedFk.getFieldName(), fk.getFieldName());
         Assert.assertEquals(expectedFk.getPk().getTableName(), fk.getPk().getTableName());
         Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
-    }
-
-    @Test
-    @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
-    @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат NotNull")
-    @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
-    public void testValidConstraintsNotNull(AddForeignKeyConstraint constraint) {
-        Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
     }
 
     @Test
@@ -92,8 +85,9 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод fks с параметром Root")
     @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK")
     @UseDataProvider(value = "validRootWithFK", location = ForeignKeyUtilData.class)
-    public void testSetRoot(Root root, Set<FK> expectedFks) {
+    public void testRootWithFK(Root root, Set<FK> expectedFks) {
         Set<FK> fks = ForeignKeyUtil.fks(root);
+        Assert.assertNotNull(fks);
         Assert.assertEquals(expectedFks, fks);
     }
 
@@ -105,7 +99,7 @@ public class ForeignKeyUtilTest {
         Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(root));
     }
 
-    @Test // тест полностью готов
+    @Test
     @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
     @Description("Проверка метода fk с параметрами tableName и Column на возврат корректного объекта FK и not null")
     @UseDataProvider(value = "validColumnWithTableName", location = ForeignKeyUtilData.class)
@@ -120,7 +114,7 @@ public class ForeignKeyUtilTest {
         Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
     }
 
-    @Test // тест полностью готов
+    @Test
     @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
     @Description("Проверка метода fk с параметрами tableName и Column на возврат Null")
     @UseDataProvider(value = "invalidColumnWithTableName", location = ForeignKeyUtilData.class)
