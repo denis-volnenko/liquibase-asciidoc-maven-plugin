@@ -77,6 +77,11 @@ a|
 https://github.com/denis-volnenko/minio-wagon-maven-plugin/
 https://maven.volnenko.ru/sites/minio-wagon-maven-plugin/
 
+|*Json Packaging*
+a|
+https://github.com/denis-volnenko/json-packaging-maven-plugin
+
+
 |===
 
 == Plugin configuration
