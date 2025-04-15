@@ -21,7 +21,7 @@ import java.util.Set;
 
 @Feature("ForeignKeyUtil")
 @RunWith(DataProviderRunner.class)
-public class NewForeignKeyUtilTest {
+public class ForeignKeyUtilTest {
 
     @Test
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
@@ -105,9 +105,9 @@ public class NewForeignKeyUtilTest {
         Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(root));
     }
 
-    @Test
+    @Test // тест полностью готов
     @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
-    @Description("Проверка метода fk с параметрами tableName и Column на возврат корректного объекта FK")
+    @Description("Проверка метода fk с параметрами tableName и Column на возврат корректного объекта FK и not null")
     @UseDataProvider(value = "validColumnWithTableName", location = ForeignKeyUtilData.class)
     public void testValidColumnWithTableName(final String tableName, final Column column, final FK expectedFk) {
         @NonNull final FK fk = ForeignKeyUtil.fk(tableName, column);
@@ -120,7 +120,7 @@ public class NewForeignKeyUtilTest {
         Assert.assertEquals(expectedFk.getPk().getFieldName(), fk.getPk().getFieldName());
     }
 
-    @Test
+    @Test // тест полностью готов
     @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
     @Description("Проверка метода fk с параметрами tableName и Column на возврат Null")
     @UseDataProvider(value = "invalidColumnWithTableName", location = ForeignKeyUtilData.class)

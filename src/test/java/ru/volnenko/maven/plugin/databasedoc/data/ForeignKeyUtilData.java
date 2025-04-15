@@ -29,7 +29,6 @@ public class ForeignKeyUtilData {
         public List<TestCase> testCases;
     }
 
-
     @NonNull
     public static FK correctReturnOfFkConstraintMethod() {
         @NonNull final FK fk = new FK();
