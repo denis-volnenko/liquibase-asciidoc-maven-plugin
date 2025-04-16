@@ -15,6 +15,7 @@ public class ForeignKeyUtilData {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class TestCase {
+        public String description;
         public CreateTable createTable;
         public String tableName;
         public Column column;
@@ -35,7 +36,6 @@ public class ForeignKeyUtilData {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
                 "testdata/createTables.json", TestData.class
         );
-        System.out.println(testData.testCases.get(0).createTable);
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.createTable, testCase.expectedFks})
                 .toArray(Object[][]::new);
