@@ -189,9 +189,9 @@ public final class Generator extends AbstractMojo {
             @NonNull final String filename
     ) {
         @NonNull final StringBuilder erdInternal = entityRelationDiagramDocumentGenerator
-                .erdType(erdType).multiDatabase(entityRelationDiagramInclude).internal().roots(roots).append(new StringBuilder());
+                .erdType(erdType).multiDatabase(entityRelationDiagramMultiDatabase).internal().roots(roots).append(new StringBuilder());
         @NonNull final StringBuilder erdExternal = entityRelationDiagramDocumentGenerator
-                .erdType(erdType).multiDatabase(entityRelationDiagramInclude).external().roots(roots).append(new StringBuilder());
+                .erdType(erdType).multiDatabase(entityRelationDiagramMultiDatabase).external().roots(roots).append(new StringBuilder());
         return this
                 .saveEntityRelationDiagramPUML(path, erdInternal, filename)
                 .saveEntityRelationDiagramSVG(path, erdInternal, filename)
