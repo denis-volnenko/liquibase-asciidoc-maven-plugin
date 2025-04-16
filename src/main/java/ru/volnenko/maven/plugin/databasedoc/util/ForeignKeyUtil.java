@@ -19,7 +19,6 @@ public final class ForeignKeyUtil {
             if (uks.contains(fk.toUK()))
                 fk.setUnique(true);
         }
-
         return result;
     }
 

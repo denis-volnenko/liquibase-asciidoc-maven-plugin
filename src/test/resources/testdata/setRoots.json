@@ -1,0 +1,127 @@
+{
+  "testCases": [
+    {
+      "description": "Тест с внешним ключом через createTable",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "tableName": "orders",
+                      "columns": [
+                        {
+                          "column": {
+                            "name": "user_id",
+                            "constraints": {
+                              "foreignKey": {
+                                "referencedTableName": "users",
+                                "referencedColumnNames": "id"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedFks": [
+        {
+          "tableName": "orders",
+          "fieldName": "user_id",
+          "pk": {
+            "tableName": "users",
+            "fieldName": "id"
+          },
+          "unique": false
+        }
+      ]
+    },
+    {
+      "description": "Тест с внешним ключом через addForeignKeyConstraint",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "addForeignKeyConstraint": {
+                      "baseTableName": "orders",
+                      "baseColumnNames": "user_id",
+                      "referencedTableName": "users",
+                      "referencedColumnNames": "id"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedFks": [
+        {
+          "tableName": "orders",
+          "fieldName": "user_id",
+          "pk": {
+            "tableName": "users",
+            "fieldName": "id"
+          },
+          "unique": false
+        }
+      ]
+    },
+    {
+      "description": "Тест с внешним ключом, совпадающим с уникальным ключом",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "tableName": "orders",
+                      "columns": [
+                        {
+                          "column": {
+                            "name": "user_id",
+                            "constraints": {
+                              "unique": true,
+                              "foreignKey": {
+                                "referencedTableName": "users",
+                                "referencedColumnNames": "id"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedFks": [
+        {
+          "tableName": "orders",
+          "fieldName": "user_id",
+          "pk": {
+            "tableName": "users",
+            "fieldName": "id"
+          },
+          "unique": true
+        }
+      ]
+    }
+  ]
+}

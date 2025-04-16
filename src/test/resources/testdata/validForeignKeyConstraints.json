@@ -1,6 +1,38 @@
 {
-  "baseTableName": "baseTable",
-  "baseColumnNames": "baseColumn",
-  "referencedTableName": "refTable",
-  "referencedColumnNames": "refColumn"
+  "testCases": [
+    {
+      "description": "Полностью валидный AddForeignKeyConstraint",
+      "constraint": {
+        "baseTableName": "orders",
+        "baseColumnNames": "customer_id",
+        "referencedTableName": "customers",
+        "referencedColumnNames": "id"
+      },
+      "expectedFk": {
+        "tableName": "orders",
+        "fieldName": "customer_id",
+        "pk": {
+          "tableName": "customers",
+          "fieldName": "id"
+        }
+      }
+    },
+    {
+      "description": "Все поля пустые строки (валидный FK)",
+      "constraint": {
+        "baseTableName": "",
+        "baseColumnNames": "",
+        "referencedTableName": "",
+        "referencedColumnNames": ""
+      },
+      "expectedFk": {
+        "tableName": "",
+        "fieldName": "",
+        "pk": {
+          "tableName": "",
+          "fieldName": ""
+        }
+      }
+    }
+  ]
 }

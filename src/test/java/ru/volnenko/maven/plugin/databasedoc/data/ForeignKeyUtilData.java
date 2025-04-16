@@ -10,33 +10,26 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 public class ForeignKeyUtilData {
 
-        @JsonIgnoreProperties(ignoreUnknown = true)
-        public static final class TestCase {
-            public String tableName;
-            public Column column;
-            public Root root;
-            public Set<FK> expectedFks;
-            public FK expectedFk;
-        }
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static final class TestCase {
+        public String tableName;
+        public Column column;
+        public Root root;
+        public Collection<Root> roots;
+        public Set<FK> expectedFks;
+        public FK expectedFk;
+        public AddForeignKeyConstraint constraint;
+    }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class TestData {
         public List<TestCase> testCases;
-    }
-
-    @NonNull
-    public static FK correctReturnOfFkConstraintMethod() {
-        @NonNull final FK fk = new FK();
-        fk.setTableName("baseTable");
-        fk.setFieldName("baseColumn");
-        fk.getPk().setTableName("refTable");
-        fk.getPk().setFieldName("refColumn");
-        return fk;
     }
 
     @DataProvider
@@ -46,6 +39,16 @@ public class ForeignKeyUtilData {
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.root, testCase.expectedFks})
+                .toArray(Object[][]::new);
+    }
+
+    @DataProvider
+    public static Object[][] setRoots() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/setRoots.json", TestData.class
+        );
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.roots, testCase.expectedFks})
                 .toArray(Object[][]::new);
     }
 
@@ -81,10 +84,12 @@ public class ForeignKeyUtilData {
 
     @DataProvider
     public static Object[] validForeignKeyConstraints() {
-        @NonNull final AddForeignKeyConstraint constraint = MapperUtil.parseJsonFromResource(
-                "testdata/validForeignKeyConstraints.json", AddForeignKeyConstraint.class
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/validForeignKeyConstraints.json", TestData.class
         );
-        return new Object[][]{{constraint}};
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.constraint, testCase.expectedFk})
+                .toArray(Object[][]::new);
     }
 
     @DataProvider

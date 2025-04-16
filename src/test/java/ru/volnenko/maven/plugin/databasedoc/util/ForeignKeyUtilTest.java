@@ -16,6 +16,7 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
@@ -27,8 +28,7 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
     @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат корректного объекта FK и not null")
     @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
-    public void testValidConstraintsCorrectReturn(final AddForeignKeyConstraint constraint) {
-        @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkConstraintMethod();
+    public void testValidConstraintsCorrectReturn(final AddForeignKeyConstraint constraint, final FK expectedFk) {
         @NonNull final FK fk = ForeignKeyUtil.fk(constraint);
         Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
         Assert.assertEquals(expectedFk, fk);
@@ -40,7 +40,7 @@ public class ForeignKeyUtilTest {
 
     @Test
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
-    @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат Null")
+    @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат null")
     @UseDataProvider(value = "invalidForeignKeyConstraints", location = ForeignKeyUtilData.class)
     public void testInvalidConstraints(final AddForeignKeyConstraint constraint) {
         Assert.assertNull(ForeignKeyUtil.fk(constraint));
@@ -62,28 +62,19 @@ public class ForeignKeyUtilTest {
         Assert.assertFalse(ForeignKeyUtil.enabled(column));
     }
 
-//    @Ignore
-//    @Test
-//    @DisplayName("ForeignKeyUtil метод fks с параметром Roots")
-//    @Description("Проверка метода fks с параметром Roots на возврат Set с объектами FK")
-//    @UseDataProvider(value = "validSetRoots", location = ForeignKeyUtilData.class)
-//    public void testSetRoots(Collection<Root> roots) {
-////        Assert.assertEquals(ForeignKeyUtilData.correctReturnOfFksRootsMethod(), ForeignKeyUtil.fks(roots));
-//    }
-//
-//    @Ignore
-//    @Test
-//    @DisplayName("ForeignKeyUtil метод fks с параметром Roots")
-//    @Description("Проверка метода fks с параметром Roots на возврат emptySet")
-//    @UseDataProvider(value = "InvalidSetRoots", location = ForeignKeyUtilData.class)
-//    public void testEmptySetRoots(Collection<Root> roots) {
-////        Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(roots));
-//    }
-//
+    @Test
+    @DisplayName("ForeignKeyUtil метод fks с параметром Roots")
+    @Description("Проверка метода fks с параметром Roots на возврат Set с объектами FK и not null" +
+                 "или возврат emptySet в случае если roots == null || roots.isEmpty()")
+    @UseDataProvider(value = "setRoots", location = ForeignKeyUtilData.class)
+    public void testSetRoots(final Collection<Root> roots, final Set<FK> expectedFks) {
+        final Set<FK> fks = ForeignKeyUtil.fks(roots);
+        Assert.assertEquals(expectedFks, fks);
+    }
 
     @Test
     @DisplayName("ForeignKeyUtil метод fks с параметром Root")
-    @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK")
+    @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK и not null")
     @UseDataProvider(value = "validRootWithFK", location = ForeignKeyUtilData.class)
     public void testRootWithFK(final Root root, final Set<FK> expectedFks) {
         final Set<FK> fks = ForeignKeyUtil.fks(root);
@@ -95,7 +86,7 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод fks с параметром Root")
     @Description("Проверка метода fks с параметром Root на возврат emptySet")
     @UseDataProvider(value = "validRootReturnEmptySet", location = ForeignKeyUtilData.class)
-    public void testEmptySetRoot(Root root) {
+    public void testEmptySetRoot(final Root root) {
         Assert.assertEquals(Collections.emptySet(), ForeignKeyUtil.fks(root));
     }
 
@@ -116,7 +107,7 @@ public class ForeignKeyUtilTest {
 
     @Test
     @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
-    @Description("Проверка метода fk с параметрами tableName и Column на возврат Null")
+    @Description("Проверка метода fk с параметрами tableName и Column на возврат null")
     @UseDataProvider(value = "invalidColumnWithTableName", location = ForeignKeyUtilData.class)
     public void testInvalidColumnWithTableNameNull(final String tableName, final Column column) {
         Assert.assertNull(ForeignKeyUtil.fk(tableName, column));
