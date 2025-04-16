@@ -8,47 +8,88 @@ import java.util.List;
 
 public abstract class AbstractBuilderTest {
 
-    protected static final String FOREIGN_KEY_NAME          = "ForeignKey name";
+    @NonNull
+    protected static final String FOREIGN_KEY_NAME = "ForeignKey name";
+
+    @NonNull
     protected static final String EXPECTED_FOREIGN_KEY_NAME = "ForeignKey name";
 
-    protected static final String UNIQUE_CONSTRAINT_NAME          = "Unique constraint name";
+    @NonNull
+    protected static final String UNIQUE_CONSTRAINT_NAME = "Unique constraint name";
+
+    @NonNull
     protected static final String EXPECTED_UNIQUE_CONSTRAINT_NAME = "Unique constraint name";
 
-    protected static final String NAME          = "Name";
+    @NonNull
+    protected static final String NAME = "Name";
+
+    @NonNull
     protected static final String EXPECTED_NAME = "Name";
 
-    protected static final String TYPE          = "Type";
+    @NonNull
+    protected static final String TYPE = "Type";
+
+    @NonNull
     protected static final String EXPECTED_TYPE = "Type";
 
-    protected static final String REMARKS          = "Remarks";
+    @NonNull
+    protected static final String REMARKS = "Remarks";
+
+    @NonNull
     protected static final String EXPECTED_REMARKS = "Remarks";
 
-    protected static final String TABLE_NAME          = "Table name";
+    @NonNull
+    protected static final String TABLE_NAME = "Table name";
+
+    @NonNull
     protected static final String EXPECTED_TABLE_NAME = "Table name";
 
-    protected static final String CATALOG_NAME          = "Catalog name";
+    @NonNull
+    protected static final String CATALOG_NAME = "Catalog name";
+
+    @NonNull
     protected static final String EXPECTED_CATALOG_NAME = "Catalog name";
 
-    protected static final String TABLESPACE          = "Table space";
+    @NonNull
+    protected static final String TABLESPACE = "Table space";
+
+    @NonNull
     protected static final String EXPECTED_TABLESPACE = "Table space";
 
-    protected static final String TYPE_NAME          = "Type name";
+    @NonNull
+    protected static final String TYPE_NAME = "Type name";
+
+    @NonNull
     protected static final String EXPECTED_TYPE_NAME = "Type name";
 
-    protected static final String ID          = "Id";
+    @NonNull
+    protected static final String ID = "Id";
+
+    @NonNull
     protected static final String EXPECTED_ID = "Id";
 
-    protected static final String AUTHOR          = "Author";
+    @NonNull
+    protected static final String AUTHOR = "Author";
+
+    @NonNull
     protected static final String EXPECTED_AUTHOR = "Author";
 
-    protected static final Integer INTEGER_VALUE                   = 1;
+    @NonNull
+    protected static final Integer INTEGER_VALUE = 1;
+
+    @NonNull
     protected static final String EXPECTED_INTEGER_TO_STRING_VALUE = "01";
 
+    @NonNull
     protected static final String STRING_VALUE = "String value";
 
+    @NonNull
     protected static final String EMPTY_STRING = "";
 
-    protected static final String COLUMN_NAME          = "Column name";
+    @NonNull
+    protected static final String COLUMN_NAME = "Column name";
+
+    @NonNull
     protected static final String EXPECTED_COLUMN_NAME = "Column name";
 
     @NonNull
