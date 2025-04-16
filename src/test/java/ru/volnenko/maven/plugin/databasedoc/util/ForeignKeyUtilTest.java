@@ -27,7 +27,7 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
     @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат корректного объекта FK и not null")
     @UseDataProvider(value = "validForeignKeyConstraints", location = ForeignKeyUtilData.class)
-    public void testValidConstraintsCorrectReturn(AddForeignKeyConstraint constraint) {
+    public void testValidConstraintsCorrectReturn(final AddForeignKeyConstraint constraint) {
         @NonNull final FK expectedFk = ForeignKeyUtilData.correctReturnOfFkConstraintMethod();
         @NonNull final FK fk = ForeignKeyUtil.fk(constraint);
         Assert.assertNotNull(ForeignKeyUtil.fk(constraint));
@@ -42,7 +42,7 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
     @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат Null")
     @UseDataProvider(value = "invalidForeignKeyConstraints", location = ForeignKeyUtilData.class)
-    public void testInvalidConstraints(AddForeignKeyConstraint constraint) {
+    public void testInvalidConstraints(final AddForeignKeyConstraint constraint) {
         Assert.assertNull(ForeignKeyUtil.fk(constraint));
     }
 
@@ -50,7 +50,7 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод enabled с параметром Column")
     @Description("Проверка метода fk с параметром Column на возврат true")
     @UseDataProvider(value = "trueColumns", location = ForeignKeyUtilData.class)
-    public void testTrueColumns(Column column) {
+    public void testTrueColumns(final Column column) {
         Assert.assertTrue(ForeignKeyUtil.enabled(column));
     }
 
@@ -58,7 +58,7 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод enabled с параметром Column")
     @Description("Проверка метода fk с параметром Column на возврат false")
     @UseDataProvider(value = "falseColumns", location = ForeignKeyUtilData.class)
-    public void testFalseColumns(Column column) {
+    public void testFalseColumns(final Column column) {
         Assert.assertFalse(ForeignKeyUtil.enabled(column));
     }
 
@@ -85,8 +85,8 @@ public class ForeignKeyUtilTest {
     @DisplayName("ForeignKeyUtil метод fks с параметром Root")
     @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK")
     @UseDataProvider(value = "validRootWithFK", location = ForeignKeyUtilData.class)
-    public void testRootWithFK(Root root, Set<FK> expectedFks) {
-        Set<FK> fks = ForeignKeyUtil.fks(root);
+    public void testRootWithFK(final Root root, final Set<FK> expectedFks) {
+        final Set<FK> fks = ForeignKeyUtil.fks(root);
         Assert.assertNotNull(fks);
         Assert.assertEquals(expectedFks, fks);
     }
