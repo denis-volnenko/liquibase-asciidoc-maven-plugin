@@ -3,10 +3,7 @@ package ru.volnenko.maven.plugin.databasedoc.data;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.util.Arrays;
@@ -18,6 +15,7 @@ public class ForeignKeyUtilData {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class TestCase {
+        public CreateTable createTable;
         public String tableName;
         public Column column;
         public Root root;
@@ -33,6 +31,17 @@ public class ForeignKeyUtilData {
     }
 
     @DataProvider
+    public static Object[][] fkCreateTable() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/createTables.json", TestData.class
+        );
+        System.out.println(testData.testCases.get(0).createTable);
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.createTable, testCase.expectedFks})
+                .toArray(Object[][]::new);
+    }
+
+    @DataProvider
     public static Object[][] validRootWithFK() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
                 "testdata/validRootWithFK.json", TestData.class
@@ -43,9 +52,9 @@ public class ForeignKeyUtilData {
     }
 
     @DataProvider
-    public static Object[][] setRoots() {
+    public static Object[][] fksRoots() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/setRoots.json", TestData.class
+                "testdata/fksRoots.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.roots, testCase.expectedFks})

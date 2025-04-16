@@ -11,10 +11,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilData;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.AddForeignKeyConstraint;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.FK;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
+import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -63,10 +60,19 @@ public class ForeignKeyUtilTest {
     }
 
     @Test
+    @DisplayName("ForeignKeyUtil метод fk с параметром CreateTable")
+    @Description("Проверка метода fk с параметром CreateTable на возврат Set с объектами FK и not null")
+    @UseDataProvider(value = "fkCreateTable", location = ForeignKeyUtilData.class)
+    public void testFkCreateTable(final CreateTable createTable, final Set<FK> expectedFks) {
+        final Set<FK> fks = ForeignKeyUtil.fk(createTable);
+        Assert.assertEquals(expectedFks, fks);
+    }
+
+    @Test
     @DisplayName("ForeignKeyUtil метод fks с параметром Roots")
     @Description("Проверка метода fks с параметром Roots на возврат Set с объектами FK и not null" +
                  "или возврат emptySet в случае если roots == null || roots.isEmpty()")
-    @UseDataProvider(value = "setRoots", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "fksRoots", location = ForeignKeyUtilData.class)
     public void testSetRoots(final Collection<Root> roots, final Set<FK> expectedFks) {
         final Set<FK> fks = ForeignKeyUtil.fks(roots);
         Assert.assertEquals(expectedFks, fks);

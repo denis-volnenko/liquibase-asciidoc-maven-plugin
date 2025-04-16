@@ -1,6 +1,16 @@
 {
   "testCases": [
     {
+      "description": "Тест с null в roots",
+      "roots": null,
+      "expectedFks": []
+    },
+    {
+      "description": "Тест с пустым списком roots",
+      "roots": [],
+      "expectedFks": []
+    },
+    {
       "description": "Тест с внешним ключом через createTable",
       "roots": [
         {

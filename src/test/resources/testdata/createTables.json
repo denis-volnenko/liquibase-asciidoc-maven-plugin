@@ -1,0 +1,126 @@
+{
+  "testCases": [
+    {
+      "description": "createTable is null",
+      "createTable": null,
+      "expectedFks": []
+    },
+    {
+      "description": "columns is null",
+      "createTable": {
+        "tableName": "orders",
+        "columns": null
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "columns is empty",
+      "createTable": {
+        "tableName": "orders",
+        "columns": []
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "columnWrapper is null",
+      "createTable": {
+        "tableName": "orders",
+        "columns": [null]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "column is null",
+      "createTable": {
+        "tableName": "orders",
+        "columns": [
+          {
+            "column": null
+          }
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "invalid FK (empty referenced table and column)",
+      "createTable": {
+        "tableName": "orders",
+        "columns": [
+          {
+            "column": {
+              "name": "user_id",
+              "constraints": {
+                "foreignKey": {
+                  "referencedTableName": "",
+                  "referencedColumnNames": ""
+                }
+              }
+            }
+          }
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "valid FK",
+      "createTable": {
+        "tableName": "orders",
+        "columns": [
+          {
+            "column": {
+              "name": "user_id",
+              "constraints": {
+                "foreignKey": {
+                  "referencedTableName": "users",
+                  "referencedColumnNames": "id"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "expectedFks": [
+        {
+          "tableName": "orders",
+          "fieldName": "user_id",
+          "pk": {
+            "tableName": "users",
+            "fieldName": "id"
+          },
+          "unique": false
+        }
+      ]
+    },
+    {
+      "description": "valid FK with unique = true",
+      "createTable": {
+        "tableName": "orders",
+        "columns": [
+          {
+            "column": {
+              "name": "user_id",
+              "constraints": {
+                "unique": true,
+                "foreignKey": {
+                  "referencedTableName": "users",
+                  "referencedColumnNames": "id"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "expectedFks": [
+        {
+          "tableName": "orders",
+          "fieldName": "user_id",
+          "pk": {
+            "tableName": "users",
+            "fieldName": "id"
+          },
+          "unique": true
+        }
+      ]
+    }
+  ]
+}
