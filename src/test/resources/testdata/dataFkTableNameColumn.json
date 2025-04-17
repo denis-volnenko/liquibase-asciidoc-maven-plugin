@@ -1,0 +1,259 @@
+{
+  "validTestCases": [
+    {
+      "description": "FK на таблицу customers",
+      "tableName": "orders",
+      "column": {
+        "name": "customer_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "customers",
+            "referencedColumnNames": "id"
+          },
+          "unique": false
+        }
+      },
+      "expectedFk": {
+        "tableName": "orders",
+        "fieldName": "customer_id",
+        "pk": {
+          "tableName": "customers",
+          "fieldName": "id"
+        },
+        "unique": false
+      }
+    },
+    {
+      "description": "FK на таблицу categories",
+      "tableName": "products",
+      "column": {
+        "name": "category_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "categories",
+            "referencedColumnNames": "id"
+          },
+          "unique": false
+        }
+      },
+      "expectedFk": {
+        "tableName": "products",
+        "fieldName": "category_id",
+        "pk": {
+          "tableName": "categories",
+          "fieldName": "id"
+        },
+        "unique": false
+      }
+    },
+    {
+      "description": "FK на таблицу managers",
+      "tableName": "employees",
+      "column": {
+        "name": "manager_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "managers",
+            "referencedColumnNames": "id"
+          },
+          "unique": false
+        }
+      },
+      "expectedFk": {
+        "tableName": "employees",
+        "fieldName": "manager_id",
+        "pk": {
+          "tableName": "managers",
+          "fieldName": "id"
+        },
+        "unique": false
+      }
+    },
+    {
+      "description": "FK на таблицу products",
+      "tableName": "sales",
+      "column": {
+        "name": "product_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "products",
+            "referencedColumnNames": "id"
+          },
+          "unique": false
+        }
+      },
+      "expectedFk": {
+        "tableName": "sales",
+        "fieldName": "product_id",
+        "pk": {
+          "tableName": "products",
+          "fieldName": "id"
+        },
+        "unique": false
+      }
+    },
+    {
+      "description": "FK без unique (null)",
+      "tableName": "invoices",
+      "column": {
+        "name": "client_id",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "clients",
+            "referencedColumnNames": "id"
+          },
+          "unique": null
+        }
+      },
+      "expectedFk": {
+        "tableName": "invoices",
+        "fieldName": "client_id",
+        "pk": {
+          "tableName": "clients",
+          "fieldName": "id"
+        },
+        "unique": false
+      }
+    }
+  ],
+  "invalidTestCases": [
+    {
+      "description": "Полный null-объект column",
+      "tableName": "test_table",
+      "column": null,
+      "expectedFk": null
+    },
+    {
+      "description": "Имя колонки = null",
+      "tableName": "test_table",
+      "column": {
+        "name": null,
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Пустое имя колонки",
+      "tableName": "test_table",
+      "column": {
+        "name": "",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Отсутствие constraints",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Отсутствие foreignKey",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": null
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Пустое referencedTableName",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Null referencedTableName",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": null,
+            "referencedColumnNames": "user_id"
+          }
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Null referencedColumnNames",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": null
+          }
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Пустой referencedColumnNames",
+      "tableName": "test_table",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": ""
+          }
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "Пустое tableName",
+      "tableName": "",
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "tableName Null",
+      "tableName": null,
+      "column": {
+        "name": "valid_name",
+        "constraints": {
+          "foreignKey": {
+            "referencedTableName": "users",
+            "referencedColumnNames": "user_id"
+          }
+        }
+      },
+      "expectedFk": null
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "validTestCases": [
+    {
+      "description": "Полностью валидный AddForeignKeyConstraint",
+      "constraint": {
+        "baseTableName": "orders",
+        "baseColumnNames": "customer_id",
+        "referencedTableName": "customers",
+        "referencedColumnNames": "id"
+      },
+      "expectedFk": {
+        "tableName": "orders",
+        "fieldName": "customer_id",
+        "pk": {
+          "tableName": "customers",
+          "fieldName": "id"
+        }
+      }
+    },
+    {
+      "description": "Все поля пустые строки (валидный FK)",
+      "constraint": {
+        "baseTableName": "",
+        "baseColumnNames": "",
+        "referencedTableName": "",
+        "referencedColumnNames": ""
+      },
+      "expectedFk": {
+        "tableName": "",
+        "fieldName": "",
+        "pk": {
+          "tableName": "",
+          "fieldName": ""
+        }
+      }
+    }
+  ],
+  "invalidTestCases": [
+    {
+      "description": "constraint = null",
+      "constraint": null,
+      "expectedFk": null
+    },
+    {
+      "description": "все поля = null",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": null,
+        "referencedTableName": null,
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "только baseTableName указан",
+      "constraint": {
+        "baseTableName": "table",
+        "baseColumnNames": null,
+        "referencedTableName": null,
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "только baseColumnNames указан",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": "column",
+        "referencedTableName": null,
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "только referencedTableName указан",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": null,
+        "referencedTableName": "refTable",
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "только referencedColumnNames указан",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": null,
+        "referencedTableName": null,
+        "referencedColumnNames": "refColumn"
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "baseTableName и baseColumnNames указаны",
+      "constraint": {
+        "baseTableName": "table",
+        "baseColumnNames": "column",
+        "referencedTableName": null,
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "baseTableName и referencedTableName указаны",
+      "constraint": {
+        "baseTableName": "table",
+        "baseColumnNames": null,
+        "referencedTableName": "refTable",
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "baseTableName и referencedColumnNames указаны",
+      "constraint": {
+        "baseTableName": "table",
+        "baseColumnNames": null,
+        "referencedTableName": null,
+        "referencedColumnNames": "refColumn"
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "baseColumnNames и referencedTableName указаны",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": "column",
+        "referencedTableName": "refTable",
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "baseColumnNames и referencedColumnNames указаны",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": "column",
+        "referencedTableName": null,
+        "referencedColumnNames": "refColumn"
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "referencedTableName и referencedColumnNames указаны",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": null,
+        "referencedTableName": "refTable",
+        "referencedColumnNames": "refColumn"
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "всё кроме referencedColumnNames указано",
+      "constraint": {
+        "baseTableName": "table",
+        "baseColumnNames": "column",
+        "referencedTableName": "refTable",
+        "referencedColumnNames": null
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "всё кроме referencedTableName указано",
+      "constraint": {
+        "baseTableName": "table",
+        "baseColumnNames": "column",
+        "referencedTableName": null,
+        "referencedColumnNames": "refColumn"
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "всё кроме baseColumnNames указано",
+      "constraint": {
+        "baseTableName": "table",
+        "baseColumnNames": null,
+        "referencedTableName": "refTable",
+        "referencedColumnNames": "refColumn"
+      },
+      "expectedFk": null
+    },
+    {
+      "description": "всё кроме baseTableName указано",
+      "constraint": {
+        "baseTableName": null,
+        "baseColumnNames": "column",
+        "referencedTableName": "refTable",
+        "referencedColumnNames": "refColumn"
+      },
+      "expectedFk": null
+    }
+  ]
+}

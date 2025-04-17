@@ -6,7 +6,6 @@ import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -25,7 +24,6 @@ public class ForeignKeyUtilData {
         public Set<FK> expectedFks;
         public FK expectedFk;
         public AddForeignKeyConstraint constraint;
-        public Constraints constraints;
         public Boolean expectedBoolean;
     }
 
@@ -39,7 +37,7 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[][] fkCreateTable() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/createTables.json", TestData.class
+                "testdata/dataFkCreateTable.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.createTable, testCase.expectedFks})
@@ -49,7 +47,7 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[][] fksRoots() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/fksRoots.json", TestData.class
+                "testdata/dataFksRoots.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.roots, testCase.expectedFks})
@@ -70,42 +68,28 @@ public class ForeignKeyUtilData {
     }
 
     @DataProvider
-    public static Object[][] validColumnWithTableName() {
+    public static Object[][] fkTableNameColumn() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/validColumnWithTableName.json", TestData.class
+                "testdata/dataFkTableNameColumn.json", TestData.class
         );
-        return testData.testCases.stream()
+        return Stream.concat(
+                testData.validTestCases.stream(),
+                testData.invalidTestCases.stream()
+                )
                 .map(testCase -> new Object[]{testCase.tableName, testCase.column, testCase.expectedFk})
                 .toArray(Object[][]::new);
     }
 
     @DataProvider
-    public static Object[][] invalidColumnWithTableName() {
+    public static Object[] fkConstraint() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/invalidColumnWithTableName.json", TestData.class
+                "testdata/dataFkConstraint.json", TestData.class
         );
-        return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.tableName, testCase.column})
-                .toArray(Object[][]::new);
-    }
-
-    @DataProvider
-    public static Object[] validForeignKeyConstraints() {
-        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/validForeignKeyConstraints.json", TestData.class
-        );
-        return testData.testCases.stream()
+        return Stream.concat(
+                testData.validTestCases.stream(),
+                testData.invalidTestCases.stream()
+        )
                 .map(testCase -> new Object[]{testCase.constraint, testCase.expectedFk})
-                .toArray(Object[][]::new);
-    }
-
-    @DataProvider
-    public static Object[][] invalidForeignKeyConstraints() {
-        @NonNull final AddForeignKeyConstraint[] constraints = MapperUtil.parseJsonFromResource(
-                "testdata/invalidForeignKeyConstraints.json", AddForeignKeyConstraint[].class
-        );
-        return Arrays.stream(constraints)
-                .map(constraint -> new Object[]{constraint})
                 .toArray(Object[][]::new);
     }
 
