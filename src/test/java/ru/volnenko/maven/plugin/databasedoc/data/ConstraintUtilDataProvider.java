@@ -1,24 +1,10 @@
 package ru.volnenko.maven.plugin.databasedoc.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-import java.util.List;
-
-public class ConstraintUtilDataProvider {
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static final class TestCase {
-        public Column column;
-        public Boolean expectedBoolean;
-    }
-
-    public static final class TestData {
-        public List<TestCase> testCases;
-    }
+public class ConstraintUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
     public static Object[][] nullableColumn() {
@@ -41,7 +27,5 @@ public class ConstraintUtilDataProvider {
                 .map(testCase -> new Object[]{testCase.column, testCase.expectedBoolean})
                 .toArray(Object[][]::new);
     }
-
-
-
+    
 }

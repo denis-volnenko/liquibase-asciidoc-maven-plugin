@@ -1,38 +1,12 @@
 package ru.volnenko.maven.plugin.databasedoc.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
-import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 
-public class ForeignKeyUtilDataProvider {
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static final class TestCase {
-        public String description;
-        public CreateTable createTable;
-        public String tableName;
-        public Column column;
-        public Root root;
-        public Collection<Root> roots;
-        public Set<FK> expectedFks;
-        public FK expectedFk;
-        public AddForeignKeyConstraint constraint;
-        public Boolean expectedBoolean;
-    }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static final class TestData {
-        public List<TestCase> testCases;
-        public List<TestCase> validTestCases;
-        public List<TestCase> invalidTestCases;
-    }
+public class ForeignKeyUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
     public static Object[][] fkCreateTable() {
