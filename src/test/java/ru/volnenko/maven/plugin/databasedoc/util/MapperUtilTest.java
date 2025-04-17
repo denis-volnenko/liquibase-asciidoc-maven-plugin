@@ -37,19 +37,14 @@ public class MapperUtilTest {
     @DisplayName("MapperUtil метод parseJsonFromResource")
     @Description("Проверка метода parseJsonFromResource на возврат корректного объекта")
     public void testParseJsonFromResource() {
-        @NonNull final Column expectedColumn = new Column();
-        expectedColumn.setName("name");
-        expectedColumn.setRemarks("remarks");
-        expectedColumn.setType("type");
-        expectedColumn.setDefaultValue("defaultValue");
         @NonNull final Column column = MapperUtil.parseJsonFromResource(
                 "testdata/mapperutil/dataParseJsonFromResource.json",
                 Column.class
         );
-        Assert.assertEquals(expectedColumn.getName(), column.getName());
-        Assert.assertEquals(expectedColumn.getRemarks(), column.getRemarks());
-        Assert.assertEquals(expectedColumn.getType(), column.getType());
-        Assert.assertEquals(expectedColumn.getDefaultValue(), column.getDefaultValue());
+        Assert.assertEquals("name", column.getName());
+        Assert.assertEquals("remarks", column.getRemarks());
+        Assert.assertEquals("type", column.getType());
+        Assert.assertEquals("defaultValue", column.getDefaultValue());
     }
 
     @Test(expected = RuntimeException.class)
