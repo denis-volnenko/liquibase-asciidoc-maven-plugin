@@ -9,7 +9,7 @@ public class ConstraintUtilDataProvider extends AbstractDataProvider {
     @DataProvider
     public static Object[][] nullableColumn() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/constraint-util/dataNullableColumn.json",
+                "testdata/constraintutil/dataNullableColumn.json",
                 TestData.class
         );
         return testData.testCases.stream()
@@ -20,12 +20,12 @@ public class ConstraintUtilDataProvider extends AbstractDataProvider {
     @DataProvider
     public static Object[][] notNullColumn() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/constraint-util/dataNotNullColumn.json",
+                "testdata/constraintutil/dataNotNullColumn.json",
                 TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.column, testCase.expectedBoolean})
                 .toArray(Object[][]::new);
     }
-    
+
 }

@@ -1,32 +1,27 @@
 package ru.volnenko.maven.plugin.databasedoc.util;
 
-import lombok.NonNull;
+import com.tngtech.java.junit.dataprovider.DataProviderRunner;
+import com.tngtech.java.junit.dataprovider.UseDataProvider;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import ru.volnenko.maven.plugin.databasedoc.builder.AbstractBuilderTest;
+import ru.volnenko.maven.plugin.databasedoc.data.ColumnUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
+@Feature("ColumnUtil")
+@RunWith(DataProviderRunner.class)
 public class ColumnUtilTest extends AbstractBuilderTest {
 
-    @NonNull
-    private final Column column = columnBuilder().add().column();
-
     @Test
-    public void testNull() {
-        Assert.assertNull(ColumnUtil.getName(column));
-        column.setName(NAME);
-        Assert.assertNotNull(ColumnUtil.getName(column));
-        column.setName(null);
-        Assert.assertNull(ColumnUtil.getName(column));
-        final Column column = null;
-        Assert.assertNull(ColumnUtil.getName(column));
-        Assert.assertNotNull(new ColumnUtil());
-    }
-
-    @Test
-    public void testGetName() {
-        column.setName(COLUMN_NAME);
-        Assert.assertEquals(EXPECTED_COLUMN_NAME, ColumnUtil.getName(column));
+    @DisplayName("ColumnUtil метод getName с параметром Column")
+    @Description("Проверка метода getName с параметром Column на возврат корректного column.getName()")
+    @UseDataProvider(value = "getNameColumn", location = ColumnUtilDataProvider.class)
+    public void testGetNameColumn(final Column column, final String expectedString) {
+        Assert.assertEquals(expectedString, ColumnUtil.getName(column));
     }
 
 }

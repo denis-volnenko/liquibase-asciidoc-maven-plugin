@@ -1,0 +1,26 @@
+{
+  "testCases": [
+    {
+      "column": null,
+      "expectedString": null
+    },
+    {
+      "column": {
+        "name": null
+      },
+      "expectedString": null
+    },
+    {
+      "column": {
+        "name": ""
+      },
+      "expectedString": null
+    },
+    {
+      "column": {
+        "name": "Column name"
+      },
+      "expectedString": "Column name"
+    }
+  ]
+}
