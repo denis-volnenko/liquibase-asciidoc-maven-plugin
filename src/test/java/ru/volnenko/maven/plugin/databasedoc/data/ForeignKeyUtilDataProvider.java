@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public class ForeignKeyUtilData {
+public class ForeignKeyUtilDataProvider {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class TestCase {
@@ -37,7 +37,7 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[][] fkCreateTable() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/dataFkCreateTable.json", TestData.class
+                "testdata/foreignkey-util/dataFkCreateTable.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.createTable, testCase.expectedFks})
@@ -47,7 +47,7 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[][] fksRoots() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/dataFksRoots.json", TestData.class
+                "testdata/foreignkey-util/dataFksRoots.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.roots, testCase.expectedFks})
@@ -57,7 +57,7 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[][] fksMethodRoot() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/dataFksMethodRoot.json", TestData.class
+                "testdata/foreignkey-util/dataFksMethodRoot.json", TestData.class
         );
         return Stream.concat(
                 testData.validTestCases.stream(),
@@ -70,7 +70,7 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[][] fkTableNameColumn() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/dataFkTableNameColumn.json", TestData.class
+                "testdata/foreignkey-util/dataFkTableNameColumn.json", TestData.class
         );
         return Stream.concat(
                 testData.validTestCases.stream(),
@@ -81,9 +81,9 @@ public class ForeignKeyUtilData {
     }
 
     @DataProvider
-    public static Object[] fkConstraint() {
+    public static Object[][] fkConstraint() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/dataFkConstraint.json", TestData.class
+                "testdata/foreignkey-util/dataFkConstraint.json", TestData.class
         );
         return Stream.concat(
                 testData.validTestCases.stream(),
@@ -96,7 +96,7 @@ public class ForeignKeyUtilData {
     @DataProvider
     public static Object[][] enabledMethodColumn() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/dataEnabledMethodColumn.json", TestData.class
+                "testdata/foreignkey-util/dataEnabledMethodColumn.json", TestData.class
         );
         return Stream.concat(
                 testData.validTestCases.stream(),

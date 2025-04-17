@@ -1,0 +1,38 @@
+{
+  "testCases": [
+    {
+      "column": null,
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": null
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": null
+        }
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": true
+        }
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false
+        }
+      },
+      "expectedBoolean": true
+    }
+  ]
+}

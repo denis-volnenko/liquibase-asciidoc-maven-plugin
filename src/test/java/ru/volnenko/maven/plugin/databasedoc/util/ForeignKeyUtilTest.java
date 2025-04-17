@@ -10,7 +10,7 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilData;
+import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 import java.util.Collection;
@@ -23,7 +23,7 @@ public class ForeignKeyUtilTest {
     @Test
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")
     @Description("Проверка метода fk с параметром AddForeignKeyConstraint на возврат корректного объекта FK")
-    @UseDataProvider(value = "fkConstraint", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "fkConstraint", location = ForeignKeyUtilDataProvider.class)
     public void testFkConstraint(final AddForeignKeyConstraint constraint, final FK expectedFk) {
         @NonNull final FK fk = ForeignKeyUtil.fk(constraint);
         Assert.assertEquals(expectedFk, fk);
@@ -38,7 +38,7 @@ public class ForeignKeyUtilTest {
     @Test
     @DisplayName("ForeignKeyUtil метод enabled с параметром Column")
     @Description("Проверка метода fk с параметром Column на возврат true/false")
-    @UseDataProvider(value = "enabledMethodColumn", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "enabledMethodColumn", location = ForeignKeyUtilDataProvider.class)
     public void testEnabledMethodColumn(final Column column, final Boolean expectedBoolean) {
         Assert.assertEquals(expectedBoolean, ForeignKeyUtil.enabled(column));
     }
@@ -46,7 +46,7 @@ public class ForeignKeyUtilTest {
     @Test
     @DisplayName("ForeignKeyUtil метод fk с параметром CreateTable")
     @Description("Проверка метода fk с параметром CreateTable на возврат Set с объектами FK")
-    @UseDataProvider(value = "fkCreateTable", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "fkCreateTable", location = ForeignKeyUtilDataProvider.class)
     public void testFkCreateTable(final CreateTable createTable, final Set<FK> expectedFks) {
         Assert.assertEquals(expectedFks, ForeignKeyUtil.fk(createTable));
     }
@@ -54,7 +54,7 @@ public class ForeignKeyUtilTest {
     @Test
     @DisplayName("ForeignKeyUtil метод fks с параметром Roots")
     @Description("Проверка метода fks с параметром Roots на возврат Set с объектами FK и emptySet()")
-    @UseDataProvider(value = "fksRoots", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "fksRoots", location = ForeignKeyUtilDataProvider.class)
     public void testFksRoots(final Collection<Root> roots, final Set<FK> expectedFks) {
         Assert.assertEquals(expectedFks, ForeignKeyUtil.fks(roots));
     }
@@ -62,7 +62,7 @@ public class ForeignKeyUtilTest {
     @Test
     @DisplayName("ForeignKeyUtil метод fks с параметром Root")
     @Description("Проверка метода fks с параметром Root на возврат Set с объектами FK и emptySet()")
-    @UseDataProvider(value = "fksMethodRoot", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "fksMethodRoot", location = ForeignKeyUtilDataProvider.class)
     public void testFksMethodRoot(final Root root, final Set<FK> expectedFks) {
         Assert.assertEquals(expectedFks, ForeignKeyUtil.fks(root));
     }
@@ -70,7 +70,7 @@ public class ForeignKeyUtilTest {
     @Test
     @DisplayName("ForeignKeyUtil медод fk с параметрами tableName и Column")
     @Description("Проверка метода fk с параметрами tableName и Column на возврат корректного объекта FK")
-    @UseDataProvider(value = "fkTableNameColumn", location = ForeignKeyUtilData.class)
+    @UseDataProvider(value = "fkTableNameColumn", location = ForeignKeyUtilDataProvider.class)
     public void testFkTableNameColumn(final String tableName, final Column column, final FK expectedFk) {
         @NonNull final FK fk = ForeignKeyUtil.fk(tableName, column);
         Assert.assertEquals(expectedFk, fk);
