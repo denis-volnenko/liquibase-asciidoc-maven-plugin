@@ -18,7 +18,7 @@ public class ColumnUtilTest extends AbstractBuilderTest {
 
     @Test
     @DisplayName("ColumnUtil метод getName с параметром Column")
-    @Description("Проверка метода getName с параметром Column на возврат корректного column.getName()")
+    @Description("Проверка метода getName с параметром Column на возврат true/false")
     @UseDataProvider(value = "getNameColumn", location = ColumnUtilDataProvider.class)
     public void testGetNameColumn(final Column column, final String expectedString) {
         Assert.assertEquals(expectedString, ColumnUtil.getName(column));

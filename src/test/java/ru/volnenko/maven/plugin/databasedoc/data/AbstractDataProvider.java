@@ -13,6 +13,7 @@ public class AbstractDataProvider {
     public static final class TestCase {
         public String description;
         public String tableName;
+        public String value;
         public CreateTable createTable;
         public AddForeignKeyConstraint constraint;
         public Column column;

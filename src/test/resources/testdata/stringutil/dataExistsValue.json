@@ -1,0 +1,16 @@
+{
+  "testCases": [
+    {
+      "value": null,
+      "expectedBoolean": false
+    },
+    {
+      "value": "",
+      "expectedBoolean": false
+    },
+    {
+      "value": "value",
+      "expectedBoolean": true
+    }
+  ]
+}

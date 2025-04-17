@@ -87,6 +87,9 @@ public abstract class AbstractBuilderTest {
     protected static final String EMPTY_STRING = "";
 
     @NonNull
+    protected static final String CHECK_MARK = "✓";
+
+    @NonNull
     protected static final String COLUMN_NAME = "Column name";
 
     @NonNull
