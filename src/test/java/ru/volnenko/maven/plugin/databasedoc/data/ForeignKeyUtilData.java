@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class ForeignKeyUtilData {
 
@@ -24,11 +25,15 @@ public class ForeignKeyUtilData {
         public Set<FK> expectedFks;
         public FK expectedFk;
         public AddForeignKeyConstraint constraint;
+        public Constraints constraints;
+        public Boolean expectedBoolean;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static final class TestData {
         public List<TestCase> testCases;
+        public List<TestCase> validTestCases;
+        public List<TestCase> invalidTestCases;
     }
 
     @DataProvider
@@ -38,16 +43,6 @@ public class ForeignKeyUtilData {
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.createTable, testCase.expectedFks})
-                .toArray(Object[][]::new);
-    }
-
-    @DataProvider
-    public static Object[][] validRootWithFK() {
-        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/validRootWithFK.json", TestData.class
-        );
-        return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.root, testCase.expectedFks})
                 .toArray(Object[][]::new);
     }
 
@@ -62,12 +57,15 @@ public class ForeignKeyUtilData {
     }
 
     @DataProvider
-    public static Object[][] validRootReturnEmptySet() {
+    public static Object[][] fksMethodRoot() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/validRootReturnEmptySet.json", TestData.class
+                "testdata/dataFksMethodRoot.json", TestData.class
         );
-        return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.root})
+        return Stream.concat(
+                testData.validTestCases.stream(),
+                testData.invalidTestCases.stream()
+        )
+                .map(testCase -> new Object[]{testCase.root, testCase.expectedFks})
                 .toArray(Object[][]::new);
     }
 
@@ -112,22 +110,15 @@ public class ForeignKeyUtilData {
     }
 
     @DataProvider
-    public static Object[][] trueColumns() {
-        @NonNull final Column[] columns = MapperUtil.parseJsonFromResource(
-                "testdata/trueColumns.json", Column[].class
+    public static Object[][] enabledMethodColumn() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/dataEnabledMethodColumn.json", TestData.class
         );
-        return Arrays.stream(columns)
-                .map(column -> new Object[]{column})
-                .toArray(Object[][]::new);
-    }
-
-    @DataProvider
-    public static Object[][] falseColumns() {
-        @NonNull final Column[] columns = MapperUtil.parseJsonFromResource(
-                "testdata/falseColumns.json", Column[].class
-        );
-        return Arrays.stream(columns)
-                .map(column -> new Object[]{column})
+        return Stream.concat(
+                testData.validTestCases.stream(),
+                testData.invalidTestCases.stream()
+        )
+                .map(testCase -> new Object[]{testCase.column, testCase.expectedBoolean})
                 .toArray(Object[][]::new);
     }
 

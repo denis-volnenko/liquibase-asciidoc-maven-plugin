@@ -1,5 +1,5 @@
 {
-  "testCases": [
+  "validTestCases": [
     {
       "description": "Один FK с минимальными данными",
       "root": {
@@ -132,40 +132,6 @@
       ]
     },
     {
-      "description": "changeLog == null внутри списка",
-      "root": {
-        "databaseChangeLog": [
-          null
-        ]
-      },
-      "expectedFks": []
-    },
-    {
-      "description": "changeSet == null внутри changeLog",
-      "root": {
-        "databaseChangeLog": [
-          {
-            "changeSet": null
-          }
-        ]
-      },
-      "expectedFks": []
-    },
-    {
-      "description": "changes == null в changeSet",
-      "root": {
-        "databaseChangeLog": [
-          {
-            "changeSet": {
-              "changes": null
-            }
-          }
-        ]
-      },
-      "expectedFks": []
-    },
-
-    {
       "description": "смешанные changes: null, пустой, с FK",
       "root": {
         "databaseChangeLog": [
@@ -201,7 +167,91 @@
         }
       ]
     }
+  ],
+  "invalidTestCases": [
+    {
+      "description": "Полностью null объект",
+      "root": null,
+      "expectedFks": []
+    },
+    {
+      "description": "DatabaseChangeLog = null",
+      "root": {
+        "databaseChangeLog": null
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "Пустой DatabaseChangeLog",
+      "root": {
+        "databaseChangeLog": []
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "ChangeSet с пустым changes",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": []
+            }
+          }
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "ChangeSet с null-изменениями",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                null,
+                {
+                  "createTable": null,
+                  "addForeignKeyConstraint": null
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "changeLog == null внутри списка",
+      "root": {
+        "databaseChangeLog": [
+          null
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "changeSet == null внутри changeLog",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": null
+          }
+        ]
+      },
+      "expectedFks": []
+    },
+    {
+      "description": "changes == null в changeSet",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": null
+            }
+          }
+        ]
+      },
+      "expectedFks": []
+    }
   ]
 }
-
-

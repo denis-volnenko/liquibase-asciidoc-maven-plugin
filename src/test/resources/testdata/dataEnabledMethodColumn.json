@@ -1,0 +1,114 @@
+{
+  "validTestCases": [
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": "ForeignKeyName",
+          "foreignKey": {
+            "referencedTableName": "ReferencedTableName",
+            "referencedColumnNames": "ReferencedColumnNames"
+          }
+        }
+      },
+      "expectedBoolean": true
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": "ForeignKeyName",
+          "foreignKey": {
+            "referencedTableName": null,
+            "referencedColumnNames": "ReferencedColumnNames"
+          }
+        }
+      },
+      "expectedBoolean": true
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": null,
+          "foreignKey": {
+            "referencedTableName": null,
+            "referencedColumnNames": "ReferencedColumnNames"
+          }
+        }
+      },
+      "expectedBoolean": true
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": null,
+          "foreignKey": {
+            "referencedTableName": "ReferencedTableName",
+            "referencedColumnNames": null
+          }
+        }
+      },
+      "expectedBoolean": true
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": null,
+          "foreignKey": {
+            "referencedTableName": "ReferencedTableName",
+            "referencedColumnNames": "ReferencedColumnNames"
+          }
+        }
+      },
+      "expectedBoolean": true
+    }
+  ],
+  "invalidTestCases": [
+    {
+      "column": null,
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": null
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": null,
+          "foreignKey": null
+        }
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": "ForeignKeyName",
+          "foreignKey": null
+        }
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "nullable": false,
+          "foreignKeyName": null,
+          "foreignKey": {
+            "referencedTableName": null,
+            "referencedColumnNames": null
+          }
+        }
+      },
+      "expectedBoolean": false
+    }
+  ]
+}
