@@ -5,6 +5,8 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 
+import java.io.InputStream;
+
 public final class MapperUtil {
 
     @NonNull
@@ -33,7 +35,11 @@ public final class MapperUtil {
     @NonNull
     @SneakyThrows
     public static <T> T parseJsonFromResource(@NonNull final String fileName, @NonNull final Class<T> clazz) {
-        return json().readValue(ClassLoader.getSystemResourceAsStream(fileName), clazz);
+        InputStream inputStream = ClassLoader.getSystemResourceAsStream(fileName);
+        if (inputStream == null) {
+            throw new IllegalArgumentException("Resource not found: " + fileName);
+        }
+        return json().readValue(inputStream, clazz);
     }
 
 }

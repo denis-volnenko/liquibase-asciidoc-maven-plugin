@@ -29,13 +29,13 @@ public class StringUtilTest extends AbstractBuilderTest {
     public void testFormat() {
         Assert.assertEquals(EXPECTED_INTEGER_TO_STRING_VALUE, StringUtil.format(INTEGER_VALUE));
         Assert.assertEquals(EMPTY_STRING, StringUtil.format((Integer) null));
-        Assert.assertEquals(StringUtil.EMPTY, StringUtil.format(false));
-        Assert.assertEquals(CHECK_MARK, StringUtil.format(true));
-        Assert.assertEquals(StringUtil.EMPTY, StringUtil.format((Boolean) false));
-        Assert.assertEquals(CHECK_MARK, StringUtil.format((Boolean) true));
-        Assert.assertEquals(StringUtil.EMPTY, StringUtil.format((Boolean) null));
         Assert.assertEquals(EMPTY_STRING, StringUtil.format((String) null));
         Assert.assertEquals(EMPTY_STRING, StringUtil.format(EMPTY_STRING));
+        Assert.assertEquals(CHECK_MARK, StringUtil.format(true));
+        Assert.assertEquals(CHECK_MARK, StringUtil.format((Boolean) true));
+        Assert.assertEquals(StringUtil.EMPTY, StringUtil.format(false));
+        Assert.assertEquals(StringUtil.EMPTY, StringUtil.format((Boolean) false));
+        Assert.assertEquals(StringUtil.EMPTY, StringUtil.format((Boolean) null));
         Assert.assertEquals(STRING_VALUE, StringUtil.format(STRING_VALUE));
     }
 
