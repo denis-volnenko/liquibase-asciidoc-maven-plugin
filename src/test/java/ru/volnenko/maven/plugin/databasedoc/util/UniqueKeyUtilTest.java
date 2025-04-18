@@ -3,17 +3,19 @@ package ru.volnenko.maven.plugin.databasedoc.util;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.junit4.DisplayName;
 import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.volnenko.maven.plugin.databasedoc.data.UniqueKeyUtilDataProvider;
+import ru.volnenko.maven.plugin.databasedoc.dataprovider.UniqueKeyUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 import java.util.Collection;
 import java.util.Set;
 
+@Feature("UniqueKeyUtil")
 @RunWith(DataProviderRunner.class)
 public class UniqueKeyUtilTest {
 

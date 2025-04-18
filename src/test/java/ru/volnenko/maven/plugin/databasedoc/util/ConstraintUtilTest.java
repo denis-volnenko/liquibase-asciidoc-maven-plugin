@@ -8,7 +8,7 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.volnenko.maven.plugin.databasedoc.data.ConstraintUtilDataProvider;
+import ru.volnenko.maven.plugin.databasedoc.dataprovider.ConstraintUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 @Feature("ConstraintUtil")

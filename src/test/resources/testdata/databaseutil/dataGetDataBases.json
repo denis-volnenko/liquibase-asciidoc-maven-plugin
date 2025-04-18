@@ -1,0 +1,198 @@
+{
+  "validTestCases": [
+    {
+      "description": "Root с пустым databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Root с null databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": null
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Root с непустым databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1"
+      ]
+    },
+    {
+      "description": "Root с null в корневом объекте",
+      "roots": [
+        null,
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1"
+      ]
+    },
+    {
+      "description": "Тест с базой данных в корневом объекте",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1"
+      ]
+    },
+    {
+      "description": "Тест с несколькими базами данных",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database2"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1",
+        "database2"
+      ]
+    },
+    {
+      "description": "Тест с пустыми данными",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Root с null внутри списка",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            null
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    }
+  ],
+  "invalidTestCases": [
+    {
+      "description": "Null корневой объект",
+      "roots": null,
+      "expectedDatabases": []
+    },
+    {
+      "description": "Корневой объект с null или пустыми значениями в catalogName",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Корневой объект с null значениями в createTable",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    }
+  ]
+}

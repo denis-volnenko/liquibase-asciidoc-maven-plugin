@@ -8,13 +8,12 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.volnenko.maven.plugin.databasedoc.builder.AbstractBuilderTest;
-import ru.volnenko.maven.plugin.databasedoc.data.ColumnUtilDataProvider;
+import ru.volnenko.maven.plugin.databasedoc.dataprovider.ColumnUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 @Feature("ColumnUtil")
 @RunWith(DataProviderRunner.class)
-public class ColumnUtilTest extends AbstractBuilderTest {
+public class ColumnUtilTest {
 
     @Test
     @DisplayName("ColumnUtil метод getName с параметром Column")

@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import ru.volnenko.maven.plugin.databasedoc.builder.AbstractBuilderTest;
-import ru.volnenko.maven.plugin.databasedoc.data.StringUtilDataProvider;
+import ru.volnenko.maven.plugin.databasedoc.dataprovider.StringUtilDataProvider;
 
 @Feature("StringUtil")
 @RunWith(DataProviderRunner.class)

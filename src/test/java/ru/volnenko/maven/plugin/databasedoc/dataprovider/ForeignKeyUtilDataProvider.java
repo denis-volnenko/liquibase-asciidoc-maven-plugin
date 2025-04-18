@@ -1,4 +1,4 @@
-package ru.volnenko.maven.plugin.databasedoc.data;
+package ru.volnenko.maven.plugin.databasedoc.dataprovider;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;

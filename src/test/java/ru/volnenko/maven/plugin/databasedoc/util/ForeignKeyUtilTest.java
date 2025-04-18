@@ -10,7 +10,7 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilDataProvider;
+import ru.volnenko.maven.plugin.databasedoc.dataprovider.ForeignKeyUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
 import java.util.Collection;

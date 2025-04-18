@@ -1,4 +1,4 @@
-package ru.volnenko.maven.plugin.databasedoc.data;
+package ru.volnenko.maven.plugin.databasedoc.dataprovider;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
@@ -26,6 +26,7 @@ public class AbstractDataProvider {
         public UK expectedUk;
         public Boolean expectedBoolean;
         public String expectedString;
+        public Set<String> expectedDatabases;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
