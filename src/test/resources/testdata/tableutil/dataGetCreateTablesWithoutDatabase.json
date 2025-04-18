@@ -1,0 +1,377 @@
+{
+  "testCases": [
+    {
+      "description": "Root с null элементом в changes",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "1",
+                "author": "author1",
+                "changes": [
+                  null
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root с несколькими изменениями, одним из которых является null",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "2",
+                "author": "author2",
+                "changes": [
+                  null,
+                  {
+                    "createTable": {
+                      "catalogName": "catalog3",
+                      "tablespace": "tablespace3",
+                      "schemaName": "schema3",
+                      "tableName": "table3",
+                      "remarks": "Table 3 description",
+                      "columns": [
+                        { "name": "column1", "type": "int" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+
+    {
+      "description": "Root с null элементом в changes",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "1",
+                "author": "author1",
+                "changes": null
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root с пустым changes",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "2",
+                "author": "author2",
+                "changes": []
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+
+    {
+      "description": "Root с null элементом в databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": [null]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root с пустым databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root with empty DatabaseChangeLogs",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": null
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Collection содержит null элемент",
+      "roots": [null],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "databaseChangeLog: null",
+      "roots": [
+        {
+          "databaseChangeLog": null
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "changeSet null",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": null
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root with valid DatabaseChangeLogs and CreateTables with empty catalogName",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "1",
+                "author": "author1",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "",
+                      "tablespace": "tablespace1",
+                      "schemaName": "schema1",
+                      "tableName": "table1",
+                      "remarks": "Table 1 description",
+                      "columns": [
+                        { "name": "column1", "type": "int" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": [
+        {
+          "catalogName": "",
+          "tablespace": "tablespace1",
+          "schemaName": "schema1",
+          "tableName": "table1",
+          "remarks": "Table 1 description",
+          "columns": [
+            { "name": "column1", "type": "int" }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Root with valid DatabaseChangeLogs and CreateTables with null catalogName",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "2",
+                "author": "author2",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": null,
+                      "tablespace": "tablespace2",
+                      "schemaName": "schema2",
+                      "tableName": "table2",
+                      "remarks": "Table 2 description",
+                      "columns": [
+                        { "name": "column1", "type": "varchar" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": [
+        {
+          "catalogName": null,
+          "tablespace": "tablespace2",
+          "schemaName": "schema2",
+          "tableName": "table2",
+          "remarks": "Table 2 description",
+          "columns": [
+            { "name": "column1", "type": "varchar" }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Root with valid DatabaseChangeLogs and CreateTables with non-empty catalogName",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "3",
+                "author": "author3",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "catalog3",
+                      "tablespace": "tablespace3",
+                      "schemaName": "schema3",
+                      "tableName": "table3",
+                      "remarks": "Table 3 description",
+                      "columns": [
+                        { "name": "column1", "type": "int" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root with DatabaseChangeLogs but no CreateTables",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "4",
+                "author": "author4",
+                "changes": [
+                  {
+                    "addPrimaryKey": {
+                      "tableName": "table4",
+                      "primaryKeyName": "pk_table4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root with no DatabaseChangeLogs",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root with null DatabaseChangeLogs",
+      "roots": [
+        {
+          "databaseChangeLog": null
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Root with multiple DatabaseChangeLogs with CreateTables",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "5",
+                "author": "author5",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": null,
+                      "tablespace": "tablespace5",
+                      "schemaName": "schema5",
+                      "tableName": "table5",
+                      "remarks": "Table 5 description",
+                      "columns": [
+                        { "name": "column1", "type": "int" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "6",
+                "author": "author6",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "",
+                      "tablespace": "tablespace6",
+                      "schemaName": "schema6",
+                      "tableName": "table6",
+                      "remarks": "Table 6 description",
+                      "columns": [
+                        { "name": "column1", "type": "varchar" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": [
+        {
+          "catalogName": null,
+          "tablespace": "tablespace5",
+          "schemaName": "schema5",
+          "tableName": "table5",
+          "remarks": "Table 5 description",
+          "columns": [
+            { "name": "column1", "type": "int" }
+          ]
+        },
+        {
+          "catalogName": "",
+          "tablespace": "tablespace6",
+          "schemaName": "schema6",
+          "tableName": "table6",
+          "remarks": "Table 6 description",
+          "columns": [
+            { "name": "column1", "type": "varchar" }
+          ]
+        }
+      ]
+    }
+  ]
+}

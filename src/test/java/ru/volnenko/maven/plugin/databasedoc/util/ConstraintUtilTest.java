@@ -13,7 +13,7 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 @Feature("ConstraintUtil")
 @RunWith(DataProviderRunner.class)
-public class ConstraintUtilTest  {
+public final class ConstraintUtilTest  {
 
     @Test
     @DisplayName("ConstraintUtil метод nullable с параметром Column")

@@ -13,7 +13,7 @@ import ru.volnenko.maven.plugin.databasedoc.dataprovider.StringUtilDataProvider;
 
 @Feature("StringUtil")
 @RunWith(DataProviderRunner.class)
-public class StringUtilTest extends AbstractBuilderTest {
+public final class StringUtilTest extends AbstractBuilderTest {
 
     @Test
     @DisplayName("StringUtil метод exists с параметром String value")

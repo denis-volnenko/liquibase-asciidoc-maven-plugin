@@ -6,7 +6,7 @@ import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.util.stream.Stream;
 
-public class ForeignKeyUtilDataProvider extends AbstractDataProvider {
+public final class ForeignKeyUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
     public static Object[][] fkMethodCreateTable() {

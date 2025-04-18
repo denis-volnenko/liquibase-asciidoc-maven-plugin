@@ -27,6 +27,8 @@ public class AbstractDataProvider {
         public Boolean expectedBoolean;
         public String expectedString;
         public Set<String> expectedDatabases;
+        public List<CreateTable> expectedCreateTables;
+        public String database;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)

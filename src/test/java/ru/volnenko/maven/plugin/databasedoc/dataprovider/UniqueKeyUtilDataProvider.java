@@ -6,7 +6,7 @@ import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.util.stream.Stream;
 
-public class UniqueKeyUtilDataProvider extends AbstractDataProvider {
+public final class UniqueKeyUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
     public static Object[][] ukMethodConstraint() {

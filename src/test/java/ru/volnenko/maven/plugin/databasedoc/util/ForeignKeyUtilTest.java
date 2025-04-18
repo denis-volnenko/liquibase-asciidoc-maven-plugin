@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Feature("ForeignKeyUtil")
 @RunWith(DataProviderRunner.class)
-public class ForeignKeyUtilTest {
+public final class ForeignKeyUtilTest {
 
     @Test
     @DisplayName("ForeignKeyUtil метод fk с параметром AddForeignKeyConstraint")

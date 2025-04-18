@@ -13,7 +13,7 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 @Feature("ColumnUtil")
 @RunWith(DataProviderRunner.class)
-public class ColumnUtilTest {
+public final class ColumnUtilTest {
 
     @Test
     @DisplayName("ColumnUtil метод getName с параметром Column")

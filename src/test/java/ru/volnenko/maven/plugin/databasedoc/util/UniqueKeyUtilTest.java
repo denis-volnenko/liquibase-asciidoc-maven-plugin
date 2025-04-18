@@ -17,7 +17,7 @@ import java.util.Set;
 
 @Feature("UniqueKeyUtil")
 @RunWith(DataProviderRunner.class)
-public class UniqueKeyUtilTest {
+public final class UniqueKeyUtilTest {
 
     @Test
     @DisplayName("UniqueKeyUtil метод uk с параметром AddUniqueConstraint")

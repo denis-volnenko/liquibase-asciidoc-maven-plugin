@@ -4,7 +4,7 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-public class ColumnUtilDataProvider extends AbstractDataProvider {
+public final class ColumnUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
     public static Object[][] getNameColumn() {

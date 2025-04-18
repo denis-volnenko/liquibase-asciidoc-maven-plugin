@@ -1,0 +1,320 @@
+{
+  "testCases": [
+    {
+      "description": "Один CreateTable с совпадающим catalogName",
+      "database": "myDatabase",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "1",
+                "author": "author1",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "myDatabase",
+                      "schemaName": "schema1",
+                      "tableName": "table1",
+                      "remarks": "desc1",
+                      "columns": [
+                        { "name": "col1", "type": "int" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": [
+        {
+          "catalogName": "myDatabase",
+          "schemaName": "schema1",
+          "tableName": "table1",
+          "remarks": "desc1",
+          "columns": [
+            { "name": "col1", "type": "int" }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "catalogName не совпадает с database",
+      "database": "targetDb",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "2",
+                "author": "author2",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "anotherDb",
+                      "schemaName": "schema2",
+                      "tableName": "table2",
+                      "remarks": "desc2",
+                      "columns": [
+                        { "name": "col1", "type": "varchar" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "catalogName null",
+      "database": "someDb",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "3",
+                "author": "author3",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": null,
+                      "schemaName": "schema3",
+                      "tableName": "table3",
+                      "remarks": "desc3",
+                      "columns": [
+                        { "name": "col1", "type": "text" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "catalogName пустая строка",
+      "database": "db",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "4",
+                "author": "author4",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "",
+                      "schemaName": "schema4",
+                      "tableName": "table4",
+                      "remarks": "desc4",
+                      "columns": [
+                        { "name": "col1", "type": "char" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "root = null",
+      "database": "anyDb",
+      "roots": [null],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "databaseChangeLog = null",
+      "database": "anyDb",
+      "roots": [
+        {
+          "databaseChangeLog": null
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "databaseChangeLog пустой",
+      "database": "anyDb",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "databaseChangeLog содержит null",
+      "database": "anyDb",
+      "roots": [
+        {
+          "databaseChangeLog": [null]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "changeSet = null",
+      "database": "anyDb",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": null
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "changes = null",
+      "database": "anyDb",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "5",
+                "author": "author5",
+                "changes": null
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "changes пустой список",
+      "database": "anyDb",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "6",
+                "author": "author6",
+                "changes": []
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "changes содержит null",
+      "database": "targetDb",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "7",
+                "author": "author7",
+                "changes": [null]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "createTable = null",
+      "database": "targetDb",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "8",
+                "author": "author8",
+                "changes": [
+                  {
+                    "createTable": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": []
+    },
+    {
+      "description": "Два CreateTable с совпадающим catalogName",
+      "database": "commonCatalog",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "id": "9",
+                "author": "author9",
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "commonCatalog",
+                      "schemaName": "s1",
+                      "tableName": "t1",
+                      "remarks": "r1",
+                      "columns": [
+                        { "name": "c1", "type": "int" }
+                      ]
+                    }
+                  },
+                  {
+                    "createTable": {
+                      "catalogName": "commonCatalog",
+                      "schemaName": "s2",
+                      "tableName": "t2",
+                      "remarks": "r2",
+                      "columns": [
+                        { "name": "c1", "type": "text" }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedCreateTables": [
+        {
+          "catalogName": "commonCatalog",
+          "schemaName": "s1",
+          "tableName": "t1",
+          "remarks": "r1",
+          "columns": [
+            { "name": "c1", "type": "int" }
+          ]
+        },
+        {
+          "catalogName": "commonCatalog",
+          "schemaName": "s2",
+          "tableName": "t2",
+          "remarks": "r2",
+          "columns": [
+            { "name": "c1", "type": "text" }
+          ]
+        }
+      ]
+    }
+  ]
+}

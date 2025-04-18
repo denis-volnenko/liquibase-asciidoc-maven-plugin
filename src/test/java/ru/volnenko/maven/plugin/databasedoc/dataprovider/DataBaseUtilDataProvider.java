@@ -6,7 +6,7 @@ import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
 import java.util.stream.Stream;
 
-public class DataBaseUtilDataProvider extends AbstractDataProvider {
+public final class DataBaseUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
     public static Object[][] getDataBases() {

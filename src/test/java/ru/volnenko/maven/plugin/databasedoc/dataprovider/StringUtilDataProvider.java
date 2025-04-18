@@ -4,7 +4,7 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-public class StringUtilDataProvider extends AbstractDataProvider {
+public final class StringUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
     public static Object[][] existsValue() {

@@ -9,7 +9,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import ru.volnenko.maven.plugin.databasedoc.dataprovider.DataBaseUtilDataProvider;
-import ru.volnenko.maven.plugin.databasedoc.dataprovider.ForeignKeyUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 import java.util.Collection;
@@ -17,7 +16,7 @@ import java.util.Set;
 
 @Feature("DataBaseUtil")
 @RunWith(DataProviderRunner.class)
-public class DataBaseUtilTest {
+public final class DataBaseUtilTest {
 
     @Test
     @DisplayName("DataBaseUtil метод getDataBases с параметром roots")
