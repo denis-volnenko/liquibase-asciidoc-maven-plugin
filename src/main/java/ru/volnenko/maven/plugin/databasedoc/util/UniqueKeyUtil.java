@@ -73,6 +73,7 @@ public final class UniqueKeyUtil {
         uk.setFieldName(constraint.getColumnNames());
         return uk;
     }
+
     public static UK uk(final String tableName, final Column column) {
         if (column == null) return null;
         if (tableName == null || tableName.isEmpty()) return null;

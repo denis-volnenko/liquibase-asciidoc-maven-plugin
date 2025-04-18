@@ -1,0 +1,77 @@
+{
+  "validTestCases": [
+    {
+      "constraintUk": {
+        "tableName": "users",
+        "columnNames": "email",
+        "constraintName": "uk_users_email",
+        "schemaName": "public",
+        "clustered": false
+      },
+      "expectedUk": {
+        "tableName": "users",
+        "fieldName": "email"
+      }
+    },
+    {
+      "constraintUk": {
+        "tableName": "orders",
+        "columnNames": "order_id",
+        "constraintName": "uk_orders_order_id",
+        "schemaName": "sales",
+        "catalogName": "main_catalog",
+        "validate": true
+      },
+      "expectedUk": {
+        "tableName": "orders",
+        "fieldName": "order_id"
+      }
+    },
+    {
+      "constraintUk": {
+        "tableName": "products",
+        "columnNames": "sku",
+        "constraintName": "uk_products_sku",
+        "initiallyDeferred": false
+      },
+      "expectedUk": {
+        "tableName": "products",
+        "fieldName": "sku"
+      }
+    }
+  ],
+  "invalidTestCases": [
+    {
+      "constraintUk": null,
+      "expectedUk": null
+    },
+    {
+      "constraintUk": {
+        "tableName": null,
+        "columnNames": "id"
+      },
+      "expectedUk": null
+    },
+    {
+      "constraintUk": {
+        "tableName": "",
+        "columnNames": "id"
+      },
+      "expectedUk": null
+    },
+    {
+      "constraintUk": {
+        "tableName": "employees",
+        "columnNames": null
+      },
+      "expectedUk": null
+    },
+    {
+      "constraintUk": {
+        "tableName": "departments",
+        "columnNames": ""
+      },
+      "expectedUk": null
+    }
+  ]
+}

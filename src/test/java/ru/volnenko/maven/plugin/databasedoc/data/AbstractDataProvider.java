@@ -16,11 +16,14 @@ public class AbstractDataProvider {
         public String value;
         public CreateTable createTable;
         public AddForeignKeyConstraint constraint;
+        public AddUniqueConstraint constraintUk;
         public Column column;
         public Root root;
         public Collection<Root> roots;
         public Set<FK> expectedFks;
+        public Set<UK> expectedUks;
         public FK expectedFk;
+        public UK expectedUk;
         public Boolean expectedBoolean;
         public String expectedString;
     }

@@ -9,9 +9,9 @@ import java.util.stream.Stream;
 public class ForeignKeyUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
-    public static Object[][] fkCreateTable() {
+    public static Object[][] fkMethodCreateTable() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/foreignkeyutil/dataFkCreateTable.json", TestData.class
+                "testdata/foreignkeyutil/dataFkMethodCreateTable.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.createTable, testCase.expectedFks})
@@ -19,9 +19,9 @@ public class ForeignKeyUtilDataProvider extends AbstractDataProvider {
     }
 
     @DataProvider
-    public static Object[][] fksRoots() {
+    public static Object[][] fksMethodRoots() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/foreignkeyutil/dataFksRoots.json", TestData.class
+                "testdata/foreignkeyutil/dataFksMethodRoots.json", TestData.class
         );
         return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.roots, testCase.expectedFks})
@@ -42,9 +42,9 @@ public class ForeignKeyUtilDataProvider extends AbstractDataProvider {
     }
 
     @DataProvider
-    public static Object[][] fkTableNameColumn() {
+    public static Object[][] fkMethodTableNameColumn() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/foreignkeyutil/dataFkTableNameColumn.json", TestData.class
+                "testdata/foreignkeyutil/dataFkMethodTableNameColumn.json", TestData.class
         );
         return Stream.concat(
                 testData.validTestCases.stream(),
@@ -55,9 +55,9 @@ public class ForeignKeyUtilDataProvider extends AbstractDataProvider {
     }
 
     @DataProvider
-    public static Object[][] fkConstraint() {
+    public static Object[][] fkMethodConstraint() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/foreignkeyutil/dataFkConstraint.json", TestData.class
+                "testdata/foreignkeyutil/dataFkMethodConstraint.json", TestData.class
         );
         return Stream.concat(
                 testData.validTestCases.stream(),
