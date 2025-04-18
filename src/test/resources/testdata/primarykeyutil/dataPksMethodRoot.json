@@ -1,0 +1,360 @@
+{
+  "testCases": [
+    {
+      "description": "root is null",
+      "root": null,
+      "expectedPks": []
+    },
+    {
+      "description": "root.getDatabaseChangeLog() is null",
+      "root": {},
+      "expectedPks": []
+    },
+    {
+      "description": "databaseChangeLog is empty list",
+      "root": {
+        "databaseChangeLog": []
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "databaseChangeLog is empty list",
+      "root": {
+        "databaseChangeLog": [null]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "databaseChangeLog is empty list",
+      "root": {
+        "databaseChangeLog": null
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "changeSet is empty object (instead of null)",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": null
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "changeSet is empty object (instead of null)",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {}
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "changeSet.getChanges() is null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": null
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "changeSet.getChanges() is empty",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": []
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "change is null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [null]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "createTable is null in change",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {}
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "createTable.columns is null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "columns": null
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "createTable.columns is null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "columnWrapper.getColumn() is null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": null
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "column.name is null or empty",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": "",
+                          "constraints": {
+                            "primaryKey": true
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "column.name is null or empty",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": null,
+                          "constraints": {
+                            "primaryKey": true
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "column.constraints is null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": "id",
+                          "constraints": null
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "column.constraints.primaryKey is null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": "id",
+                          "constraints": {}
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "column.constraints.primaryKey is false",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": "id",
+                          "constraints": {
+                            "primaryKey": false
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
+      "description": "valid primary key column present",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "id": "1",
+              "author": "test",
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "user",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": "id",
+                          "type": "int",
+                          "constraints": {
+                            "primaryKey": true
+                          }
+                        }
+                      },
+                      {
+                        "column": {
+                          "name": "name",
+                          "type": "varchar",
+                          "constraints": {
+                            "primaryKey": false
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": [
+        {
+          "tableName": "user",
+          "fieldName": "id"
+        }
+      ]
+    }
+  ]
+}
