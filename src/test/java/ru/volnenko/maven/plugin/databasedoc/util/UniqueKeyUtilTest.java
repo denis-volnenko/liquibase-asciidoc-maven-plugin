@@ -8,7 +8,6 @@ import lombok.NonNull;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.volnenko.maven.plugin.databasedoc.data.ForeignKeyUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.data.UniqueKeyUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
 
@@ -53,6 +52,27 @@ public class UniqueKeyUtilTest {
     @UseDataProvider(value = "uksMethodRoots", location = UniqueKeyUtilDataProvider.class)
     public void testUksMethodRoots(final Collection<Root> roots, final Set<UK> expectedUks) {
         Assert.assertEquals(expectedUks, UniqueKeyUtil.uks(roots));
+    }
+
+    @Test
+    @DisplayName("UniqueKeyUtil метод uks с параметром Root")
+    @Description("Проверка метода uks с параметром Root на возврат Set с объектами UK и emptySet()")
+    @UseDataProvider(value = "uksMethodRoot", location = UniqueKeyUtilDataProvider.class)
+    public void testUksMethodRoot(final Root root, final Set<UK> expectedUks) {
+        Assert.assertEquals(expectedUks, UniqueKeyUtil.uks(root));
+    }
+
+    @Test
+    @DisplayName("UniqueKeyUtil медод uk с параметрами tableName и Column")
+    @Description("Проверка метода uk с параметрами tableName и Column на возврат корректного объекта UK")
+    @UseDataProvider(value = "ukMethodTableNameColumn", location = UniqueKeyUtilDataProvider.class)
+    public void testUkMethodTableNameColumn(final String tableName, final Column column, final UK expectedUk) {
+        @NonNull final UK uk = UniqueKeyUtil.uk(tableName, column);
+        Assert.assertEquals(expectedUk, uk);
+        if (expectedUk != null) {
+            Assert.assertEquals(expectedUk.getTableName(), uk.getTableName());
+            Assert.assertEquals(expectedUk.getFieldName(), uk.getFieldName());
+        }
     }
 
 }

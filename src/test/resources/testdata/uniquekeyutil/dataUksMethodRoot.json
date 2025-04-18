@@ -1,0 +1,195 @@
+{
+  "validTestCases": [
+    {
+      "description": "Таблица с уникальным столбцом",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addUniqueConstraint": {
+                    "tableName": "users",
+                    "columnNames": "email",
+                    "constraintName": "uk_users_email"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedUks": [
+        {
+          "tableName": "users",
+          "fieldName": "email"
+        }
+      ]
+    },
+    {
+      "description": "Несколько уникальных ограничений в одном changes",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addUniqueConstraint": {
+                    "tableName": "products",
+                    "columnNames": "sku",
+                    "constraintName": "uk_products_sku"
+                  }
+                },
+                {
+                  "addUniqueConstraint": {
+                    "tableName": "orders",
+                    "columnNames": "order_number",
+                    "constraintName": "uk_orders_order_number"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedUks": [
+        {
+          "tableName": "products",
+          "fieldName": "sku"
+        },
+        {
+          "tableName": "orders",
+          "fieldName": "order_number"
+        }
+      ]
+    },
+    {
+      "description": "Данные с несколькими блоками изменений с уникальными ограничениями",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addUniqueConstraint": {
+                    "tableName": "customers",
+                    "columnNames": "customer_id",
+                    "constraintName": "uk_customers_customer_id"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "addUniqueConstraint": {
+                    "tableName": "orders",
+                    "columnNames": "order_number",
+                    "constraintName": "uk_orders_order_number"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedUks": [
+        {
+          "tableName": "customers",
+          "fieldName": "customer_id"
+        },
+        {
+          "tableName": "orders",
+          "fieldName": "order_number"
+        }
+      ]
+    }
+  ],
+  "invalidTestCases": [
+    {
+      "description": "Полностью null объект",
+      "root": null,
+      "expectedUks": []
+    },
+    {
+      "description": "DatabaseChangeLog == null",
+      "root": {
+        "databaseChangeLog": null
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "Пустой DatabaseChangeLog",
+      "root": {
+        "databaseChangeLog": []
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "ChangeSet с пустым changes",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": []
+            }
+          }
+        ]
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "ChangeSet с null-изменениями",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                null,
+                {
+                  "addUniqueConstraint": null
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "changeLog == null внутри списка",
+      "root": {
+        "databaseChangeLog": [
+          null
+        ]
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "changeSet == null внутри changeLog",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": null
+          }
+        ]
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "changes == null в changeSet",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": null
+            }
+          }
+        ]
+      },
+      "expectedUks": []
+    }
+  ]
+}

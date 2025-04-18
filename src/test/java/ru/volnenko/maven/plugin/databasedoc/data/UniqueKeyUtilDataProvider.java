@@ -54,5 +54,30 @@ public class UniqueKeyUtilDataProvider extends AbstractDataProvider {
                 .toArray(Object[][]::new);
     }
 
+    @DataProvider
+    public static Object[][] uksMethodRoot() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/uniquekeyutil/dataUksMethodRoot.json", TestData.class
+        );
+        return Stream.concat(
+                        testData.validTestCases.stream(),
+                        testData.invalidTestCases.stream()
+                )
+                .map(testCase -> new Object[]{testCase.root, testCase.expectedUks})
+                .toArray(Object[][]::new);
+    }
+
+    @DataProvider
+    public static Object[][] ukMethodTableNameColumn() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/uniquekeyutil/dataUkMethodTableNameColumn.json", TestData.class
+        );
+        return Stream.concat(
+                        testData.validTestCases.stream(),
+                        testData.invalidTestCases.stream()
+                )
+                .map(testCase -> new Object[]{testCase.tableName, testCase.column, testCase.expectedUk})
+                .toArray(Object[][]::new);
+    }
 
 }
