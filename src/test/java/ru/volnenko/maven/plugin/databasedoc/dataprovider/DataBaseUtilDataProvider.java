@@ -4,7 +4,6 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-import java.util.stream.Stream;
 
 public final class DataBaseUtilDataProvider extends AbstractDataProvider {
 
@@ -14,13 +13,9 @@ public final class DataBaseUtilDataProvider extends AbstractDataProvider {
                 "testdata/databaseutil/dataGetDataBases.json",
                 TestData.class
         );
-        return Stream.concat(
-                testData.validTestCases.stream(),
-                testData.invalidTestCases.stream()
-        )
+        return testData.testCases.stream()
                 .map(testCase -> new Object[]{testCase.roots, testCase.expectedDatabases})
                 .toArray(Object[][]::new);
     }
-
 
 }
