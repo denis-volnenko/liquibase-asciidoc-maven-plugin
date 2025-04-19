@@ -90,12 +90,6 @@ public abstract class AbstractBuilderTest {
     protected static final String CHECK_MARK = "✓";
 
     @NonNull
-    protected static final String COLUMN_NAME = "Column name";
-
-    @NonNull
-    protected static final String EXPECTED_COLUMN_NAME = "Column name";
-
-    @NonNull
     private final RootBuilder rootBuilder = RootBuilder.create();
 
     @NonNull

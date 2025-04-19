@@ -15,10 +15,13 @@ public class ConstraintsBuilderTest extends AbstractBuilderTest {
     @NonNull
     private final ConstraintsBuilder constraintsBuilder = constraintsBuilder();
 
+    @NonNull
+    private final Constraints constraints = getConstraints(constraintsBuilder);
+
     @Test
     @DisplayName("Контракт ConstraintsBuilder")
     @Description("Проверка контракта класса ConstraintsBuilder на null-значения и" +
-            "корректности установки значений")
+                 "корректности установки значений")
     public void test() {
         Assert.assertNotNull(constraintsBuilder.foreignKey());
         Assert.assertNotNull(constraintsBuilder.root());
@@ -31,8 +34,6 @@ public class ConstraintsBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(constraintsBuilder.nullable(true));
         Assert.assertNotNull(constraintsBuilder.unique(true));
 
-        final Constraints constraints = getConstraints(constraintsBuilder);
-
         Assert.assertEquals(EXPECTED_FOREIGN_KEY_NAME, constraints.getForeignKeyName());
         Assert.assertEquals(EXPECTED_UNIQUE_CONSTRAINT_NAME, constraints.getUniqueConstraintName());
         Assert.assertEquals(true, constraints.getPrimaryKey());
@@ -41,6 +42,8 @@ public class ConstraintsBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт ConstraintsBuilder")
+    @Description("Проверка контракта класса ConstraintsBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ConstraintsBuilder(null);
     }

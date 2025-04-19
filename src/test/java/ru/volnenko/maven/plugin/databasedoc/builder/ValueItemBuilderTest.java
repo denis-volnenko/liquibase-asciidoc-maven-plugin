@@ -15,6 +15,9 @@ public class ValueItemBuilderTest extends AbstractBuilderTest {
     @NonNull
     private final ValueItemBuilder valueItemBuilder = valueItemBuilder();
 
+    @NonNull
+    private final Value value = getValue(valueItemBuilder);
+
     @Test
     @DisplayName("Контракт ValueItemBuilder")
     @Description("Проверка контракта класса ValueItemBuilder на null-значения и" +
@@ -28,13 +31,13 @@ public class ValueItemBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(valueItemBuilder.name(NAME));
         Assert.assertNotNull(valueItemBuilder.remarks(REMARKS));
 
-        final Value value = getValue(valueItemBuilder);
-
         Assert.assertEquals(EXPECTED_NAME, value.getName());
         Assert.assertEquals(EXPECTED_REMARKS, value.getRemarks());
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт ValueItemBuilder")
+    @Description("Проверка контракта класса ValueItemBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ValueItemBuilder(null);
     }

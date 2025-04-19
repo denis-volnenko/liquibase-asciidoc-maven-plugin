@@ -22,10 +22,11 @@ public class GeneratorBuilderTest {
         Root root = new Root();
         Assert.assertNotNull(builder.serviceName());
         Assert.assertNotNull(builder.root());
-        Assert.assertNotNull(new GeneratorBuilder(root));
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт GeneratorBuilder")
+    @Description("Проверка контракта класса GeneratorBuilder на NullPointerException")
     public void testConstructorNPE() {
         new GeneratorBuilder(null);
     }

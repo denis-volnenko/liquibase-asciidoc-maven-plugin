@@ -17,15 +17,18 @@ public class RootBuilderTest {
         Assert.assertNotNull(RootBuilder.create());
         Assert.assertNotNull(RootBuilder.create().root());
         Assert.assertNotNull(RootBuilder.create().dsl());
-        Assert.assertNotNull(new RootBuilder());
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт RootBuilder")
+    @Description("Проверка контракта класса RootBuilder на NullPointerException")
     public void testConstructorNPE() {
         new RootBuilder(null);
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт RootBuilder")
+    @Description("Проверка контракта класса RootBuilder на NullPointerException")
     public void testCreateNPE() {
         RootBuilder.create(null);
     }

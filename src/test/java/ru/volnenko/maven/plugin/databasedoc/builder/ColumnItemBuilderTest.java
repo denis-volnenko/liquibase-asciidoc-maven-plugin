@@ -15,10 +15,13 @@ public class ColumnItemBuilderTest extends AbstractBuilderTest {
     @NonNull
     private final ColumnItemBuilder columnItemBuilder = columnItemBuilder();
 
+    @NonNull
+    private final Column column = getColumn(columnItemBuilder);
+
     @Test
     @DisplayName("Контракт ColumnItemBuilder")
     @Description("Проверка контракта класса ColumnItemBuilder на null-значения и" +
-            "корректности установки значений")
+                 "корректности установки значений")
     public void test() {
         Assert.assertNotNull(columnItemBuilder.add());
         Assert.assertNotNull(columnItemBuilder.constraints());
@@ -31,8 +34,6 @@ public class ColumnItemBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(columnItemBuilder.remarks(REMARKS));
         Assert.assertNotNull(columnItemBuilder.autoIncrement(true));
 
-        final Column column = getColumn(columnItemBuilder);
-
         Assert.assertEquals(EXPECTED_NAME, column.getName());
         Assert.assertEquals(EXPECTED_TYPE, column.getType());
         Assert.assertEquals(EXPECTED_REMARKS, column.getRemarks());
@@ -40,6 +41,8 @@ public class ColumnItemBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт ColumnItemBuilder")
+    @Description("Проверка контракта класса ColumnItemBuilder NullPointerException")
     public void testConstructorNPE() {
         new ColumnItemBuilder(null);
     }

@@ -70,4 +70,22 @@ public class ColumnTypeTest {
         };
     }
 
+    @Test
+    @DisplayName("null")
+    public void testNull() {
+        Assert.assertEquals(null, ColumnType.typeOf(null));
+    }
+
+    @Test
+    @DisplayName("empty string")
+    public void testEmpty() {
+        Assert.assertEquals(null, ColumnType.typeOf(""));
+    }
+
+    @Test
+    @DisplayName("miss type")
+    public void testMissType() {
+        Assert.assertEquals(null, ColumnType.typeOf("color"));
+    }
+
 }
