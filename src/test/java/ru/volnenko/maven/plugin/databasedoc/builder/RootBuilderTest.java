@@ -20,8 +20,8 @@ public class RootBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
-    @DisplayName("Контракт RootBuilder")
-    @Description("Проверка контракта класса RootBuilder на NullPointerException")
+    @DisplayName("Конструктор RootBuilder")
+    @Description("Проверка конструктора класса RootBuilder на NullPointerException")
     public void testConstructorNPE() {
         new RootBuilder(null);
     }

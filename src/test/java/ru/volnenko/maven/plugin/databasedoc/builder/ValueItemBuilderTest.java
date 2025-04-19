@@ -36,8 +36,8 @@ public class ValueItemBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
-    @DisplayName("Контракт ValueItemBuilder")
-    @Description("Проверка контракта класса ValueItemBuilder на NullPointerException")
+    @DisplayName("Конструктор ValueItemBuilder")
+    @Description("Проверка конструктора класса ValueItemBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ValueItemBuilder(null);
     }

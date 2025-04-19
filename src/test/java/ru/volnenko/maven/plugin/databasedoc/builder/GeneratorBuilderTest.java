@@ -25,8 +25,8 @@ public class GeneratorBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
-    @DisplayName("Контракт GeneratorBuilder")
-    @Description("Проверка контракта класса GeneratorBuilder на NullPointerException")
+    @DisplayName("Конструктор GeneratorBuilder")
+    @Description("Проверка конструктора класса GeneratorBuilder на NullPointerException")
     public void testConstructorNPE() {
         new GeneratorBuilder(null);
     }

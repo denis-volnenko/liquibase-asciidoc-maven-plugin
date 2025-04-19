@@ -42,8 +42,8 @@ public class ConstraintsBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
-    @DisplayName("Контракт ConstraintsBuilder")
-    @Description("Проверка контракта класса ConstraintsBuilder на NullPointerException")
+    @DisplayName("Конструктор ConstraintsBuilder")
+    @Description("Проверка конструктора класса ConstraintsBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ConstraintsBuilder(null);
     }

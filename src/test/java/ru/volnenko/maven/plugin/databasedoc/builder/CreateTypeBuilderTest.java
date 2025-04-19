@@ -39,8 +39,8 @@ public class CreateTypeBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
-    @DisplayName("Контракт CreateTypeBuilder")
-    @Description("Проверка контракта класса CreateTypeBuilder на NullPointerException")
+    @DisplayName("Конструктор CreateTypeBuilder")
+    @Description("Проверка конструктора класса CreateTypeBuilder на NullPointerException")
     public void testConstructorNPE() {
         new CreateTypeBuilder(null);
     }
