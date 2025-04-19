@@ -12,6 +12,7 @@ import ru.volnenko.maven.plugin.databasedoc.dataprovider.PrimaryKeyUtilDataProvi
 import ru.volnenko.maven.plugin.databasedoc.model.impl.PK;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
+import java.util.Collection;
 import java.util.Set;
 
 @Feature("PrimaryKeyUtil")
@@ -24,6 +25,14 @@ public class PrimaryKeyUtilTest {
     @UseDataProvider(value = "pksMethodRoot", location = PrimaryKeyUtilDataProvider.class)
     public void testPksMethodRoot(final Root root, Set<PK> expectedPks) {
         Assert.assertEquals(expectedPks, PrimaryKeyUtil.pks(root));
+    }
+
+    @Test
+    @DisplayName("PrimaryKeyUtil метод pks с параметром Roots")
+    @Description("Проверка метода pks с Roots на возврат корректных Set<PK>")
+    @UseDataProvider(value = "pksMethodRoots", location = PrimaryKeyUtilDataProvider.class)
+    public void testPksMethodRoots(final Collection<Root> roots, Set<PK> expectedPks) {
+        Assert.assertEquals(expectedPks, PrimaryKeyUtil.pks(roots));
     }
 
 }

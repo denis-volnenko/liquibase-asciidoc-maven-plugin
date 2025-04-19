@@ -17,4 +17,15 @@ public class PrimaryKeyUtilDataProvider extends AbstractDataProvider {
                 .toArray(Object[][]::new);
     }
 
+    @DataProvider
+    public static Object[][] pksMethodRoots() {
+        @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
+                "testdata/primarykeyutil/dataPksMethodRoots.json",
+                TestData.class
+        );
+        return testData.testCases.stream()
+                .map(testCase -> new Object[]{testCase.roots, testCase.expectedPks})
+                .toArray(Object[][]::new);
+    }
+
 }

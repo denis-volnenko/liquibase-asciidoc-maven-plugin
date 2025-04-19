@@ -228,6 +228,35 @@
       "expectedPks": []
     },
     {
+      "description": "column.name is null or empty",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": "",
+                          "constraints": {
+                            "primaryKey": true
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
+    },
+    {
       "description": "column.constraints is null",
       "root": {
         "databaseChangeLog": [
@@ -355,6 +384,35 @@
           "fieldName": "id"
         }
       ]
+    },
+    {
+      "description": "getConstraints() != null, но getPrimaryKey() == null",
+      "root": {
+        "databaseChangeLog": [
+          {
+            "changeSet": {
+              "changes": [
+                {
+                  "createTable": {
+                    "tableName": "demo",
+                    "columns": [
+                      {
+                        "column": {
+                          "name": "id",
+                          "constraints": {
+                            "primaryKey": null
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expectedPks": []
     }
   ]
 }
