@@ -1,4 +1,4 @@
-= liquilbase-asciidoc-maven-plugin
+= liquibase-asciidoc-maven-plugin
 :toc:
 
 == Project Info
@@ -62,7 +62,7 @@ image::doc/use-cases.svg[]
 [cols="20,80"]
 |===
 
-|*Liquilbase*
+|*Liquibase*
 a|
 https://github.com/denis-volnenko/liquilbase-asciidoc-maven-plugin/
 https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/
