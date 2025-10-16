@@ -1,0 +1,153 @@
+{
+  "testCases": [
+    {
+      "description": "Таблица с одним уникальным столбцом",
+      "createTable": {
+        "tableName": "users",
+        "columns": [
+          {
+            "column": {
+              "name": "email",
+              "constraints": {
+                "unique": true
+              }
+            }
+          }
+        ]
+      },
+      "expectedUks": [
+        {
+          "tableName": "users",
+          "fieldName": "email"
+        }
+      ]
+    },
+    {
+      "description": "Таблица с двумя уникальными столбцами",
+      "createTable": {
+        "tableName": "products",
+        "columns": [
+          {
+            "column": {
+              "name": "sku",
+              "constraints": {
+                "unique": true
+              }
+            }
+          },
+          {
+            "column": {
+              "name": "barcode",
+              "constraints": {
+                "unique": true
+              }
+            }
+          }
+        ]
+      },
+      "expectedUks": [
+        {
+          "tableName": "products",
+          "fieldName": "sku"
+        },
+        {
+          "tableName": "products",
+          "fieldName": "barcode"
+        }
+      ]
+    },
+    {
+      "description": "Столбцы без уникальных ограничений",
+      "createTable": {
+        "tableName": "orders",
+        "columns": [
+          {
+            "column": {
+              "name": "order_id"
+            }
+          },
+          {
+            "column": {
+              "name": "user_id",
+              "constraints": {
+                "unique": false
+              }
+            }
+          }
+        ]
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "createTable == null",
+      "createTable": null,
+      "expectedUks": []
+    },
+    {
+      "description": "createTable с пустым списком колонок",
+      "createTable": {
+        "tableName": "logs",
+        "columns": []
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "Колонка null и одна с уникальностью",
+      "createTable": {
+        "tableName": "audit",
+        "columns": [
+          null,
+          {
+            "column": {
+              "name": "event_type",
+              "constraints": {
+                "unique": true
+              }
+            }
+          }
+        ]
+      },
+      "expectedUks": [
+        {
+          "tableName": "audit",
+          "fieldName": "event_type"
+        }
+      ]
+    },
+    {
+      "description": "Одна колонка с constraints == null",
+      "createTable": {
+        "tableName": "test",
+        "columns": [
+          {
+            "column": {
+              "name": "some_field",
+              "constraints": null
+            }
+          }
+        ]
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "Тест с ColumnWrapper, где column == null",
+      "createTable": {
+        "tableName": "test_table",
+        "columns": [
+          {
+            "column": null
+          }
+        ]
+      },
+      "expectedUks": []
+    },
+    {
+      "description": "Тест с ColumnWrapper, где column == null",
+      "createTable": {
+        "tableName": "test_table",
+        "columns": null
+      },
+      "expectedUks": []
+    }
+  ]
+}

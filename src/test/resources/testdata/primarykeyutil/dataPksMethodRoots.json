@@ -1,0 +1,173 @@
+{
+  "testCases": [
+    {
+      "description": "roots is null",
+      "roots": null,
+      "expectedPks": []
+    },
+    {
+      "description": "roots is empty list",
+      "roots": [],
+      "expectedPks": []
+    },
+    {
+      "description": "roots contains null only",
+      "roots": [null],
+      "expectedPks": []
+    },
+    {
+      "description": "roots contains one empty root",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedPks": []
+    },
+    {
+      "description": "roots contains one valid root with PK",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "tableName": "user",
+                      "columns": [
+                        {
+                          "column": {
+                            "name": "id",
+                            "type": "int",
+                            "constraints": {
+                              "primaryKey": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedPks": [
+        {
+          "tableName": "user",
+          "fieldName": "id"
+        }
+      ]
+    },
+    {
+      "description": "roots contains multiple roots with valid PKs",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "tableName": "user",
+                      "columns": [
+                        {
+                          "column": {
+                            "name": "id",
+                            "type": "int",
+                            "constraints": {
+                              "primaryKey": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "tableName": "order",
+                      "columns": [
+                        {
+                          "column": {
+                            "name": "order_id",
+                            "type": "int",
+                            "constraints": {
+                              "primaryKey": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedPks": [
+        {
+          "tableName": "user",
+          "fieldName": "id"
+        },
+        {
+          "tableName": "order",
+          "fieldName": "order_id"
+        }
+      ]
+    },
+    {
+      "description": "roots contains mix of valid and null/empty roots",
+      "roots": [
+        null,
+        {
+          "databaseChangeLog": []
+        },
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "tableName": "account",
+                      "columns": [
+                        {
+                          "column": {
+                            "name": "account_id",
+                            "type": "int",
+                            "constraints": {
+                              "primaryKey": true
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedPks": [
+        {
+          "tableName": "account",
+          "fieldName": "account_id"
+        }
+      ]
+    }
+  ]
+}

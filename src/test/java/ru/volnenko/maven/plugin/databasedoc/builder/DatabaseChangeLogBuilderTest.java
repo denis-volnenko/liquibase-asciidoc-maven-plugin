@@ -24,6 +24,8 @@ public class DatabaseChangeLogBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Конструктор DatabaseChangeLogBuilder")
+    @Description("Проверка конструктора класса DatabaseChangeLogBuilder на NullPointerException")
     public void testConstructorNPE() {
         new DatabaseChangeLogBuilder(null);
     }

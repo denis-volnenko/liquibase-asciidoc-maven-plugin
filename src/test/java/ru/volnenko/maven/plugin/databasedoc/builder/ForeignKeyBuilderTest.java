@@ -24,6 +24,8 @@ public class ForeignKeyBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Конструктор ForeignKeyBuilder")
+    @Description("Проверка конструктора класса ForeignKeyBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ForeignKeyBuilder(null);
     }

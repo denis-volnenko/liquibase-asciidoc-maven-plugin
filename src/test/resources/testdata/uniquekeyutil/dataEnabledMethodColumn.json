@@ -1,0 +1,49 @@
+{
+  "validTestCases": [
+    {
+      "column": {
+        "constraints": {
+          "unique": true
+        }
+      },
+      "expectedBoolean": true
+    },
+    {
+      "column": {
+        "constraints": {
+          "unique": true,
+          "nullable": false
+        }
+      },
+      "expectedBoolean": true
+    }
+  ],
+  "invalidTestCases": [
+    {
+      "column": null,
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": null
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "unique": null
+        }
+      },
+      "expectedBoolean": false
+    },
+    {
+      "column": {
+        "constraints": {
+          "unique": false
+        }
+      },
+      "expectedBoolean": false
+    }
+  ]
+}

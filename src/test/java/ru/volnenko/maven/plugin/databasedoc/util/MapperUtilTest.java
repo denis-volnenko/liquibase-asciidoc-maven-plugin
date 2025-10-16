@@ -11,7 +11,7 @@ import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
 
 @Feature("MapperUtil")
-public class MapperUtilTest {
+public final class MapperUtilTest {
 
     @NonNull
     private static final ObjectMapper JSON = MapperUtil.json();

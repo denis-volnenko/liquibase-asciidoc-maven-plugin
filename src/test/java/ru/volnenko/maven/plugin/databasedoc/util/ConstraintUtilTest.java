@@ -8,12 +8,12 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import ru.volnenko.maven.plugin.databasedoc.data.ConstraintUtilDataProvider;
+import ru.volnenko.maven.plugin.databasedoc.dataprovider.ConstraintUtilDataProvider;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Column;
 
 @Feature("ConstraintUtil")
 @RunWith(DataProviderRunner.class)
-public class ConstraintUtilTest  {
+public final class ConstraintUtilTest  {
 
     @Test
     @DisplayName("ConstraintUtil метод nullable с параметром Column")

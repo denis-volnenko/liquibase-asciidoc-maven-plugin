@@ -1,0 +1,309 @@
+{
+  "testCases": [
+    {
+      "description": "databaseChangeLog с null changeSet",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": null
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "changeSet с пустым списком changes",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": []
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "changes содержит null",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [null]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "createTable с null catalogName",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": null
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "changes не null и не пустой, но с невалидным createTable",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Root с пустым databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Root с null databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": null
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Root с непустым databaseChangeLog",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1"
+      ]
+    },
+    {
+      "description": "Root с null в корневом объекте",
+      "roots": [
+        null,
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1"
+      ]
+    },
+    {
+      "description": "Тест с базой данных в корневом объекте",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1"
+      ]
+    },
+    {
+      "description": "Тест с несколькими базами данных",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": "database2"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": [
+        "database1",
+        "database2"
+      ]
+    },
+    {
+      "description": "Тест с пустыми данными",
+      "roots": [
+        {
+          "databaseChangeLog": []
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Root с null внутри списка",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            null
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Null корневой объект",
+      "roots": null,
+      "expectedDatabases": []
+    },
+    {
+      "description": "Корневой объект с null или пустыми значениями в catalogName",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "catalogName": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Корневой объект с null значениями в createTable",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Тест — changes инициализирован как пустой список",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": []
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    },
+    {
+      "description": "Тест — changes инициализирован как пустой список",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": null
+              }
+            }
+          ]
+        }
+      ],
+      "expectedDatabases": []
+    }
+  ]
+}

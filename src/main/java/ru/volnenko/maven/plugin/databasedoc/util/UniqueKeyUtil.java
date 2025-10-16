@@ -24,7 +24,7 @@ public final class UniqueKeyUtil {
         for (DatabaseChangeLog changeLog: root.getDatabaseChangeLog()) {
             if (changeLog == null) continue;
             final ChangeSet changeSet = changeLog.getChangeSet();
-            if (changeLog == null) continue;
+            if (changeSet == null) continue;
             final List<Change> changes = changeSet.getChanges();
             if (changes == null || changes.isEmpty()) continue;
             for (Change change: changes) {
@@ -73,6 +73,7 @@ public final class UniqueKeyUtil {
         uk.setFieldName(constraint.getColumnNames());
         return uk;
     }
+
     public static UK uk(final String tableName, final Column column) {
         if (column == null) return null;
         if (tableName == null || tableName.isEmpty()) return null;

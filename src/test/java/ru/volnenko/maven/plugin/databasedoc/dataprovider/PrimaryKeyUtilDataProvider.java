@@ -1,30 +1,30 @@
-package ru.volnenko.maven.plugin.databasedoc.data;
+package ru.volnenko.maven.plugin.databasedoc.dataprovider;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-public class ConstraintUtilDataProvider extends AbstractDataProvider {
+public class PrimaryKeyUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
-    public static Object[][] nullableColumn() {
+    public static Object[][] pksMethodRoot() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/constraintutil/dataNullableColumn.json",
+                "testdata/primarykeyutil/dataPksMethodRoot.json",
                 TestData.class
         );
         return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.column, testCase.expectedBoolean})
+                .map(testCase -> new Object[]{testCase.root, testCase.expectedPks})
                 .toArray(Object[][]::new);
     }
 
     @DataProvider
-    public static Object[][] notNullColumn() {
+    public static Object[][] pksMethodRoots() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/constraintutil/dataNotNullColumn.json",
+                "testdata/primarykeyutil/dataPksMethodRoots.json",
                 TestData.class
         );
         return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.column, testCase.expectedBoolean})
+                .map(testCase -> new Object[]{testCase.roots, testCase.expectedPks})
                 .toArray(Object[][]::new);
     }
 

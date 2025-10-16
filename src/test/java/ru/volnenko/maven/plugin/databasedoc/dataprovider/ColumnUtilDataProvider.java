@@ -1,19 +1,19 @@
-package ru.volnenko.maven.plugin.databasedoc.data;
+package ru.volnenko.maven.plugin.databasedoc.dataprovider;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import lombok.NonNull;
 import ru.volnenko.maven.plugin.databasedoc.util.MapperUtil;
 
-public class StringUtilDataProvider extends AbstractDataProvider {
+public final class ColumnUtilDataProvider extends AbstractDataProvider {
 
     @DataProvider
-    public static Object[][] existsValue() {
+    public static Object[][] getNameColumn() {
         @NonNull final TestData testData = MapperUtil.parseJsonFromResource(
-                "testdata/stringutil/dataExistsValue.json",
+                "testdata/columnutil/dataGetNameColumn.json",
                 TestData.class
         );
         return testData.testCases.stream()
-                .map(testCase -> new Object[]{testCase.value, testCase.expectedBoolean})
+                .map(testCase -> new Object[]{testCase.column, testCase.expectedString})
                 .toArray(Object[][]::new);
     }
 

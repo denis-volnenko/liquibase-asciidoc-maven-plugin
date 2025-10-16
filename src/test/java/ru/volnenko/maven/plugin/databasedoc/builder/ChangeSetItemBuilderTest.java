@@ -15,10 +15,13 @@ public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
     @NonNull
     private final ChangeSetItemBuilder changeSetItemBuilder = changeSetBuilder().add();
 
+    @NonNull
+    private final ChangeSet changeSet = changeSetItemBuilder.changeSet();
+
     @Test
     @DisplayName("Контракт ChangeSetItemBuilder")
     @Description("Проверка контракта класса ChangeSetItemBuilder на null-значения и" +
-            "корректности установки значений")
+                 "корректности установки значений")
     public void test() {
         Assert.assertNotNull(changeSetItemBuilder.change());
         Assert.assertNotNull(changeSetItemBuilder.changeSet());
@@ -27,13 +30,13 @@ public class ChangeSetItemBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(changeSetItemBuilder.id(ID));
         Assert.assertNotNull(changeSetItemBuilder.author(AUTHOR));
 
-        final ChangeSet changeSet = changeSetItemBuilder.changeSet();
-
         Assert.assertEquals(EXPECTED_ID, changeSet.getId());
         Assert.assertEquals(EXPECTED_AUTHOR, changeSet.getAuthor());
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Конструктор ChangeSetItemBuilder")
+    @Description("Проверка конструктора класса ChangeSetItemBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ChangeSetItemBuilder(null);
     }

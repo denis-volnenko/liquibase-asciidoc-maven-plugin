@@ -25,6 +25,8 @@ public class ColumnBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Конструктор ColumnBuilder")
+    @Description("Проверка конструктора класса ColumnBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ColumnBuilder(null);
     }

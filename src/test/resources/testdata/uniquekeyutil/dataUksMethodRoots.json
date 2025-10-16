@@ -1,0 +1,158 @@
+{
+  "testCases": [
+    {
+      "description": "Коллекция Root с несколькими элементами, содержащими уникальные ограничения",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "addUniqueConstraint": {
+                      "tableName": "users",
+                      "columnNames": "email",
+                      "constraintName": "uk_users_email"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "addUniqueConstraint": {
+                      "tableName": "products",
+                      "columnNames": "sku",
+                      "constraintName": "uk_products_sku"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedUks": [
+        {
+          "tableName": "users",
+          "fieldName": "email"
+        },
+        {
+          "tableName": "products",
+          "fieldName": "sku"
+        }
+      ]
+    },
+    {
+      "description": "Root с пустыми данными, не содержащими уникальных ограничений",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "addUniqueConstraint": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedUks": []
+    },
+    {
+      "description": "Root с несколькими изменениями, но без уникальных ограничений",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "createTable": {
+                      "tableName": "orders",
+                      "columns": [
+                        {
+                          "column": {
+                            "name": "order_id",
+                            "constraints": {
+                              "unique": false
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedUks": []
+    },
+    {
+      "description": "Root с уникальными ограничениями в нескольких ChangeSet",
+      "roots": [
+        {
+          "databaseChangeLog": [
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "addUniqueConstraint": {
+                      "tableName": "customers",
+                      "columnNames": "customer_id",
+                      "constraintName": "uk_customers_customer_id"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "changeSet": {
+                "changes": [
+                  {
+                    "addUniqueConstraint": {
+                      "tableName": "orders",
+                      "columnNames": "order_number",
+                      "constraintName": "uk_orders_order_number"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "expectedUks": [
+        {
+          "tableName": "customers",
+          "fieldName": "customer_id"
+        },
+        {
+          "tableName": "orders",
+          "fieldName": "order_number"
+        }
+      ]
+    },
+    {
+      "description": "Root равен null",
+      "roots": null,
+      "expectedUks": []
+    },
+    {
+      "description": "Пустая коллекция Root",
+      "roots": [],
+      "expectedUks": []
+    }
+  ]
+}

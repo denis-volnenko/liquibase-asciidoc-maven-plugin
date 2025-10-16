@@ -15,10 +15,13 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
     @NonNull
     private final CreateTableBuilder tableBuilder = createTableBuilder();
 
+    @NonNull
+    private final CreateTable table = getFirstTable(tableBuilder);
+
     @Test
     @DisplayName("Контракт CreateTableBuilder")
     @Description("Проверка контракта класса CreateTableBuilder на null-значения и" +
-            "корректности установки значений")
+                 "корректности установки значений")
     public void test() {
         Assert.assertNotNull(tableBuilder.root());
         Assert.assertNotNull(tableBuilder.change());
@@ -30,8 +33,6 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(tableBuilder.tablespace(TABLESPACE));
         Assert.assertNotNull(tableBuilder.remarks(REMARKS));
 
-        final CreateTable table = getFirstTable(tableBuilder);
-
         Assert.assertEquals(EXPECTED_TABLE_NAME, table.getTableName());
         Assert.assertEquals(EXPECTED_CATALOG_NAME, table.getCatalogName());
         Assert.assertEquals(EXPECTED_TABLESPACE, table.getTablespace());
@@ -39,26 +40,36 @@ public class CreateTableBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт CreateTableBuilder")
+    @Description("Проверка контракта класса CreateTableBuilder на NullPointerException")
     public void testTableNameNPE() {
         tableBuilder.tableName(null);
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт CreateTableBuilder")
+    @Description("Проверка контракта класса CreateTableBuilder на NullPointerException")
     public void testCatalogNameNPE() {
         tableBuilder.catalogName(null);
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт CreateTableBuilder")
+    @Description("Проверка контракта класса CreateTableBuilder на NullPointerException")
     public void testTablespaceNPE() {
         tableBuilder.tablespace(null);
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Контракт CreateTableBuilder")
+    @Description("Проверка контракта класса CreateTableBuilder на NullPointerException")
     public void testRemarksNPE() {
         tableBuilder.remarks(null);
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Конструктор CreateTableBuilder")
+    @Description("Проверка конструктора класса CreateTableBuilder на NullPointerException")
     public void testConstructorNPE() {
         new CreateTableBuilder(null);
     }

@@ -23,6 +23,8 @@ public class ChangeSetBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Конструктор ChangeSetBuilder")
+    @Description("Проверка конструктора класса ChangeSetBuilder на NullPointerException")
     public void testConstructorNPE() {
         new ChangeSetBuilder(null);
     }

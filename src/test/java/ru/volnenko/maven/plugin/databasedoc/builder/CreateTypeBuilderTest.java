@@ -15,10 +15,13 @@ public class CreateTypeBuilderTest extends AbstractBuilderTest {
     @NonNull
     private final CreateTypeBuilder typeBuilder = createTypeBuilder();
 
+    @NonNull
+    final CreateType type = getFirstType(typeBuilder);
+
     @Test
     @DisplayName("Контракт CreateTypeBuilder")
     @Description("Проверка контракта класса CreateTypeBuilder на null-значения и" +
-            "корректности установки значений")
+                 "корректности установки значений")
     public void test() {
         Assert.assertNotNull(typeBuilder.root());
         Assert.assertNotNull(typeBuilder.change());
@@ -28,8 +31,6 @@ public class CreateTypeBuilderTest extends AbstractBuilderTest {
         Assert.assertNotNull(typeBuilder.tablespace(TABLESPACE));
         Assert.assertNotNull(typeBuilder.remarks(REMARKS));
 
-        final CreateType type = getFirstType(typeBuilder);
-
         Assert.assertEquals(EXPECTED_TYPE_NAME, type.getTypeName());
         Assert.assertEquals(EXPECTED_CATALOG_NAME, type.getCatalogName());
         Assert.assertEquals(EXPECTED_TABLESPACE, type.getTablespace());
@@ -38,6 +39,8 @@ public class CreateTypeBuilderTest extends AbstractBuilderTest {
     }
 
     @Test(expected = NullPointerException.class)
+    @DisplayName("Конструктор CreateTypeBuilder")
+    @Description("Проверка конструктора класса CreateTypeBuilder на NullPointerException")
     public void testConstructorNPE() {
         new CreateTypeBuilder(null);
     }

@@ -1,4 +1,4 @@
-package ru.volnenko.maven.plugin.databasedoc.data;
+package ru.volnenko.maven.plugin.databasedoc.dataprovider;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
@@ -16,13 +16,20 @@ public class AbstractDataProvider {
         public String value;
         public CreateTable createTable;
         public AddForeignKeyConstraint constraint;
+        public AddUniqueConstraint constraintUk;
         public Column column;
         public Root root;
         public Collection<Root> roots;
         public Set<FK> expectedFks;
+        public Set<UK> expectedUks;
         public FK expectedFk;
+        public UK expectedUk;
         public Boolean expectedBoolean;
         public String expectedString;
+        public Set<String> expectedDatabases;
+        public List<CreateTable> expectedCreateTables;
+        public String database;
+        public Set<PK> expectedPks;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
