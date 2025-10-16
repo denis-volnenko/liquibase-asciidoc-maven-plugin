@@ -130,7 +130,7 @@ https://github.com/denis-volnenko/yaml-packaging-maven-plugin/
         <plugins>
             <plugin>
                 <groupId>ru.volnenko.maven.plugin</groupId>
-                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>
+                <artifactId>liquibase-asciidoc-maven-plugin</artifactId>
                 <version>1.0.0</version>
                 <configuration>
                     <serviceName>TaskManager</serviceName>
