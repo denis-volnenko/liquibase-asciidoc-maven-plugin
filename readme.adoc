@@ -64,8 +64,8 @@ image::doc/use-cases.svg[]
 
 |*Liquibase*
 a|
-https://github.com/denis-volnenko/liquilbase-asciidoc-maven-plugin/
-https://maven.volnenko.ru/sites/liquilbase-asciidoc-maven-plugin/
+https://github.com/denis-volnenko/liquibase-asciidoc-maven-plugin/
+https://maven.volnenko.ru/sites/liquibase-asciidoc-maven-plugin/
 
 |*OpenApi*
 a|
@@ -110,6 +110,11 @@ https://github.com/denis-volnenko/yaml-packaging-maven-plugin/
     </repositories>
 
     <pluginRepositories>
+        <pluginRepository>
+            <id>liquibase-asciidoc-maven-plugin</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/denis-volnenko/liquibase-asciidoc-maven-plugin</url>
+        </pluginRepository>
         <pluginRepository>
             <id>maven.volnenko.ru</id>
             <name>maven.volnenko.ru</name>
