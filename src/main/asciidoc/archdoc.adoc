@@ -32,11 +32,11 @@
 
 == Context View
 
-image::doc/context-view.svg[]
+image::images/context-view.svg[]
 
 == Use-Cases
 
-image::doc/use-cases.svg[]
+image::images/use-cases.svg[]
 
 == Technical Limitations
 
