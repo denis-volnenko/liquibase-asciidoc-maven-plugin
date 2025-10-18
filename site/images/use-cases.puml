@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+
+actor "Maven Plugin" as plugin
+usecase "Generate Database Asciidoc" as uc1
+usecase "Generate Logical Scheme" as uc2
+usecase "Generate Physical Scheme" as uc3
+usecase "Concat Yaml / Json files" as uc4
+
+plugin --> uc1
+plugin --> uc2
+plugin --> uc3
+plugin --> uc4
+
+@enduml
