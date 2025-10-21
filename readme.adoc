@@ -57,36 +57,6 @@ image::images/use-cases.svg[]
 
 |===
 
-== Volnenko Maven Plugins
-
-[cols="20,80"]
-|===
-
-|*Liquibase*
-a|
-https://github.com/denis-volnenko/liquibase-asciidoc-maven-plugin/
-https://maven.volnenko.ru/sites/liquibase-asciidoc-maven-plugin/
-
-|*OpenApi*
-a|
-https://github.com/denis-volnenko/openapi-asciidoc-maven-plugin/
-https://maven.volnenko.ru/sites/openapi-asciidoc-maven-plugin/
-
-|*Minio Wagon*
-a|
-https://github.com/denis-volnenko/minio-wagon-maven-plugin/
-https://maven.volnenko.ru/sites/minio-wagon-maven-plugin/
-
-|*Json Packaging*
-a|
-https://github.com/denis-volnenko/json-packaging-maven-plugin/
-
-|*Yaml Packaging*
-a|
-https://github.com/denis-volnenko/yaml-packaging-maven-plugin/
-
-|===
-
 == Plugin configuration
 
 === Repository config
