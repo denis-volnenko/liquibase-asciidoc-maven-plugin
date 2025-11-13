@@ -57,17 +57,27 @@ public final class RootParser {
     }
 
     @NonNull
-    @SneakyThrows
-    public List<JsonNode> all() {
-        @NonNull final List<JsonNode> result = new ArrayList<>();
+    private List<String> files() {
+        @NonNull final List<String> result = new ArrayList<>();
         for (final String path: paths) {
             if (path == null || path.isEmpty()) continue;
             for (final String file : FileUtil.files(path)) {
                 if (file == null || file.isEmpty()) continue;
-                result.add(map(file));
+                result.add(file);
             }
         }
         for (final String file : files) {
+            if (file == null || file.isEmpty()) continue;
+            result.add(file);
+        }
+        return result;
+    }
+
+    @NonNull
+    @SneakyThrows
+    public List<JsonNode> all() {
+        @NonNull final List<JsonNode> result = new ArrayList<>();
+        for (final String file : files()) {
             if (file == null || file.isEmpty()) continue;
             result.add(map(file));
         }
@@ -97,7 +107,7 @@ public final class RootParser {
     @NonNull
     public List<Root> parse() {
         @NonNull final List<Root> result = new ArrayList<>();
-        for (final String file : files) {
+        for (final String file : files()) {
             if (file == null || file.isEmpty()) continue;
             result.add(parse(file));
         }
