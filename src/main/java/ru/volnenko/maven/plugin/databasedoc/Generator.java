@@ -151,7 +151,7 @@ public final class Generator extends AbstractMojo {
                 .tableOfContentsEnabled(tableOfContentsEnabled)
                 .append(stringBuilder);
 
-        @NonNull final List<Root> roots = rootParser.files(files).parse();
+        @NonNull final List<Root> roots = rootParser.paths(paths).files(files).parse();
 
         createTableDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
         createTypeDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
