@@ -114,6 +114,11 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
+    @Parameter(property = "paths")
+    private List<String> paths = new ArrayList<>();
+
+    @Getter
+    @Setter
     @Parameter(property = "files")
     private List<String> files = new ArrayList<>();
 

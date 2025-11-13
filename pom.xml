@@ -166,23 +166,23 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>ru.volnenko.maven.plugin</groupId>
-                <artifactId>jacocohub-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <configuration>
-                    <jacocohub>http://localhost:8080</jacocohub>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>publish</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>publish</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>ru.volnenko.maven.plugin</groupId>-->
+<!--                <artifactId>jacocohub-maven-plugin</artifactId>-->
+<!--                <version>1.0.0</version>-->
+<!--                <configuration>-->
+<!--                    <jacocohub>http://localhost:8080</jacocohub>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>publish</id>-->
+<!--                        <phase>prepare-package</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>publish</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -207,9 +207,6 @@
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <argLine>${jacoco.argLine}</argLine>
-<!--                    <argLine>-->
-<!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
-<!--                    </argLine>-->
                     <properties>
                         <property>
                             <name>listener</name>
@@ -232,62 +229,27 @@
                 </dependencies>
             </plugin>
 <!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
+<!--                <groupId>ru.volnenko.maven.plugin</groupId>-->
+<!--                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>-->
+<!--                <version>1.0.0</version>-->
 <!--                <configuration>-->
-<!--                    <argLine>${jacoco.argLine}</argLine>-->
-<!--                    <systemPropertyVariables>-->
-<!--                        <allure.results.directory>${project.basedir}/target/allure-results</allure.results.directory>-->
-<!--                    </systemPropertyVariables>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-
-<!--            <plugin>-->
-<!--                <groupId>io.qameta.allure</groupId>-->
-<!--                <artifactId>allure-maven</artifactId>-->
-<!--                <version>2.10.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>test</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>report</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-            <plugin>
-                <groupId>ru.volnenko.maven.plugin</groupId>
-                <artifactId>liquilbase-asciidoc-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <configuration>
-                    <serviceName>Task Manager</serviceName>
-                    <dataBaseInfo>Postgres 15</dataBaseInfo>
-                    <headerFirstEnabled>true</headerFirstEnabled>
-                    <headerSecondEnabled>true</headerSecondEnabled>
-                    <tableOfContentsEnabled>true</tableOfContentsEnabled>
-                    <outputPath>${project.build.directory}/asciidoc</outputPath>
-                    <outputFile>index.adoc</outputFile>
-                    <outputJsonFileEnabled>true</outputJsonFileEnabled>
-                    <outputYamlFileEnabled>true</outputYamlFileEnabled>
-                    <files>
-                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/role_type.yaml</file>
-                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/status_type.yaml</file>
-                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/project.yaml</file>
-                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/task.yaml</file>
-                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/user.yaml</file>
-                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/role.yaml</file>
-<!--                        <file>${project.basedir}/example/task-manager-sql-to-asciidoc/src/main/resources/schema/schema.yaml</file>-->
-                    </files>
-                </configuration>
-            </plugin>
-<!--            <plugin>-->
-<!--                <artifactId>maven-deploy-plugin</artifactId>-->
-<!--                <version>2.8.2</version>-->
-<!--                <configuration>-->
-<!--                    <altDeploymentRepository>-->
-<!--                        internal.repo::default::file://${project.build.directory}/mvn-artifact-->
-<!--                    </altDeploymentRepository>-->
+<!--                    <serviceName>Task Manager</serviceName>-->
+<!--                    <dataBaseInfo>Postgres 15</dataBaseInfo>-->
+<!--                    <headerFirstEnabled>true</headerFirstEnabled>-->
+<!--                    <headerSecondEnabled>true</headerSecondEnabled>-->
+<!--                    <tableOfContentsEnabled>true</tableOfContentsEnabled>-->
+<!--                    <outputPath>${project.build.directory}/asciidoc</outputPath>-->
+<!--                    <outputFile>index.adoc</outputFile>-->
+<!--                    <outputJsonFileEnabled>true</outputJsonFileEnabled>-->
+<!--                    <outputYamlFileEnabled>true</outputYamlFileEnabled>-->
+<!--                    <files>-->
+<!--                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/role_type.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/status_type.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/project.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/task.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/user.yaml</file>-->
+<!--                        <file>${project.basedir}/example/task-manager-database-asciidoc/src/main/resources/role.yaml</file>-->
+<!--                    </files>-->
 <!--                </configuration>-->
 <!--            </plugin>-->
             <plugin>
@@ -330,19 +292,6 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
-<!--                <version>2.10.4</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>attach-javadocs</id>-->
-<!--                        <goals>-->
-<!--                            <goal>jar</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
         </plugins>
         <extensions>
             <extension>
