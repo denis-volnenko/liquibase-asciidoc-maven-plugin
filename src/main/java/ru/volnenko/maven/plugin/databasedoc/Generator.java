@@ -151,6 +151,10 @@ public final class Generator extends AbstractMojo {
                 .tableOfContentsEnabled(tableOfContentsEnabled)
                 .append(stringBuilder);
 
+        if (paths.isEmpty() && files.isEmpty()) {
+            throw new RuntimeException("Error! Files or paths in plugin settings should not be empty...");
+        }
+
         @NonNull final List<Root> roots = rootParser.paths(paths).files(files).parse();
 
         createTableDocumentGenerator.serviceName(serviceName).dataBaseInfo(dataBaseInfo).roots(roots).append(stringBuilder);
