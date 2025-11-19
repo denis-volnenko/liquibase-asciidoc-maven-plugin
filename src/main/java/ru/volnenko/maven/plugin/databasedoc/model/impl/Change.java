@@ -18,6 +18,10 @@ public final class Change implements IChange {
 
     private CreateIndex createIndex;
 
+    private CreateCache createCache;
+
+    private CreateModel createModel;
+
     private AddPrimaryKey addPrimaryKey;
 
     private AddUniqueConstraint addUniqueConstraint;
