@@ -56,7 +56,7 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
-    @Parameter(property = "tableOfContentsEnabled")
+    @Parameter(property = "entityRelationDiagramEnabled")
     public boolean entityRelationDiagramEnabled = true;
 
     @Getter
@@ -87,7 +87,7 @@ public final class Generator extends AbstractMojo {
     @Getter
     @Setter
     @Parameter(property = "outputJsonFile")
-    public String outputJsonFile = "scheme.json";
+    public String outputJsonFile = "schema.json";
 
     @Getter
     @Setter
@@ -97,7 +97,7 @@ public final class Generator extends AbstractMojo {
     @Getter
     @Setter
     @Parameter(property = "outputYamlFile")
-    public String outputYamlFile = "scheme.yaml";
+    public String outputYamlFile = "schema.yaml";
 
     @Getter
     @Setter
