@@ -42,11 +42,6 @@ public final class Generator extends AbstractMojo {
 
     @Getter
     @Setter
-    @Parameter(property = "rendererType")
-    public ErdRenderer erdRenderer = ErdRenderer.SMETANA;
-
-    @Getter
-    @Setter
     @Parameter(property = "headerFirstEnabled")
     public boolean headerFirstEnabled = true;
 
@@ -59,6 +54,11 @@ public final class Generator extends AbstractMojo {
     @Setter
     @Parameter(property = "tableOfContentsEnabled")
     public boolean tableOfContentsEnabled = true;
+
+    @Getter
+    @Setter
+    @Parameter(property = "entityRelationDiagramRenderer")
+    public ErdRenderer entityRelationDiagramRenderer = ErdRenderer.SMETANA;
 
     @Getter
     @Setter
@@ -208,14 +208,14 @@ public final class Generator extends AbstractMojo {
                 .multiDatabase(entityRelationDiagramMultiDatabase)
                 .internal()
                 .roots(roots)
-                .erdRenderer(erdRenderer)
+                .erdRenderer(entityRelationDiagramRenderer)
                 .append(new StringBuilder());
         @NonNull final StringBuilder erdExternal = entityRelationDiagramDocumentGenerator
                 .erdType(erdType)
                 .multiDatabase(entityRelationDiagramMultiDatabase)
                 .external()
                 .roots(roots)
-                .erdRenderer(erdRenderer)
+                .erdRenderer(entityRelationDiagramRenderer)
                 .append(new StringBuilder());
         return this
                 .saveEntityRelationDiagramPUML(path, erdInternal, filename)
