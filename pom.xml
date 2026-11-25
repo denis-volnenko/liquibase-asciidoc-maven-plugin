@@ -103,6 +103,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>net.sourceforge.plantuml</groupId>
+            <artifactId>plantuml-mit</artifactId>
+            <version>1.2023.11</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
             <version>3.6.3</version>
@@ -140,11 +146,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.sourceforge.plantuml</groupId>
-            <artifactId>plantuml</artifactId>
-            <version>8059</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>net.sourceforge.plantuml</groupId>-->
+<!--            <artifactId>plantuml</artifactId>-->
+<!--            <version>8059</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
