@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.SneakyThrows;
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
+import net.sourceforge.plantuml.SourceFileReader;
 import net.sourceforge.plantuml.SourceStringReader;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -279,9 +280,13 @@ public final class Generator extends AbstractMojo {
             @NonNull final String filename
     ) {
         if (!entityRelationDiagramEnabled) return this;
-        @NonNull final SourceStringReader reader = new SourceStringReader(stringBuilder.toString());
-        @NonNull final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + filename + ".svg"));
-        reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
+//        @NonNull final SourceStringReader reader = new SourceStringReader(stringBuilder.toString());
+//        @NonNull final FileOutputStream output = new FileOutputStream(new File(path.getAbsolutePath() + "/" + filename + ".svg"));
+//        reader.generateImage(output, new FileFormatOption(FileFormat.SVG, false));
+        @NonNull final File file = new File(stringBuilder.toString());
+        @NonNull final FileFormatOption option = new FileFormatOption(FileFormat.SVG);
+        @NonNull final SourceFileReader reader = new SourceFileReader(file, new File("."), option);
+        reader.getGeneratedImages();
         return this;
     }
 
