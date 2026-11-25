@@ -1,6 +1,7 @@
 package ru.volnenko.maven.plugin.databasedoc.generator;
 
 import lombok.NonNull;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdRenderer;
 import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdType;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.EntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.Root;
@@ -11,6 +12,9 @@ public interface IEntityRelationDiagramDocumentGenerator extends IGenerator {
 
     @NonNull
     EntityRelationDiagramDocumentGenerator multiDatabase(boolean multiDatabase);
+
+    @NonNull
+    EntityRelationDiagramDocumentGenerator erdRenderer(@NonNull ErdRenderer erdRenderer);
 
     @NonNull
     EntityRelationDiagramDocumentGenerator erdType(@NonNull ErdType erdType);

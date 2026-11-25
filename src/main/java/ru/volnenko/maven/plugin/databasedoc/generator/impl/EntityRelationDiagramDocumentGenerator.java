@@ -3,6 +3,7 @@ package ru.volnenko.maven.plugin.databasedoc.generator.impl;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdRender;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdRenderer;
 import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdType;
 import ru.volnenko.maven.plugin.databasedoc.generator.IEntityRelationDiagramDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.model.impl.*;
@@ -27,6 +28,21 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
     private ErdType erdType = ErdType.PHYSIC;
 
     private boolean multiDatabase = false;
+
+    @NonNull
+    private ErdRenderer erdRenderer = ErdRenderer.SMETANA;
+
+    @NonNull
+    public ErdRenderer erdRenderer() {
+        return erdRenderer;
+    }
+
+    @NonNull
+    @Override
+    public EntityRelationDiagramDocumentGenerator erdRenderer(@NonNull final ErdRenderer erdRenderer) {
+        this.erdRenderer = erdRenderer;
+        return this;
+    }
 
     @NonNull
     @Override
@@ -138,15 +154,17 @@ public final class EntityRelationDiagramDocumentGenerator extends AbstractGenera
         stringBuilder.append("@startuml \n");
         stringBuilder.append("left to right direction \n");
 
-        if (erdRender.isInternal()) {
+        if (ErdRenderer.SMETANA.equals(erdRenderer)) {
+            stringBuilder.append("!pragma layout smetana \n");
+        } else {
             stringBuilder.append("!pragma graphviz_dot jdot \n");
-            stringBuilder.append("'!pragma layout smetana \n");
+        }
+
+        if (erdRender.isInternal()) {
             for (@NonNull final Root root : roots) generate(stringBuilder, root);
         }
 
         if (erdRender.isExternal()) {
-            stringBuilder.append("'!pragma graphviz_dot jdot \n");
-            stringBuilder.append("!pragma layout smetana \n");
             if (multiDatabase) {
                 @NonNull final Set<String> databases = DataBaseUtil.getDataBases(roots);
                 for (@NonNull final String database: databases) {

@@ -13,6 +13,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
+import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdRenderer;
 import ru.volnenko.maven.plugin.databasedoc.enumerated.ErdType;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTableDocumentGenerator;
 import ru.volnenko.maven.plugin.databasedoc.generator.impl.CreateTypeDocumentGenerator;
@@ -38,6 +39,11 @@ public final class Generator extends AbstractMojo {
     @Setter
     @Parameter(property = "dataBaseInfo")
     public String dataBaseInfo = "";
+
+    @Getter
+    @Setter
+    @Parameter(property = "rendererType")
+    public ErdRenderer erdRenderer = ErdRenderer.SMETANA;
 
     @Getter
     @Setter
@@ -198,9 +204,19 @@ public final class Generator extends AbstractMojo {
             @NonNull final String filename
     ) {
         @NonNull final StringBuilder erdInternal = entityRelationDiagramDocumentGenerator
-                .erdType(erdType).multiDatabase(entityRelationDiagramMultiDatabase).internal().roots(roots).append(new StringBuilder());
+                .erdType(erdType)
+                .multiDatabase(entityRelationDiagramMultiDatabase)
+                .internal()
+                .roots(roots)
+                .erdRenderer(erdRenderer)
+                .append(new StringBuilder());
         @NonNull final StringBuilder erdExternal = entityRelationDiagramDocumentGenerator
-                .erdType(erdType).multiDatabase(entityRelationDiagramMultiDatabase).external().roots(roots).append(new StringBuilder());
+                .erdType(erdType)
+                .multiDatabase(entityRelationDiagramMultiDatabase)
+                .external()
+                .roots(roots)
+                .erdRenderer(erdRenderer)
+                .append(new StringBuilder());
         return this
                 .saveEntityRelationDiagramPUML(path, erdInternal, filename)
                 .saveEntityRelationDiagramSVG(path, erdInternal, filename)
